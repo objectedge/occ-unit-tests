@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "displayName": {
+      "description": "The display name of the product types.",
+      "type": "string"
+    },
+    "id": {
+      "description": "The ID of the product types.",
+      "type": "string"
+    }
+  }
+}

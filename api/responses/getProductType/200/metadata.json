@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/getProductType_response"
+  },
+  "description": "Following model is returned when operation succeeds."
+}

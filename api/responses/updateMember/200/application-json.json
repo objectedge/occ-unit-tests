@@ -1,0 +1,38 @@
+{
+  "lastName": "K",
+  "roles": [
+    {
+      "function": "buyer",
+      "repositoryId": "100006"
+    }
+  ],
+  "receiveEmail": "yes",
+  "active": "true",
+  "parentOrganization": {
+    "name": "Oracle",
+    "repositoryId": "100001",
+    "description": "Oracle Org",
+    "active": true,
+    "shippingAddress": {},
+    "secondaryAddresses": {
+      "Address1": {
+        "repositoryId": "110033"
+      }
+    },
+    "id": "100001",
+    "billingAddress": {}
+  },
+  "locale": "en",
+  "dynamicProperty": "dynamicProperty value",
+  "firstName": "bcd",
+  "profileType": "b2b_user",
+  "repositoryId": "110006",
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/ccstore/v1/organizationMembers/110006?offset=0&limit=2&sort=firstName%3Adesc"
+    }
+  ],
+  "id": "110006",
+  "email": "abc@abc.com"
+}

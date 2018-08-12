@@ -1,0 +1,8 @@
+{
+  "cancel": {
+    "isCancelAllowed": true
+  },
+  "returns": {
+    "isReturnAllowed": false
+  }
+}

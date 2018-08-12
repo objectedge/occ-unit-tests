@@ -1,0 +1,100 @@
+[
+  {
+    "prod10007": {
+      "sale": null,
+      "skuPrices": [
+        {
+          "salePrice": null,
+          "skuId": "sku30081",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30083",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30085",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30087",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30089",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30091",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30093",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30095",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30097",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30099",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30101",
+          "listPrice": 19.99
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30103",
+          "listPrice": 19.99
+        }
+      ],
+      "list": 19.99,
+      "priceRange": false
+    }
+  },
+  {
+    "prod10001": {
+      "sale": null,
+      "skuPrices": [
+        {
+          "salePrice": null,
+          "skuId": "sku30003",
+          "listPrice": 49
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30005",
+          "listPrice": 49
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30007",
+          "listPrice": 49
+        },
+        {
+          "salePrice": null,
+          "skuId": "sku30009",
+          "listPrice": 49
+        }
+      ],
+      "list": 49,
+      "priceRange": false
+    }
+  }
+]

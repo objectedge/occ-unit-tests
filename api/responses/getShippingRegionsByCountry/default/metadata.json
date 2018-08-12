@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/errorModel"
+  },
+  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|8001|If error occurs when retrieving shipping regions for the country.|\n"
+}

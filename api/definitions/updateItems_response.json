@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "success": {
+      "description": "Boolean success value either true or false",
+      "type": "boolean"
+    },
+    "messsage": {
+      "description": "Success message",
+      "type": "string"
+    }
+  }
+}

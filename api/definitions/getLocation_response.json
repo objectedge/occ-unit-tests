@@ -1,0 +1,119 @@
+{
+  "properties": {
+    "country": {
+      "description": "The country of the location.",
+      "type": "string"
+    },
+    "hours": {
+      "description": "The store opening hours, for a store item descriptor.",
+      "type": "string"
+    },
+    "address3": {
+      "description": "The third line in the address of the location.",
+      "type": "string"
+    },
+    "distance": {
+      "description": "The distance parameter.",
+      "type": "string"
+    },
+    "address2": {
+      "description": "The second line in the address of the location.",
+      "type": "string"
+    },
+    "city": {
+      "description": "The city of the location.",
+      "type": "string"
+    },
+    "address1": {
+      "description": "The first line in the address of the location.",
+      "type": "string"
+    },
+    "postalCode": {
+      "description": "The postal code of the location.",
+      "type": "string"
+    },
+    "latitude": {
+      "description": "The slatitude of the location.",
+      "type": "string"
+    },
+    "stateAddress": {
+      "description": "The state address of the location.",
+      "type": "string"
+    },
+    "county": {
+      "description": "The county of the location.",
+      "type": "string"
+    },
+    "sites": {
+      "description": "List of sites.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "description": "The site id.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "type": {
+      "description": "Representation of the location type (location or store).",
+      "type": "string"
+    },
+    "externalLocationId": {
+      "description": "The merchant store id.",
+      "type": "string"
+    },
+    "phoneNumber": {
+      "description": "The phone number of the location.",
+      "type": "string"
+    },
+    "siteGroups": {
+      "description": "List of site groups.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sites": {
+            "description": "List of sites.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The site id.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "id": {
+            "description": "The site group id.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "repositoryId": {
+      "description": "The id of the location repository item.",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the location.",
+      "type": "string"
+    },
+    "faxNumber": {
+      "description": "The fax number of the location.",
+      "type": "string"
+    },
+    "email": {
+      "description": "The email id parameter.",
+      "type": "string"
+    },
+    "longitude": {
+      "description": "The longitude of the location.",
+      "type": "string"
+    }
+  }
+}

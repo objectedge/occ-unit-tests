@@ -1,0 +1,51 @@
+{
+  "properties": {
+    "items": {
+      "description": "List of external application data objects.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "serverType": {
+            "description": "The server type. Typically \"production\" (storefront) or \"publishing\" (admin).",
+            "type": "string"
+          },
+          "serviceData": {
+            "description": "description of serviceData",
+            "type": "object",
+            "properties": {
+              "port": {
+                "description": "The port of the recommendations server. (Recommendations only)",
+                "type": "integer"
+              },
+              "displayName": {
+                "description": "The localized display name of the application.",
+                "type": "string"
+              },
+              "host": {
+                "description": "The host name of the recommendations host. (Recommendations only)",
+                "type": "string"
+              },
+              "name": {
+                "description": "The non-localized name of the service, such as \"Facebook\" or \"Recommendations\".",
+                "type": "string"
+              },
+              "tenantId": {
+                "description": "The tenant ID of the merchant. (Recommendations only)",
+                "type": "string"
+              },
+              "applicationId": {
+                "description": "The Facebook application ID of the merchant. (Facebook only)",
+                "type": "string"
+              }
+            }
+          },
+          "id": {
+            "description": "The ID of the external application data. In the form \"{serverType}-{applicationName}\".",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

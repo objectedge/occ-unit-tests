@@ -1,0 +1,28 @@
+{
+  "total": 1,
+  "totalResults": 1,
+  "offset": 0,
+  "limit": 1,
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/ccstore/v1/addresses?orgId=10001"
+    }
+  ],
+  "items": [
+    {
+      "address": {
+        "country": "US",
+        "phoneNumber": "973-974-1234",
+        "address2": "Street 2",
+        "city": "Montgomery",
+        "address1": "600 Dexter Avenue",
+        "postalCode": "36130",
+        "companyName": "Oracle",
+        "repositoryId": "190001",
+        "state": "AL"
+      },
+      "addressType": "Office Address"
+    }
+  ]
+}

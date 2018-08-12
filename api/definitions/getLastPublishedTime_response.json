@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "lastPublishedTimeStamp": {
+      "description": "the last published time(in long number format).",
+      "type": "string"
+    }
+  }
+}

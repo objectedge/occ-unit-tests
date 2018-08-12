@@ -1,0 +1,330 @@
+{
+  "properties": {
+    "priceInfo": {
+      "description": "The price information.",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "description": "The total order amount.",
+          "type": "number"
+        },
+        "total": {
+          "description": "The order total.",
+          "type": "number"
+        },
+        "shipping": {
+          "description": "The total shipping cost.",
+          "type": "number"
+        },
+        "shippingSurchargeValue": {
+          "description": "Extra handling costs for shipping the products.",
+          "type": "number"
+        },
+        "tax": {
+          "description": "The total tax amount.",
+          "type": "number"
+        },
+        "subTotal": {
+          "description": "Sub-total.",
+          "type": "number"
+        },
+        "currencyCode": {
+          "description": "The currency code.",
+          "type": "string"
+        }
+      }
+    },
+    "shippingAddress": {
+      "description": "shipping address of the profile",
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "description": "the last name of the shipping address",
+          "type": "string"
+        },
+        "country": {
+          "description": "the country of the shipping address",
+          "type": "string"
+        },
+        "address2": {
+          "description": "the address2 of the shipping address",
+          "type": "string"
+        },
+        "city": {
+          "description": "the city of the shipping address",
+          "type": "string"
+        },
+        "address1": {
+          "description": "the address1 of the shipping address",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "the postal Code of the shipping address",
+          "type": "string"
+        },
+        "county": {
+          "description": "the county of the shipping address",
+          "type": "string"
+        },
+        "selectedCountry": {
+          "description": "the country code of the shipping address",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "the first name of the shipping address",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "description": "the phone Number of the shipping address",
+          "type": "string"
+        },
+        "state": {
+          "description": "the state of the shipping address",
+          "type": "string"
+        },
+        "selectedState": {
+          "description": "the state ISO alpha-2 code of the shipping address",
+          "type": "string"
+        },
+        "email": {
+          "description": "the email address",
+          "type": "string"
+        },
+        "state_ISOCode": {
+          "description": "the state ISO alpha-4 code of the shipping address",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lastName",
+        "country",
+        "city",
+        "address1",
+        "postalCode",
+        "firstName",
+        "email"
+      ]
+    },
+    "items": {
+      "description": "The array of products in the shopping cart.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "description": "The quantity of the product in the cart.",
+            "type": "integer"
+          },
+          "discountInfo": {
+            "description": "Discount information.",
+            "type": "object",
+            "properties": {
+              "coupon": {
+                "description": "Coupon code.",
+                "type": "string"
+              },
+              "promotionDesc": {
+                "description": "Promotion description.",
+                "type": "string"
+              },
+              "promotionId": {
+                "description": "Pomotion ID.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "coupon",
+              "promotionDesc",
+              "promotionId"
+            ]
+          },
+          "productId": {
+            "description": "ID of the product in the cart.",
+            "type": "string"
+          },
+          "price": {
+            "description": "The Price.",
+            "type": "string"
+          },
+          "stockStatus": {
+            "description": "The stock status of the product.",
+            "type": "string"
+          },
+          "currentPrice": {
+            "description": "The current price of the item.",
+            "type": "integer"
+          },
+          "catRefId": {
+            "description": "The category to which the product belongs.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "quantity",
+          "productId",
+          "stockStatus",
+          "currentPrice",
+          "catRefId"
+        ]
+      }
+    },
+    "productIdForShippingSurcharge": {
+      "description": "array of product ids present in the cart.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "items",
+    "productIdForShippingSurcharge"
+  ],
+  "example": {
+    "priceInfo": {
+      "amount": 22.98,
+      "total": 22.98,
+      "shipping": 0,
+      "shippingSurchargeValue": 0,
+      "tax": 0,
+      "subTotal": 22.98,
+      "currencyCode": "USD",
+      "totalWithoutTax": 22.98
+    },
+    "shippingGroups": [
+      {
+        "shippingGroupId": "sg10001",
+        "shippingAddress": {
+          "lastName": "test",
+          "country": "United States",
+          "address3": "",
+          "address2": "",
+          "city": "redwood city",
+          "prefix": "",
+          "address1": "ste100",
+          "defaultCountryCode": null,
+          "postalCode": "94085",
+          "jobTitle": "",
+          "companyName": "",
+          "county": "",
+          "isDefaultAddress": true,
+          "suffix": "",
+          "selectedCountry": "US",
+          "firstName": "sample",
+          "phoneNumber": "5345345",
+          "alias": "Address",
+          "faxNumber": "",
+          "middleName": "",
+          "state": "California",
+          "selectedState": "CA",
+          "email": "sample@test.com",
+          "state_ISOCode": "US-CA"
+        },
+        "items": [
+          {
+            "commerceItemId": "ci7000501",
+            "quantity": 2,
+            "productId": "prod10004",
+            "childItems": [
+              {
+                "addOnItem": true,
+                "quantity": 1,
+                "productId": "Product_18Cxi",
+                "displayName": "Dr. Dolittle",
+                "catRefId": "Sku_18Dxi"
+              }
+            ],
+            "catRefId": "sku10028"
+          },
+          {
+            "quantity": 2,
+            "productId": "Product_36Exy",
+            "catRefId": "Sku_36Fxy"
+          }
+        ],
+        "productIdForShippingSurcharge": [
+          "Product_15CD"
+        ]
+      },
+      {
+        "shippingGroupId": "sg10002",
+        "shippingAddress": {
+          "lastName": "test",
+          "country": "United States",
+          "address3": "",
+          "address2": "hjghg",
+          "city": "jhg",
+          "prefix": "",
+          "address1": "hgjghjg",
+          "defaultCountryCode": null,
+          "postalCode": "03031",
+          "jobTitle": "",
+          "companyName": "",
+          "county": "",
+          "isDefaultAddress": false,
+          "suffix": "",
+          "selectedCountry": "US",
+          "firstName": "sample no tax",
+          "phoneNumber": "675675675",
+          "alias": "Address##3",
+          "faxNumber": "",
+          "middleName": "",
+          "state": "New Hampshire",
+          "selectedState": "NH",
+          "email": "sample@test.com",
+          "state_ISOCode": "US-NH"
+        },
+        "items": [
+          {
+            "commerceItemId": "ci7000501",
+            "quantity": 2,
+            "productId": "prod10004",
+            "childItems": [
+              {
+                "addOnItem": true,
+                "quantity": 1,
+                "productId": "Product_18Cxi",
+                "displayName": "Dr. Dolittle",
+                "catRefId": "Sku_18Dxi"
+              }
+            ],
+            "catRefId": "sku10028"
+          },
+          {
+            "quantity": 2,
+            "productId": "Product_36Exy",
+            "catRefId": "Sku_36Fxy"
+          }
+        ],
+        "productIdForShippingSurcharge": [
+          "Product_15CD"
+        ]
+      }
+    ],
+    "shoppingCart": {
+      "coupons": [],
+      "items": [
+        {
+          "commerceItemId": "ci7000501",
+          "quantity": 4,
+          "productId": "prod10004",
+          "childItems": [
+            {
+              "addOnItem": true,
+              "quantity": 2,
+              "productId": "Product_18Cxi",
+              "displayName": "Dr. Dolittle",
+              "catRefId": "Sku_18Dxi"
+            }
+          ],
+          "catRefId": "sku10028"
+        },
+        {
+          "quantity": 4,
+          "productId": "Product_36Exy",
+          "catRefId": "Sku_36Fxy"
+        }
+      ]
+    }
+  }
+}

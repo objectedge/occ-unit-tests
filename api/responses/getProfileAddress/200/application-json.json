@@ -1,0 +1,21 @@
+{
+  "address": {
+    "firstName": "tr",
+    "lastName": "et",
+    "country": "US",
+    "phoneNumber": "631-748-6479",
+    "address2": "et",
+    "city": "te",
+    "address1": "et",
+    "postalCode": "35005",
+    "repositoryId": "130023",
+    "state": "AL"
+  },
+  "addressType": "tertr",
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:9080/ccstoreui/v1/profiles/se-570031/addresses/130023"
+    }
+  ]
+}

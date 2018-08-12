@@ -1,0 +1,16 @@
+{
+  "properties": {
+    "timezoneLabel": {
+      "description": "Timezone name to display in the UI",
+      "type": "string"
+    },
+    "repositoryId": {
+      "description": "ID of the timezone item",
+      "type": "string"
+    },
+    "timezoneCode": {
+      "description": "Standard Timezone value",
+      "type": "string"
+    }
+  }
+}

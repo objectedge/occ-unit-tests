@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "orderId": {
+      "description": "The id of the order to be cancelled.",
+      "type": "string"
+    },
+    "cancelReason": {
+      "description": "The cancel reason of the order.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "orderId",
+    "cancelReason"
+  ],
+  "example": {
+    "orderId": "o30413",
+    "cancelReason": "badProductReview"
+  }
+}

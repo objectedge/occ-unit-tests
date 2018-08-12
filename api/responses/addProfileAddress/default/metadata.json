@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/errorModel"
+  },
+  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|22031|Internal error during get profile|\n|22032|Error occured due to invalid data|\n|22033|User is not logged in.|\n|22000|The profile id passes is null or empty.|\n|22001|Internal error while getting the profile.|\n|22002|No profile found with the given id.|\n|23005|Invalid phone number is specified|\n|23007|No country is specified|\n|23008|Postal code is not specified|\n|23010|City is not specified|\n|23011|Address line 1 not specified|\n"
+}

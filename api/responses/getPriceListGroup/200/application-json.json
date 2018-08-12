@@ -1,0 +1,27 @@
+{
+  "deleted": false,
+  "endDate": "2016-03-11T18:30:00.000Z",
+  "displayName": "UsDollar",
+  "listPriceList": {
+    "repositoryId": "listPrices"
+  },
+  "repositoryId": "UsDollar",
+  "active": false,
+  "salePriceList": {
+    "repositoryId": "salePrices"
+  },
+  "currency": {
+    "symbol": "$",
+    "displayName": "US Dollar",
+    "repositoryId": "en_US",
+    "fractionalDigits": 2,
+    "currencyCode": "USD",
+    "numericCode": "840"
+  },
+  "id": "UsDollar",
+  "locale": "en_US",
+  "shippingSurchargePriceList": {
+    "repositoryId": "shippingSurchargePrices"
+  },
+  "startDate": "2016-03-10T18:30:00.000Z"
+}

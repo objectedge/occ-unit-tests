@@ -1,0 +1,120 @@
+{
+  "properties": {
+    "total": {
+      "description": "The total number of items. Deprecated.",
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total number of items.",
+      "type": "integer"
+    },
+    "offset": {
+      "description": "Index of the first element to return.",
+      "type": "integer"
+    },
+    "selectedCurrency": {
+      "description": "Selected currency",
+      "type": "object",
+      "properties": {
+        "currencyType": {
+          "description": "Type of Currency",
+          "type": "string"
+        },
+        "symbol": {
+          "description": "The currency symbol",
+          "type": "string"
+        },
+        "deleted": {
+          "description": "deleted flag of currency. Applicable to loylatyPoints currencyType.",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Readable name of the currency",
+          "type": "string"
+        },
+        "repositoryId": {
+          "description": "The ID of the currency item, which is a locale string.",
+          "type": "string"
+        },
+        "fractionalDigits": {
+          "description": "Number of digits to the right of the decimal point",
+          "type": "integer"
+        },
+        "currencyCode": {
+          "description": "currency code of Currency",
+          "type": "string"
+        },
+        "numericCode": {
+          "description": "numeric currency code",
+          "type": "string"
+        }
+      }
+    },
+    "limit": {
+      "description": "The number of items to return.",
+      "type": "integer"
+    },
+    "sort": {
+      "description": "Sorting criteria.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "property": {
+            "description": "The property the listing is sorted by.",
+            "type": "string"
+          },
+          "order": {
+            "description": "Sort order: asc or desc.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "type": {
+      "description": "The promotion type being listed.",
+      "type": "string"
+    },
+    "items": {
+      "description": "List of currencies",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "currencyType": {
+            "description": "Type of Currency",
+            "type": "string"
+          },
+          "symbol": {
+            "description": "The currency symbol",
+            "type": "string"
+          },
+          "deleted": {
+            "description": "deleted flag of currency. Applicable to loylatyPoints currencyType.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Readable name of the currency",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The ID of the currency item, which is a locale string.",
+            "type": "string"
+          },
+          "fractionalDigits": {
+            "description": "Number of digits to the right of the decimal point",
+            "type": "string"
+          },
+          "currencyCode": {
+            "description": "currency code of currency",
+            "type": "string"
+          },
+          "numericCode": {
+            "description": "numeric currency code",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

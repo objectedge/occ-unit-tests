@@ -1,0 +1,52 @@
+{
+  "properties": {
+    "Endpoint Service": {
+      "description": "Object of endpoint service.",
+      "type": "object",
+      "properties": {
+        "endpoints": {
+          "description": "Object of Oauth Admin endpoint.",
+          "type": "object",
+          "properties": {
+            "responseType": {
+              "description": "Type of response, e.g. application/json.",
+              "type": "string"
+            },
+            "authRequired": {
+              "description": "Whether authentication is required or not.",
+              "type": "boolean"
+            },
+            "requestType": {
+              "description": "Type of request, e.g. application/json.",
+              "type": "string"
+            },
+            "method": {
+              "description": "Method of the service.",
+              "type": "string"
+            },
+            "hasDoc": {
+              "description": "Whether endpoint has the doc or not.",
+              "type": "boolean"
+            },
+            "id": {
+              "description": "ID of endpoint.",
+              "type": "string"
+            },
+            "url": {
+              "description": "url to trigger the endpoint.",
+              "type": "string"
+            },
+            "httpsRequired": {
+              "description": "Whether https is required or not.",
+              "type": "boolean"
+            }
+          }
+        },
+        "description": {
+          "description": "Description of service.",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

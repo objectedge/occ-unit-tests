@@ -1,0 +1,201 @@
+{
+  "properties": {
+    "resultsList": {
+      "description": "List of all the results",
+      "type": "object",
+      "properties": {
+        "pagingActionTemplate": {
+          "description": "Template of paging action",
+          "type": "object",
+          "properties": {
+            "contentPath": {
+              "description": "Path of the content",
+              "type": "string"
+            },
+            "@class": {
+              "description": "Path of NavigationAction class",
+              "type": "string"
+            },
+            "navigationState": {
+              "description": "Query of navigation which determines the state",
+              "type": "string"
+            },
+            "siteRootPath": {
+              "description": "Site Root path of endeca",
+              "type": "string"
+            },
+            "label": {
+              "description": "Label of action",
+              "type": "string"
+            }
+          }
+        },
+        "lastRecNum": {
+          "description": "Last record number",
+          "type": "integer"
+        },
+        "totalNumRecs": {
+          "description": "Total Number of Records in the result set",
+          "type": "integer"
+        },
+        "firstRecNum": {
+          "description": "First record number",
+          "type": "integer"
+        },
+        "recsPerPage": {
+          "description": "Number of records per page",
+          "type": "integer"
+        }
+      }
+    },
+    "navigation": {
+      "description": "Response object of navigation",
+      "type": "object",
+      "properties": {
+        "navigation": {
+          "description": "Navigation container object",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "multiselect": {
+                "description": "Flag to determine multiple selection property",
+                "type": "boolean"
+              },
+              "displayName": {
+                "description": "Display Name of the dimension",
+                "type": "string"
+              },
+              "ancestors": {
+                "description": "List of ancestors",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "contentPath": {
+                      "description": "Path of the content",
+                      "type": "string"
+                    },
+                    "@class": {
+                      "description": "Path of ancestor class",
+                      "type": "string"
+                    },
+                    "navigationState": {
+                      "description": "Query of navigation which determines the state",
+                      "type": "string"
+                    },
+                    "siteRootPath": {
+                      "description": "Site Root path of endeca",
+                      "type": "string"
+                    },
+                    "label": {
+                      "description": "Label of the refinement",
+                      "type": "string"
+                    },
+                    "properties": {
+                      "description": "Properties of the refinement",
+                      "type": "object",
+                      "properties": {
+                        "sampleProperty": {
+                          "description": "Value of the sampleProperty",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "dimensionName": {
+                "description": "Name of the dimension",
+                "type": "string"
+              },
+              "refinements": {
+                "description": "List of refinements",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "multiselect": {
+                      "description": "Flag to determine whether if multiple selection is allowed for the refinement",
+                      "type": "boolean"
+                    },
+                    "contentPath": {
+                      "description": "Path of the content",
+                      "type": "string"
+                    },
+                    "@class": {
+                      "description": "Path of refinement class",
+                      "type": "string"
+                    },
+                    "navigationState": {
+                      "description": "Query of navigation which determines the state",
+                      "type": "string"
+                    },
+                    "siteRootPath": {
+                      "description": "Site Root path",
+                      "type": "string"
+                    },
+                    "count": {
+                      "description": "Number of results under this refinement",
+                      "type": "integer"
+                    },
+                    "label": {
+                      "description": "Label of the refinement",
+                      "type": "string"
+                    },
+                    "properties": {
+                      "description": "Properties of the refinement",
+                      "type": "object",
+                      "properties": {
+                        "sampleProperty": {
+                          "description": "Value of the sampleProperty",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "searchAdjustments": {
+      "description": "Search Adjustments of the given query",
+      "type": "object",
+      "properties": {
+        "originalTerms": {
+          "description": "List of all the original terms",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "zones": {
+      "description": "Zone information where the content falls under",
+      "type": "object",
+      "properties": {
+        "offset": {
+          "description": "Offset value",
+          "type": "integer"
+        },
+        "@type": {
+          "description": "Zone type",
+          "type": "string"
+        },
+        "recordsPerPage": {
+          "description": "Number of records per page",
+          "type": "integer"
+        }
+      }
+    },
+    "breadcrumbs": {
+      "description": "Breadcrumbs based on the given search query",
+      "type": "object",
+      "properties": {}
+    }
+  }
+}

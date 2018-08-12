@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "id": {
+      "description": "Id of Organization Request",
+      "type": "string"
+    }
+  }
+}

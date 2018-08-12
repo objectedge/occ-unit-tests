@@ -1,0 +1,286 @@
+{
+  "properties": {
+    "lastName": {
+      "description": "The last name of the profile.",
+      "type": "string"
+    },
+    "GDPRProfileP13nConsentGranted": {
+      "description": "If user has given consent for his/her profile information to be used for personalization purposes.",
+      "type": "boolean"
+    },
+    "gender": {
+      "description": "The gender of the profile user.",
+      "type": "string"
+    },
+    "oldPassword": {
+      "description": "The current password.",
+      "type": "string"
+    },
+    "receiveEmail": {
+      "description": "This is email marketing flag. can be yes or no.",
+      "type": "string"
+    },
+    "newPassword": {
+      "description": "The new password.",
+      "type": "string"
+    },
+    "dateOfBirth": {
+      "description": "The date of birth of the profile user.",
+      "type": "string"
+    },
+    "newConfirmPassword": {
+      "description": "Confirmation of the new password. This should match the new password value.",
+      "type": "string"
+    },
+    "firstName": {
+      "description": "The first name of the profile.",
+      "type": "string"
+    },
+    "shippingAddress": {
+      "description": "Default shipping address of the profile (Deprecated, please use 'shippingAddresses' instead).",
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "description": "The last name of the shipping address.",
+          "type": "string"
+        },
+        "country": {
+          "description": "The country code of the shipping address.",
+          "type": "string"
+        },
+        "address3": {
+          "description": "The address line 3 of the shipping address.",
+          "type": "string"
+        },
+        "address2": {
+          "description": "The address line 2 of the shipping address.",
+          "type": "string"
+        },
+        "address1": {
+          "description": "The address line 1 of the shipping address.",
+          "type": "string"
+        },
+        "prefix": {
+          "description": "The prefix of the shipping address.",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "The postal Code of the shipping address.",
+          "type": "string"
+        },
+        "companyName": {
+          "description": "The company name of the shipping address.",
+          "type": "string"
+        },
+        "county": {
+          "description": "The county of the shipping address.",
+          "type": "string"
+        },
+        "selectedCountry": {
+          "description": "The country code of the shipping address. If selectedCountry is sent in the request then it takes precedence over country.",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "The first name of the shipping address.",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "description": "The phone Number of the shipping address.",
+          "type": "string"
+        },
+        "repositoryId": {
+          "description": "The repository ID of the shipping address.",
+          "type": "string"
+        },
+        "alias": {
+          "description": "The alias of the shipping address.",
+          "type": "string"
+        },
+        "state": {
+          "description": "The state code of the shipping address.",
+          "type": "string"
+        },
+        "selectedState": {
+          "description": "The state ISO alpha-2 code of the shipping address. If selectedState is sent in the request then it takes precedence over state.",
+          "type": "string"
+        },
+        "state_ISOCode": {
+          "description": "The state ISO alpha-4 code of the shipping address.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lastName",
+        "country",
+        "address1",
+        "postalCode",
+        "firstName",
+        "state"
+      ]
+    },
+    "email": {
+      "description": "The email address of the profile.",
+      "type": "string"
+    },
+    "daytimeTelephoneNumber": {
+      "description": "The phone Number of the profile.",
+      "type": "string"
+    },
+    "shippingAddresses": {
+      "description": "List of shipping addresses associated with profile.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "lastName": {
+            "description": "The last name of the shipping address.",
+            "type": "string"
+          },
+          "country": {
+            "description": "The country of the shipping address.",
+            "type": "string"
+          },
+          "address3": {
+            "description": "The address line 3 of the shipping address.",
+            "type": "string"
+          },
+          "address2": {
+            "description": "The address line 2 of the shipping address.",
+            "type": "string"
+          },
+          "city": {
+            "description": "The city of the shipping address.",
+            "type": "string"
+          },
+          "address1": {
+            "description": "The address line 1 of the shipping address.",
+            "type": "string"
+          },
+          "prefix": {
+            "description": "The prefix of the shipping address.",
+            "type": "string"
+          },
+          "postalCode": {
+            "description": "The postal Code of the shipping address.",
+            "type": "string"
+          },
+          "companyName": {
+            "description": "The company name of the shipping address.",
+            "type": "string"
+          },
+          "county": {
+            "description": "The county code of the shipping address.",
+            "type": "string"
+          },
+          "isDefaultAddress": {
+            "description": "Whether to store this address in the default shipping address slot.",
+            "type": "boolean"
+          },
+          "selectedCountry": {
+            "description": "The country code of the shipping address. If selectedCountry is sent in the request then it takes precedence over country.",
+            "type": "string"
+          },
+          "firstName": {
+            "description": "The first name of the shipping address.",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "description": "The phone Number of the shipping address.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The repository ID of the shipping address.",
+            "type": "string"
+          },
+          "alias": {
+            "description": "The alias of the shipping address.",
+            "type": "string"
+          },
+          "state": {
+            "description": "The state code of the shipping address.",
+            "type": "string"
+          },
+          "selectedState": {
+            "description": "The state ISO alpha-2 code of the shipping address. If selectedState is sent in the request then it takes precedence over state.",
+            "type": "string"
+          },
+          "state_ISOCode": {
+            "description": "The state ISO alpha-4 code of the shipping address.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "lastName",
+          "country",
+          "city",
+          "address1",
+          "postalCode",
+          "firstName",
+          "state"
+        ]
+      }
+    }
+  },
+  "example": {
+    "firstName": "Jack",
+    "lastName": "Black",
+    "GDPRProfileP13nConsentGranted": false,
+    "gender": "male",
+    "receiveEmail": "yes",
+    "dateOfBirth": "null",
+    "locale": "en",
+    "email": "jack@example.com",
+    "shippingAddresses": [
+      {
+        "lastName": "Black",
+        "country": "United States",
+        "address3": "",
+        "address2": "",
+        "city": "Wake Forest",
+        "prefix": "",
+        "address1": "405 Example Street",
+        "defaultCountryCode": "US",
+        "postalCode": "27587",
+        "jobTitle": "",
+        "companyName": "",
+        "county": "",
+        "isDefaultAddress": true,
+        "suffix": "",
+        "selectedCountry": "US",
+        "firstName": "Jack",
+        "phoneNumber": "555123456",
+        "alias": "Address",
+        "faxNumber": "",
+        "middleName": "",
+        "state": "North Carolina",
+        "selectedState": "NC",
+        "state_ISOCode": "US-NC"
+      },
+      {
+        "lastName": "Hill",
+        "country": "United States",
+        "address3": "",
+        "address2": "",
+        "city": "Wake Forest",
+        "prefix": "",
+        "address1": "415 Example Road",
+        "defaultCountryCode": "US",
+        "postalCode": "27587",
+        "jobTitle": "",
+        "companyName": "",
+        "county": "",
+        "isDefaultAddress": false,
+        "suffix": "",
+        "selectedCountry": "US",
+        "firstName": "Jill",
+        "phoneNumber": "55512345",
+        "alias": "Address##0",
+        "faxNumber": "",
+        "middleName": "",
+        "state": "North Carolina",
+        "selectedState": "NC",
+        "state_ISOCode": "US-NC"
+      }
+    ]
+  }
+}

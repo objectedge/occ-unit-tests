@@ -1,0 +1,511 @@
+{
+  "properties": {
+    "productFamily": {
+      "description": "product family property of the SKU",
+      "type": "string"
+    },
+    "primaryThumbImageURL": {
+      "description": "Primary Source Image URL of SKU.",
+      "type": "string"
+    },
+    "largeImage": {
+      "description": "large image path of the SKU",
+      "type": "string"
+    },
+    "smallImage": {
+      "description": "The array of small image URLs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "listVolumePrice": {
+      "description": "list volume price of the product",
+      "type": "number"
+    },
+    "nonreturnable": {
+      "description": "Indicates whether the SKU is returnable or not.",
+      "type": "string"
+    },
+    "salePrices": {
+      "description": "sale prices of the product in respective price list groups",
+      "type": "object",
+      "properties": {
+        "plg1": {
+          "description": "sale price of the product in plg1",
+          "type": "number"
+        },
+        "plg2": {
+          "description": "sale price of the product in plg2",
+          "type": "number"
+        }
+      }
+    },
+    "primaryFullImageURL": {
+      "description": "Primary Full Image URL of SKU.",
+      "type": "string"
+    },
+    "listPrices": {
+      "description": "list prices of the product in respective price list groups",
+      "type": "object",
+      "properties": {
+        "plg1": {
+          "description": "list price of the product in plg1",
+          "type": "number"
+        },
+        "plg2": {
+          "description": "list price of the product in plg2",
+          "type": "number"
+        }
+      }
+    },
+    "productVariantOptions": {
+      "description": "The selected options for the SKU.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "optionValue": {
+            "description": "The value of the option.",
+            "type": "string"
+          },
+          "optionName": {
+            "description": "The name of the option.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "productListingSku": {
+      "description": "product listing SKU property of the SKU",
+      "type": "object"
+    },
+    "largeImageURLs": {
+      "description": "Large Image URLs of SKU.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "productLine": {
+      "description": "product line of the SKU",
+      "type": "string"
+    },
+    "listVolumePrices": {
+      "description": "list volume prices of the product in respective price list groups",
+      "type": "object",
+      "properties": {
+        "plg1": {
+          "description": "list volume price of the product in plg1",
+          "type": "number"
+        },
+        "plg2": {
+          "description": "list volume price of the product in plg2",
+          "type": "number"
+        }
+      }
+    },
+    "primaryLargeImageURL": {
+      "description": "Primary Large Image URL of SKU.",
+      "type": "string"
+    },
+    "smallImageURLs": {
+      "description": "small image url paths",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "model": {
+      "description": "The model property of SKU.",
+      "type": "string"
+    },
+    "thumbnailImage": {
+      "description": "The thumbanil image of the SKU",
+      "type": "string"
+    },
+    "barcode": {
+      "description": "The barcode",
+      "type": "number"
+    },
+    "saleVolumePrices": {
+      "description": "Sale volume prices of the product in respective price list groups",
+      "type": "object",
+      "properties": {
+        "plg1": {
+          "description": "Sale volume price of the product in plg1",
+          "type": "number"
+        },
+        "plg2": {
+          "description": "Sale volume price of the product in plg2",
+          "type": "number"
+        }
+      }
+    },
+    "salePriceEndDate": {
+      "description": "sale price end date of the SKU",
+      "type": "string"
+    },
+    "saleVolumePrice": {
+      "description": "The sale volume price",
+      "type": "number"
+    },
+    "salePriceStartDate": {
+      "description": "sale price start date of the SKU",
+      "type": "string"
+    },
+    "images": {
+      "description": "Image URLs of SKU.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "quantity": {
+      "description": "quantity of the SKU",
+      "type": "integer"
+    },
+    "unitOfMeasure": {
+      "description": "unit of measure of the SKU",
+      "type": "string"
+    },
+    "salePrice": {
+      "description": "sale price of the SKU.",
+      "type": "number"
+    },
+    "primaryMediumImageURL": {
+      "description": "primary medium image url path",
+      "type": "string"
+    },
+    "fullImageURLs": {
+      "description": "The array of full image URLs",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "thumbImageURLs": {
+      "description": "Thumb Image URLs of SKU",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "variantValuesOrder": {
+      "description": "Object having various variant property as key and ordered values array as the value.",
+      "type": "object",
+      "properties": {}
+    },
+    "parentProducts": {
+      "description": "The list of parent products for the SKU.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "listVolumePrice": {
+            "description": "list volume price of the product",
+            "type": "number"
+          },
+          "relatedProducts": {
+            "description": "related products",
+            "type": "string"
+          },
+          "orderLimit": {
+            "description": "the order limit of the product",
+            "type": "string"
+          },
+          "CountryOfOrigin": {
+            "description": "the country of origin of the product",
+            "type": "string"
+          },
+          "listPrices": {
+            "description": "list prices of the product in respective price list groups",
+            "type": "object",
+            "properties": {
+              "plg1": {
+                "description": "list price of the product in plg1",
+                "type": "number"
+              },
+              "plg2": {
+                "description": "list price of the product in plg2",
+                "type": "number"
+              }
+            }
+          },
+          "type": {
+            "description": "type of the product",
+            "type": "string"
+          },
+          "largeImageURLs": {
+            "description": "The array of large image URLs",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "listVolumePrices": {
+            "description": "list volume prices of the product in respective price list groups",
+            "type": "object",
+            "properties": {
+              "plg1": {
+                "description": "list volume price of the product in plg1",
+                "type": "number"
+              },
+              "plg2": {
+                "description": "list volume price of the product in plg2",
+                "type": "number"
+              }
+            }
+          },
+          "primaryImageAltText": {
+            "description": "Alternate text for the primary image of the product",
+            "type": "string"
+          },
+          "id": {
+            "description": "id of the product",
+            "type": "string"
+          },
+          "brand": {
+            "description": "brand of the product",
+            "type": "string"
+          },
+          "height": {
+            "description": "height of the product",
+            "type": "number"
+          },
+          "defaultProductListingSku": {
+            "description": "default SKU for the product",
+            "type": "object"
+          },
+          "unitOfMeasure": {
+            "description": "unit of measure of the product",
+            "type": "string"
+          },
+          "primaryMediumImageURL": {
+            "description": "Primary Medium Image URL ID of SKU.",
+            "type": "string"
+          },
+          "seoUrlSlugDerived": {
+            "description": "Derived from seoUrlSlug of the product if available, else derived from display name of the product.",
+            "type": "string"
+          },
+          "weight": {
+            "description": "weight",
+            "type": "number"
+          },
+          "active": {
+            "description": "The active property of the product",
+            "type": "boolean"
+          },
+          "thumbImageURLs": {
+            "description": "Thumb Image URLs of product",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "route": {
+            "description": "route of the product",
+            "type": "string"
+          },
+          "mediumImageURLs": {
+            "description": "Medium Image URLs SKU.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "primarySourceImageURL": {
+            "description": "primary source image url path",
+            "type": "string"
+          },
+          "parentCategory": {
+            "description": "parent category of the product",
+            "type": "string"
+          },
+          "sourceImageURLs": {
+            "description": "source image urls of the product",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "primarySmallImageURL": {
+            "description": "Primary Small Image URL of product",
+            "type": "string"
+          },
+          "avgCustRating": {
+            "description": "average customer rating for the product",
+            "type": "number"
+          },
+          "longDescription": {
+            "description": "long description of the product",
+            "type": "string"
+          },
+          "primaryThumbImageURL": {
+            "description": "primary thumb image url path",
+            "type": "string"
+          },
+          "nonreturnable": {
+            "description": "Indicates whether the product is returnable or not.",
+            "type": "boolean"
+          },
+          "displayName": {
+            "description": "The display name of the product",
+            "type": "string"
+          },
+          "description": {
+            "description": "description of the product",
+            "type": "string"
+          },
+          "salePrices": {
+            "description": "sale prices of the product in respective price list groups",
+            "type": "object",
+            "properties": {
+              "plg1": {
+                "description": "sale price of the product in plg1",
+                "type": "number"
+              },
+              "plg2": {
+                "description": "sale price of the product in plg2",
+                "type": "number"
+              }
+            }
+          },
+          "primaryFullImageURL": {
+            "description": "primary full image url path",
+            "type": "string"
+          },
+          "primaryLargeImageURL": {
+            "description": "primary large image url path",
+            "type": "string"
+          },
+          "smallImageURLs": {
+            "description": "The urls of the small image.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "shippingSurcharges": {
+            "description": "Extra handling costs for shipping the product in respective price list groups",
+            "type": "object",
+            "properties": {
+              "plg1": {
+                "description": "Extra handling costs for shipping the product in plg1",
+                "type": "number"
+              },
+              "plg2": {
+                "description": "Extra handling costs for shipping the product in plg2",
+                "type": "number"
+              }
+            }
+          },
+          "saleVolumePrices": {
+            "description": "Sale volume prices of the product in respective price list groups",
+            "type": "object",
+            "properties": {
+              "plg1": {
+                "description": "Sale volume price of the product in plg1",
+                "type": "number"
+              },
+              "plg2": {
+                "description": "Sale volume price of the product in plg2",
+                "type": "number"
+              }
+            }
+          },
+          "primaryImageTitle": {
+            "description": "primary image title of the product",
+            "type": "string"
+          },
+          "saleVolumePrice": {
+            "description": "The sale volume price",
+            "type": "number"
+          },
+          "salePrice": {
+            "description": "The sale price of the product",
+            "type": "number"
+          },
+          "fullImageURLs": {
+            "description": "full image url paths",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "length": {
+            "description": "length of the product",
+            "type": "number"
+          },
+          "notForIndividualSale": {
+            "description": "Whether the product is not for individual sale",
+            "type": "boolean"
+          },
+          "repositoryId": {
+            "description": "repository id of the product",
+            "type": "string"
+          },
+          "width": {
+            "description": "width of the product",
+            "type": "number"
+          },
+          "shippingSurcharge": {
+            "description": "Extra handling costs for shipping the product.",
+            "type": "number"
+          },
+          "fractionalQuantitiesAllowed": {
+            "description": "Whether fractional quantities are allowed",
+            "type": "boolean"
+          },
+          "configurable": {
+            "description": "whether the product is configurable or not",
+            "type": "boolean"
+          },
+          "listPrice": {
+            "description": "list price of the product",
+            "type": "number"
+          }
+        }
+      }
+    },
+    "mediumImageURLs": {
+      "description": "medium image urls path",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "repositoryId": {
+      "description": "repository id of the child SKU",
+      "type": "string"
+    },
+    "primarySourceImageURL": {
+      "description": "primary source image url path",
+      "type": "string"
+    },
+    "fractionalQuantitiesAllowed": {
+      "description": "Whether fractional quantities are allowed",
+      "type": "boolean"
+    },
+    "sourceImageURLs": {
+      "description": "Source Image URLs of SKU.",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "primarySmallImageURL": {
+      "description": "Primary Small Image URL of SKU.",
+      "type": "string"
+    },
+    "listPrice": {
+      "description": "The list price",
+      "type": "number"
+    },
+    "configurable": {
+      "description": "Whether the sku is configurable or not",
+      "type": "boolean"
+    }
+  }
+}

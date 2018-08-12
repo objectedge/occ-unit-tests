@@ -1,0 +1,1131 @@
+{
+  "properties": {
+    "combineLineItems": {
+      "description": "Value to determine if line items are to be combined. Can be yes or no.",
+      "type": "string"
+    },
+    "shippingGroups": {
+      "description": "The shipping groups for the order.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "shippingMethod": {
+            "description": "The shipping method details for the order.",
+            "type": "object",
+            "properties": {
+              "value": {
+                "description": "The shipping method applied to the order.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "value"
+            ]
+          },
+          "shippingAddress": {
+            "description": "The shipping address details.",
+            "type": "object",
+            "properties": {
+              "lastName": {
+                "description": "Last name.",
+                "type": "string"
+              },
+              "country": {
+                "description": "Country.",
+                "type": "string"
+              },
+              "address3": {
+                "description": "Address snippet.",
+                "type": "string"
+              },
+              "address2": {
+                "description": "Address snippet.",
+                "type": "string"
+              },
+              "city": {
+                "description": "City.",
+                "type": "string"
+              },
+              "prefix": {
+                "description": "Name prefix.",
+                "type": "string"
+              },
+              "address1": {
+                "description": "Address snippet.",
+                "type": "string"
+              },
+              "postalCode": {
+                "description": "Postal code.",
+                "type": "string"
+              },
+              "jobTitle": {
+                "description": "Job title.",
+                "type": "string"
+              },
+              "companyName": {
+                "description": "Company name.",
+                "type": "string"
+              },
+              "county": {
+                "description": "County.",
+                "type": "string"
+              },
+              "suffix": {
+                "description": "Name suffix.",
+                "type": "string"
+              },
+              "selectedCountry": {
+                "description": "Country code.",
+                "type": "string"
+              },
+              "firstName": {
+                "description": "First name.",
+                "type": "string"
+              },
+              "phoneNumber": {
+                "description": "Phone number.",
+                "type": "string"
+              },
+              "alias": {
+                "description": "Address alias.",
+                "type": "string"
+              },
+              "faxNumber": {
+                "description": "Fax number.",
+                "type": "string"
+              },
+              "middleName": {
+                "description": "Middle name.",
+                "type": "string"
+              },
+              "state": {
+                "description": "State.",
+                "type": "string"
+              },
+              "selectedState": {
+                "description": "State code.",
+                "type": "string"
+              },
+              "email": {
+                "description": "Email address.",
+                "type": "string"
+              },
+              "state_ISOCode": {
+                "description": "State ISO code.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "lastName",
+              "country",
+              "city",
+              "address1",
+              "postalCode",
+              "selectedCountry",
+              "firstName",
+              "state",
+              "selectedState",
+              "email",
+              "state_ISOCode"
+            ]
+          },
+          "items": {
+            "description": "The array of products in the shipping group.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "commerceItemId": {
+                  "description": "Unique line item ID distinguisher. This field becomes required for split shipping when combineLineItems is set to no.",
+                  "type": "string"
+                },
+                "quantity": {
+                  "description": "The quantity of the product in this shipping group.",
+                  "type": "integer"
+                },
+                "productId": {
+                  "description": "ID of the product in the cart.",
+                  "type": "string"
+                },
+                "externalRecurringCharge": {
+                  "description": "The external recurring price.",
+                  "type": "number"
+                },
+                "detailedRecurringChargeInfo": {
+                  "description": "Detailed Item Price Information.",
+                  "type": "object",
+                  "properties": {
+                    "discounted": {
+                      "description": "Whether the price is discounted.",
+                      "type": "boolean"
+                    },
+                    "amount": {
+                      "description": "The monetary amount for the recurring charge.",
+                      "type": "number"
+                    },
+                    "quantity": {
+                      "description": "The number of items covered by this recurring charge price info",
+                      "type": "integer"
+                    },
+                    "tax": {
+                      "description": "Monetary tax amount.",
+                      "type": "number"
+                    },
+                    "orderDiscountShare": {
+                      "description": "The order Discount Share.",
+                      "type": "number"
+                    },
+                    "detailedUnitPrice": {
+                      "description": "The detailed unit price: amount / quantity. (read-only)",
+                      "type": "number"
+                    },
+                    "currencyCode": {
+                      "description": "The three character currency code for the monetary amounts.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "externalRecurringChargeFrequency": {
+                  "description": "The frequency for the recurring charge e.g. Monthly.",
+                  "type": "string"
+                },
+                "catRefId": {
+                  "description": "The category to which the product belongs.",
+                  "type": "string"
+                },
+                "externalRecurringChargeDuration": {
+                  "description": "The duration for the recurring charge e.g. 12 months.",
+                  "type": "string"
+                },
+                "recurringCharge": {
+                  "description": "The recurring charge for the item.",
+                  "type": "number"
+                }
+              },
+              "required": [
+                "quantity",
+                "productId",
+                "catRefId"
+              ]
+            }
+          }
+        },
+        "required": [
+          "shippingMethod",
+          "shippingAddress",
+          "items"
+        ]
+      }
+    },
+    "orderId": {
+      "description": "The ID of order to reprice. This parameter is mandatory if reprice flag is true. Currently this and reprice parameter is used only for orders in pending approval state.",
+      "type": "string"
+    },
+    "shippingMethod": {
+      "description": "The shipping method details for the order.",
+      "type": "object",
+      "properties": {
+        "value": {
+          "description": "The shipping method applied to the order.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "value"
+      ]
+    },
+    "payments": {
+      "description": "The array of payments containing gift card payments or a payment card's issue identification number (IIN) to be sent when repricing the order. Properties are specific to the given payment type e.g. if 'type' is iinPaymentType include only 'IIN', if physicalGiftCard include all other properties",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "amount": {
+            "description": "The total balance on the gift card. It will be empty if the gift card is added for the first time.",
+            "type": "string"
+          },
+          "giftCardNumber": {
+            "description": "Gift card number. Payment type:physicalGiftCard.",
+            "type": "string"
+          },
+          "giftCardPin": {
+            "description": "Gift card pin. Payment type:physicalGiftCard.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The type of the payment. e.g. physicalGiftCard/iinPaymentType.",
+            "type": "string"
+          },
+          "IIN": {
+            "description": "The issuer identification number (first 6 digits) of the IIN payment type card, e.g. credit card. This is normally used to allow any credit card type based promotions to be applied prior to final checkout. (iinPaymentType only)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "giftCardNumber",
+          "type"
+        ]
+      }
+    },
+    "populateShippingMethods": {
+      "description": "This flag identifies whether to validate the full address or only the state, country and zip code. Full address is validated when this is set to false.",
+      "type": "boolean"
+    },
+    "shoppingCart": {
+      "description": "The shopping cart contents of the current order.",
+      "type": "object",
+      "properties": {
+        "coupons": {
+          "description": "The array of coupons applied to the order.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "code": {
+                "description": "The coupon code.",
+                "type": "string"
+              },
+              "level": {
+                "description": "The level of the coupon (whether the coupon is item level, etc).",
+                "type": "string"
+              },
+              "externalRecurringCharge": {
+                "description": "The external recurring price.",
+                "type": "number"
+              },
+              "description": {
+                "description": "The coupon description.",
+                "type": "string"
+              },
+              "detailedRecurringChargeInfo": {
+                "description": "Detailed Item Price Information.",
+                "type": "object",
+                "properties": {
+                  "discounted": {
+                    "description": "Whether the price is discounted.",
+                    "type": "boolean"
+                  },
+                  "amount": {
+                    "description": "The monetary amount for the recurring charge.",
+                    "type": "number"
+                  },
+                  "quantity": {
+                    "description": "The number of items covered by this recurring charge price info",
+                    "type": "integer"
+                  },
+                  "tax": {
+                    "description": "Monetary tax amount.",
+                    "type": "number"
+                  },
+                  "orderDiscountShare": {
+                    "description": "The order Discount Share.",
+                    "type": "number"
+                  },
+                  "detailedUnitPrice": {
+                    "description": "The detailed unit price: amount / quantity. (read-only)",
+                    "type": "number"
+                  },
+                  "currencyCode": {
+                    "description": "The three character currency code for the monetary amounts.",
+                    "type": "string"
+                  }
+                }
+              },
+              "id": {
+                "description": "The coupon ID.",
+                "type": "string"
+              },
+              "externalRecurringChargeFrequency": {
+                "description": "The frequency for the recurring charge e.g. Monthly.",
+                "type": "string"
+              },
+              "externalRecurringChargeDuration": {
+                "description": "The duration for the recurring charge e.g. 12 months.",
+                "type": "string"
+              },
+              "status": {
+                "description": "The current status of the coupon.",
+                "type": "string"
+              },
+              "recurringCharge": {
+                "description": "The recurring charge for the item.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "code",
+              "level",
+              "id",
+              "status"
+            ]
+          }
+        },
+        "items": {
+          "description": "The array of products in the shopping cart.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "deactivationDate": {
+                "description": "The deactivation date in ISO format.",
+                "type": "string"
+              },
+              "externalData": {
+                "description": "External data to be associated with a commerce item, provided by a configurator system.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "values": {
+                      "description": "The array of values associated with an externalData item.",
+                      "type": "object",
+                      "properties": {
+                        "dynamic_property_key": {
+                          "description": "This property's name and value will be retrieved from a configurator system, so will be dynamically set.",
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "dynamic_property_key"
+                      ]
+                    },
+                    "name": {
+                      "description": "The name to be associated with the externalData item.",
+                      "type": "string"
+                    },
+                    "actionCode": {
+                      "description": "The action code that has been set on the externalData item by the configurator system.",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "values",
+                    "name"
+                  ]
+                }
+              },
+              "billingAccountId": {
+                "description": "The billing account ID associated to the current item.",
+                "type": "string"
+              },
+              "childItems": {
+                "description": "The array of child items in the item, if the item is a configurable item. A child item can itself contain child item array if it is a configurable product in itself.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "serviceAccountId": {
+                      "description": "The service account ID associated to the current item.",
+                      "type": "string"
+                    },
+                    "configurationOptionId": {
+                      "description": "ID of the catalog's configurationOption associated with this item.",
+                      "type": "string"
+                    },
+                    "deactivationDate": {
+                      "description": "The deactivation date in ISO format.",
+                      "type": "string"
+                    },
+                    "addOnItem": {
+                      "description": "Whether the child item is an add-on (externally configured) or not (externally configured).",
+                      "type": "boolean"
+                    },
+                    "quantity": {
+                      "description": "The quantity of the product in the cart.",
+                      "type": "integer"
+                    },
+                    "productId": {
+                      "description": "ID of the product in the cart.",
+                      "type": "string"
+                    },
+                    "externalRecurringCharge": {
+                      "description": "The external recurring price.",
+                      "type": "number"
+                    },
+                    "externalData": {
+                      "description": "External data to be associated with a commerce item, provided by a configurator system.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "values": {
+                            "description": "The array of values associated with an externalData item.",
+                            "type": "object",
+                            "properties": {
+                              "dynamic_property_key": {
+                                "description": "This property's name and value will be retrieved from a configurator system, so will be dynamically set.",
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "dynamic_property_key"
+                            ]
+                          },
+                          "name": {
+                            "description": "The name to be associated with the externalData item.",
+                            "type": "string"
+                          },
+                          "actionCode": {
+                            "description": "The action code that has been set on the externalData item by the configurator system.",
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "values",
+                          "name"
+                        ]
+                      }
+                    },
+                    "billingAccountId": {
+                      "description": "The billing account ID associated to the current item.",
+                      "type": "string"
+                    },
+                    "externalPriceQuantity": {
+                      "description": "The maximum quantity of this line item which may be purchased at the external price (this quantity will be verified to ensure it is allowable). The value of this property should be -1 in case if the current item is a sub item of a configurable product ",
+                      "type": "integer"
+                    },
+                    "externalRecurringChargeFrequency": {
+                      "description": "The frequency for the recurring charge e.g. Monthly.",
+                      "type": "string"
+                    },
+                    "configurablePropertyId": {
+                      "description": "ID of the catalog's configurableProperty associated with this item.",
+                      "type": "string"
+                    },
+                    "catRefId": {
+                      "description": "Sku reference id.",
+                      "type": "string"
+                    },
+                    "externalRecurringChargeDuration": {
+                      "description": "The duration for the recurring charge e.g. 12 months.",
+                      "type": "string"
+                    },
+                    "externalPrice": {
+                      "description": "A price for a quantity of 1 of this line item which will be used in place of the standard catalog price (this price will be verified to ensure it is allowable).",
+                      "type": "number"
+                    },
+                    "customerAccountId": {
+                      "description": "The customer account ID associated to the current item.",
+                      "type": "string"
+                    },
+                    "assetId": {
+                      "description": "The asset ID corresponding to the current item.",
+                      "type": "string"
+                    },
+                    "detailedRecurringChargeInfo": {
+                      "description": "Detailed Item Price Information.",
+                      "type": "object",
+                      "properties": {
+                        "discounted": {
+                          "description": "Whether the price is discounted.",
+                          "type": "boolean"
+                        },
+                        "amount": {
+                          "description": "The monetary amount for the recurring charge.",
+                          "type": "number"
+                        },
+                        "quantity": {
+                          "description": "The number of items covered by this recurring charge price info",
+                          "type": "integer"
+                        },
+                        "tax": {
+                          "description": "Monetary tax amount.",
+                          "type": "number"
+                        },
+                        "orderDiscountShare": {
+                          "description": "The order Discount Share.",
+                          "type": "number"
+                        },
+                        "detailedUnitPrice": {
+                          "description": "The detailed unit price: amount / quantity. (read-only)",
+                          "type": "number"
+                        },
+                        "currencyCode": {
+                          "description": "The three character currency code for the monetary amounts.",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "shopperInput": {
+                      "description": "Map of shopper input keys to values",
+                      "additionalProperties": {
+                        "type": "string"
+                      },
+                      "type": "object"
+                    },
+                    "activationDate": {
+                      "description": "The activation date in ISO format.",
+                      "type": "string"
+                    },
+                    "serviceId": {
+                      "description": "The service ID associated to the current item.",
+                      "type": "string"
+                    },
+                    "recurringCharge": {
+                      "description": "The recurring charge for the item.",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "quantity",
+                    "productId",
+                    "catRefId",
+                    "externalPrice",
+                    "externalPriceQuantity"
+                  ]
+                }
+              },
+              "externalPrice": {
+                "description": "A price for a quantity of 1 of this line item which will be used in place of the standard catalog price (this price will be verified to ensure it is allowable).",
+                "type": "number"
+              },
+              "commerceItemId": {
+                "description": "The unique line item ID distinguisher. This field becomes required for split shipping when combineLineItems is set to no.",
+                "type": "string"
+              },
+              "assetId": {
+                "description": "The asset ID corresponding to the current item.",
+                "type": "string"
+              },
+              "stockStatus": {
+                "description": "The stock status of the product.",
+                "type": "string"
+              },
+              "actionCode": {
+                "description": "The action code that has been set on the item by the configurator system.",
+                "type": "string"
+              },
+              "serviceId": {
+                "description": "The service ID associated to the current item.",
+                "type": "string"
+              },
+              "serviceAccountId": {
+                "description": "The service account ID associated to the current item.",
+                "type": "string"
+              },
+              "quantity": {
+                "description": "The quantity of the product in the cart.",
+                "type": "integer"
+              },
+              "productId": {
+                "description": "ID of the product in the cart.",
+                "type": "string"
+              },
+              "externalRecurringCharge": {
+                "description": "The external recurring price.",
+                "type": "number"
+              },
+              "giftWithPurchaseCommerceItemMarkers": {
+                "description": "giftWithPurchaseCommerceItemMarker information. If giftWithPurchaseCommerceItemMarker information is present on the order is should be passed in.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "remainingQuantity": {
+                      "description": "The quantity of the commerce item that is not affected by gift with purchase.",
+                      "type": "number"
+                    },
+                    "selectedQuantity": {
+                      "description": "The quantity of the free gift that this commerce item is making free and was selected by the shopper.",
+                      "type": "number"
+                    },
+                    "data": {
+                      "description": "The gift hash code for this gift with purchase promotion.",
+                      "type": "integer"
+                    },
+                    "automaticQuantity": {
+                      "description": "The quantity of the free gift that this commerce item is making free and was auto added by pricing.",
+                      "type": "number"
+                    },
+                    "value": {
+                      "description": "The gift with purchase promotion id.",
+                      "type": "string"
+                    },
+                    "targetedQuantity": {
+                      "description": "The quantity of the free gift that this commerce item is making free and was targeted by pricing.",
+                      "type": "number"
+                    },
+                    "key": {
+                      "description": "atg.gwp",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "remainingQuantity",
+                    "selectedQuantity",
+                    "data",
+                    "automaticQuantity",
+                    "value",
+                    "targetedQuantity",
+                    "key"
+                  ]
+                }
+              },
+              "currentPrice": {
+                "description": "The current price of the item.",
+                "type": "integer"
+              },
+              "externalPriceQuantity": {
+                "description": "The maximum quantity of this line item which may be purchased at the external price (this quantity will be verified to ensure it is allowable).",
+                "type": "integer"
+              },
+              "externalRecurringChargeFrequency": {
+                "description": "The frequency for the recurring charge e.g. Monthly.",
+                "type": "string"
+              },
+              "catRefId": {
+                "description": "The category to which the product belongs.",
+                "type": "string"
+              },
+              "externalRecurringChargeDuration": {
+                "description": "The duration for the recurring charge e.g. 12 months.",
+                "type": "string"
+              },
+              "customerAccountId": {
+                "description": "The customer account ID associated to the current item.",
+                "type": "string"
+              },
+              "discountInfo": {
+                "description": "Discount information.",
+                "type": "object",
+                "properties": {
+                  "promotionLongDesc": {
+                    "description": "The description of the promotion.",
+                    "type": "string"
+                  },
+                  "promotionName": {
+                    "description": "The display name of the promotion.",
+                    "type": "string"
+                  },
+                  "promotionLevel": {
+                    "description": "The promotion level.",
+                    "type": "string"
+                  },
+                  "coupon": {
+                    "description": "Coupon code.",
+                    "type": "string"
+                  },
+                  "totalAdjustment": {
+                    "description": "Total adjustment by the promotion.",
+                    "type": "number"
+                  },
+                  "promotionDesc": {
+                    "description": "This field returns name of the promotion. Retained for backward compatibility",
+                    "type": "string"
+                  },
+                  "promotionId": {
+                    "description": "Promotion ID.",
+                    "type": "string"
+                  },
+                  "giftWithPurchaseDiscountInfo": {
+                    "description": "The gift selection information.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "giftWithPurchaseChoicesAvailable": {
+                          "description": "If this gift with purchase has multiple gift choices.",
+                          "type": "boolean"
+                        },
+                        "giftWithPurchaseQuantity": {
+                          "description": "The quantity that is gift quantity",
+                          "type": "number"
+                        },
+                        "giftWithPurchaseIdentifier": {
+                          "description": "The gift hash code for this gift with purchase promotion.",
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "coupon",
+                  "promotionDesc",
+                  "promotionId"
+                ]
+              },
+              "giftWithPurchaseSelections": {
+                "description": "The array of gift with purchase selections to be made.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "productId": {
+                      "description": "ID of the product in the cart. Include when you are wishing to mark this as a gift with purchase selection you wish to change out",
+                      "type": "string"
+                    },
+                    "giftWithPurchaseQuantity": {
+                      "description": "The total quantity of the commerceItem that is giftWithPurchaseQuantity.",
+                      "type": "integer"
+                    },
+                    "catRefId": {
+                      "description": "The product variant Id. Include this Id when you are wishing to mark this as a gift with purchase selection you wish to change out",
+                      "type": "string"
+                    },
+                    "promotionId": {
+                      "description": "The promotion id.",
+                      "type": "string"
+                    },
+                    "giftWithPurchaseIdentifier": {
+                      "description": "The identifier that links this gift with purchase to the giftWithPurchaseInfo.",
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "giftWithPurchaseQuantity",
+                    "promotionId",
+                    "giftWithPurchaseIdentifier"
+                  ]
+                }
+              },
+              "detailedRecurringChargeInfo": {
+                "description": "Detailed Item Price Information.",
+                "type": "object",
+                "properties": {
+                  "discounted": {
+                    "description": "Whether the price is discounted.",
+                    "type": "boolean"
+                  },
+                  "amount": {
+                    "description": "The monetary amount for the recurring charge.",
+                    "type": "number"
+                  },
+                  "quantity": {
+                    "description": "The number of items covered by this recurring charge price info",
+                    "type": "integer"
+                  },
+                  "tax": {
+                    "description": "Monetary tax amount.",
+                    "type": "number"
+                  },
+                  "orderDiscountShare": {
+                    "description": "The order Discount Share.",
+                    "type": "number"
+                  },
+                  "detailedUnitPrice": {
+                    "description": "The detailed unit price: amount / quantity. (read-only)",
+                    "type": "number"
+                  },
+                  "currencyCode": {
+                    "description": "The three character currency code for the monetary amounts.",
+                    "type": "string"
+                  }
+                }
+              },
+              "shopperInput": {
+                "description": "Map of shopper input keys to values",
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              "activationDate": {
+                "description": "The activation date in ISO format.",
+                "type": "string"
+              },
+              "recurringCharge": {
+                "description": "The recurring charge for the item.",
+                "type": "number"
+              }
+            },
+            "required": [
+              "quantity",
+              "productId",
+              "currentPrice",
+              "catRefId",
+              "stockStatus"
+            ]
+          }
+        }
+      },
+      "required": [
+        "items"
+      ]
+    },
+    "reprice": {
+      "description": "Currently this flag is used in combination with orderId parameter. If flag is true orderId is mandatory. Used only for orders in pending approval state.",
+      "type": "boolean"
+    },
+    "shippingAddress": {
+      "description": "The shipping address details.",
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "description": "Last name.",
+          "type": "string"
+        },
+        "country": {
+          "description": "Country.",
+          "type": "string"
+        },
+        "address3": {
+          "description": "Address snippet.",
+          "type": "string"
+        },
+        "address2": {
+          "description": "Address snippet.",
+          "type": "string"
+        },
+        "city": {
+          "description": "City.",
+          "type": "string"
+        },
+        "prefix": {
+          "description": "Name prefix.",
+          "type": "string"
+        },
+        "address1": {
+          "description": "Address snippet.",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "Postal code.",
+          "type": "string"
+        },
+        "jobTitle": {
+          "description": "Job title.",
+          "type": "string"
+        },
+        "companyName": {
+          "description": "Company name.",
+          "type": "string"
+        },
+        "county": {
+          "description": "County.",
+          "type": "string"
+        },
+        "suffix": {
+          "description": "Name suffix.",
+          "type": "string"
+        },
+        "selectedCountry": {
+          "description": "Country code.",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "First name",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "description": "Phone number.",
+          "type": "string"
+        },
+        "faxNumber": {
+          "description": "Fax number.",
+          "type": "string"
+        },
+        "alias": {
+          "description": "Address alias.",
+          "type": "string"
+        },
+        "middleName": {
+          "description": "Middle name.",
+          "type": "string"
+        },
+        "state": {
+          "description": "State.",
+          "type": "string"
+        },
+        "selectedState": {
+          "description": "State code.",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address.",
+          "type": "string"
+        },
+        "state_ISOCode": {
+          "description": "State ISO code.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lastName",
+        "country",
+        "city",
+        "address1",
+        "postalCode",
+        "selectedCountry",
+        "firstName",
+        "state",
+        "selectedState",
+        "email",
+        "state_ISOCode"
+      ]
+    },
+    "checkout": {
+      "description": "The option to check in case the data is updated from checkout page.",
+      "type": "boolean"
+    },
+    "giftWithPurchaseOrderMarkers": {
+      "description": "gift with purchase order marker information. Required if gift with purchase order marker information is present.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "quantity": {
+            "description": "The total quantity of sku for this gift selection.",
+            "type": "number"
+          },
+          "selectedQuantity": {
+            "description": "The quantity of free sku for this gift selection that has already been selected by the Shopper and added to the order.",
+            "type": "integer"
+          },
+          "removedQuantity": {
+            "description": "The amount of free quantity that has since been manually removed by a Shopper.",
+            "type": "number"
+          },
+          "data": {
+            "description": "Identifier to track which gift selection in the promotion this is.  It allows the commerce item marker to link to this one.",
+            "type": "integer"
+          },
+          "autoRemove": {
+            "description": "Flag to indicate whether free gifts should be auto removed if the promotion no longer qualifies.",
+            "type": "boolean"
+          },
+          "giftDetail": {
+            "description": "String identifying the free gift, usually the repository id of the gift type.",
+            "type": "string"
+          },
+          "automaticQuantity": {
+            "description": "The quantity of free sku for this gift selection that has already been auto added to the order.",
+            "type": "number"
+          },
+          "giftType": {
+            "description": "The type of the gift. (sku, product)",
+            "type": "string"
+          },
+          "failedQuantity": {
+            "description": "The amount of automatic free quantity that failed to be added to the cart due to some pricing error, e.g. invalid site.",
+            "type": "number"
+          },
+          "value": {
+            "description": "The gift with purchase promotion id",
+            "type": "string"
+          },
+          "targetedQuantity": {
+            "description": "The quantity of free sku for this gift selection that has already been targeted and made free by the calculator in the order.",
+            "type": "number"
+          },
+          "key": {
+            "description": "atg.gwp",
+            "type": "string"
+          }
+        },
+        "required": [
+          "quantity",
+          "selectedQuantity",
+          "removedQuantity",
+          "data",
+          "autoRemove",
+          "giftDetail",
+          "automaticQuantity",
+          "giftType",
+          "failedQuantity",
+          "value",
+          "targetedQuantity",
+          "key"
+        ]
+      }
+    }
+  },
+  "required": [
+    "shippingMethod",
+    "shoppingCart",
+    "shippingAddress",
+    "checkout"
+  ],
+  "example": {
+    "orderId": "o10001",
+    "shippingMethod": {
+      "value": "ground"
+    },
+    "payments": [
+      {
+        "amount": "100.0",
+        "giftCardNumber": "6035710988880101071",
+        "giftCardPin": "",
+        "type": "physicalGiftCard"
+      }
+    ],
+    "shoppingCart": {
+      "coupons": [
+        {
+          "code": "FREETATTOO",
+          "level": "item",
+          "description": "Explicit Item Discount - FREETATTOO",
+          "id": "explicitItemFreeDiscount",
+          "totalAdjustment": "-21.99",
+          "status": "claimed"
+        }
+      ],
+      "items": [
+        {
+          "serviceAccountId": "serviceAcc-123",
+          "deactivationDate": "2018-06-27T12:59:59Z",
+          "quantity": 1,
+          "dynamicPropertyMode": "pickup",
+          "productId": "xprod2165",
+          "externalRecurringCharge": 10,
+          "externalData": [],
+          "billingAccountId": "billingAcc-123",
+          "externalRecurringChargeFrequency": "Monthly",
+          "catRefId": "xsku2165",
+          "externalRecurringChargeDuration": "12",
+          "discountInfo": [],
+          "customerAccountId": "customerAcc-123",
+          "assetId": "asset10001",
+          "stockStatus": true,
+          "actionCode": "Add",
+          "detailedRecurringChargeInfo": [
+            {
+              "discounted": false,
+              "amount": 10,
+              "quantity": 1,
+              "tax": 0,
+              "orderDiscountShare": 0,
+              "detailedUnitPrice": 10,
+              "currencyCode": "USD"
+            }
+          ],
+          "shopperInput": {
+            "color": "neon",
+            "initials": "M.C.K",
+            "font": "courier"
+          },
+          "activationDate": "2017-06-27T15:30:00Z",
+          "serviceId": "service-123",
+          "recurringCharge": 10
+        }
+      ]
+    },
+    "reprice": true,
+    "shippingAddress": {
+      "lastName": "Test",
+      "country": "United States",
+      "address3": "",
+      "address2": "Line 2",
+      "city": "Montgomery",
+      "prefix": "",
+      "address1": "Line 1",
+      "postalCode": "36123",
+      "jobTitle": "",
+      "companyName": "",
+      "county": "",
+      "suffix": "",
+      "selectedCountry": "US",
+      "firstName": "Steve",
+      "phoneNumber": "45454545",
+      "faxNumber": "",
+      "alias": "",
+      "middleName": "",
+      "state": "Alabama",
+      "email": "steve.test@oracle.com",
+      "selectedState": "AL",
+      "state_ISOCode": "US-AL"
+    }
+  }
+}

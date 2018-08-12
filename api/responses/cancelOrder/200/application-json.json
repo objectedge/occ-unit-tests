@@ -1,0 +1,340 @@
+{
+  "result": "success",
+  "order": {
+    "creationTime": 1511782097000,
+    "sourceSystem": "Cloud Commerce",
+    "dynamicProperties": [],
+    "payments": [
+      {
+        "transactionTypeInitiated": "void",
+        "amount": 43.19,
+        "gatewayName": "CS-A",
+        "cardType": null,
+        "type": "CyberSource",
+        "IIN": null,
+        "paymentGroupId": "pg30416",
+        "customPaymentProperties": {},
+        "uiIntervention": "sop",
+        "paymentMethod": "tokenizedCreditCard",
+        "isAmountRemaining": false,
+        "paymentState": "AUTHORIZED",
+        "cardNumber": "xxxxxxxxxxxx1111"
+      }
+    ],
+    "orderStatus": "Removed",
+    "submittedDate": "2017-11-27T11:29:31.000Z",
+    "uuid": "d80dd2b7-f789-4c83-b9b2-2412b854df1a",
+    "organizationId": null,
+    "priceInfo": {
+      "amount": 14.99,
+      "total": 43.19,
+      "shipping": 25,
+      "shippingSurchargeValue": 0,
+      "tax": 3.2,
+      "subTotal": 14.99,
+      "currencyCode": "USD",
+      "totalWithoutTax": 39.99
+    },
+    "id": "o30413",
+    "state": "REMOVED",
+    "trackingNumber": null,
+    "order": {
+      "numberOfItems": 1,
+      "items": [
+        {
+          "primaryThumbImageURL": "/ccstore/v1/images/?source=/file/v6155711626513500309/products/doctordolittle_LARGE.jpg&height=100&width=100",
+          "rawTotalPrice": 14.99,
+          "displayName": "Dr. Dolittle",
+          "dynamicProperties": [],
+          "shippingSurchargeValue": 0,
+          "availabilityDate": null,
+          "discountAmount": 0,
+          "externalData": [],
+          "preOrderQuantity": 0,
+          "commerceItemId": "ci3000414",
+          "price": 14.99,
+          "variant": [],
+          "primaryImageAltText": "Dr. Dolittle",
+          "id": "ci3000415",
+          "unitPrice": 14.99,
+          "primaryImageTitle": "Dr. Dolittle",
+          "childSKUs": [
+            {
+              "primaryThumbImageURL": null
+            }
+          ],
+          "amount": 14.99,
+          "quantity": 1,
+          "productId": "Product_18Cxi",
+          "salePrice": 0,
+          "detailedItemPriceInfo": [
+            {
+              "discounted": false,
+              "secondaryCurrencyTaxAmount": 0,
+              "amount": 14.99,
+              "quantity": 1,
+              "tax": 1.2,
+              "orderDiscountShare": 0,
+              "detailedUnitPrice": 14.99,
+              "currencyCode": "USD"
+            }
+          ],
+          "giftWithPurchaseCommerceItemMarkers": [],
+          "active": true,
+          "catRefId": "Sku_18Dxi",
+          "skuProperties": [
+            {
+              "propertyType": "sku-base",
+              "name": "Not Returnable",
+              "id": "nonreturnable",
+              "value": false
+            },
+            {
+              "propertyType": "sku-base",
+              "name": "Name",
+              "id": "displayName",
+              "value": null
+            },
+            {
+              "propertyType": "sku-base",
+              "name": "Active",
+              "id": "active",
+              "value": true
+            },
+            {
+              "propertyType": "sku-base",
+              "name": "Id",
+              "id": "id",
+              "value": "Sku_18Dxi"
+            }
+          ],
+          "discountInfo": [],
+          "route": "/dr-dolittle/product/Product_18Cxi",
+          "backOrderQuantity": 0,
+          "listPrice": 14.99
+        }
+      ]
+    },
+    "taxPriceInfo": {
+      "cityTax": 0,
+      "secondaryCurrencyTaxAmount": 0,
+      "amount": 3.2,
+      "valueAddedTax": 0,
+      "countyTax": 1.6,
+      "isTaxIncluded": false,
+      "miscTax": 0,
+      "districtTax": 0,
+      "stateTax": 1.6,
+      "countryTax": 0
+    },
+    "shippingGroup": {
+      "shippingMethodDescription": "Standard"
+    },
+    "shippingGroups": [
+      {
+        "taxPriceInfo": {
+          "cityTax": 0,
+          "amount": 3.2,
+          "valueAddedTax": 0,
+          "countyTax": 1.6,
+          "isTaxIncluded": false,
+          "miscTax": 0,
+          "districtTax": 0,
+          "stateTax": 1.6,
+          "countryTax": 0
+        },
+        "shippingMethod": {
+          "secondaryCurrencyTaxAmount": 0,
+          "shippingTax": 2,
+          "cost": 25,
+          "taxCode": "",
+          "value": "standardShippingMethod",
+          "shippingMethodDescription": "Standard"
+        },
+        "shippingGroupId": "sg40415",
+        "submittedDate": null,
+        "priceInfo": {
+          "amount": 14.99,
+          "total": 43.19,
+          "lkpValExcludingFreeShip": null,
+          "shipping": 25,
+          "shippingSurchargeValue": 0,
+          "tax": 3.2,
+          "subTotal": 14.99,
+          "currencyCode": "USD",
+          "totalWithoutTax": 39.99
+        },
+        "discountInfo": {
+          "orderDiscount": 0,
+          "shippingDiscount": 0,
+          "discountDescList": []
+        },
+        "recurringChargePriceInfo": null,
+        "shipOnDate": null,
+        "trackingInfo": [],
+        "actualShipDate": null,
+        "shippingAddress": {
+          "lastName": "Anderson",
+          "country": "US",
+          "address3": null,
+          "address2": null,
+          "city": "Syracuse",
+          "prefix": null,
+          "address1": "21 Cedar Ave",
+          "postalCode": "13202",
+          "companyName": null,
+          "jobTitle": null,
+          "county": null,
+          "suffix": null,
+          "firstName": "Kim",
+          "phoneNumber": "212-555-1977",
+          "faxNumber": null,
+          "alias": "Home",
+          "middleName": null,
+          "state": "NY",
+          "email": "kim@example.com"
+        },
+        "items": [
+          {
+            "primaryThumbImageURL": "/ccstore/v1/images/?source=/file/v6155711626513500309/products/doctordolittle_LARGE.jpg&height=100&width=100",
+            "rawTotalPrice": 14.99,
+            "returnedQuantity": 0,
+            "dynamicProperties": [],
+            "displayName": "Dr. Dolittle",
+            "shippingSurchargeValue": 0,
+            "availabilityDate": null,
+            "externalData": [],
+            "discountAmount": 0,
+            "preOrderQuantity": 0,
+            "commerceItemId": "ci3000414",
+            "price": 14.99,
+            "variant": [],
+            "onSale": false,
+            "primaryImageAltText": "Dr. Dolittle",
+            "stateDetailsAsUser": "The item has been removed from the shipping group",
+            "commerceId": "ci3000415",
+            "unitPrice": 14.99,
+            "primaryImageTitle": "Dr. Dolittle",
+            "amount": 14.99,
+            "quantity": 1,
+            "productId": "Product_18Cxi",
+            "salePrice": 0,
+            "detailedItemPriceInfo": [
+              {
+                "discounted": false,
+                "secondaryCurrencyTaxAmount": 0,
+                "amount": 14.99,
+                "quantity": 1,
+                "tax": 1.2,
+                "orderDiscountShare": 0,
+                "detailedUnitPrice": 14.99,
+                "currencyCode": "USD"
+              }
+            ],
+            "active": true,
+            "catRefId": "Sku_18Dxi",
+            "skuProperties": [
+              {
+                "propertyType": "sku-base",
+                "name": "Not Returnable",
+                "id": "nonreturnable",
+                "value": false
+              },
+              {
+                "propertyType": "sku-base",
+                "name": "Name",
+                "id": "displayName",
+                "value": null
+              },
+              {
+                "propertyType": "sku-base",
+                "name": "Active",
+                "id": "active",
+                "value": true
+              },
+              {
+                "propertyType": "sku-base",
+                "name": "Id",
+                "id": "id",
+                "value": "Sku_18Dxi"
+              }
+            ],
+            "discountInfo": [],
+            "route": "/dr-dolittle/product/Product_18Cxi",
+            "backOrderQuantity": 0,
+            "listPrice": 14.99,
+            "status": "REMOVED"
+          }
+        ],
+        "trackingNumber": null,
+        "status": "REMOVED"
+      }
+    ],
+    "lastModifiedDate": "2017-11-27T11:51:58.595Z",
+    "approvalSystemMessages": [],
+    "shippingMethod": {
+      "shippingTax": 2,
+      "cost": 25,
+      "value": "standardShippingMethod"
+    },
+    "priceListGroup": {
+      "repositoryId": "defaultPriceGroup"
+    },
+    "creationDate": "2017-11-27T11:28:17.000Z",
+    "orderProfileId": "se-570031",
+    "discountInfo": {
+      "unclaimedCouponMultiPromotions": {},
+      "orderCouponsMap": {},
+      "orderDiscount": 0,
+      "shippingDiscount": 0,
+      "orderImplicitDiscountList": [],
+      "unclaimedCouponsMap": {},
+      "claimedCouponMultiPromotions": {}
+    },
+    "trackingInfo": [],
+    "orderLocale": "en",
+    "shippingAddress": {
+      "lastName": "Anderson",
+      "country": "US",
+      "address3": null,
+      "address2": null,
+      "city": "Syracuse",
+      "prefix": null,
+      "address1": "21 Cedar Ave",
+      "postalCode": "13202",
+      "companyName": null,
+      "jobTitle": null,
+      "county": null,
+      "suffix": null,
+      "firstName": "Kim",
+      "phoneNumber": "212-555-1977",
+      "faxNumber": null,
+      "alias": "Home",
+      "middleName": null,
+      "state": "NY",
+      "email": "kim@example.com"
+    },
+    "billingAddress": {
+      "lastName": "Anderson",
+      "country": "US",
+      "address3": null,
+      "address2": null,
+      "city": "Syracuse",
+      "prefix": null,
+      "address1": "21 Cedar Ave",
+      "postalCode": "13202",
+      "companyName": null,
+      "jobTitle": null,
+      "county": null,
+      "suffix": null,
+      "firstName": "Kim",
+      "phoneNumber": "212-555-1977",
+      "faxNumber": null,
+      "alias": null,
+      "middleName": null,
+      "state": "NY",
+      "email": "kim@example.com"
+    },
+    "giftWithPurchaseOrderMarkers": []
+  }
+}

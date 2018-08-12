@@ -1,0 +1,9 @@
+{
+  "description": "SetShopperContext. This operation fetches the PriceListGroup,Catalog and Additional PriceListGroups determined by External Price Group and Catalog Webhook using current context/Event sent by user.Also updates X-OCStateData header with the encrypted response.",
+  "properties": {
+    "shopperContext": {
+      "description": "External Context Dynamic properties values using which PriceListGroups, Catalog and Additional PriceListGroups are determined",
+      "type": "object"
+    }
+  }
+}

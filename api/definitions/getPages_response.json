@@ -1,0 +1,43 @@
+{
+  "properties": {
+    "items": {
+      "description": "List of pages along with their details.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "defaultPage": {
+            "description": "Whether the page is the default page for the site.",
+            "type": "boolean"
+          },
+          "pageType": {
+            "description": "The page type short name.",
+            "type": "string"
+          },
+          "route": {
+            "description": "The route property of the page.",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "The display name property of the page.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The repository ID of the page.",
+            "type": "string"
+          },
+          "pageTypeItem": {
+            "description": "The page type repository item",
+            "type": "object",
+            "properties": {
+              "repositoryId": {
+                "description": "The repository ID of the page type item.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

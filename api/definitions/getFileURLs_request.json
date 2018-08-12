@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "filePaths": {
+      "description": "The IDs of the files",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "filePaths"
+  ],
+  "example": {
+    "filePaths": [
+      "/ccimg/missing-product.jpg"
+    ]
+  }
+}

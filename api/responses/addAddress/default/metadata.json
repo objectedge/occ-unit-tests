@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/errorModel"
+  },
+  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|100183|If input given in null/empty|\n|100030|Postal Code is required|\n|100031|Country is required|\n|100053|If the organization invalid default billing address value|\n|100032|No Stage Region is found|\n|100054|If the organization invalid default shipping address value|\n|100076|Invalid Secondary Addresses|\n|23015|Phone Number is required|\n|23005|Phone Number is invalid|\n|100189|Duplicate Addresses Type are giving in input|\n|100026|Company Name is required|\n|100027|Address 1 is required|\n|100028|City is required|\n|100029|State is required|\n|100000|If input passed is invalid|\n|100001|If there was no organization found with the given id|\n"
+}

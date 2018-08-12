@@ -1,0 +1,117 @@
+{
+  "properties": {
+    "items": {
+      "description": "The array of category objects.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "longDescription": {
+            "description": "Long description of the category.",
+            "type": "string"
+          },
+          "route": {
+            "description": "Route of the category.",
+            "type": "string"
+          },
+          "dimensionId": {
+            "description": "Dimension ID.",
+            "type": "string"
+          },
+          "categoryImages": {
+            "description": "Array of category images.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "description": "Image Path.",
+                  "type": "string"
+                },
+                "metadata": {
+                  "description": "Category Image Metadata.",
+                  "type": "object",
+                  "properties": {
+                    "altText": {
+                      "description": "Alt text for category image.",
+                      "type": "string"
+                    },
+                    "titleText": {
+                      "description": "Title text for category image.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "name": {
+                  "description": "Image Name.",
+                  "type": "string"
+                },
+                "repositoryId": {
+                  "description": "Repository ID of Image Media.",
+                  "type": "string"
+                },
+                "url": {
+                  "description": "Image URL.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "categoryPaths": {
+            "description": "An array of category paths.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "displayName": {
+            "description": "Display Name of the category.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "Repository ID.",
+            "type": "string"
+          },
+          "active": {
+            "description": "Whether or not the category is active",
+            "type": "boolean"
+          },
+          "childCategories": {
+            "description": "Array of category objects.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "repositoryId": {
+                  "description": "Repository ID of the child category.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "id": {
+            "description": "Category ID.",
+            "type": "string"
+          },
+          "creationDate": {
+            "description": "product creation date",
+            "type": "string"
+          },
+          "fixedParentCategories": {
+            "description": "Array of fixed child category objects.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "repositoryId": {
+                  "description": "Repository id of parent category.",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

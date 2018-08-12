@@ -1,0 +1,66 @@
+{
+  "properties": {
+    "If the returned type is a product or default": {
+      "description": "Result object having product related information.",
+      "type": "object",
+      "properties": {
+        "skuPrices": {
+          "description": "The array of SKU data.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "complexPrice": {
+                "description": "The complex price of the sku.",
+                "type": "object",
+                "properties": {
+                  "levels": {
+                    "description": "Price levels of the Complex price.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "price": {
+                          "description": "The price associated with this level.",
+                          "type": "number"
+                        },
+                        "levelMinimum": {
+                          "description": "The minimum quantity associated with this level.",
+                          "type": "number"
+                        },
+                        "levelMaximum": {
+                          "description": "The maximum quantity associated with this level.",
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "salePrice": {
+                "description": "The sale price of the SKU.",
+                "type": "number"
+              },
+              "skuId": {
+                "description": "SKU ID.",
+                "type": "string"
+              },
+              "listPrice": {
+                "description": "The list price of the SKU.",
+                "type": "number"
+              }
+            }
+          }
+        },
+        "list": {
+          "description": "The list price of the product.",
+          "type": "number"
+        },
+        "priceRange": {
+          "description": "Whether the price is a range.",
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

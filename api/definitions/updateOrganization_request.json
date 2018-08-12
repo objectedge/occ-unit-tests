@@ -1,0 +1,17 @@
+{
+  "properties": {
+    "approvalRequired": {
+      "description": "Approval flag is required for the organization, by default it is set to false",
+      "type": "boolean"
+    },
+    "orderPriceLimit": {
+      "description": "Order Price Limit Value for an organization",
+      "type": "number"
+    }
+  },
+  "example": {
+    "dynamicProperty": "dynamicProperty value",
+    "approvalRequired": true,
+    "orderPriceLimit": 1000
+  }
+}

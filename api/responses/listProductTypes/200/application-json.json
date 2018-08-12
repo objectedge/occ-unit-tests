@@ -1,0 +1,22 @@
+[
+  {
+    "displayName": "Men - Apparel",
+    "id": "MensApparel"
+  },
+  {
+    "displayName": "Men - Shoes",
+    "id": "MensShoes"
+  },
+  {
+    "displayName": "Tables",
+    "id": "Tables"
+  },
+  {
+    "displayName": "Women - Apparel",
+    "id": "WomensApparel"
+  },
+  {
+    "displayName": "Women - Shoes",
+    "id": "WomensShoes"
+  }
+]

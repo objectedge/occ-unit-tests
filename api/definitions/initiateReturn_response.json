@@ -1,0 +1,591 @@
+{
+  "properties": {
+    "returnLabel": {
+      "description": "return label of the return request",
+      "type": "string"
+    },
+    "returnItems": {
+      "description": "List of returnable Items.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "quantityReturned": {
+            "description": "Quantity Returned",
+            "type": "number"
+          },
+          "deactivationDate": {
+            "description": "The deactivation date in ISO format.",
+            "type": "string"
+          },
+          "nonreturnable": {
+            "description": "Indicates whether the item is returnable or not",
+            "type": "boolean"
+          },
+          "dynamicProperties": {
+            "description": "Array of custom properties at order line item level.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The ID of the dynamic property.",
+                  "type": "string"
+                },
+                "label": {
+                  "description": "The label of the dynamic property.",
+                  "type": "string"
+                },
+                "value": {
+                  "description": "The value of the dynamic property.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "displayName": {
+            "description": "Display Name of the Product",
+            "type": "string"
+          },
+          "externalData": {
+            "description": "External data to be associated with a commerce item, provided by a configurator system.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "values": {
+                  "description": "The array of values associated with an externalData item.",
+                  "type": "object",
+                  "properties": {
+                    "dynamic_property_key": {
+                      "description": "This property's name and value will be retrieved from a configurator system, so will be dynamically set.",
+                      "type": "string"
+                    }
+                  }
+                },
+                "name": {
+                  "description": "The name to be associated with the externalData item.",
+                  "type": "string"
+                },
+                "actionCode": {
+                  "description": "The action code that has been set on the externalData item by the configurator system.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "billingAccountId": {
+            "description": "The billing account ID associated to the current item.",
+            "type": "string"
+          },
+          "childItems": {
+            "description": "Returned Item child items",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "serviceAccountId": {
+                  "description": "The service account ID associated to the current item.",
+                  "type": "string"
+                },
+                "deactivationDate": {
+                  "description": "The deactivation date in ISO format.",
+                  "type": "string"
+                },
+                "quantity": {
+                  "description": "quantity of the child Item",
+                  "type": "number"
+                },
+                "productId": {
+                  "description": "Product Id of teh ",
+                  "type": "string"
+                },
+                "displayName": {
+                  "description": "Product display name of the sub sku commerce item",
+                  "type": "string"
+                },
+                "externalData": {
+                  "description": "External data to be associated with a commerce item, provided by a configurator system.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "values": {
+                        "description": "The array of values associated with an externalData item.",
+                        "type": "object",
+                        "properties": {
+                          "dynamic_property_key": {
+                            "description": "This property's name and value will be retrieved from a configurator system, so will be dynamically set.",
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "name": {
+                        "description": "The name to be associated with the externalData item.",
+                        "type": "string"
+                      },
+                      "actionCode": {
+                        "description": "The action code that has been set on the externalData item by the configurator system.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "billingAccountId": {
+                  "description": "The billing account ID associated to the current item.",
+                  "type": "string"
+                },
+                "catRefId": {
+                  "description": "Catalog Reference Id of the child Item",
+                  "type": "string"
+                },
+                "route": {
+                  "description": "Product path",
+                  "type": "string"
+                },
+                "customerAccountId": {
+                  "description": "The customer account ID associated to the current item.",
+                  "type": "string"
+                },
+                "assetId": {
+                  "description": "The asset ID corresponding to the current item.",
+                  "type": "string"
+                },
+                "selectedOptions": {
+                  "description": "Child Product Variant Information.",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "optionValue": {
+                        "description": "Value of the Dynamic attribute.",
+                        "type": "string"
+                      },
+                      "optionName": {
+                        "description": "Name of the Dynamic attribute.",
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "actionCode": {
+                  "description": "The action code that has been set on the item by the configurator system.",
+                  "type": "string"
+                },
+                "activationDate": {
+                  "description": "The activation date in ISO format.",
+                  "type": "string"
+                },
+                "serviceId": {
+                  "description": "The service ID associated to the current item.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "skuOptionInfo": {
+            "description": "Product Variant Information.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "optionValue": {
+                  "description": "Value of the Dynamic attribute",
+                  "type": "string"
+                },
+                "optionName": {
+                  "description": "Name of the Dynamic attribute",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "configuratorId": {
+            "description": "Configurator Id of the returned item",
+            "type": "string"
+          },
+          "quantityAvailableForReturn": {
+            "description": "Quantity Available",
+            "type": "number"
+          },
+          "commerceItemId": {
+            "description": "Commerce Id of the returned item",
+            "type": "string"
+          },
+          "assetId": {
+            "description": "The asset ID corresponding to the current item.",
+            "type": "string"
+          },
+          "price": {
+            "description": "Total price of items",
+            "type": "number"
+          },
+          "actionCode": {
+            "description": "The action code that has been set on the item by the configurator system.",
+            "type": "string"
+          },
+          "serviceId": {
+            "description": "The service ID associated to the current item.",
+            "type": "string"
+          },
+          "nonReturnableReason": {
+            "description": "Non returnable reason if item is non returnable",
+            "type": "string"
+          },
+          "unitPrice": {
+            "description": "Unit price of the item",
+            "type": "number"
+          },
+          "serviceAccountId": {
+            "description": "The service account ID associated to the current item.",
+            "type": "string"
+          },
+          "comments": {
+            "description": "Comments at returnItem level",
+            "type": "string"
+          },
+          "productId": {
+            "description": "Id of the Product",
+            "type": "string"
+          },
+          "shippingGroupId": {
+            "description": "Shipping group Id of the returned item",
+            "type": "string"
+          },
+          "catRefId": {
+            "description": "Catalog Reference Id",
+            "type": "string"
+          },
+          "skuProperties": {
+            "description": "Sku properties Information",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "propertyType": {
+                  "description": "Type that indicates whether it is a base or a custom SKU property,",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Name of the Dynamic SKU Property.",
+                  "type": "string"
+                },
+                "id": {
+                  "description": "ID of the Dynamic SKU Property.",
+                  "type": "string"
+                },
+                "value": {
+                  "description": "Value of the Dynamic SKU Property.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "customerAccountId": {
+            "description": "The customer account ID associated to the current item.",
+            "type": "string"
+          },
+          "quantityShipped": {
+            "description": "Quantity Shipped",
+            "type": "number"
+          },
+          "additionalProperties": {
+            "description": "Additional Properties if any returned by webhook.",
+            "type": "object"
+          },
+          "activationDate": {
+            "description": "The activation date in ISO format.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "authorizationNumber": {
+      "description": "RMA number of Return Request if available otherwise return request id",
+      "type": "string"
+    },
+    "profileInfo": {
+      "description": "Profile Information for the order.",
+      "type": "object",
+      "properties": {
+        "lastName": {
+          "description": "Last name of profile.",
+          "type": "string"
+        },
+        "firstName": {
+          "description": "First name of profile.",
+          "type": "string"
+        },
+        "organization": {
+          "description": "The Organization associated with the B2B customer profile.",
+          "type": "object",
+          "properties": {
+            "name": {
+              "description": "The name of of the organization.",
+              "type": "string"
+            },
+            "id": {
+              "description": "The id of the organization.",
+              "type": "string"
+            }
+          }
+        },
+        "middleName": {
+          "description": "Middle name of profile.",
+          "type": "string"
+        },
+        "email": {
+          "description": "Email address of the profile",
+          "type": "string"
+        }
+      }
+    },
+    "orderInfo": {
+      "description": "Order Information.",
+      "type": "object",
+      "properties": {
+        "priceInfo": {
+          "description": "Price information of the order.",
+          "type": "object",
+          "properties": {
+            "amount": {
+              "description": "The raw number that represents the price.",
+              "type": "number"
+            },
+            "total": {
+              "description": "The current working total, including all promotions, tax, and billing costs.",
+              "type": "number"
+            },
+            "shipping": {
+              "description": "The shipping cost of the order.",
+              "type": "number"
+            },
+            "isTaxIncluded": {
+              "description": "Indicates if tax is included in item price",
+              "type": "boolean"
+            },
+            "tax": {
+              "description": "The tax on the order.",
+              "type": "number"
+            },
+            "subTotal": {
+              "description": " The subtotal of the order before applying order-level promotions.",
+              "type": "number"
+            },
+            "orderDiscountAmount": {
+              "description": "Total Order Discount Ampunt",
+              "type": "number"
+            },
+            "currencyCode": {
+              "description": "Indicates the currency of the price. For example, USD indicates that the price is in US dollars.",
+              "type": "string"
+            },
+            "totalWithoutTax": {
+              "description": "The total cost without Tax.",
+              "type": "number"
+            }
+          }
+        },
+        "orderId": {
+          "description": "Commerce id for this order.",
+          "type": "string"
+        },
+        "siteId": {
+          "description": "Site Id on which the Order was placed.",
+          "type": "string"
+        },
+        "priceListGroup": {
+          "description": "PriceList group of the order.",
+          "type": "object",
+          "properties": {
+            "deleted": {
+              "description": "Pricelist group deleted status.",
+              "type": "boolean"
+            },
+            "displayName": {
+              "description": "Display Name.",
+              "type": "string"
+            },
+            "repositoryId": {
+              "description": "Repository Id.",
+              "type": "string"
+            },
+            "listPriceList": {
+              "description": "Price List for list prices",
+              "type": "object",
+              "properties": {
+                "repositoryId": {
+                  "description": "Repository ID of the list prices",
+                  "type": "string"
+                }
+              }
+            },
+            "active": {
+              "description": "Active status of pricelist group.",
+              "type": "boolean"
+            },
+            "salePriceList": {
+              "description": "Price List for sale prices",
+              "type": "object",
+              "properties": {
+                "repositoryId": {
+                  "description": "Repository ID of the sale prices",
+                  "type": "string"
+                }
+              }
+            },
+            "currency": {
+              "description": "Currency of the PriceList group.",
+              "type": "object",
+              "properties": {
+                "symbol": {
+                  "description": "currency Symbol.",
+                  "type": "string"
+                },
+                "displayName": {
+                  "description": "Display Name.",
+                  "type": "string"
+                },
+                "repositoryId": {
+                  "description": "Repository Id.",
+                  "type": "string"
+                },
+                "fractionalDigits": {
+                  "description": "Fractional Digits.",
+                  "type": "integer"
+                },
+                "currencyCode": {
+                  "description": "Currency Code.",
+                  "type": "string"
+                },
+                "numericCode": {
+                  "description": "Numeric Code.",
+                  "type": "string"
+                }
+              }
+            },
+            "id": {
+              "description": "Id.",
+              "type": "string"
+            },
+            "locale": {
+              "description": "Locale.",
+              "type": "string"
+            },
+            "shippingSurchargePriceList": {
+              "description": "Price List for shipping surcharge prices",
+              "type": "object",
+              "properties": {
+                "repositoryId": {
+                  "description": "Repository ID of the shipping surcharge prices",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "creationDate": {
+          "description": "Date on which the Order was created.",
+          "type": "string"
+        },
+        "submittedDate": {
+          "description": "Date on which the Order was submitted.",
+          "type": "string"
+        }
+      }
+    },
+    "additionalProperties": {
+      "description": "Additional properties if any returned by the webhook.",
+      "type": "object"
+    },
+    "quoteInfo": {
+      "description": "The quote information of the order.",
+      "type": "object",
+      "properties": {
+        "providerNote": {
+          "description": "the provider note for the quoted order",
+          "type": "string"
+        },
+        "notes": {
+          "description": "the notes (history) for the order",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "providerNote": {
+                "description": "the provider note for the quoted order",
+                "type": "string"
+              },
+              "profileType": {
+                "description": "the profile type of the user that requested the quote",
+                "type": "string"
+              },
+              "profileId": {
+                "description": "the profile id of the user",
+                "type": "string"
+              },
+              "rejectionDate": {
+                "description": "the rejection date for an order whose quote has been rejected by user",
+                "type": "number"
+              },
+              "requestDate": {
+                "description": "the date when the quote was requested in ISO format",
+                "type": "number"
+              },
+              "quoteDate": {
+                "description": "the date the order was quoted in milliseconds",
+                "type": "number"
+              },
+              "rejectionNote": {
+                "description": "the rejection note for an order whose quote has been rejected by user",
+                "type": "string"
+              },
+              "requesterNote": {
+                "description": "the requester note",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "rejectionDate": {
+          "description": "the rejection date for an order whose quote has been rejected by user",
+          "type": "string"
+        },
+        "requestDate": {
+          "description": "the date when the quote was requested in ISO format",
+          "type": "string"
+        },
+        "errorInfo": {
+          "description": "the array of errors, if any",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "externalId": {
+          "description": "the external id for the quote",
+          "type": "string"
+        },
+        "rejectionNote": {
+          "description": "the rejection note for an order whose quote has been rejected by user",
+          "type": "string"
+        },
+        "quoteDate": {
+          "description": "the date the order was quoted in milliseconds",
+          "type": "number"
+        },
+        "expirationDate": {
+          "description": "the expiration date of the quoted order, if any",
+          "type": "string"
+        }
+      }
+    },
+    "trackingNumber": {
+      "description": "Tracking Number of the return request",
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

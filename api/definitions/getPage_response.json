@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "route": {
+      "description": "The page route.",
+      "type": "string"
+    },
+    "regions": {
+      "description": "The region data for all the regions of a page.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    "keywords": {
+      "description": "The keywords for the page.",
+      "type": "string"
+    },
+    "isPreview": {
+      "description": "Whether the server is in preview mode.",
+      "type": "boolean"
+    },
+    "canonicalRoute": {
+      "description": "The canonical route for home, article, product and category pages.",
+      "type": "string"
+    },
+    "description": {
+      "description": "The page description.",
+      "type": "string"
+    },
+    "title": {
+      "description": "The page title.",
+      "type": "string"
+    }
+  }
+}

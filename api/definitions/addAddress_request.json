@@ -1,0 +1,82 @@
+{
+  "properties": {
+    "address": {
+      "description": "Address created for the Organization.",
+      "type": "object",
+      "properties": {
+        "isDefaultBillingAddress": {
+          "description": "Marks an address as default billing address. Default value is false. Accepts true or false",
+          "type": "boolean"
+        },
+        "country": {
+          "description": "The country of the address. This is a mandatory field.",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "description": "Phone Number of the address. This is a mandatory field",
+          "type": "string"
+        },
+        "address2": {
+          "description": "The address2 of the secondary address",
+          "type": "string"
+        },
+        "city": {
+          "description": "The city of the secondary address. This is a mandatory field.",
+          "type": "string"
+        },
+        "address1": {
+          "description": "The address1 of the secondary address. This is a mandatory field.",
+          "type": "string"
+        },
+        "companyName": {
+          "description": "Company name of the secondary address. This is a mandatory field",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "Postal Code of the address. This is a mandatory field",
+          "type": "string"
+        },
+        "state": {
+          "description": "The State of the address. This is a mandatory field",
+          "type": "string"
+        },
+        "isDefaultShippingAddress": {
+          "description": "Marks an address as default shipping address. Default value is false. Accepts true or false",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "country",
+        "phoneNumber",
+        "city",
+        "address1",
+        "companyName",
+        "postalCode",
+        "state"
+      ]
+    },
+    "addressType": {
+      "description": "Address type represents nick name of account if present else repository ID of address item. This is a mandatory field",
+      "type": "string"
+    }
+  },
+  "required": [
+    "address",
+    "addressType"
+  ],
+  "example": {
+    "address": {
+      "isDefaultBillingAddress": true,
+      "country": "US",
+      "phoneNumber": "973-974-1234",
+      "address2": "Street 2",
+      "city": "Montgomery",
+      "address1": "600 Dexter Avenue",
+      "postalCode": "36130",
+      "companyName": "Oracle",
+      "isDefaultShippingAddress": true,
+      "state": "AL"
+    },
+    "addressType": "Office Address"
+  }
+}

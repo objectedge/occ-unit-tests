@@ -1,0 +1,2 @@
+define("ccClientErrorCodes",[],function(){"use strict";function R(){}return R.SYNTAX_ERROR="15000",R.REFERENCE_ERROR="15001",R.TYPE_ERROR="15002",R.EVAL_ERROR="15003",R.RANGE_ERROR="15004",R.URI_ERROR="15005",R.GENERIC_ERROR="15006",R.NO_SPECIFIED_ERROR="15007",R.FILE_IS_NOT_AN_EXTENSION="15008",R});
+//# sourceMappingURL=cc-client-error-codes.js.map

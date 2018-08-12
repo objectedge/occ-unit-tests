@@ -1,0 +1,201 @@
+{
+  "properties": {
+    "items": {
+      "description": "The service object.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "deactivationDate": {
+            "description": "Date on which the service contract ends.",
+            "type": "string"
+          },
+          "rootDisplay": {
+            "description": "The public, non-unique key for the root product instance. For example, phone number or serial number.",
+            "type": "string"
+          },
+          "rootAsset": {
+            "description": "Root asset information.",
+            "type": "object",
+            "properties": {
+              "assetId": {
+                "description": "Id of asset.",
+                "type": "string"
+              },
+              "serviceId": {
+                "description": "An invariant key that uniquely identifies the asset / component for the lifetime of the asset. It will be unique across all asset repositories.",
+                "type": "string"
+              }
+            }
+          },
+          "displayName": {
+            "description": "The public, non-unique key for the product instance. For example, phone number or serial number.",
+            "type": "string"
+          },
+          "discountAmount": {
+            "description": "The discount amount.",
+            "type": "object",
+            "properties": {
+              "currency": {
+                "description": "Currency code for the discount amount.",
+                "type": "string"
+              },
+              "value": {
+                "description": "Amount value for the discount amount.",
+                "type": "number"
+              }
+            }
+          },
+          "recurringChargeFrequency": {
+            "description": "The period for the fixed recurring charge. For example, Per Month.",
+            "type": "string"
+          },
+          "dateAdded": {
+            "description": "System field indicating the date on which the Resource was created.",
+            "type": "string"
+          },
+          "price": {
+            "description": "The price.",
+            "type": "object",
+            "properties": {
+              "currency": {
+                "description": "Currency code for the price.",
+                "type": "string"
+              },
+              "value": {
+                "description": "Amount value for the price.",
+                "type": "number"
+              }
+            }
+          },
+          "assetId": {
+            "description": "Id of asset.",
+            "type": "string"
+          },
+          "currency": {
+            "description": "The currency code.",
+            "type": "object",
+            "properties": {
+              "currencyCode": {
+                "description": "Unique currency code for the currency.",
+                "type": "string"
+              }
+            }
+          },
+          "usageNetAmount": {
+            "description": "The usage information.",
+            "type": "object",
+            "properties": {
+              "currency": {
+                "description": "Currency code for the usage net amount.",
+                "type": "string"
+              },
+              "value": {
+                "description": "Amount value for the usage net amount.",
+                "type": "number"
+              }
+            }
+          },
+          "serviceId": {
+            "description": "An invariant key that uniquely identifies the asset / component for the lifetime of the asset. It will be unique across all asset repositories.",
+            "type": "string"
+          },
+          "skuId": {
+            "description": "The SKU Id.",
+            "type": "string"
+          },
+          "serviceAccountId": {
+            "description": "The customer that owns the product.",
+            "type": "string"
+          },
+          "quantity": {
+            "description": "The quantity of the asset.",
+            "type": "integer"
+          },
+          "recurringChargeDuration": {
+            "description": "The payment terms. For example, Net 30.",
+            "type": "string"
+          },
+          "discountPercent": {
+            "description": "The percent of discount received.",
+            "type": "integer"
+          },
+          "dateModified": {
+            "description": "System field indicating the date on which the Resource was last modified.",
+            "type": "string"
+          },
+          "usageUnitOfMeasure": {
+            "description": "The unit of measure for the usage charges. For example, Per Copy or Per Minute.",
+            "type": "string"
+          },
+          "suspendDate": {
+            "description": "Date on which the service suspends.",
+            "type": "string"
+          },
+          "parentDisplay": {
+            "description": "The public, non-unique key for the parent product instance. For example, phone number or serial number.",
+            "type": "string"
+          },
+          "attributes": {
+            "description": "A collection (JSON) of key/value pair attributes that define the configuration of this asset/component.",
+            "type": "string"
+          },
+          "activationDate": {
+            "description": "Date on which the service contract starts.",
+            "type": "string"
+          },
+          "parentAsset": {
+            "description": "Parent asset information.",
+            "type": "object",
+            "properties": {
+              "assetId": {
+                "description": "Id of asset.",
+                "type": "string"
+              },
+              "serviceId": {
+                "description": "An invariant key that uniquely identifies the asset / component for the lifetime of the asset. It will be unique across all asset repositories.",
+                "type": "string"
+              }
+            }
+          },
+          "resumeDate": {
+            "description": "Date on which the service contract resumes.",
+            "type": "string"
+          },
+          "recurringCharge": {
+            "description": "The recurring charge.",
+            "type": "object",
+            "properties": {
+              "currency": {
+                "description": "Currency code for the recurring amount.",
+                "type": "string"
+              },
+              "value": {
+                "description": "Amount value for the recurring amount.",
+                "type": "number"
+              }
+            }
+          },
+          "status": {
+            "description": "The status information.",
+            "type": "object",
+            "properties": {
+              "displayValue": {
+                "description": "Translated display value of the fixed list of value for status.",
+                "type": "string"
+              },
+              "lookupCode": {
+                "description": "Language independent code of the fixed list of value for status.",
+                "type": "string"
+              },
+              "id": {
+                "description": "Id of the fixed list of value for status.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

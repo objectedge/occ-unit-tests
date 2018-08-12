@@ -1,0 +1,10 @@
+{
+  "result": "success",
+  "returnRequestId": "700002",
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://example.com/ccstoreui/v1/returnRequests"
+    }
+  ]
+}

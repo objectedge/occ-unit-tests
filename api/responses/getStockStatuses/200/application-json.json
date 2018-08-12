@@ -1,0 +1,24 @@
+[
+  {
+    "catalogId": null,
+    "productId": "prod10011",
+    "preOrderableQuantity": 0,
+    "orderableQuantity": 95,
+    "stockStatus": "IN_STOCK",
+    "availabilityDate": null,
+    "backOrderableQuantity": 50,
+    "catRefId": "sku10024",
+    "inStockQuantity": 25
+  },
+  {
+    "catalogId": null,
+    "productId": "Product_9E",
+    "preOrderableQuantity": 50,
+    "orderableQuantity": 95,
+    "stockStatus": "IN_STOCK",
+    "availabilityDate": null,
+    "backOrderableQuantity": 0,
+    "catRefId": "Sku_9F",
+    "inStockQuantity": 25
+  }
+]

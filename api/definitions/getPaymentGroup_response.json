@@ -1,0 +1,42 @@
+{
+  "properties": {
+    "amountAuthorized": {
+      "description": "Amount authorized by the payment gateway.",
+      "type": "string"
+    },
+    "stateAsString": {
+      "description": "Payment group state in string after authorization.",
+      "type": "string"
+    },
+    "id": {
+      "description": "The id of the payment group item.",
+      "type": "string"
+    },
+    "authorizationStatus": {
+      "description": "Object having details about the status of authorization",
+      "type": "object",
+      "properties": {
+        "authorizationDecision": {
+          "description": "Decision from authorization",
+          "type": "string"
+        },
+        "transactionUuid": {
+          "description": "Unique Transaction id sent by storefront to CyberSource to correlate the response data with order once the response arrives",
+          "type": "string"
+        },
+        "displayMessage": {
+          "description": "User friendly message in case authorization fails.",
+          "type": "string"
+        },
+        "transactionSuccess": {
+          "description": "Whether transaction was successful or failed.",
+          "type": "string"
+        },
+        "reasonCode": {
+          "description": "Authorization outcome reason code specific to CyberSource",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

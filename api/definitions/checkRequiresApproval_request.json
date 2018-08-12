@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "orderId": {
+      "description": "the order id for the order which is to be checked for approval requirement.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "orderId"
+  ],
+  "example": {
+    "orderId": "o30411"
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "properties": {
+    "Endpoint Name": {
+      "description": "Response object.",
+      "type": "object",
+      "properties": {
+        "request": {
+          "description": "Request parameters to trigger the endpoint.",
+          "type": "object"
+        },
+        "pathParams": {
+          "description": "Path parameters of the sample request.",
+          "type": "object"
+        },
+        "response": {
+          "description": "Response parameters to trigger the endpoints.",
+          "type": "object"
+        },
+        "description": {
+          "description": "Description about the endpoint.",
+          "type": "string"
+        },
+        "sampleResponse": {
+          "description": "Sample resonse object after triggering the endpoint.",
+          "type": "object"
+        },
+        "sampleRequest": {
+          "description": "Sample request object to trigger the endpoint.",
+          "type": "object"
+        }
+      }
+    }
+  }
+}

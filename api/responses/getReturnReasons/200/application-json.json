@@ -1,0 +1,28 @@
+{
+  "items": [
+    {
+      "displayKey": "defective",
+      "displayName": "Defective"
+    },
+    {
+      "displayKey": "didNotLike",
+      "displayName": "Did Not Like"
+    },
+    {
+      "displayKey": "didNotMeetExpectations",
+      "displayName": "Did Not Meet Expectations"
+    },
+    {
+      "displayKey": "incorrectColor",
+      "displayName": "Incorrect Color"
+    },
+    {
+      "displayKey": "incorrectItem",
+      "displayName": "Incorrect Item"
+    },
+    {
+      "displayKey": "incorrectSize",
+      "displayName": "Incorrect Size"
+    }
+  ]
+}

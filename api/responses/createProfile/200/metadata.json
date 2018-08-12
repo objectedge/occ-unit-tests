@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/createProfile_response"
+  },
+  "description": "Following model is returned when operation succeeds."
+}

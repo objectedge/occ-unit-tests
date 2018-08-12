@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/validateReturns_response"
+  },
+  "description": "Following model is returned when operation succeeds."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "defaultPage": true,
+    "pageType": "confirmation",
+    "route": "/confirmation",
+    "displayName": "Confirmation",
+    "name": "confirmation",
+    "repositoryId": "checkoutConfirmationPage",
+    "rules": [],
+    "pageTypeItem": {
+      "repositoryId": "checkoutConfirmationPageType"
+    }
+  },
+  {
+    "defaultPage": false,
+    "pageType": "article",
+    "route": "/privacy",
+    "displayName": "Privacy",
+    "name": "privacy",
+    "repositoryId": "privacyPage",
+    "rules": [],
+    "pageTypeItem": {
+      "repositoryId": "articlePageType"
+    }
+  }
+]

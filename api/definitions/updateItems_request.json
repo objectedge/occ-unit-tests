@@ -1,0 +1,57 @@
+{
+  "properties": {
+    "items": {
+      "description": "list of purchase list items",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "op": {
+            "description": "opertaion to be performed on purchase list item.This can be one of add/update/delete",
+            "type": "string"
+          },
+          "productId": {
+            "description": "The product id",
+            "type": "string"
+          },
+          "quantityDesired": {
+            "description": "Quantity desired for the item",
+            "type": "integer"
+          },
+          "catRefId": {
+            "description": "catalog ref id ",
+            "type": "string"
+          }
+        },
+        "required": [
+          "catRefId",
+          "quantityDesired",
+          "productId",
+          "op"
+        ]
+      }
+    }
+  },
+  "example": {
+    "items": [
+      {
+        "op": "update",
+        "productId": "Product_18Cxi",
+        "quantityDesired": 25,
+        "catRefId": "Sku_18Dxi"
+      },
+      {
+        "op": "delete",
+        "productId": "Product_5Cx",
+        "quantityDesired": 30,
+        "catRefId": "Sku_5Cxy"
+      },
+      {
+        "op": "add",
+        "productId": "Product_5Cx",
+        "quantityDesired": 10,
+        "catRefId": "Sku_5Cxy"
+      }
+    ]
+  }
+}

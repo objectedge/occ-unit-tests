@@ -1,0 +1,2 @@
+define("numberFormatHelper",["ojs/ojcore"],function(){"use strict";function r(){}return r.prototype.formatNumber=function(r,t,e){var t,o,i,n;i=oj.Validation.converterFactory(oj.ConverterFactory.CONVERTER_TYPE_NUMBER);var m={style:e,minimumIntegerDigits:1,minimumFractionDigits:t,maximumFractionDigits:t,useGrouping:!0};return n=i.createConverter(m),o=n.format(r)},new r});
+//# sourceMappingURL=number-format-helper.js.map

@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/errorModel"
+  },
+  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|20142|Get Category Id Type Internal Error|\n|20141|Collection Id passed is null or empty|\n|20052|Get List Collections Type Internal Error|\n|20140|Collection Id is invalid or non-existent|\n"
+}

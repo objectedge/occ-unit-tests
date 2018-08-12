@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "approverMessage": {
+      "description": "the message given by approver when he is rejecting order.",
+      "type": "string"
+    },
+    "orderId": {
+      "description": "the order id of the order which requires approval.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "orderId"
+  ],
+  "example": {
+    "approverMessage": "Rejecting order",
+    "orderId": "o30411"
+  }
+}

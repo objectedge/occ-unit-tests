@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "status": {
+      "description": "status information about the request",
+      "type": "string"
+    }
+  }
+}

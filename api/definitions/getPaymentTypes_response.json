@@ -1,0 +1,71 @@
+{
+  "properties": {
+    "items": {
+      "description": "List of enabled payment types",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "img": {
+            "description": "Payment type image URL.",
+            "type": "object",
+            "properties": {
+              "path": {
+                "description": "The relative URL for the image.",
+                "type": "string"
+              },
+              "repositoryId": {
+                "description": "The id of the media external image file.",
+                "type": "string"
+              },
+              "name": {
+                "description": "The name of the image file.",
+                "type": "string"
+              },
+              "url": {
+                "description": "The derived URL for the image.",
+                "type": "string"
+              }
+            }
+          },
+          "code": {
+            "description": "The payment gateway specific code for the payment type.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The id of the payment type item.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The internal name for the payment type",
+            "type": "string"
+          },
+          "startDateRequired": {
+            "description": "Whether the the start date of the credit card is required for this payment type.",
+            "type": "string"
+          },
+          "length": {
+            "description": "Valid card number length.",
+            "type": "string"
+          },
+          "type": {
+            "description": "The payment type. E.g.: card,check,etc.",
+            "type": "string"
+          },
+          "value": {
+            "description": "The value for the payment type.",
+            "type": "string"
+          },
+          "cvvLength": {
+            "description": "Valid cvv length",
+            "type": "string"
+          },
+          "iin": {
+            "description": "Issuer identification number for the payment type.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

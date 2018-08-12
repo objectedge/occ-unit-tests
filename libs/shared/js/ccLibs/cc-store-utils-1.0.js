@@ -1,0 +1,2 @@
+define("ccStoreUtils",["knockout"],function(n){"use strict";function o(){}return o.prototype.fromJS=function(o,r,e,i,t,c){var f=[];if(e)for(var u in o)f.push(u);if(!e&&i&&i.length>0)for(var u in o)o[u]instanceof Object&&!(o[u]instanceof Array)&&f.push(u);var a={copy:f,observe:i,ignore:t,include:c};n.mapping.fromJS(o,a,r)},new o});
+//# sourceMappingURL=cc-store-utils-1.0.js.map

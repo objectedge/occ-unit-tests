@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/listCollections_response"
+  },
+  "description": "Following model is returned when operation succeeds."
+}

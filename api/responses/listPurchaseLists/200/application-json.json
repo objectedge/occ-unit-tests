@@ -1,0 +1,46 @@
+{
+  "total": 1,
+  "totalResults": 1,
+  "offset": 0,
+  "limit": 1,
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:9080/ccstoreui/v1/purchaseLists?purchaseListItemCount=true"
+    }
+  ],
+  "sort": [
+    {
+      "property": "name",
+      "order": "asc"
+    }
+  ],
+  "items": [
+    {
+      "owner": {
+        "lastName": "Anderson",
+        "firstName": "Kim",
+        "repositoryId": "se-570031",
+        "id": "se-570031"
+      },
+      "accountId": null,
+      "lastModifiedDate": "2017-09-27T09:48:22.000Z",
+      "repositoryId": "gl30074",
+      "name": "Purchase List 2",
+      "description": "Purchase List update",
+      "siteId": null,
+      "id": "gl30074",
+      "creationDate": "2017-09-27T09:48:22.000Z",
+      "items": [
+        {
+          "productId": "Product_5Cx",
+          "quantityDesired": 30,
+          "repositoryId": "gi10001",
+          "id": "gi10001",
+          "catRefId": "Sku_5Cxy"
+        }
+      ],
+      "purchaseListItems": 1
+    }
+  ]
+}

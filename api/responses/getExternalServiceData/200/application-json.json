@@ -1,0 +1,11 @@
+{
+  "serverType": "production",
+  "serviceData": {
+    "port": 123,
+    "displayName": "Oracle Recommendations",
+    "host": "myHost",
+    "name": "Recommendations",
+    "tenantId": "foo"
+  },
+  "id": "production-Recommendations"
+}

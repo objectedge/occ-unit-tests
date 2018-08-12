@@ -1,0 +1,264 @@
+{
+  "properties": {
+    "items": {
+      "description": "Array containing the properties of the item type ids in the request",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "shopperInputs": {
+            "description": "Shopper Inputs corresponding to the productType",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "uiEditorType": {
+                  "description": "The UIEditorType property of the shopperInput",
+                  "type": "string"
+                },
+                "values": {
+                  "description": "List of allowed values in case of Single Selection List type.",
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "name": {
+                  "description": "The name of the shopperInput",
+                  "type": "string"
+                },
+                "label": {
+                  "description": "The display label of the shopperInput",
+                  "type": "string"
+                },
+                "id": {
+                  "description": "Id corresponding to the shopperInput",
+                  "type": "string"
+                },
+                "promptText": {
+                  "description": "The descriptive text for the shopperInput",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Data type of shopperInput.",
+                  "type": "string"
+                },
+                "required": {
+                  "description": "Whether it is required or not.",
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "displayName": {
+            "description": "The display name of the item type",
+            "type": "string"
+          },
+          "count": {
+            "description": "The count of items.",
+            "type": "integer"
+          },
+          "id": {
+            "description": "The ID of the item type.",
+            "type": "string"
+          },
+          "variants": {
+            "description": "Variants of the product",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "itemType": {
+                  "description": "Item type for user-defined product.",
+                  "type": "string"
+                },
+                "hidden": {
+                  "description": "Whether item is hidden.",
+                  "type": "boolean"
+                },
+                "variantBasedDisplay": {
+                  "description": "Whether this variant based display should be allowed ",
+                  "type": "boolean"
+                },
+                "length": {
+                  "description": "The length property of the variant",
+                  "type": "integer"
+                },
+                "label": {
+                  "description": "Label for new item type.",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Data type of variant.",
+                  "type": "string"
+                },
+                "required": {
+                  "description": "Whether it is required or not.",
+                  "type": "boolean"
+                },
+                "writable": {
+                  "description": "Whether writable or not.",
+                  "type": "string"
+                },
+                "uiEditorType": {
+                  "description": "The UIEditorType property of the variant",
+                  "type": "string"
+                },
+                "default": {
+                  "description": "Default specification of product type.",
+                  "type": "string"
+                },
+                "listingVariant": {
+                  "description": "Whether listing should be done based on this variant.",
+                  "type": "boolean"
+                },
+                "localizable": {
+                  "description": "Whether Localizable or not.",
+                  "type": "boolean"
+                },
+                "id": {
+                  "description": "ID of specification.",
+                  "type": "string"
+                },
+                "order": {
+                  "description": "Order count of item type.",
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "specifications": {
+            "description": "List of properties for user-defined item type.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "itemType": {
+                  "description": "Item type for user-defined product.",
+                  "type": "string"
+                },
+                "hidden": {
+                  "description": "Whether item is hidden.",
+                  "type": "boolean"
+                },
+                "variantBasedDisplay": {
+                  "description": "Whether this variant based display should be allowed ",
+                  "type": "boolean"
+                },
+                "length": {
+                  "description": "The length property of the variant",
+                  "type": "integer"
+                },
+                "label": {
+                  "description": "Label for new item type.",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Data type of variant.",
+                  "type": "string"
+                },
+                "required": {
+                  "description": "Whether it is required or not.",
+                  "type": "boolean"
+                },
+                "writable": {
+                  "description": "Whether writable or not.",
+                  "type": "string"
+                },
+                "uiEditorType": {
+                  "description": "The UIEditorType property of the variant",
+                  "type": "string"
+                },
+                "default": {
+                  "description": "Default specification of product type.",
+                  "type": "string"
+                },
+                "listingVariant": {
+                  "description": "Whether listing should be done based on this variant.",
+                  "type": "boolean"
+                },
+                "localizable": {
+                  "description": "Whether Localizable or not.",
+                  "type": "boolean"
+                },
+                "id": {
+                  "description": "ID of specification.",
+                  "type": "string"
+                },
+                "order": {
+                  "description": "Order count of item type.",
+                  "type": "integer"
+                }
+              }
+            }
+          },
+          "base": {
+            "description": "Base type Details",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "itemType": {
+                  "description": "Item type for user-defined product.",
+                  "type": "string"
+                },
+                "hidden": {
+                  "description": "Whether item is hidden.",
+                  "type": "boolean"
+                },
+                "variantBasedDisplay": {
+                  "description": "Whether this variant based display should be allowed ",
+                  "type": "boolean"
+                },
+                "length": {
+                  "description": "The length property of the variant",
+                  "type": "integer"
+                },
+                "label": {
+                  "description": "Label for new item type.",
+                  "type": "string"
+                },
+                "type": {
+                  "description": "Data type of variant.",
+                  "type": "string"
+                },
+                "required": {
+                  "description": "Whether it is required or not.",
+                  "type": "boolean"
+                },
+                "writable": {
+                  "description": "Whether writable or not.",
+                  "type": "string"
+                },
+                "uiEditorType": {
+                  "description": "The UIEditorType property of the variant",
+                  "type": "string"
+                },
+                "default": {
+                  "description": "Default specification of product type.",
+                  "type": "string"
+                },
+                "listingVariant": {
+                  "description": "Whether listing should be done based on this variant.",
+                  "type": "boolean"
+                },
+                "localizable": {
+                  "description": "Whether Localizable or not.",
+                  "type": "boolean"
+                },
+                "id": {
+                  "description": "ID of specification.",
+                  "type": "string"
+                },
+                "order": {
+                  "description": "Order count of item type.",
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "amountAuthorized": 114.5,
+  "stateAsString": "AUTHORIZED",
+  "id": "pg10008",
+  "authorizationStatus": [
+    {
+      "authorizationDecision": "ACCEPT",
+      "transactionUuid": "2c82277e4af747dab536dd2591e185a3",
+      "displayMessage": "",
+      "transactionSuccess": true,
+      "reasonCode": "100"
+    }
+  ]
+}

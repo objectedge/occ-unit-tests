@@ -1,0 +1,58 @@
+{
+  "properties": {
+    "address": {
+      "description": "The address object of the profile",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "The first name of the user for whom the address is created. This field can be null also",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "The last name of the user for whom the address is created. This field can be null also",
+          "type": "string"
+        },
+        "country": {
+          "description": "The country of the address",
+          "type": "string"
+        },
+        "phoneNumber": {
+          "description": "Phone number of the address",
+          "type": "string"
+        },
+        "address2": {
+          "description": "Address line 2 for the address",
+          "type": "string"
+        },
+        "city": {
+          "description": "city for the address",
+          "type": "string"
+        },
+        "address1": {
+          "description": "address line 1 for the address",
+          "type": "string"
+        },
+        "postalCode": {
+          "description": "postalCode for the address",
+          "type": "string"
+        },
+        "companyName": {
+          "description": "companyName for the address. It is not mandatory for the profile addresses.",
+          "type": "string"
+        },
+        "county": {
+          "description": "county for the address",
+          "type": "string"
+        },
+        "state": {
+          "description": "state for the address",
+          "type": "string"
+        }
+      }
+    },
+    "addressType": {
+      "description": "The nickname for the address.",
+      "type": "string"
+    }
+  }
+}

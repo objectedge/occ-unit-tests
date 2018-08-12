@@ -1,0 +1,26 @@
+{
+  "total": 1,
+  "totalResults": 1,
+  "offset": 0,
+  "limit": 1,
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/ccstoreui/v1/organizations?members=bb-110034"
+    }
+  ],
+  "sort": [
+    {
+      "property": "name",
+      "order": "asc"
+    }
+  ],
+  "items": [
+    {
+      "name": "National Discount Auto Parts",
+      "repositoryId": "or-100001",
+      "active": true,
+      "id": "or-100001"
+    }
+  ]
+}

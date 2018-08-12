@@ -1,0 +1,40 @@
+{
+  "items": [
+    {
+      "regionCode": "US-AL",
+      "displayName": "Alabama",
+      "repositoryId": "US-AL",
+      "abbreviation": "AL"
+    },
+    {
+      "regionCode": "US-AK",
+      "displayName": "Alaska",
+      "repositoryId": "US-AK",
+      "abbreviation": "AK"
+    },
+    {
+      "regionCode": "US-AZ",
+      "displayName": "Arizona",
+      "repositoryId": "US-AZ",
+      "abbreviation": "AZ"
+    },
+    {
+      "regionCode": "US-AR",
+      "displayName": "Arkansas",
+      "repositoryId": "US-AR",
+      "abbreviation": "AR"
+    },
+    {
+      "regionCode": "US-WI",
+      "displayName": "Wisconsin",
+      "repositoryId": "US-WI",
+      "abbreviation": "WI"
+    },
+    {
+      "regionCode": "US-WY",
+      "displayName": "Wyoming",
+      "repositoryId": "US-WY",
+      "abbreviation": "WY"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "authnRequestTarget": {
+      "description": "The URL that the request should be posted to.",
+      "type": "string"
+    },
+    "authnRequest": {
+      "description": "A SAML AuthnRequest.  If encode is true, it will be Base64 encoded.",
+      "type": "string"
+    }
+  }
+}

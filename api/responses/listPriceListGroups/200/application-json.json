@@ -1,0 +1,81 @@
+{
+  "total": 2,
+  "totalResults": 2,
+  "offset": 0,
+  "limit": 250,
+  "defaultPriceListGroup": {
+    "displayName": "UsDollar",
+    "listPriceList": {
+      "repositoryId": "listPrices"
+    },
+    "repositoryId": "UsDollar",
+    "active": false,
+    "salePriceList": {
+      "repositoryId": "salePrices"
+    },
+    "currency": {
+      "symbol": "$",
+      "displayName": "US Dollar",
+      "repositoryId": "en_US",
+      "fractionalDigits": 2,
+      "currencyCode": "USD",
+      "numericCode": "840"
+    },
+    "id": "UsDollar",
+    "locale": "en_US",
+    "shippingSurchargePriceList": {
+      "repositoryId": "shippingSurchargePrices"
+    },
+    "includeAllProducts": true
+  },
+  "sort": [
+    {
+      "property": "displayName",
+      "order": "asc"
+    }
+  ],
+  "items": [
+    {
+      "displayName": null,
+      "listPriceList": {
+        "repositoryId": "listPrices"
+      },
+      "repositoryId": "UsDollar",
+      "active": false,
+      "salePriceList": {
+        "repositoryId": "salePrices"
+      },
+      "currency": {
+        "symbol": "$",
+        "displayName": "US Dollar",
+        "repositoryId": "en_US",
+        "fractionalDigits": 2,
+        "currencyCode": "USD",
+        "numericCode": "840"
+      },
+      "id": "UsDollar",
+      "locale": "en_US",
+      "shippingSurchargePriceList": {
+        "repositoryId": "shippingSurcharge"
+      },
+      "includeAllProducts": true
+    },
+    {
+      "displayName": "CanadianDollar",
+      "listPriceList": {
+        "repositoryId": "CanadianDollar_listPrice"
+      },
+      "repositoryId": "CanadianDollar",
+      "active": false,
+      "salePriceList": {
+        "repositoryId": "CanadianDollar_salePrice"
+      },
+      "id": "CanadianDollar",
+      "locale": "en_CA",
+      "shippingSurchargePriceList": {
+        "repositoryId": "CanadianDollar_shippingSurchargePrice"
+      },
+      "includeAllProducts": false
+    }
+  ]
+}

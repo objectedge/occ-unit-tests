@@ -1,0 +1,76 @@
+{
+  "properties": {
+    "total": {
+      "description": "The total number of items. Deprecated.",
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total number of items.",
+      "type": "integer"
+    },
+    "offset": {
+      "description": "Index of the first element to return.",
+      "type": "integer"
+    },
+    "limit": {
+      "description": "The number of items to return.",
+      "type": "integer"
+    },
+    "selectedTimezone": {
+      "description": "Selected Timezone",
+      "type": "object",
+      "properties": {
+        "timezoneLabel": {
+          "description": "Timezone name to display in the UI",
+          "type": "string"
+        },
+        "repositoryId": {
+          "description": "ID of the timezone item",
+          "type": "string"
+        },
+        "timezoneCode": {
+          "description": "Standard Timezone value",
+          "type": "string"
+        }
+      }
+    },
+    "sort": {
+      "description": "Sorting criteria.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "property": {
+            "description": "The property the listing is sorted by.",
+            "type": "string"
+          },
+          "order": {
+            "description": "Sort order: asc or desc.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "items": {
+      "description": "List of timezones",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timezoneLabel": {
+            "description": "Timezone name to display in the UI",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "ID of the timezone item.",
+            "type": "string"
+          },
+          "timezoneCode": {
+            "description": "Standard Timezone values",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

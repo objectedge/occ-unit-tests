@@ -1,0 +1,29 @@
+{
+  "properties": {
+    "items": {
+      "description": "The list of all shipping regions.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "regionCode": {
+            "description": "The country-region code (normally its ISO 3166-2 code).",
+            "type": "string"
+          },
+          "displayName": {
+            "description": "Localized region name.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The ID of the region item.",
+            "type": "string"
+          },
+          "abbreviation": {
+            "description": "The region code.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

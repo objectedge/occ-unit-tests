@@ -1,0 +1,160 @@
+{
+  "properties": {
+    "total": {
+      "description": "The total number of location items. Deprecated.",
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total number of location items.",
+      "type": "integer"
+    },
+    "offset": {
+      "description": "Index of the first location item to return.",
+      "type": "integer"
+    },
+    "limit": {
+      "description": "The number of location items to return.",
+      "type": "integer"
+    },
+    "sort": {
+      "description": "The location items sorting criteria.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "property": {
+            "description": "The property by which to sort the list of location items.  The default is locationId.",
+            "type": "string"
+          },
+          "order": {
+            "description": "Sort order: asc or desc.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "items": {
+      "description": "The list of location items.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "description": "The country of the location.",
+            "type": "string"
+          },
+          "hours": {
+            "description": "The store opening hours. Only applicable to location type 'store'.",
+            "type": "string"
+          },
+          "distance": {
+            "description": "A session-scoped property that contains the distance when searching for location items. Not applicable.",
+            "type": "number"
+          },
+          "address3": {
+            "description": "The third address field of the location.",
+            "type": "string"
+          },
+          "endDate": {
+            "description": "The end date for the location. This is used when performing a search for inventory available from a store during a specific date range. If the search contains a specific date range, only locations that have a date that are contained within that date range will be displayed.",
+            "type": "string"
+          },
+          "address2": {
+            "description": "The second address field of the location.",
+            "type": "string"
+          },
+          "city": {
+            "description": "The city of the location.",
+            "type": "string"
+          },
+          "address1": {
+            "description": "The first address field of the location.",
+            "type": "string"
+          },
+          "latitude": {
+            "description": "The latitude of the location.",
+            "type": "number"
+          },
+          "postalCode": {
+            "description": "The postal code of the location.",
+            "type": "string"
+          },
+          "county": {
+            "description": "The county of the location.",
+            "type": "string"
+          },
+          "stateAddress": {
+            "description": "The state of the location.",
+            "type": "string"
+          },
+          "sites": {
+            "description": "List of sites.  A location can be constrained to a list of sites. If no site is defined, the location is available on all sites.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The site ID associated with this location.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "type": {
+            "description": "The type of location, either 'location' or 'store'.",
+            "type": "string"
+          },
+          "externalLocationId": {
+            "description": "An optional additional location ID, such as the merchant store ID. Use this if you have extra parameters for identifying your stores or locations.",
+            "type": "string"
+          },
+          "phoneNumber": {
+            "description": "The phone number of the location.",
+            "type": "string"
+          },
+          "siteGroups": {
+            "description": "List of site groups. A location can be constrained to a list of site groups. If no site group is defined, the location is available on all sites.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "description": "The site group ID associated with this location.",
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "locationId": {
+            "description": "The ID of the location. This ID will be generated if none is provided.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The ID of the location repository item.",
+            "type": "string"
+          },
+          "name": {
+            "description": "The name of the location.",
+            "type": "string"
+          },
+          "faxNumber": {
+            "description": "The fax number of the location.",
+            "type": "string"
+          },
+          "startDate": {
+            "description": "The start date for the location. This is used when performing a search for inventory available from a store during a specific date range. If the search contains a specific date range, only locations that have a date that are contained within that date range will be displayed.",
+            "type": "string"
+          },
+          "email": {
+            "description": "The email address of the location.",
+            "type": "string"
+          },
+          "longitude": {
+            "description": "The longitude of the location.",
+            "type": "number"
+          }
+        }
+      }
+    }
+  }
+}

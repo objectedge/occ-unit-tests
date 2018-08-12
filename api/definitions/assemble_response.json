@@ -1,0 +1,52 @@
+{
+  "properties": {
+    "resultsList": {
+      "description": "List of all the results",
+      "type": "object",
+      "properties": {
+        "pagingActionTemplate": {
+          "description": "Template of paging action",
+          "type": "object",
+          "properties": {
+            "contentPath": {
+              "description": "Path of the content",
+              "type": "string"
+            },
+            "@class": {
+              "description": "Path of NavigationAction class",
+              "type": "string"
+            },
+            "navigationState": {
+              "description": "Query of navigation which determines the state",
+              "type": "string"
+            },
+            "siteRootPath": {
+              "description": "Site Root path of endeca",
+              "type": "string"
+            },
+            "label": {
+              "description": "Label of action",
+              "type": "string"
+            }
+          }
+        },
+        "lastRecNum": {
+          "description": "Last record number",
+          "type": "integer"
+        },
+        "totalNumRecs": {
+          "description": "Total Number of Records in the result set",
+          "type": "integer"
+        },
+        "firstRecNum": {
+          "description": "First record number",
+          "type": "integer"
+        },
+        "recsPerPage": {
+          "description": "Number of records per page",
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

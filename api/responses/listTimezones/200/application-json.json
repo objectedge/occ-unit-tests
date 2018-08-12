@@ -1,0 +1,34 @@
+{
+  "total": 107,
+  "totalResults": 107,
+  "offset": 3,
+  "limit": 3,
+  "selectedTimezone": {
+    "timezoneLabel": "(UTC) Reykjavik ",
+    "repositoryId": "atlantic_reykjavik",
+    "timezoneCode": "Atlantic/Reykjavik"
+  },
+  "sort": [
+    {
+      "property": "timezoneLabel",
+      "order": "asc"
+    }
+  ],
+  "items": [
+    {
+      "timezoneLabel": "(UTC) London ",
+      "repositoryId": "europe_london",
+      "timezoneCode": "Europe/London"
+    },
+    {
+      "timezoneLabel": "(UTC) Nouakchott ",
+      "repositoryId": "africa_nouakchott",
+      "timezoneCode": "Africa/Nouakchott"
+    },
+    {
+      "timezoneLabel": "(UTC) Reykjavik ",
+      "repositoryId": "atlantic_reykjavik",
+      "timezoneCode": "Atlantic/Reykjavik"
+    }
+  ]
+}

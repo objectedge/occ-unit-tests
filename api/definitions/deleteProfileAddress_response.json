@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "repositoryId": {
+      "description": "The Id of the address deleted",
+      "type": "string"
+    }
+  }
+}

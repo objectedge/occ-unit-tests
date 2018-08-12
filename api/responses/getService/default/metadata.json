@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/errorModel"
+  },
+  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|551000|Could not get customers profile.|\n|551001|Customer has no service account.|\n|551002|Error retrieving customers service account.|\n|551003|Error retrieving account assets.|\n|551004|Error validating contact account ids in Order.\n|551005|Invalid account asset id.\n|551006|Account asset authorization error.\n|551007|Owner of the account asset could not be determined.\n|551008|Error submitting action request.\n|551009|Invalid transactionDate.\n"
+}

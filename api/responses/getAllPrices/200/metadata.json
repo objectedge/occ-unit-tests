@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/getAllPrices_response"
+  },
+  "description": "Following model is returned when operation succeeds."
+}

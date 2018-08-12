@@ -1,0 +1,53 @@
+{
+  "properties": {
+    "offset": {
+      "description": "The start index of the list of records to be fetched",
+      "type": "integer"
+    },
+    "sort": {
+      "description": "Sorting format",
+      "type": "string"
+    },
+    "items": {
+      "description": "The list of site related properties for the profile",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "site": {
+            "description": "The site data",
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The id of the site",
+                "type": "string"
+              }
+            }
+          },
+          "properties": {
+            "description": "The site related properties for the profile",
+            "type": "object",
+            "properties": {
+              "GDPRProfileP13nConsentDate": {
+                "description": "The date on which GDPR personalization consent was granted by the user.",
+                "type": "string"
+              },
+              "GDPRProfileP13nConsentGranted": {
+                "description": "Indicates whether the user has given GDPR Profile P13n consent on the current site. Can be true or false.",
+                "type": "boolean"
+              },
+              "receiveEmail": {
+                "description": "Indicates whether the user should receive marketing emails on the current site. Can be yes or no.",
+                "type": "string"
+              },
+              "receiveEmailDate": {
+                "description": "The date on which email marketing consent was granted by the user.",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

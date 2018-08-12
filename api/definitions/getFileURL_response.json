@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "Path of the file": {
+      "description": "URL of the file",
+      "type": "string"
+    }
+  }
+}

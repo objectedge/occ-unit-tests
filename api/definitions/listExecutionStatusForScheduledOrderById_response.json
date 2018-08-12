@@ -1,0 +1,78 @@
+{
+  "properties": {
+    "total": {
+      "description": "The total number of the Scheduled orders.",
+      "type": "integer"
+    },
+    "totalResults": {
+      "description": "The total results of the Scheduled orders.",
+      "type": "integer"
+    },
+    "offset": {
+      "description": "The offset results of the Scheduled orders.",
+      "type": "integer"
+    },
+    "limit": {
+      "description": "The limit results of the Scheduled orders in a page.",
+      "type": "integer"
+    },
+    "items": {
+      "description": "The array of the Scheduled orders by the id.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "endDate": {
+            "description": "The end date of the Scheduled order.",
+            "type": "string"
+          },
+          "executionStatusList": {
+            "description": "The status list of executed scheduled orders",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "scheduledOrderId": {
+                  "description": "The Id of the Scheduled order.",
+                  "type": "string"
+                },
+                "errorMessages": {
+                  "description": "The error messages list.",
+                  "type": "string"
+                },
+                "orderId": {
+                  "description": "The Id of the Scheduled order.",
+                  "type": "string"
+                },
+                "repositoryId": {
+                  "description": "The Id of the Scheduled order.",
+                  "type": "string"
+                },
+                "executionDate": {
+                  "description": "The date for previous scheduled run",
+                  "type": "string"
+                },
+                "id": {
+                  "description": "The Id of the Scheduled order.",
+                  "type": "string"
+                },
+                "orderSubmitted": {
+                  "description": "The status of order.",
+                  "type": "boolean"
+                },
+                "orderTotal": {
+                  "description": "Total order value.",
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "Id": {
+            "description": "The Id of the Scheduled order.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

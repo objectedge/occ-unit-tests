@@ -1,0 +1,141 @@
+{
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://slc12lyv.us.oracle.com:8080/ccstoreui/v1/orders/o30411/returnRequests"
+    }
+  ],
+  "items": [
+    {
+      "returnRequestId": "200002",
+      "returnLabel": "a5445afg5",
+      "isExchangeRequest": false,
+      "authorizationNumber": "12345",
+      "createdDate": 1513930292000,
+      "returnItems": [
+        {
+          "quantityToReturn": 1,
+          "productId": "Product_36Exy",
+          "returnReason": "Did Not Like",
+          "additionalProperties": {
+            "name2": "value2",
+            "name1": "value1"
+          },
+          "state": "AWAITING_RETURN",
+          "catRefId": "Sku_36Fxy"
+        }
+      ],
+      "totalRefund": 24.63,
+      "additionalProperties": {
+        "name2": "value2",
+        "name1": "value1"
+      },
+      "state": "Approved",
+      "totalReturnQuantity": 1,
+      "trackingNumber": [
+        "1234567890"
+      ],
+      "operation": "process"
+    },
+    {
+      "returnRequestId": "200001",
+      "returnLabel": "a5445afg5",
+      "isExchangeRequest": false,
+      "authorizationNumber": "12345",
+      "createdDate": 1513929715000,
+      "returnItems": [
+        {
+          "quantityToReturn": 1,
+          "productId": "Product_36Exy",
+          "returnReason": "Did Not Like",
+          "additionalProperties": {
+            "name2": "value2",
+            "name1": "value1"
+          },
+          "state": "AWAITING_RETURN",
+          "catRefId": "Sku_36Fxy"
+        }
+      ],
+      "totalRefund": 24.63,
+      "additionalProperties": {
+        "name2": "value2",
+        "name1": "value1"
+      },
+      "state": "Approved",
+      "totalReturnQuantity": 1,
+      "trackingNumber": [
+        "1234567890"
+      ],
+      "operation": "process"
+    },
+    {
+      "returnRequestId": "100003",
+      "returnLabel": null,
+      "isExchangeRequest": false,
+      "authorizationNumber": "100003",
+      "createdDate": 1513774357000,
+      "returnItems": [
+        {
+          "quantityToReturn": 1,
+          "productId": "Product_36Exy",
+          "returnReason": "Did Not Like",
+          "additionalProperties": {},
+          "state": "AWAITING_RETURN",
+          "catRefId": "Sku_36Fxy"
+        }
+      ],
+      "totalRefund": 24.63,
+      "additionalProperties": {},
+      "state": "Approved",
+      "totalReturnQuantity": 1,
+      "trackingNumber": null,
+      "operation": "process"
+    },
+    {
+      "returnRequestId": "100002",
+      "returnLabel": null,
+      "isExchangeRequest": false,
+      "authorizationNumber": "100002",
+      "createdDate": 1513774188000,
+      "returnItems": [
+        {
+          "quantityToReturn": 1,
+          "productId": "Product_36Exy",
+          "returnReason": "Did Not Like",
+          "additionalProperties": {},
+          "state": "AWAITING_RETURN",
+          "catRefId": "Sku_36Fxy"
+        }
+      ],
+      "totalRefund": 24.63,
+      "additionalProperties": {},
+      "state": "Approved",
+      "totalReturnQuantity": 1,
+      "trackingNumber": null,
+      "operation": "process"
+    },
+    {
+      "returnRequestId": "100001",
+      "returnLabel": null,
+      "isExchangeRequest": false,
+      "authorizationNumber": "100001",
+      "createdDate": 1513773501000,
+      "returnItems": [
+        {
+          "quantityToReturn": 1,
+          "productId": "Product_36Exy",
+          "returnReason": "Did Not Like",
+          "additionalProperties": {},
+          "state": "AWAITING_RETURN",
+          "catRefId": "Sku_36Fxy"
+        }
+      ],
+      "totalRefund": 24.63,
+      "additionalProperties": {},
+      "state": "Approved",
+      "totalReturnQuantity": 1,
+      "trackingNumber": null,
+      "operation": "process"
+    }
+  ]
+}

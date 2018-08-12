@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "orderId": {
+      "description": "Order ID for which return has to be initiated.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "orderId"
+  ],
+  "example": {
+    "orderId": "o10400"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "transactionType": {
+      "description": "Type of the transaction required for PayULatamWeb checkout type.",
+      "type": "string"
+    },
+    "PayerID": {
+      "description": "Payer ID required for paypal checkout type.",
+      "type": "string"
+    },
+    "amount": {
+      "description": "Amount of the order required for PayULatamWeb checkout type.",
+      "type": "string"
+    },
+    "transactionStatus": {
+      "description": "Status of the transaction required for PayULatamWeb checkout type.",
+      "type": "string"
+    },
+    "signature": {
+      "description": "Signature generated required for PayULatamWeb checkout type.",
+      "type": "string"
+    },
+    "paymentId": {
+      "description": "Payment ID required for both Paypal checkout and PayULatamWeb checkout types.",
+      "type": "string"
+    },
+    "currency": {
+      "description": "ISO 4127 three-letter currency code required for PayULatamWeb checkout type.",
+      "type": "string"
+    }
+  },
+  "example": {
+    "PayerID": "JF8GVGL9Y5V7W",
+    "paymentId": "PAY-0RH85609009448435KUPPKUA"
+  }
+}

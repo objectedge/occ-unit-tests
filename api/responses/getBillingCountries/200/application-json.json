@@ -1,0 +1,90 @@
+[
+  {
+    "country": {
+      "countryCode": "CA",
+      "displayName": "Canada",
+      "repositoryId": "CA"
+    },
+    "regions": [
+      {
+        "regionCode": "CA-NB",
+        "displayName": "New Brunswick",
+        "repositoryId": "CA-NB",
+        "abbreviation": "NB"
+      },
+      {
+        "regionCode": "CA-PE",
+        "displayName": "Prince Edward Island",
+        "repositoryId": "CA-PE",
+        "abbreviation": "PE"
+      },
+      {
+        "regionCode": "CA-QC",
+        "displayName": "Quebec",
+        "repositoryId": "CA-QC",
+        "abbreviation": "QC"
+      },
+      {
+        "regionCode": "CA-BC",
+        "displayName": "British Columbia",
+        "repositoryId": "CA-BC",
+        "abbreviation": "BC"
+      },
+      {
+        "regionCode": "CA-MB",
+        "displayName": "Manitoba",
+        "repositoryId": "CA-MB",
+        "abbreviation": "MB"
+      },
+      {
+        "regionCode": "CA-YT",
+        "displayName": "Yukon",
+        "repositoryId": "CA-YT",
+        "abbreviation": "YT"
+      },
+      {
+        "regionCode": "CA-NT",
+        "displayName": "Northwest Territories",
+        "repositoryId": "CA-NT",
+        "abbreviation": "NT"
+      },
+      {
+        "regionCode": "CA-NS",
+        "displayName": "Nova Scotia",
+        "repositoryId": "CA-NS",
+        "abbreviation": "NS"
+      },
+      {
+        "regionCode": "CA-NU",
+        "displayName": "Nunavut",
+        "repositoryId": "CA-NU",
+        "abbreviation": "NU"
+      },
+      {
+        "regionCode": "CA-AB",
+        "displayName": "Alberta",
+        "repositoryId": "CA-AB",
+        "abbreviation": "AB"
+      },
+      {
+        "regionCode": "CA-SK",
+        "displayName": "Saskatchewan",
+        "repositoryId": "CA-SK",
+        "abbreviation": "SK"
+      },
+      {
+        "regionCode": "CA-NL",
+        "displayName": "Newfoundland and Labrador",
+        "repositoryId": "CA-NL",
+        "abbreviation": "NL"
+      },
+      {
+        "regionCode": "CA-ON",
+        "displayName": "Ontario",
+        "repositoryId": "CA-ON",
+        "abbreviation": "ON"
+      }
+    ],
+    "repositoryId": "CA"
+  }
+]

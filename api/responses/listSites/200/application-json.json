@@ -1,0 +1,353 @@
+{
+  "totalResults": 1,
+  "endingIndex": 250,
+  "offset": 0,
+  "totalResultsParam": true,
+  "count": 1,
+  "limit": 250,
+  "sort": {
+    "collator": null,
+    "localeSensitiveSorting": false,
+    "numDirectives": 1,
+    "empty": false
+  },
+  "items": [
+    {
+      "longDescription": null,
+      "priceListGroupList": [
+        {
+          "deleted": false,
+          "displayName": "Default Price Group",
+          "repositoryId": "defaultPriceGroup",
+          "active": true,
+          "currency": {
+            "symbol": "$",
+            "displayName": "US Dollar",
+            "repositoryId": "en_US",
+            "fractionalDigits": 2,
+            "currencyCode": "USD",
+            "numericCode": "840"
+          },
+          "id": "defaultPriceGroup",
+          "locale": "en_US"
+        }
+      ],
+      "productionURL": null,
+      "description": "Commerce Cloud Site",
+      "secondaryCurrency": "USD",
+      "requireGDPRP13nConsent": false,
+      "defaultCatalog": {
+        "repositoryId": "cloudLakeCatalog",
+        "rootCategories": [
+          {
+            "longDescription": "Cloud Commerce Non-Navigable",
+            "categoryImages": [],
+            "displayName": "Non-Navigable",
+            "categoryPaths": [
+              "/Non-Navigable"
+            ],
+            "active": false,
+            "description": null,
+            "categoryIdPaths": [
+              "nonNavigableCategory"
+            ],
+            "childCategories": null,
+            "fixedParentCategories": [],
+            "creationDate": "2017-03-31T05:19:46.000Z",
+            "route": "/non-navigable/category/nonNavigableCategory",
+            "repositoryId": "nonNavigableCategory",
+            "id": "nonNavigableCategory"
+          },
+          {
+            "longDescription": "Commerce Cloud Root Category",
+            "categoryImages": [],
+            "displayName": "Storefront Navigation",
+            "categoryPaths": [
+              "/Storefront Navigation"
+            ],
+            "active": false,
+            "description": null,
+            "categoryIdPaths": [
+              "rootCategory"
+            ],
+            "childCategories": [
+              {
+                "repositoryId": "cat40013"
+              },
+              {
+                "repositoryId": "cat60023"
+              },
+              {
+                "repositoryId": "catOutdoor"
+              },
+              {
+                "repositoryId": "clearanceCat"
+              },
+              {
+                "repositoryId": "topLeaf"
+              },
+              {
+                "repositoryId": "cameracat"
+              },
+              {
+                "repositoryId": "AllProdPagination"
+              },
+              {
+                "repositoryId": "giftCards"
+              }
+            ],
+            "fixedParentCategories": [],
+            "creationDate": "2017-03-31T05:19:28.000Z",
+            "route": "/storefront-navigation/category/rootCategory",
+            "repositoryId": "rootCategory",
+            "id": "rootCategory"
+          }
+        ],
+        "allRootCategories": []
+      },
+      "defaultAccessLevel": "FULL",
+      "type": "siteConfiguration",
+      "defaultBillingCountryId": null,
+      "enabled": true,
+      "defaultShippingCountryId": null,
+      "requireGDPRCookieConsent": false,
+      "payTaxInSecondaryCurrency": true,
+      "endecaSiteId": null,
+      "timeToLive": null,
+      "defaultLocaleId": "1",
+      "emailAddress": "CloudCommerce@example.com",
+      "billingCountries": [
+        {
+          "countryCode": "DE",
+          "displayName": "Germany",
+          "repositoryId": "DE"
+        },
+        {
+          "countryCode": "LK",
+          "displayName": "Sri Lanka",
+          "repositoryId": "LK"
+        },
+        {
+          "countryCode": "CA",
+          "displayName": "Canada",
+          "repositoryId": "CA"
+        },
+        {
+          "countryCode": "US",
+          "displayName": "United States",
+          "repositoryId": "US"
+        },
+        {
+          "countryCode": "CL",
+          "displayName": "Chile",
+          "repositoryId": "CL"
+        },
+        {
+          "countryCode": "FO",
+          "displayName": "Faroe Islands",
+          "repositoryId": "FO"
+        },
+        {
+          "countryCode": "BD",
+          "displayName": "Bangladesh",
+          "repositoryId": "BD"
+        },
+        {
+          "countryCode": "AR",
+          "displayName": "Argentina",
+          "repositoryId": "AR"
+        },
+        {
+          "countryCode": "PA",
+          "displayName": "Panama",
+          "repositoryId": "PA"
+        },
+        {
+          "countryCode": "BR",
+          "displayName": "Brazil",
+          "repositoryId": "BR"
+        },
+        {
+          "countryCode": "CO",
+          "displayName": "Colombia",
+          "repositoryId": "CO"
+        },
+        {
+          "countryCode": "MX",
+          "displayName": "Mexico",
+          "repositoryId": "MX"
+        },
+        {
+          "countryCode": "MC",
+          "displayName": "Monaco",
+          "repositoryId": "MC"
+        },
+        {
+          "countryCode": "PE",
+          "displayName": "Peru",
+          "repositoryId": "PE"
+        },
+        {
+          "countryCode": "AU",
+          "displayName": "Australia",
+          "repositoryId": "AU"
+        }
+      ],
+      "maxCouponsPerOrder": null,
+      "siteTemplate": "cloudSiteTemplate",
+      "paymentGateways": [],
+      "siteIcon": null,
+      "additionalProductionURLs": [],
+      "id": "siteUS",
+      "defaultSalePriceList": {
+        "repositoryId": "salePrices"
+      },
+      "additionalLocaleIds": [],
+      "siteDownURL": null,
+      "defaultListPriceList": {
+        "repositoryId": "listPrices"
+      },
+      "realmId": null,
+      "recommendationsHost": "pt-recs-app1.us.oracle.com",
+      "favicon": null,
+      "sfVersion": null,
+      "allowedOriginMethods": {},
+      "defaultShippingSurchargePriceList": {
+        "repositoryId": "shippingSurchargePrices"
+      },
+      "defaultPriceListGroup": {
+        "deleted": false,
+        "displayName": "Default Price Group",
+        "repositoryId": "defaultPriceGroup",
+        "active": true,
+        "currency": {
+          "symbol": "$",
+          "displayName": "US Dollar",
+          "repositoryId": "en_US",
+          "fractionalDigits": 2,
+          "currencyCode": "USD",
+          "numericCode": "840"
+        },
+        "id": "defaultPriceGroup",
+        "locale": "en_US"
+      },
+      "contextRoot": null,
+      "payShippingInSecondaryCurrency": true,
+      "masterCatalog": {
+        "repositoryId": "cloudLakeCatalog",
+        "rootCategories": [
+          {
+            "longDescription": "Cloud Commerce Non-Navigable",
+            "categoryImages": [],
+            "displayName": "Non-Navigable",
+            "categoryPaths": [
+              "/Non-Navigable"
+            ],
+            "active": false,
+            "description": null,
+            "categoryIdPaths": [
+              "nonNavigableCategory"
+            ],
+            "childCategories": null,
+            "fixedParentCategories": [],
+            "creationDate": "2017-03-31T05:19:46.000Z",
+            "route": "/non-navigable/category/nonNavigableCategory",
+            "repositoryId": "nonNavigableCategory",
+            "id": "nonNavigableCategory"
+          },
+          {
+            "longDescription": "Commerce Cloud Root Category",
+            "categoryImages": [],
+            "displayName": "Storefront Navigation",
+            "categoryPaths": [
+              "/Storefront Navigation"
+            ],
+            "active": false,
+            "description": null,
+            "categoryIdPaths": [
+              "rootCategory"
+            ],
+            "childCategories": [
+              {
+                "repositoryId": "cat40013"
+              },
+              {
+                "repositoryId": "cat60023"
+              },
+              {
+                "repositoryId": "catOutdoor"
+              },
+              {
+                "repositoryId": "clearanceCat"
+              },
+              {
+                "repositoryId": "topLeaf"
+              },
+              {
+                "repositoryId": "cameracat"
+              },
+              {
+                "repositoryId": "AllProdPagination"
+              },
+              {
+                "repositoryId": "giftCards"
+              }
+            ],
+            "fixedParentCategories": [],
+            "creationDate": "2017-03-31T05:19:28.000Z",
+            "route": "/storefront-navigation/category/rootCategory",
+            "repositoryId": "rootCategory",
+            "id": "rootCategory"
+          }
+        ],
+        "allRootCategories": []
+      },
+      "siteTypes": [
+        "commerce"
+      ],
+      "recommendationsPort": "8080",
+      "repositoryId": "siteUS",
+      "profileContextList": {
+        "repositoryId": "siteUS-catalogAndPriceGroups"
+      },
+      "name": "Commerce Cloud Site"
+    }
+  ],
+  "listingRequest": {
+    "endingIndex": 250,
+    "queryOptions": {
+      "precachedPropertyNames": null,
+      "doNotCacheQuery": false,
+      "sortDirectives": {
+        "collator": null,
+        "localeSensitiveSorting": false,
+        "numDirectives": 1,
+        "empty": false
+      },
+      "endingIndex": 250,
+      "ignoreDuplicates": false,
+      "nthIndex": 1,
+      "uncachedItems": false,
+      "uncachedItemsSet": false,
+      "startingIndex": 0
+    },
+    "rqlString": null,
+    "sort": {
+      "collator": null,
+      "localeSensitiveSorting": false,
+      "numDirectives": 1,
+      "empty": false
+    },
+    "startingIndex": 0,
+    "filterProperties": [],
+    "includeRqlInQueryGeneration": true,
+    "rqlStatement": null,
+    "expanded": false,
+    "limit": 250,
+    "siteId": "siteUS",
+    "after": null,
+    "calculateTotalAvailable": true
+  },
+  "startingIndex": 0,
+  "totalNumberOfItems": 1
+}

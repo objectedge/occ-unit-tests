@@ -1,0 +1,90 @@
+[
+  {
+    "total": 2,
+    "limit": -1,
+    "items": [
+      {
+        "cost": 6.5,
+        "lastModifiedDate": "2015-12-02T11:57:47.100Z",
+        "orderId": "o10030",
+        "shippingSurchargeValue": 0,
+        "priceListGroup": {
+          "deleted": false,
+          "displayName": "UsDollar",
+          "listPriceList": {
+            "repositoryId": "listPrices"
+          },
+          "repositoryId": "UsDollar",
+          "active": true,
+          "salePriceList": {
+            "repositoryId": "salePrices"
+          },
+          "currency": {
+            "symbol": "$",
+            "displayName": "US Dollar",
+            "repositoryId": "en_US",
+            "fractionalDigits": 2,
+            "currencyCode": "USD",
+            "numericCode": "840"
+          },
+          "id": "UsDollar",
+          "locale": "en_US",
+          "shippingSurchargePriceList": {
+            "repositoryId": "shippingSurchargePrices"
+          }
+        },
+        "tax": 0,
+        "subTotal": 699,
+        "creationDate": "2015-12-02T11:56:34.000Z",
+        "submittedDate": "2015-12-02T11:57:47.090Z",
+        "totalWithoutTax": 705.5,
+        "total": 705.5,
+        "state": "SUBMITTED",
+        "currencyCode": "USD",
+        "stateDetailsAsUser": "Submitted to fulfillment",
+        "status": "Submitted to fulfillment"
+      },
+      {
+        "cost": 6.5,
+        "lastModifiedDate": "2015-12-02T11:55:18.000Z",
+        "orderId": "o10021",
+        "shippingSurchargeValue": 0,
+        "priceListGroup": {
+          "deleted": false,
+          "displayName": "Euros",
+          "listPriceList": {
+            "repositoryId": "euros_listPrices"
+          },
+          "repositoryId": "euros",
+          "active": true,
+          "salePriceList": {
+            "repositoryId": "euros_salePrices"
+          },
+          "currency": {
+            "symbol": "�",
+            "displayName": "Euro",
+            "repositoryId": "de_DE_EURO",
+            "fractionalDigits": 2,
+            "currencyCode": "EUR",
+            "numericCode": "978"
+          },
+          "id": "euros",
+          "locale": "de_DE_EURO",
+          "shippingSurchargePriceList": {
+            "repositoryId": "euros_shippingSurchargePrices"
+          }
+        },
+        "tax": 0,
+        "subTotal": 98,
+        "creationDate": "2015-12-02T11:53:46.000Z",
+        "submittedDate": "2015-12-02T11:55:18.000Z",
+        "totalWithoutTax": 104.5,
+        "total": 104.5,
+        "state": "SUBMITTED",
+        "currencyCode": "EUR",
+        "stateDetailsAsUser": "Submitted to fulfillment",
+        "status": "Submitted to fulfillment"
+      }
+    ]
+  }
+]

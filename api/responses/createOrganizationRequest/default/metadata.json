@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/errorModel"
+  },
+  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|101013|Registration request cannot be processed because the ability to submit registration requests for business accounts is disabled.|\n|101015|An existing B2C shopper cannot submit a registration request for a new account.|\n|00004|Data value too long.|\n|101001|Invalid Input for organization request.|\n"
+}

@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "items": {
+      "description": "The list of all countries.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "displayName": {
+            "description": "Localized country name.",
+            "type": "string"
+          },
+          "countryCode": {
+            "description": "ISO 3166-1 two letter country code.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The repository ID of the country item.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

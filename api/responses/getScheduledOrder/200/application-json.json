@@ -1,0 +1,28 @@
+{
+  "schedule": {
+    "weeksInMonth": [
+      "1",
+      "2",
+      "3"
+    ],
+    "monthsInYear": [
+      "1",
+      "2"
+    ],
+    "daysOfWeek": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  "templateOrderId": "o10001",
+  "scheduleType": "calendar",
+  "endDate": "10/01/2017",
+  "profileId": "user1",
+  "name": "testScheduleOrder",
+  "nextScheduledRun": "10/02/2015",
+  "Id": "sch001",
+  "state": "active",
+  "startDate": "10/01/2015",
+  "createDate": "9/01/2015"
+}

@@ -1,0 +1,261 @@
+{
+  "properties": {
+    "op": {
+      "description": "operation - inquireBalance - to inquire balance of a GiftCard, initiate - for cash and paypalCehckout",
+      "type": "string"
+    },
+    "orderId": {
+      "description": "The order ID.",
+      "type": "string"
+    },
+    "payments": {
+      "description": "The array of Payments to be applied to the order.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "PONumber": {
+            "description": "Purchase order number for invoice payment. PaymentMethodType: invoice",
+            "type": "string"
+          },
+          "PayerID": {
+            "description": "Payer ID relevant to paypal checkout type. PaymentMethodType: paypalCheckout.",
+            "type": "string"
+          },
+          "amount": {
+            "description": "Amount to be paid using this paymentMethod.",
+            "type": "number"
+          },
+          "cardType": {
+            "description": "Credit/Debit card type. e.g. visa. PaymentMethodType: card.",
+            "type": "string"
+          },
+          "expiryMonth": {
+            "description": "Credit/Debit card expiry month. PaymentMethodType: card.",
+            "type": "integer"
+          },
+          "expiryYear": {
+            "description": "Credit/Debit card expiry year. PaymentMethodType: card.",
+            "type": "integer"
+          },
+          "token": {
+            "description": "Token relevant to paypal checkout type. PaymentMethodType: paypalCheckout.",
+            "type": "string"
+          },
+          "paymentGroupId": {
+            "description": "Payment Group ID relevant to the PaymentMethodType. PaymentMethodType: paypalCheckout, payUWebLatamCheckout.",
+            "type": "string"
+          },
+          "cardCVV": {
+            "description": "Credit/Debit card secret pin. PaymentMethodType: card.",
+            "type": "string"
+          },
+          "customProperties": {
+            "description": "Custom object with dynamic properties. This will be passed to the webhook request",
+            "type": "object"
+          },
+          "nameOnCard": {
+            "description": "Name on the credit/debit card. PaymentMethodType: card.",
+            "type": "string"
+          },
+          "giftCardNumber": {
+            "description": "Gift card number used for payment. PaymentMethodType: physicalGiftCard.",
+            "type": "string"
+          },
+          "paymentId": {
+            "description": "Payment ID relevant to the PaymentMethodType. PaymentMethodType: paypalCheckout",
+            "type": "string"
+          },
+          "giftCardPin": {
+            "description": "Gift card pin. PaymentMethodType: physicalGiftCard.",
+            "type": "string"
+          },
+          "billingAddress": {
+            "description": "The billing address details.",
+            "type": "object",
+            "properties": {
+              "lastName": {
+                "description": "Last name.",
+                "type": "string"
+              },
+              "country": {
+                "description": "Country.",
+                "type": "string"
+              },
+              "address3": {
+                "description": "Address snippet.",
+                "type": "string"
+              },
+              "address2": {
+                "description": "Address snippet.",
+                "type": "string"
+              },
+              "city": {
+                "description": "City.",
+                "type": "string"
+              },
+              "prefix": {
+                "description": "Name prefix.",
+                "type": "string"
+              },
+              "address1": {
+                "description": "Address snippet.",
+                "type": "string"
+              },
+              "postalCode": {
+                "description": "Postal code.",
+                "type": "string"
+              },
+              "jobTitle": {
+                "description": "Job title.",
+                "type": "string"
+              },
+              "companyName": {
+                "description": "Company name.",
+                "type": "string"
+              },
+              "county": {
+                "description": "County.",
+                "type": "string"
+              },
+              "suffix": {
+                "description": "Name suffix.",
+                "type": "string"
+              },
+              "selectedCountry": {
+                "description": "Country code.",
+                "type": "string"
+              },
+              "firstName": {
+                "description": "First name.",
+                "type": "string"
+              },
+              "phoneNumber": {
+                "description": "Phone number.",
+                "type": "string"
+              },
+              "faxNumber": {
+                "description": "Fax number.",
+                "type": "string"
+              },
+              "alias": {
+                "description": "Address alias.",
+                "type": "string"
+              },
+              "middleName": {
+                "description": "Middle name.",
+                "type": "string"
+              },
+              "state": {
+                "description": "State.",
+                "type": "string"
+              },
+              "email": {
+                "description": "Email.",
+                "type": "string"
+              },
+              "selectedState": {
+                "description": "State code.",
+                "type": "string"
+              },
+              "state_ISOCode": {
+                "description": "State ISO code.",
+                "type": "string"
+              }
+            },
+            "required": [
+              "lastName",
+              "country",
+              "city",
+              "address1",
+              "postalCode",
+              "selectedCountry",
+              "firstName",
+              "state",
+              "selectedState",
+              "state_ISOCode"
+            ]
+          },
+          "paymentMethodType": {
+            "description": "Payment Method Type - payULatamWebcheckout,paypalCheckout,card,invoice,physicalGiftCard,cash",
+            "type": "string"
+          },
+          "cardNumber": {
+            "description": "Credit/Debit card number used for payment. PaymentMethodType: card.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "amount",
+          "paymentMethodType"
+        ]
+      }
+    }
+  },
+  "required": [
+    "orderId",
+    "payments"
+  ],
+  "example": {
+    "orderId": "o80413",
+    "profileId": "170309",
+    "payments": [
+      {
+        "amount": "15.50",
+        "customProperties": {
+          "cust-prop2": "cust-prop2",
+          "cust-prop1": "cust-prop1"
+        },
+        "giftCardNumber": "536564",
+        "giftCardPin": "123",
+        "billingAddress": {
+          "lastName": "Anderson",
+          "country": "US",
+          "address2": "",
+          "city": "Syracuse",
+          "address1": "21 Cedar Ave",
+          "postalCode": "13202",
+          "county": "",
+          "selectedCountry": "US",
+          "firstName": "Kim",
+          "phoneNumber": "212-555-1977",
+          "state": "New York",
+          "selectedState": "NY",
+          "email": "kim@example.com (http://example.com/)",
+          "state_ISOCode": "US-NY"
+        },
+        "paymentMethodType": "physicalGiftCard"
+      },
+      {
+        "cardCVV": "333",
+        "amount": "19.50",
+        "customProperties": {
+          "cust-prop2": "cust-prop2",
+          "cust-prop1": "cust-prop1"
+        },
+        "nameOnCard": "Kim",
+        "cardType": "visa",
+        "expiryMonth": "3",
+        "expiryYear": "2019",
+        "billingAddress": {
+          "lastName": "Anderson",
+          "country": "US",
+          "address2": "",
+          "city": "Syracuse",
+          "address1": "21 Cedar Ave",
+          "postalCode": "13202",
+          "county": "",
+          "selectedCountry": "US",
+          "firstName": "Kim",
+          "phoneNumber": "212-555-1977",
+          "state": "New York",
+          "selectedState": "NY",
+          "email": "kim@example.com (http://example.com/)",
+          "state_ISOCode": "US-NY"
+        },
+        "paymentMethodType": "card",
+        "cardNumber": "4111111111111111"
+      }
+    ]
+  }
+}

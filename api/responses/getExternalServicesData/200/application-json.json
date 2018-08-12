@@ -1,0 +1,44 @@
+{
+  "items": [
+    {
+      "serverType": "production",
+      "serviceData": {
+        "displayName": "Facebook",
+        "name": "Facebook",
+        "applicationId": null
+      },
+      "id": "production-Facebook"
+    },
+    {
+      "serverType": "production",
+      "serviceData": {
+        "port": 123,
+        "displayName": "Oracle Recommendations",
+        "host": "myHost",
+        "name": "Recommendations",
+        "tenantId": "foo"
+      },
+      "id": "production-Recommendations"
+    },
+    {
+      "serverType": "publishing",
+      "serviceData": {
+        "displayName": "Facebook",
+        "name": "Facebook",
+        "applicationId": null
+      },
+      "id": "publishing-Facebook"
+    },
+    {
+      "serverType": "publishing",
+      "serviceData": {
+        "port": 0,
+        "displayName": "Oracle Recommendations",
+        "host": null,
+        "name": "Recommendations",
+        "tenantId": null
+      },
+      "id": "publishing-Recommendations"
+    }
+  ]
+}

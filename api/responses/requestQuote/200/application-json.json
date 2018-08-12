@@ -1,0 +1,295 @@
+{
+  "taxPriceInfo": {
+    "cityTax": 0,
+    "amount": 0,
+    "valueAddedTax": 0,
+    "countyTax": 0,
+    "isTaxIncluded": false,
+    "miscTax": 0,
+    "districtTax": 0,
+    "stateTax": 0,
+    "countryTax": 0
+  },
+  "shippingGroups": [
+    {
+      "shippingMethod": {
+        "shippingTax": 0,
+        "cost": 0,
+        "value": "hardgoodShippingGroup",
+        "shippingMethodDescription": "hardgoodShippingGroup"
+      },
+      "shippingGroupId": "sg30411",
+      "submittedDate": null,
+      "priceInfo": {
+        "amount": 12.99,
+        "total": 12.99,
+        "shipping": 0,
+        "shippingSurchargeValue": 0,
+        "tax": 0,
+        "subTotal": 12.99,
+        "currencyCode": "USD",
+        "totalWithoutTax": 12.99
+      },
+      "recurringChargePriceInfo": {
+        "amount": 30,
+        "total": 32.4,
+        "shipping": 0,
+        "subTotalByFrequency": [
+          {
+            "amount": 30,
+            "frequency": "Monthly"
+          }
+        ],
+        "taxByFrequency": [
+          {
+            "amount": 2.4,
+            "frequency": "Monthly"
+          }
+        ],
+        "tax": 2.4,
+        "subTotal": 30,
+        "currencyCode": "USD",
+        "totalWithoutTax": 30
+      },
+      "discountInfo": {
+        "orderDiscount": 0,
+        "shippingDiscount": 0,
+        "discountDescList": []
+      },
+      "shipOnDate": null,
+      "trackingInfo": [],
+      "actualShipDate": null,
+      "shippingAddress": {
+        "lastName": null,
+        "country": null,
+        "address3": null,
+        "address2": null,
+        "city": null,
+        "prefix": null,
+        "address1": null,
+        "postalCode": null,
+        "companyName": null,
+        "jobTitle": null,
+        "county": null,
+        "suffix": null,
+        "firstName": null,
+        "phoneNumber": null,
+        "faxNumber": null,
+        "alias": null,
+        "middleName": null,
+        "state": null,
+        "email": null
+      },
+      "items": [
+        {
+          "primaryThumbImageURL": "/ccstore/v1/images/?source=/file/v5784313290557454780/products/ab_meet_frankenstein_LARGE.jpg&height=100&width=100",
+          "deactivationDate": "2018-06-27T12:59:59Z",
+          "rawTotalPrice": 12.99,
+          "returnedQuantity": 0,
+          "displayName": "Abbott and Costello Meet Frankenstein",
+          "dynamicProperties": [
+            {
+              "id": "dynamicPropertyMode",
+              "label": "Mode",
+              "value": "pickup"
+            }
+          ],
+          "shippingSurchargeValue": 0,
+          "externalData": [],
+          "discountAmount": 0,
+          "billingAccountId": "billingAcc-123",
+          "commerceItemId": "ci3000411",
+          "assetId": "asset10001",
+          "price": 12.99,
+          "variant": [],
+          "onSale": false,
+          "primaryImageAltText": "Abbott and Costello Meet Frankenstein",
+          "actionCode": "Add",
+          "serviceId": "service-123",
+          "stateDetailsAsUser": "The item has been initialized within the shipping group",
+          "serviceAccountId": "serviceAcc-123",
+          "unitPrice": 12.99,
+          "primaryImageTitle": "Abbott and Costello Meet Frankenstein",
+          "quantity": 1,
+          "productId": "Product_15CD",
+          "salePrice": 0,
+          "detailedItemPriceInfo": [
+            {
+              "discounted": false,
+              "amount": 12.99,
+              "quantity": 1,
+              "tax": 0,
+              "orderDiscountShare": 0,
+              "detailedUnitPrice": 12.99,
+              "currencyCode": "USD"
+            }
+          ],
+          "externalRecurringCharge": 10,
+          "active": true,
+          "externalRecurringChargeFrequency": "Monthly",
+          "externalRecurringChargeDuration": "12",
+          "catRefId": "Sku_15DE",
+          "customerAccountId": "customerAcc-123",
+          "discountInfo": [],
+          "route": "/abbott-and-costello-meet-frankenstein/product/Product_15CD",
+          "detailedRecurringChargeInfo": [
+            {
+              "discounted": false,
+              "amount": 10,
+              "quantity": 1,
+              "tax": 0,
+              "orderDiscountShare": 0,
+              "detailedUnitPrice": 10,
+              "currencyCode": "USD"
+            }
+          ],
+          "activationDate": "2017-06-27T15:30:00Z",
+          "listPrice": 12.99,
+          "recurringCharge": 10,
+          "status": "INITIAL"
+        }
+      ],
+      "trackingNumber": null,
+      "status": "INITIAL"
+    }
+  ],
+  "creationTime": 1477479518100,
+  "lastModifiedDate": "2016-10-26T10:58:41.098Z",
+  "sourceSystem": "Cloud Commerce",
+  "payments": [],
+  "priceListGroup": {
+    "repositoryId": "defaultPriceGroup"
+  },
+  "creationDate": "2016-10-26T10:58:38.100Z",
+  "uuid": "50c19085-2f79-43e2-8672-4db713fdc9b3",
+  "orderProfileId": "120213",
+  "priceInfo": {
+    "amount": 12.99,
+    "total": 12.99,
+    "shipping": 0,
+    "shippingSurchargeValue": 0,
+    "tax": 0,
+    "subTotal": 12.99,
+    "currencyCode": "USD",
+    "totalWithoutTax": 12.99
+  },
+  "recurringChargePriceInfo": {
+    "amount": 30,
+    "total": 32.4,
+    "shipping": 0,
+    "subTotalByFrequency": [
+      {
+        "amount": 30,
+        "frequency": "Monthly"
+      }
+    ],
+    "taxByFrequency": [
+      {
+        "amount": 2.4,
+        "frequency": "Monthly"
+      }
+    ],
+    "tax": 2.4,
+    "subTotal": 30,
+    "currencyCode": "USD",
+    "totalWithoutTax": 30
+  },
+  "discountInfo": {
+    "orderDiscount": 0,
+    "orderDiscountDescList": [],
+    "shippingDiscount": 0
+  },
+  "trackingInfo": [],
+  "shoppingCart": {
+    "items": [
+      {
+        "deactivationDate": "2018-06-27T12:59:59Z",
+        "rawTotalPrice": 12.99,
+        "dynamicProperties": [
+          {
+            "id": "dynamicPropertyMode",
+            "label": "Mode",
+            "value": "pickup"
+          }
+        ],
+        "displayName": "Abbott and Costello Meet Frankenstein",
+        "shippingSurchargeValue": 0,
+        "externalData": [],
+        "discountAmount": 0,
+        "billingAccountId": "billingAcc-123",
+        "commerceItemId": "ci3000411",
+        "assetId": "asset10001",
+        "price": 12.99,
+        "variant": [],
+        "actionCode": "Add",
+        "id": "ci3000411",
+        "serviceId": "service-123",
+        "unitPrice": 12.99,
+        "serviceAccountId": "serviceAcc-123",
+        "quantity": 1,
+        "productId": "Product_15CD",
+        "salePrice": 0,
+        "detailedItemPriceInfo": [
+          {
+            "discounted": false,
+            "amount": 12.99,
+            "quantity": 1,
+            "tax": 0,
+            "orderDiscountShare": 0,
+            "detailedUnitPrice": 12.99,
+            "currencyCode": "USD"
+          }
+        ],
+        "externalRecurringCharge": 10,
+        "giftWithPurchaseCommerceItemMarkers": [],
+        "externalRecurringChargeFrequency": "Monthly",
+        "externalRecurringChargeDuration": "12",
+        "catRefId": "Sku_15DE",
+        "customerAccountId": "customerAcc-123",
+        "discountInfo": [],
+        "detailedRecurringChargeInfo": [
+          {
+            "discounted": false,
+            "amount": 10,
+            "quantity": 1,
+            "tax": 0,
+            "orderDiscountShare": 0,
+            "detailedUnitPrice": 10,
+            "currencyCode": "USD"
+          }
+        ],
+        "activationDate": "2017-06-27T15:30:00Z",
+        "listPrice": 12.99,
+        "recurringCharge": 10
+      }
+    ]
+  },
+  "orderLocale": "en",
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:9080/ccstoreui/v1/orders/requestQuote"
+    }
+  ],
+  "id": "o30411",
+  "state": "PENDING_QUOTE",
+  "quoteInfo": {
+    "providerNote": null,
+    "notes": [
+      {
+        "profileType": null,
+        "profileId": "120213",
+        "requestDate": 1477479521002,
+        "requesterNote": "This is a sample quote"
+      }
+    ],
+    "rejectionDate": null,
+    "requestDate": "2016-10-26T10:58:41.002Z",
+    "errorInfo": null,
+    "externalID": null,
+    "rejectionNote": null,
+    "quoteDate": null,
+    "expirationDate": null
+  },
+  "giftWithPurchaseOrderMarkers": []
+}

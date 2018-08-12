@@ -1,0 +1,60 @@
+{
+  "basePath": "/ccstore/v1",
+  "paths": {
+    "/metadata/{id}": {
+      "get": {
+        "summary": "getMetadata",
+        "produces": [
+          "application/json"
+        ],
+        "operationId": "getMetadata",
+        "description": "Get Metadata. Get the metadata information for an item descriptor by ID.",
+        "responses": {
+          "200": {
+            "description": "Following model is returned when operation succeeds."
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The ID of the itemType.",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "tags": [
+          "Metadata"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "getMetadata_response": {
+      "properties": {
+        "items": {
+          "description": "An array of metadata/ properties information for an item descriptor.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "editableAttributes": {
+                "description": "List of attributes of the property which can be edited from UI.",
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "swagger": "2.0",
+  "info": {
+    "description": "Metadata endpoints",
+    "title": "Metadata",
+    "version": "1.0"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "failureHTTPCode": {
+      "description": "Bad HTTP Code returned by CyberSource",
+      "type": "string"
+    },
+    "transaction_uuid": {
+      "description": "Transaction UUID used for making the SOP request.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "failureHTTPCode",
+    "transaction_uuid"
+  ],
+  "example": {
+    "failureHTTPCode": "102",
+    "transaction_uuid": "3a811e7a119a456dad28f6d1f2f9af41"
+  }
+}

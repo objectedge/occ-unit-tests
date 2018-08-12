@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "requiresApproval": {
+      "description": "True if order requires approval else False.",
+      "type": "boolean"
+    }
+  }
+}

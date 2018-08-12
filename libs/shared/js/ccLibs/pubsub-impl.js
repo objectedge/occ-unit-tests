@@ -1,0 +1,2 @@
+define("pubsubImpl",["jquery"],function(){"use strict";function i(){this.topics={}}return i.prototype.topic=function(i){var t,e=i&&this.topics[i],s="unique";return e||(/\.memory/.test(i)&&(s+=" memory"),t=$.Callbacks(s),window.pubsubevents=t,e={publish:t.fire,publishWith:t.fireWith,subscribe:t.add,unsubscribe:t.remove},i&&(this.topics[i]=e)),e},i});
+//# sourceMappingURL=pubsub-impl.js.map

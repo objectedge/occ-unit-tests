@@ -1,0 +1,14 @@
+{
+  "properties": {
+    "event": {
+      "description": "the event integer value",
+      "type": "integer"
+    }
+  },
+  "required": [
+    "event"
+  ],
+  "example": {
+    "event": 1
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "productLine": "laptop",
+  "configContextKey": "string",
+  "configuratorUrl": "www.example.com",
+  "bomKey": "string",
+  "segment": "computer",
+  "model": "laptopModel"
+}

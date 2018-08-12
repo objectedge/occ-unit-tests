@@ -1,0 +1,155 @@
+{
+  "skuProperties": [
+    {
+      "itemType": "sku-MensApparel",
+      "hidden": false,
+      "variantBasedDisplay": false,
+      "label": "UPC Code",
+      "type": "shortText",
+      "required": false,
+      "searchable": false,
+      "writable": true,
+      "internalOnly": false,
+      "default": "1234567890",
+      "listingVariant": false,
+      "propertyType": "sku-custom",
+      "localizable": false,
+      "textSearchable": false,
+      "id": "upccode",
+      "dimension": false,
+      "editableAttributes": [
+        "internalOnly",
+        "default",
+        "listingVariant",
+        "hidden",
+        "variantBasedDisplay",
+        "textSearchable",
+        "label",
+        "dimension",
+        "required",
+        "searchable",
+        "order",
+        "multiSelect"
+      ],
+      "order": null,
+      "multiSelect": false
+    }
+  ],
+  "shopperInputs": [
+    {
+      "uiEditorType": "shortText",
+      "repositoryId": "giftMessage",
+      "name": "Gift Message",
+      "label": "Gift Message",
+      "type": "shortText",
+      "promptText": "Enter the gift message:",
+      "required": false
+    }
+  ],
+  "displayName": "Men",
+  "count": 19,
+  "id": "MensApparel",
+  "variants": [
+    {
+      "itemType": "sku-MensApparel",
+      "localizedValues": null,
+      "hidden": false,
+      "values": [
+        "Beige",
+        "Black",
+        "Blue",
+        "Brown",
+        "Camo",
+        "Dark Worn",
+        "Gray",
+        "Green",
+        "Medium Worn",
+        "Navy",
+        "Orange",
+        "Red",
+        "Tan",
+        "White"
+      ],
+      "length": 19,
+      "variantBasedDisplay": false,
+      "label": "Color",
+      "type": "enumerated",
+      "required": false,
+      "writable": true,
+      "uiEditorType": null,
+      "default": null,
+      "listingVariant": false,
+      "localizable": false,
+      "id": "color",
+      "editableAttributes": [
+        "default",
+        "order",
+        "listingVariant",
+        "hidden",
+        "label",
+        "required",
+        "variantBasedDisplay"
+      ],
+      "order": null
+    },
+    {
+      "itemType": "sku-MensApparel",
+      "localizedValues": null,
+      "hidden": false,
+      "values": [
+        "Small",
+        "Medium",
+        "Large",
+        "X-Large"
+      ],
+      "length": 19,
+      "variantBasedDisplay": false,
+      "label": "Size",
+      "type": "enumerated",
+      "required": false,
+      "writable": true,
+      "uiEditorType": null,
+      "default": null,
+      "listingVariant": false,
+      "localizable": false,
+      "id": "size",
+      "editableAttributes": [
+        "default",
+        "order",
+        "listingVariant",
+        "hidden",
+        "label",
+        "required",
+        "variantBasedDisplay"
+      ],
+      "order": null
+    }
+  ],
+  "specifications": [
+    {
+      "itemType": "MensApparel",
+      "hidden": false,
+      "length": 1000,
+      "variantBasedDisplay": false,
+      "label": "Fabric",
+      "type": "shortText",
+      "required": false,
+      "writable": true,
+      "uiEditorType": null,
+      "default": null,
+      "listingVariant": false,
+      "localizable": false,
+      "id": "fabric",
+      "editableAttributes": [
+        "default",
+        "order",
+        "listingVariant",
+        "hidden",
+        "label",
+        "required",
+        "variantBasedDisplay"
+      ],
+      "order": null
+    }
+  ]
+}

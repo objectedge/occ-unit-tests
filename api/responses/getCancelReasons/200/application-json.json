@@ -1,0 +1,32 @@
+{
+  "items": [
+    {
+      "displayValue": "Bad product review",
+      "key": "badProductReview"
+    },
+    {
+      "displayValue": "Better competitor price",
+      "key": "betterCompetitorPrice"
+    },
+    {
+      "displayValue": "Change of mind",
+      "key": "changeOfMind"
+    },
+    {
+      "displayValue": "Item available at discount currently",
+      "key": "itemAvailableAtDiscountCurrently"
+    },
+    {
+      "displayValue": "No longer needed",
+      "key": "noLongerNeeded"
+    },
+    {
+      "displayValue": "No update on shipment status",
+      "key": "noUpdateOnShipmentStatus"
+    },
+    {
+      "displayValue": "Payment not received",
+      "key": "paymentNotReceived"
+    }
+  ]
+}

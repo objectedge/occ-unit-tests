@@ -1,0 +1,4 @@
+{
+  "properties": {},
+  "example": "POST /ccstoreui/v1/samlAuthnRequest?encode=true"
+}

@@ -1,0 +1,25 @@
+{
+  "properties": {
+    "gatewayName": {
+      "description": "Gateway for health check.",
+      "type": "string"
+    },
+    "health": {
+      "description": "Health to set.",
+      "type": "boolean"
+    },
+    "operation": {
+      "description": "Operation to health check.",
+      "type": "string"
+    }
+  },
+  "required": [
+    "gatewayName",
+    "operation"
+  ],
+  "example": {
+    "gatewayName": "cybersource",
+    "health": true,
+    "operation": "auth"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "properties": {
+    "ignore_avs": {
+      "description": "A flag to tell the Cybersource whether to ignore the AVS results.",
+      "type": "boolean"
+    },
+    "accessKey": {
+      "description": "Access key.",
+      "type": "string"
+    },
+    "signature": {
+      "description": "Generated signature.",
+      "type": "string"
+    },
+    "sopURL": {
+      "description": "CyberSource SOP URL.",
+      "type": "string"
+    },
+    "profileId": {
+      "description": "SOP Profile ID.",
+      "type": "string"
+    },
+    "transaction_uuid": {
+      "description": "Unique transaction ID.",
+      "type": "string"
+    },
+    "signed_date_time": {
+      "description": "Key expiration date.",
+      "type": "string"
+    }
+  }
+}

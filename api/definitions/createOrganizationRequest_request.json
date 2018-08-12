@@ -1,0 +1,151 @@
+{
+  "properties": {
+    "relatedOrganizationName": {
+      "description": "Requester organization",
+      "type": "string"
+    },
+    "organization": {
+      "description": "Organization",
+      "type": "object",
+      "properties": {
+        "customerType": {
+          "description": "Customer Type for an Organization. Accepts one of these values [Standard, Preferred, Enterprise, OEM, Distributor, Supplier]",
+          "type": "string"
+        },
+        "taxReferenceNumber": {
+          "description": "Tax Reference number for Organization",
+          "type": "string"
+        },
+        "name": {
+          "description": "The name for Organization",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description for Organization",
+          "type": "string"
+        },
+        "secondaryAddresses": {
+          "description": "Addresses for Organization",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "address": {
+                "description": "Address created for the Organization.",
+                "type": "object",
+                "properties": {
+                  "country": {
+                    "description": "The country of the address",
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "description": "Phone Number of the address",
+                    "type": "string"
+                  },
+                  "address2": {
+                    "description": "The address2 of the secondary address",
+                    "type": "string"
+                  },
+                  "city": {
+                    "description": "The city of the secondary address",
+                    "type": "string"
+                  },
+                  "address1": {
+                    "description": "The address1 of the secondary address",
+                    "type": "string"
+                  },
+                  "companyName": {
+                    "description": "Company name of the secondary address",
+                    "type": "string"
+                  },
+                  "postalCode": {
+                    "description": "Postal Code of the address",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "The State of the address",
+                    "type": "string"
+                  }
+                }
+              },
+              "addressType": {
+                "description": "Address type represents nick name of account if present else repository ID of address item.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "type": {
+          "description": "Type for Organization. Accepts one of these values [none, company, division, department, group]",
+          "type": "string"
+        },
+        "vatReferenceNumber": {
+          "description": "Vat reference number of an Organization",
+          "type": "string"
+        },
+        "dunsNumber": {
+          "description": "DUNS Number for Organization. Should be 9 digit number",
+          "type": "string"
+        }
+      }
+    },
+    "profile": {
+      "description": "Profile",
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "First name of the profile",
+          "type": "string"
+        },
+        "lastName": {
+          "description": "Last name of the profile",
+          "type": "string"
+        },
+        "receiveEmail": {
+          "description": "Receive email newsletters",
+          "type": "string"
+        },
+        "email": {
+          "description": "email id of profile",
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "firstName",
+        "lastName"
+      ]
+    },
+    "name": {
+      "description": "Organization request name",
+      "type": "string"
+    },
+    "requesterComments": {
+      "description": "Requester comments given at time of creating request",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name"
+  ],
+  "example": {
+    "relatedOrganizationName": null,
+    "organization": {
+      "customerType": "Standard",
+      "taxReferenceNumber": "TAXUQ12345",
+      "name": "Oracle",
+      "description": "Some description",
+      "type": "none",
+      "vatReferenceNumber": "Vat123123",
+      "dunsNumber": "123456789",
+      "uniqueId": "TestIDNumber"
+    },
+    "profile": {
+      "firstName": "First name",
+      "lastName": "last name",
+      "email": "user@temp.com"
+    },
+    "name": "Sample org",
+    "requesterComments": "Some comments"
+  }
+}

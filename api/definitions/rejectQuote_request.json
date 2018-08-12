@@ -1,0 +1,15 @@
+{
+  "properties": {
+    "note": {
+      "description": "the requester note supplied with the quote request",
+      "type": "string"
+    },
+    "orderId": {
+      "description": "the order id for the order which is to be quoted. If undefined, the current incomplete order for profile is selected",
+      "type": "string"
+    }
+  },
+  "example": {
+    "note": "This is a sample quote"
+  }
+}

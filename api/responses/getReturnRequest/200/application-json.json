@@ -1,0 +1,318 @@
+{
+  "returnRequestStatus": "Full return",
+  "isExchangeRequest": false,
+  "returnItems": [
+    {
+      "quantityReturned": 2,
+      "deactivationDate": "2018-06-27T12:59:59Z",
+      "nonreturnable": false,
+      "dynamicProperties": [
+        {
+          "id": "ReferralCode",
+          "label": "ReferralCode",
+          "value": null
+        },
+        {
+          "id": "OfferEndsDate",
+          "label": "OfferEndsDate",
+          "value": "2020-07-02T03:42:42.962Z"
+        },
+        {
+          "id": "Discount",
+          "label": "Discount",
+          "value": 0
+        },
+        {
+          "id": "GiftWrapping",
+          "label": "Gift Wrapping",
+          "value": false
+        },
+        {
+          "id": "CustomMessage",
+          "label": "Custom Message",
+          "value": null
+        },
+        {
+          "id": "name",
+          "label": "Name on product(Mug)",
+          "value": "My name"
+        },
+        {
+          "id": "ShippingInstructions",
+          "label": "Shipping Instructions",
+          "value": null
+        }
+      ],
+      "displayName": "Playstation",
+      "externalData": [],
+      "billingAccountId": "billingAcc-123",
+      "orderDiscountShare": 0,
+      "childItems": [
+        {
+          "serviceAccountId": "serviceAcc-123",
+          "deactivationDate": "2018-06-27T12:59:59Z",
+          "quantity": 2,
+          "productId": "prod10040",
+          "displayName": "Super Smash Brothers Brawl",
+          "externalData": [],
+          "billingAccountId": "billingAcc-123",
+          "catRefId": "sku10041",
+          "route": "product/prod10040",
+          "customerAccountId": "customerAcc-123",
+          "assetId": "asset10001",
+          "selectedOptions": [],
+          "actionCode": "Add",
+          "activationDate": "2017-06-27T15:30:00Z",
+          "serviceId": "service-123"
+        },
+        {
+          "serviceAccountId": "serviceAcc-123",
+          "deactivationDate": "2018-06-27T12:59:59Z",
+          "quantity": 1,
+          "productId": "prod10038",
+          "displayName": "Wii Music",
+          "externalData": [],
+          "billingAccountId": "billingAcc-123",
+          "catRefId": "sku10042",
+          "route": "product/prod10038",
+          "customerAccountId": "customerAcc-123",
+          "assetId": "asset10001",
+          "selectedOptions": [],
+          "actionCode": "Add",
+          "activationDate": "2017-06-27T15:30:00Z",
+          "serviceId": "service-123"
+        }
+      ],
+      "skuOptionInfo": [],
+      "configuratorId": "12345677",
+      "quantityAvailableForReturn": 3,
+      "commerceItemId": "ci9000467",
+      "unAdjustedRefundAmount": 25,
+      "suggestedShippingRefund": 5.83,
+      "assetId": "asset10001",
+      "price": 115,
+      "returnReason": "Incorrect Item",
+      "actionCode": "Add",
+      "promotionAdjustments": [],
+      "serviceId": "service-123",
+      "quantityReceived": 1,
+      "dispositionReason": {
+        "displayKey": "rejectedWithRefund",
+        "displayName": "Rejected With Refund"
+      },
+      "serviceAccountId": "serviceAcc-123",
+      "unitPrice": 25,
+      "quantityToReturn": 1,
+      "shippingGroup": {
+        "shippingMethod": {
+          "shippingMethod": "standardShippingMethod",
+          "shippingMethodDescription": "Standard"
+        },
+        "shippingGroupId": "sg40411",
+        "shippingAddress": {
+          "lastName": "Spencers",
+          "country": "US",
+          "address3": null,
+          "address2": null,
+          "city": "Montgomery",
+          "prefix": null,
+          "address1": "600 Dexter Avenue",
+          "postalCode": "36130",
+          "companyName": null,
+          "jobTitle": null,
+          "county": null,
+          "suffix": null,
+          "firstName": "Mark",
+          "phoneNumber": "973-974-1234",
+          "faxNumber": null,
+          "alias": null,
+          "middleName": null,
+          "state": "AL",
+          "email": "mspens@abc.com"
+        }
+      },
+      "comments": null,
+      "productId": "prod10013",
+      "returnItemId": "300002",
+      "nonReturnableReaon": "No items in order are returnable",
+      "detailedItemPriceInfo": [
+        {
+          "discounted": false,
+          "secondaryCurrencyTaxAmount": 0,
+          "amount": 25,
+          "quantity": 1,
+          "tax": 2.5,
+          "orderDiscountShare": 0,
+          "detailedUnitPrice": 25,
+          "currencyCode": "USD"
+        }
+      ],
+      "quantityToReceive": 0,
+      "suggestedTaxRefund": 2.01,
+      "manualAdjustmentShare": 0,
+      "catRefId": "sku10030",
+      "skuProperties": [
+        {
+          "propertyType": "sku-base",
+          "name": "Name",
+          "id": "displayName",
+          "value": null
+        },
+        {
+          "propertyType": "sku-base",
+          "name": "Id",
+          "id": "id",
+          "value": "camerasku_1_1"
+        },
+        {
+          "propertyType": "sku-custom",
+          "name": "dynamicskuprop1",
+          "id": "dynamicskuprop1",
+          "value": "dynamicskuprop1"
+        }
+      ],
+      "customerAccountId": "customerAcc-123",
+      "quantityShipped": 5,
+      "adjustedPromotionReferences": "",
+      "additionalProperties": {
+        "key1": "value1",
+        "key2": "value2"
+      },
+      "activationDate": "2017-06-27T15:30:00Z",
+      "actualRefundAmount": 25,
+      "suggestedRefundAmount": 25
+    }
+  ],
+  "profileInfo": {
+    "lastName": "Anderson",
+    "firstName": "Kim",
+    "organization": {
+      "name": "Oracle India Pvt Ltd",
+      "id": "oracle"
+    },
+    "middleName": null,
+    "email": "kim@example.com"
+  },
+  "returnLabel": "r1234",
+  "isManuallyAdjusted": false,
+  "orderInfo": {
+    "priceInfo": {
+      "total": 156.82,
+      "amount": 110.2,
+      "shipping": 35,
+      "isTaxIncluded": false,
+      "tax": 23.31,
+      "subTotal": 200,
+      "orderDiscountAmount": 2,
+      "currencyCode": "USD",
+      "totalWithoutTax": 129.89
+    },
+    "orderId": "o10042",
+    "priceListGroup": {
+      "deleted": false,
+      "displayName": "UsDollar",
+      "repositoryId": "UsDollar",
+      "listPriceList": {
+        "repositoryId": "listPrices"
+      },
+      "active": true,
+      "salePriceList": {
+        "repositoryId": "salePrices"
+      },
+      "currency": {
+        "symbol": "$",
+        "displayName": "US Dollar",
+        "repositoryId": "hi_US",
+        "fractionalDigits": 2,
+        "currencyCode": "USD",
+        "numericCode": "356"
+      },
+      "id": "UsDollar",
+      "locale": "hi_US",
+      "shippingSurchargePriceList": {
+        "repositoryId": "shippingSurchargePrices"
+      }
+    },
+    "siteId": "siteUS",
+    "creationDate": "2015-05-16T04:50:53.000Z",
+    "submittedDate": "2015-06-16T04:50:53.000Z"
+  },
+  "refundInfo": {
+    "shippingTaxRefund": 2,
+    "refundDue": 32.84,
+    "suggestedShippingRefund": 5.83,
+    "returnFee": 0,
+    "suggestedOrderRefund": 25,
+    "suggestedTaxRefund": 2.01,
+    "suggestedTotalRefund": 32.84,
+    "unAdjustedRefundSubtotal": 25,
+    "actualShippingRefund": 5.83,
+    "actualTaxRefund": 2.01,
+    "otherRefund": 0
+  },
+  "isSetteled": false,
+  "promotionAdjustments": {
+    "promotionAdjustmentsCount": 0,
+    "orderPromotionValueAdjustments": [],
+    "totalOrderDiscountAdjustment": 0,
+    "nonReturnItemCostAdjustment": [],
+    "itemPromotionValueAdjustments": [],
+    "manyToManyPromotionCouponAdjustment": {}
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://example.com/ccstoreui/v1/returnRequests/300002"
+    }
+  ],
+  "additionalProperties": {
+    "key1": "value1",
+    "key2": "value2"
+  },
+  "state": {
+    "displayKey": "FULL_RETURN",
+    "displayName": "Full return"
+  },
+  "quoteInfo": {
+    "providerNote": null,
+    "notes": [
+      {
+        "providerDate": "2016-11-25T13:33:48.000Z",
+        "providerNote": "The quote is approved as per the request",
+        "profileType": null,
+        "profileId": "se-570031"
+      },
+      {
+        "profileType": null,
+        "profileId": "se-570031",
+        "requestDate": "2016-10-25T13:33:48.000Z",
+        "requesterNote": "provide 10 percent off on the total quantity"
+      }
+    ],
+    "rejectionDate": null,
+    "requestDate": "2016-10-25T13:33:48.000Z",
+    "errorInfo": null,
+    "externalID": null,
+    "rejectionNote": null,
+    "quoteDate": "2016-10-25T13:35:32.000Z",
+    "expirationDate": "2026-04-28T18:53:48.000Z"
+  },
+  "trackingNumber": [
+    "t1234",
+    "t2345"
+  ],
+  "operation": "refund",
+  "paymentReversalInfo": [
+    {
+      "paymentGroupId": "pg10042",
+      "refundType": "tokenizedCreditCard",
+      "amount": 32.84,
+      "creditCardInfo": {
+        "cardNumber": "xxxxxxxxxxxx1111"
+      },
+      "creditCardType": null,
+      "reversalMethod": "Card Payment Reversal",
+      "maxRefundAmount": 156.82
+    }
+  ]
+}

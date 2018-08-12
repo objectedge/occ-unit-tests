@@ -1,0 +1,75 @@
+{
+  "type": "object",
+  "properties": {
+    "basePath": {
+      "description": "The base path on which the API is served, which is relative to the host.",
+      "type": "string"
+    },
+    "paths": {
+      "type": "object",
+      "properties": {
+        "/path1/path2": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "host": {
+      "description": "The host (name or ip) serving the API.",
+      "type": "string"
+    },
+    "schemes": {
+      "type": "array",
+      "items": {
+        "description": "The transfer protocol of the API.",
+        "type": "string"
+      }
+    },
+    "definitions": {
+      "type": "object",
+      "properties": {
+        "EntityDefinition": {
+          "type": "object",
+          "properties": {}
+        }
+      }
+    },
+    "swagger": {
+      "description": "Specifies the Swagger Specification version being used.",
+      "type": "string"
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "description": "A short description of the application. ",
+          "type": "string"
+        },
+        "title": {
+          "description": "The title of the application.",
+          "type": "string"
+        },
+        "version": {
+          "description": "Provides the version of the application API",
+          "type": "string"
+        }
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "The name of the tag.",
+            "type": "string"
+          },
+          "description": {
+            "description": "A short description for the tag.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

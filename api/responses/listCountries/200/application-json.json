@@ -1,0 +1,12 @@
+[
+  {
+    "displayName": "Canada",
+    "countryCode": "CA",
+    "repositoryId": "CA"
+  },
+  {
+    "displayName": "United States",
+    "countryCode": "US",
+    "repositoryId": "US"
+  }
+]

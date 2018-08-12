@@ -1,0 +1,6 @@
+{
+  "schema": {
+    "$ref": "#/definitions/createPurchaseList_response"
+  },
+  "description": "Following model is returned when operation succeeds."
+}

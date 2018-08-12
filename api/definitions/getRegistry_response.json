@@ -1,0 +1,50 @@
+{
+  "properties": {
+    "httpPort": {
+      "description": "Http port.",
+      "type": "integer"
+    },
+    "Endpoint Name": {
+      "description": "Object of various Oauth Admin end points.",
+      "type": "object",
+      "properties": {
+        "responseType": {
+          "description": "Type of response, e.g. application/json.",
+          "type": "string"
+        },
+        "authRequired": {
+          "description": "Whether authentication is required or not.",
+          "type": "boolean"
+        },
+        "requestType": {
+          "description": "Type of request, e.g. application/json.",
+          "type": "string"
+        },
+        "method": {
+          "description": "Method of the service.",
+          "type": "string"
+        },
+        "hasDoc": {
+          "description": "Whether endpoint has the doc or not.",
+          "type": "boolean"
+        },
+        "url": {
+          "description": "url to trigger the endpoint.",
+          "type": "string"
+        },
+        "httpsRequired": {
+          "description": "Whether https is required or not.",
+          "type": "boolean"
+        }
+      }
+    },
+    "httpsPort": {
+      "description": "Https port.",
+      "type": "integer"
+    },
+    "crossDomainRequestsEnabled": {
+      "description": "Whether cross domain request enabled.",
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "authnRequestTarget ": "http://localhost/idp/auth",
+  "authnRequest ": "Base64 encoded SAML AuthnRequest"
+}

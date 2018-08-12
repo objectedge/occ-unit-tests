@@ -1,0 +1,1375 @@
+{
+  "properties": {
+    "schedule": {
+      "description": "The schedule of the Scheduled order.",
+      "type": "object",
+      "properties": {
+        "selectedDates": {
+          "description": "The selected dates in a month in year for the Scheduled order.",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "weeksInMonth": {
+          "description": "The weeks in month of the Scheduled order.",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "interval": {
+          "description": "The interval in term of number of days of the Scheduled order.",
+          "type": "integer"
+        },
+        "monthsInYear": {
+          "description": "The months in year of the Scheduled order.",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "daysOfWeek": {
+          "description": "The days of week of the Scheduled order.",
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "occurenceInDay": {
+          "description": "The occurence in day on the Scheduled order.",
+          "type": "integer"
+        }
+      }
+    },
+    "templateOrderId": {
+      "description": "The templateOrderId of the Scheduled order.",
+      "type": "string"
+    },
+    "endDate": {
+      "description": "The end date of the Scheduled order.",
+      "type": "string"
+    },
+    "templateOrder": {
+      "description": "The Order of the Scheduled order.",
+      "type": "object",
+      "properties": {
+        "shippingGroups": {
+          "description": "The shipping groups for the order.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "taxPriceInfo": {
+                "description": "The shipping tax price info details.",
+                "type": "object",
+                "properties": {
+                  "cityTax": {
+                    "description": "The shipping group subtotal.",
+                    "type": "number"
+                  },
+                  "amount": {
+                    "description": "The shipping method amount.",
+                    "type": "number"
+                  },
+                  "valueAddedTax": {
+                    "description": "The value added tax .",
+                    "type": "number"
+                  },
+                  "countyTax": {
+                    "description": "The county tax amount.",
+                    "type": "number"
+                  },
+                  "isTaxIncluded": {
+                    "description": "Flag that states whether is tax included.",
+                    "type": "boolean"
+                  },
+                  "miscTax": {
+                    "description": "The miscellaneous tax amount.",
+                    "type": "string"
+                  },
+                  "districtTax": {
+                    "description": "The shipping method applied to the order.",
+                    "type": "string"
+                  },
+                  "stateTax": {
+                    "description": "The shipping method tax amount.",
+                    "type": "number"
+                  },
+                  "countryTax": {
+                    "description": "The country tax total.",
+                    "type": "number"
+                  }
+                }
+              },
+              "priceInfo": {
+                "description": "The shipping group price information.",
+                "type": "object",
+                "properties": {
+                  "amount": {
+                    "description": "The shipping method amount.",
+                    "type": "number"
+                  },
+                  "total": {
+                    "description": "The total cost of shipping.",
+                    "type": "number"
+                  },
+                  "shipping": {
+                    "description": "The shipping amount.",
+                    "type": "number"
+                  },
+                  "shippingSurchargeValue": {
+                    "description": "The shipping surcharge value amount.",
+                    "type": "number"
+                  },
+                  "tax": {
+                    "description": "The shipping method tax amount.",
+                    "type": "number"
+                  },
+                  "subTotal": {
+                    "description": "The shipping group subtotal.",
+                    "type": "number"
+                  },
+                  "currencyCode": {
+                    "description": "The shipping method amount.",
+                    "type": "string"
+                  },
+                  "totalWithoutTax": {
+                    "description": "The shipping items total.",
+                    "type": "number"
+                  }
+                }
+              },
+              "discountInfo": {
+                "description": "The shipping group price information.",
+                "type": "object",
+                "properties": {
+                  "orderDiscount": {
+                    "description": "The orderDiscount.",
+                    "type": "number"
+                  },
+                  "shippingDiscount": {
+                    "description": "The shipping discount.",
+                    "type": "number"
+                  },
+                  "discountDescList": {
+                    "description": "The list of all the order discounts.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "promotionLevel": {
+                          "description": "The promotion level.",
+                          "type": "string"
+                        },
+                        "coupon": {
+                          "description": "The coupon code.",
+                          "type": "string"
+                        },
+                        "promotionDesc": {
+                          "description": "The promotion description.",
+                          "type": "string"
+                        },
+                        "promotionId": {
+                          "description": "The promotion id.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "shipOnDate": {
+                "description": "The ship on date in ISO format.",
+                "type": "string"
+              },
+              "actualShipDate": {
+                "description": "The actual ship date in ISO format.",
+                "type": "string"
+              },
+              "shippingMethod": {
+                "description": "The shipping method details.",
+                "type": "object",
+                "properties": {
+                  "shippingTax": {
+                    "description": "The shipping tax.",
+                    "type": "number"
+                  },
+                  "cost": {
+                    "description": "The total cost of shipping.",
+                    "type": "number"
+                  },
+                  "value": {
+                    "description": "The shipping method applied to the order.",
+                    "type": "string"
+                  },
+                  "shippingMethodDescription": {
+                    "description": "The description of the shipping method.",
+                    "type": "string"
+                  }
+                }
+              },
+              "shippingGroupId": {
+                "description": "The shipping group ID.",
+                "type": "string"
+              },
+              "shippingAddress": {
+                "description": "The shipping address details.",
+                "type": "object",
+                "properties": {
+                  "lastName": {
+                    "description": "Last name.",
+                    "type": "string"
+                  },
+                  "country": {
+                    "description": "Country.",
+                    "type": "string"
+                  },
+                  "address3": {
+                    "description": "Address snippet.",
+                    "type": "string"
+                  },
+                  "address2": {
+                    "description": "Address snippet.",
+                    "type": "string"
+                  },
+                  "city": {
+                    "description": "City.",
+                    "type": "string"
+                  },
+                  "prefix": {
+                    "description": "Name prefix.",
+                    "type": "string"
+                  },
+                  "address1": {
+                    "description": "Address snippet.",
+                    "type": "string"
+                  },
+                  "postalCode": {
+                    "description": "Postal code.",
+                    "type": "string"
+                  },
+                  "jobTitle": {
+                    "description": "Job title.",
+                    "type": "string"
+                  },
+                  "companyName": {
+                    "description": "Company name.",
+                    "type": "string"
+                  },
+                  "county": {
+                    "description": "County.",
+                    "type": "string"
+                  },
+                  "suffix": {
+                    "description": "Name suffix.",
+                    "type": "string"
+                  },
+                  "selectedCountry": {
+                    "description": "Country code.",
+                    "type": "string"
+                  },
+                  "firstName": {
+                    "description": "First name.",
+                    "type": "string"
+                  },
+                  "phoneNumber": {
+                    "description": "Phone number.",
+                    "type": "string"
+                  },
+                  "faxNumber": {
+                    "description": "Fax number.",
+                    "type": "string"
+                  },
+                  "alias": {
+                    "description": "Address alias.",
+                    "type": "string"
+                  },
+                  "middleName": {
+                    "description": "Middle name.",
+                    "type": "string"
+                  },
+                  "state": {
+                    "description": "State.",
+                    "type": "string"
+                  },
+                  "selectedState": {
+                    "description": "State code.",
+                    "type": "string"
+                  },
+                  "email": {
+                    "description": "Email address.",
+                    "type": "string"
+                  },
+                  "state_ISOCode": {
+                    "description": "State ISO code.",
+                    "type": "string"
+                  }
+                }
+              },
+              "submittedDate": {
+                "description": "The submitted date in ISO format.",
+                "type": "string"
+              },
+              "trackingNumber": {
+                "description": "The tracking number.",
+                "type": "string"
+              },
+              "items": {
+                "description": "The array of products in the shipping group.",
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "unitPrice": {
+                      "description": "The unit price.",
+                      "type": "number"
+                    },
+                    "primaryImageTitle": {
+                      "description": "Primary Image Title.",
+                      "type": "string"
+                    },
+                    "primaryThumbImageURL": {
+                      "description": "Primary Thumb Image URL.",
+                      "type": "string"
+                    },
+                    "quantity": {
+                      "description": "The quantity of the product in this shipping group.",
+                      "type": "integer"
+                    },
+                    "productId": {
+                      "description": "ID of the product in the cart.",
+                      "type": "string"
+                    },
+                    "rawTotalPrice": {
+                      "description": "Raw Total Price.",
+                      "type": "string"
+                    },
+                    "salePrice": {
+                      "description": "Sale Price.",
+                      "type": "string"
+                    },
+                    "displayName": {
+                      "description": "Display Name.",
+                      "type": "string"
+                    },
+                    "detailedItemPriceInfo": {
+                      "description": "Detailed Item Price Information.",
+                      "type": "object",
+                      "properties": {
+                        "discounted": {
+                          "description": "Is this item discounted.",
+                          "type": "boolean"
+                        },
+                        "amount": {
+                          "description": "The amount.",
+                          "type": "number"
+                        },
+                        "quantity": {
+                          "description": "The quantity.",
+                          "type": "number"
+                        },
+                        "tax": {
+                          "description": "The tax amount.",
+                          "type": "number"
+                        },
+                        "orderDiscountShare": {
+                          "description": "The order Discount Share.",
+                          "type": "number"
+                        },
+                        "detailedUnitPrice": {
+                          "description": "Detailed Unit Price.",
+                          "type": "number"
+                        },
+                        "currencyCode": {
+                          "description": "The currency code.",
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "shippingSurchargeValue": {
+                      "description": "shipping surcharge value.",
+                      "type": "number"
+                    },
+                    "discountAmount": {
+                      "description": "The discount amount.",
+                      "type": "string"
+                    },
+                    "active": {
+                      "description": "UIs this product active.",
+                      "type": "boolean"
+                    },
+                    "catRefId": {
+                      "description": "The category to which the product belongs.",
+                      "type": "string"
+                    },
+                    "skuProperties": {
+                      "description": "Sku properties Information",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "propertyType": {
+                            "description": "Type that indicates whether it is a base or a custom SKU property,",
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "Name of the Dynamic SKU Property.",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "ID of the Dynamic SKU Property.",
+                            "type": "string"
+                          },
+                          "value": {
+                            "description": "Value of the Dynamic SKU Property.",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "route": {
+                      "description": "route.",
+                      "type": "string"
+                    },
+                    "variant": {
+                      "description": "List of variants for the product.",
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "optionValue": {
+                            "description": "The variant option value.",
+                            "type": "string"
+                          },
+                          "optionName": {
+                            "description": "The variant option name.",
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "onSale": {
+                      "description": "Indicates whether the price is for an item that is on sale.",
+                      "type": "boolean"
+                    },
+                    "primaryImageAltText": {
+                      "description": "Primary Image Alternative Text.",
+                      "type": "string"
+                    },
+                    "listPrice": {
+                      "description": "List Price.",
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "status": {
+                "description": "The shipping group status.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "creationTime": {
+          "description": "The creation time in long seconds.",
+          "type": "number"
+        },
+        "lastModifiedDate": {
+          "description": "The order recent modified date in ISO format.",
+          "type": "string"
+        },
+        "dynamicProperties": {
+          "description": "Read-only list of dynamic properties for the order along with meta-data.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "description": "The ID of the dynamic property.",
+                "type": "string"
+              },
+              "value": {
+                "description": "The value of the dynamic property.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "shippingMethod": {
+          "description": "The shipping method details for the order.",
+          "type": "object",
+          "properties": {
+            "cost": {
+              "description": "The total cost of shipping.",
+              "type": "number"
+            },
+            "value": {
+              "description": "The shipping method applied to the order.",
+              "type": "string"
+            }
+          }
+        },
+        "payments": {
+          "description": "Payment details for the order, including additional properties specific to the payment type.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "PONumber": {
+                "description": "Purchase order number for invoice payment. Payment type:invoice",
+                "type": "string"
+              },
+              "paymentGroupId": {
+                "description": "Payment group id.",
+                "type": "string"
+              },
+              "amount": {
+                "description": "Amount authorized from the payment group.",
+                "type": "number"
+              },
+              "balance": {
+                "description": "Total available balance on the gift card.",
+                "type": "number"
+              },
+              "gatewayName": {
+                "description": "Payment gateway name. e.g. chaseCreditCard.",
+                "type": "string"
+              },
+              "giftCardNumber": {
+                "description": "Gift card number.",
+                "type": "string"
+              },
+              "paymentMethod": {
+                "description": "Payment method. e.g. physicalGiftCard/ creditCard.",
+                "type": "string"
+              },
+              "uiIntervention": {
+                "description": "This decides whether the client has to do some intervention for payment. e.g. SOP.",
+                "type": "string"
+              },
+              "isAmountRemaining": {
+                "description": "A boolean to decide if more payment can be made from this payment group.",
+                "type": "boolean"
+              },
+              "paymentState": {
+                "description": "The state of the payment group. e.g. AUTHORIZED.",
+                "type": "string"
+              },
+              "maskedCardNumber": {
+                "description": "Masked gift card number.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "orderStatus": {
+          "description": "Status of the order.",
+          "type": "string"
+        },
+        "priceListGroup": {
+          "description": "The price list group object.",
+          "type": "object",
+          "properties": {
+            "repositoryId": {
+              "description": "Repository ID of the price list group.",
+              "type": "string"
+            }
+          }
+        },
+        "shoppingCart/order": {
+          "description": "The shopping-cart or order contents of the current order.",
+          "type": "object",
+          "properties": {
+            "items": {
+              "description": "The array of products in the shopping cart.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "unitPrice": {
+                    "description": "The unit price of the product.",
+                    "type": "integer"
+                  },
+                  "quantity": {
+                    "description": "The quantity of the product.",
+                    "type": "integer"
+                  },
+                  "rawTotalPrice": {
+                    "description": "The raw price of the product.",
+                    "type": "integer"
+                  },
+                  "productId": {
+                    "description": "ID of the product in the cart.",
+                    "type": "string"
+                  },
+                  "displayName": {
+                    "description": "The name of the product.",
+                    "type": "string"
+                  },
+                  "giftWithPurchaseCommerceItemMarkers": {
+                    "description": "The array of giftWithPurchaseCommerceItemMarkers.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "remainingQuantity": {
+                          "description": "The quantity of the commerce item that is not affected by gift with purchase.",
+                          "type": "number"
+                        },
+                        "selectedQuantity": {
+                          "description": "The quantity of the free gift that this commerce item is making free and was selected by the shopper.",
+                          "type": "number"
+                        },
+                        "data": {
+                          "description": "The gift hash code for this gift with purchase promotion.",
+                          "type": "integer"
+                        },
+                        "automaticQuantity": {
+                          "description": "The quantity of the free gift that this commerce item is making free and was auto added by pricing.",
+                          "type": "number"
+                        },
+                        "value": {
+                          "description": "The gift with purchase promotion id.",
+                          "type": "string"
+                        },
+                        "targetedQuantity": {
+                          "description": "The quantity of the free gift that this commerce item is making free and was targeted by pricing.",
+                          "type": "number"
+                        },
+                        "key": {
+                          "description": "atg.gwp",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "active": {
+                    "description": "active or not.",
+                    "type": "boolean"
+                  },
+                  "externalPriceQuantity": {
+                    "description": "The maximum quantity of this line item which may be purchased at the external price (this quantity will be verified to ensure it is allowable).",
+                    "type": "integer"
+                  },
+                  "catRefId": {
+                    "description": "The category to which the product belongs.",
+                    "type": "string"
+                  },
+                  "externalPrice": {
+                    "description": "A price for a quantity of 1 of this line item which will be used in place of the standard catalog price (this price will be verified to ensure it is allowable).",
+                    "type": "number"
+                  },
+                  "skuProperties": {
+                    "description": "Sku properties Information",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "propertyType": {
+                          "description": "Type that indicates whether it is a base or a custom SKU property,",
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "Name of the Dynamic SKU Property.",
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "ID of the Dynamic SKU Property.",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Value of the Dynamic SKU Property.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "discountInfo": {
+                    "description": "The discount information.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "promotionLevel": {
+                          "description": "The promotion level.",
+                          "type": "string"
+                        },
+                        "coupon": {
+                          "description": "The coupon ID.",
+                          "type": "string"
+                        },
+                        "totalAdjustment": {
+                          "description": "Total adjustment by the promotion.",
+                          "type": "number"
+                        },
+                        "promotionDesc": {
+                          "description": "The promotion description.",
+                          "type": "string"
+                        },
+                        "promotionId": {
+                          "description": "The promotion ID.",
+                          "type": "string"
+                        },
+                        "giftWithPurchaseDiscountInfo": {
+                          "description": "The gift information.",
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "giftWithPurchaseChoicesAvailable": {
+                                "description": "If this gift with purchase has multiple gift choices.",
+                                "type": "boolean"
+                              },
+                              "giftWithPurchaseQuantity": {
+                                "description": "The quantity that is gift quantity",
+                                "type": "number"
+                              },
+                              "giftWithPurchaseIdentifier": {
+                                "description": "The gift hash code for this gift with purchase promotion.",
+                                "type": "integer"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "price": {
+                    "description": "The actual price of the product.",
+                    "type": "integer"
+                  },
+                  "variant": {
+                    "description": "List of variants for the product.",
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "optionValue": {
+                          "description": "The variant option value.",
+                          "type": "string"
+                        },
+                        "optionName": {
+                          "description": "The variant option name.",
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "creationDate": {
+          "description": "The creation date in ISO format.",
+          "type": "string"
+        },
+        "submittedDate": {
+          "description": "The order submitted date in ISO format.",
+          "type": "string"
+        },
+        "uuid": {
+          "description": "The unique ID for the order.",
+          "type": "string"
+        },
+        "orderProfileId": {
+          "description": "The profile-id of the order.",
+          "type": "string"
+        },
+        "paymentGroupId": {
+          "description": "The payment group ID used for the order.",
+          "type": "string"
+        },
+        "priceInfo": {
+          "description": "The price information.",
+          "type": "object",
+          "properties": {
+            "amount": {
+              "description": "The total order amount.",
+              "type": "number"
+            },
+            "total": {
+              "description": "The order total.",
+              "type": "number"
+            },
+            "shipping": {
+              "description": "The total shipping cost.",
+              "type": "number"
+            },
+            "shippingSurchargeValue": {
+              "description": "Extra handling costs for shipping the products.",
+              "type": "number"
+            },
+            "tax": {
+              "description": "The total tax amount.",
+              "type": "number"
+            },
+            "subTotal": {
+              "description": "Sub-total.",
+              "type": "number"
+            },
+            "currencyCode": {
+              "description": "The currency code.",
+              "type": "string"
+            }
+          }
+        },
+        "discountInfo": {
+          "description": "The discount information.",
+          "type": "object",
+          "properties": {
+            "unclaimedCouponMultiPromotions": {
+              "description": "The coupons that were not claimed",
+              "type": "object",
+              "properties": {
+                "coupon code": {
+                  "description": "Coupon Code, corresponding to which some promotions were not applied",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "promotionLevel": {
+                        "description": "Promotion Level",
+                        "type": "string"
+                      },
+                      "promotionDesc": {
+                        "description": "Promotion Description",
+                        "type": "string"
+                      },
+                      "promotionId": {
+                        "description": "Promotion Id",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "orderCouponsMap": {
+              "description": "The list of all the coupons with the order.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "promotionLevel": {
+                    "description": "The promotion level.",
+                    "type": "string"
+                  },
+                  "totalAdjustment": {
+                    "description": "The total adjustment.",
+                    "type": "string"
+                  },
+                  "promotionDesc": {
+                    "description": "The promotion description.",
+                    "type": "string"
+                  },
+                  "promotionId": {
+                    "description": "The promotion ID.",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "orderDiscount": {
+              "description": "The order discount.",
+              "type": "integer"
+            },
+            "shippingDiscount": {
+              "description": "The shipping discount.",
+              "type": "integer"
+            },
+            "orderImplicitDiscountList": {
+              "description": "The implicit order discounts with the order.",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "promotionLevel": {
+                    "description": "The promotion level.",
+                    "type": "string"
+                  },
+                  "totalAdjustment": {
+                    "description": "The total adjustment.",
+                    "type": "string"
+                  },
+                  "promotionDesc": {
+                    "description": "The promotion description.",
+                    "type": "string"
+                  },
+                  "promotionId": {
+                    "description": "The promotion ID.",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "unclaimedCouponsMap": {
+              "description": "The unclaimed coupons with the order.",
+              "type": "object",
+              "properties": {
+                "coupon code": {
+                  "description": "Coupon Code, corresponding to which some promotions were not applied",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "promotionLevel": {
+                        "description": "Promotion Level",
+                        "type": "string"
+                      },
+                      "promotionDesc": {
+                        "description": "Promotion Description",
+                        "type": "string"
+                      },
+                      "promotionId": {
+                        "description": "Promotion Id",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "claimedCouponMultiPromotions": {
+              "description": "The coupons that were claimed",
+              "type": "object",
+              "properties": {
+                "coupon code": {
+                  "description": "Coupon Code, corresponding to which promotions were applied",
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "promotionLevel": {
+                        "description": "Promotion Level",
+                        "type": "string"
+                      },
+                      "totalAdjustment": {
+                        "description": "Adjustment done by the promotion",
+                        "type": "number"
+                      },
+                      "promotionDesc": {
+                        "description": "Promotion Description",
+                        "type": "string"
+                      },
+                      "promotionId": {
+                        "description": "Promotion Id",
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "trackingInfo": {
+          "description": "Tracking Information for the Order.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "carrierName": {
+                "description": "Carrier Name for Tracking.",
+                "type": "string"
+              },
+              "carrierUrl": {
+                "description": "Carrier URL for Tracking.",
+                "type": "string"
+              },
+              "carrierId": {
+                "description": "Carrier Id for Tracking.",
+                "type": "string"
+              },
+              "trackingNumber": {
+                "description": "Tracking Number.",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "giftWithPurchaseInfo": {
+          "description": "The gift information.",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "giftWithPurchaseQuantityAvailableForSelection": {
+                "description": "gift quantity available for selection",
+                "type": "number"
+              },
+              "giftWithPurchaseType": {
+                "description": "The type of the gift. (sku, product)",
+                "type": "string"
+              },
+              "giftWithPurchaseDetail": {
+                "description": "String identifying the free gift, usually the repository id of the gift type.",
+                "type": "string"
+              },
+              "promotionId": {
+                "description": "The gift with purchase promotion id",
+                "type": "string"
+              },
+              "giftWithPurchaseIdentifier": {
+                "description": "An identifier used to track which gift selection in the promotion this is.  It allows the commerce item marker to link to this one.",
+                "type": "integer"
+              }
+            }
+          }
+        },
+        "orderLocale": {
+          "description": "The locale in which order submitted.",
+          "type": "string"
+        },
+        "shippingAddress": {
+          "description": "The shipping address details.",
+          "type": "object",
+          "properties": {
+            "lastName": {
+              "description": "Last name.",
+              "type": "string"
+            },
+            "country": {
+              "description": "Country.",
+              "type": "string"
+            },
+            "address3": {
+              "description": "Address snippet.",
+              "type": "string"
+            },
+            "address2": {
+              "description": "Address snippet.",
+              "type": "string"
+            },
+            "city": {
+              "description": "City.",
+              "type": "string"
+            },
+            "prefix": {
+              "description": "Name prefix.",
+              "type": "string"
+            },
+            "address1": {
+              "description": "Address snippet.",
+              "type": "string"
+            },
+            "postalCode": {
+              "description": "Postal code.",
+              "type": "string"
+            },
+            "jobTitle": {
+              "description": "Job title.",
+              "type": "string"
+            },
+            "companyName": {
+              "description": "Company name.",
+              "type": "string"
+            },
+            "county": {
+              "description": "County.",
+              "type": "string"
+            },
+            "suffix": {
+              "description": "Name suffix.",
+              "type": "string"
+            },
+            "selectedCountry": {
+              "description": "Country code.",
+              "type": "string"
+            },
+            "firstName": {
+              "description": "First name.",
+              "type": "string"
+            },
+            "phoneNumber": {
+              "description": "Phone number.",
+              "type": "string"
+            },
+            "faxNumber": {
+              "description": "Fax number.",
+              "type": "string"
+            },
+            "alias": {
+              "description": "Address alias.",
+              "type": "string"
+            },
+            "middleName": {
+              "description": "Middle name.",
+              "type": "string"
+            },
+            "state": {
+              "description": "State.",
+              "type": "string"
+            },
+            "selectedState": {
+              "description": "State code.",
+              "type": "string"
+            },
+            "email": {
+              "description": "Email address.",
+              "type": "string"
+            },
+            "state_ISOCode": {
+              "description": "State ISO code.",
+              "type": "string"
+            }
+          }
+        },
+        "id": {
+          "description": "The order ID.",
+          "type": "string"
+        },
+        "billingAddress": {
+          "description": "The billing address details.",
+          "type": "object",
+          "properties": {
+            "lastName": {
+              "description": "Last name.",
+              "type": "string"
+            },
+            "country": {
+              "description": "Country.",
+              "type": "string"
+            },
+            "address3": {
+              "description": "Address snippet.",
+              "type": "string"
+            },
+            "address2": {
+              "description": "Address snippet.",
+              "type": "string"
+            },
+            "city": {
+              "description": "City.",
+              "type": "string"
+            },
+            "prefix": {
+              "description": "Name prefix.",
+              "type": "string"
+            },
+            "address1": {
+              "description": "Address snippet.",
+              "type": "string"
+            },
+            "postalCode": {
+              "description": "Postal code.",
+              "type": "string"
+            },
+            "jobTitle": {
+              "description": "Job title.",
+              "type": "string"
+            },
+            "companyName": {
+              "description": "Company name.",
+              "type": "string"
+            },
+            "county": {
+              "description": "County.",
+              "type": "string"
+            },
+            "suffix": {
+              "description": "Name suffix.",
+              "type": "string"
+            },
+            "selectedCountry": {
+              "description": "Country code.",
+              "type": "string"
+            },
+            "firstName": {
+              "description": "First name.",
+              "type": "string"
+            },
+            "phoneNumber": {
+              "description": "Phone number.",
+              "type": "string"
+            },
+            "faxNumber": {
+              "description": "Fax number.",
+              "type": "string"
+            },
+            "alias": {
+              "description": "Address alias.",
+              "type": "string"
+            },
+            "middleName": {
+              "description": "Middle name.",
+              "type": "string"
+            },
+            "state": {
+              "description": "State.",
+              "type": "string"
+            },
+            "selectedState": {
+              "description": "State code.",
+              "type": "string"
+            },
+            "email": {
+              "description": "Email address.",
+              "type": "string"
+            },
+            "state_ISOCode": {
+              "description": "State ISO code.",
+              "type": "string"
+            }
+          }
+        },
+        "quoteInfo": {
+          "description": "the quote information of the order",
+          "type": "object",
+          "properties": {
+            "providerNote": {
+              "description": "the provider note for the quoted order",
+              "type": "string"
+            },
+            "notes": {
+              "description": "the notes (history) for the order",
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "requestDate/quoteDate/rejectionDate": {
+                    "description": "the request/quote/rejection date for the note",
+                    "type": "number"
+                  },
+                  "profileType": {
+                    "description": "the profile type of the user that requested the quote",
+                    "type": "string"
+                  },
+                  "profileId": {
+                    "description": "the profile id of the user",
+                    "type": "string"
+                  },
+                  "requesterNote/providerNote/rejectionNote": {
+                    "description": "the requester/provider/rejection note",
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            "rejectionDate": {
+              "description": "rejection date of the quoted order",
+              "type": "string"
+            },
+            "requestDate": {
+              "description": "the date when the quote was requested in ISO format",
+              "type": "string"
+            },
+            "errorInfo": {
+              "description": "the array of errors, if any",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "externalId": {
+              "description": "the external id for the quote",
+              "type": "string"
+            },
+            "rejectionNote": {
+              "description": "the rejection note for an order whose quote has been rejected by user",
+              "type": "string"
+            },
+            "quoteDate": {
+              "description": "the date the order was quoted in milliseconds",
+              "type": "number"
+            },
+            "expirationDate": {
+              "description": "the expiration date of the quoted order, if any",
+              "type": "string"
+            }
+          }
+        },
+        "giftWithPurchaseOrderMarkers": {
+          "description": "gift with purchase order marker information",
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "quantity": {
+                "description": "The total quantity of sku for this gift selection.",
+                "type": "number"
+              },
+              "selectedQuantity": {
+                "description": "The quantity of free sku for this gift selection that has already been selected by the Shopper and added to the order.",
+                "type": "integer"
+              },
+              "removedQuantity": {
+                "description": "The amount of free quantity that has since been manually removed by a Shopper.",
+                "type": "number"
+              },
+              "data": {
+                "description": "Gift hash code to track which gift selection in the promotion this is.  It allows the commerce item marker to link to this one.",
+                "type": "integer"
+              },
+              "autoRemove": {
+                "description": "Flag to indicate whether free gifts should be auto removed if the promotion no longer qualifies.",
+                "type": "boolean"
+              },
+              "giftDetail": {
+                "description": "String identifying the free gift, usually the repository id of the gift type.",
+                "type": "string"
+              },
+              "automaticQuantity": {
+                "description": "The quantity of free sku for this gift selection that has already been auto added to the order.",
+                "type": "number"
+              },
+              "giftType": {
+                "description": "The type of the gift. (sku, product)",
+                "type": "string"
+              },
+              "failedQuantity": {
+                "description": "The amount of automatic free quantity that failed to be added to the cart due to some pricing error, e.g. invalid site.",
+                "type": "number"
+              },
+              "value": {
+                "description": "The gift with purchase promotion id",
+                "type": "string"
+              },
+              "targetedQuantity": {
+                "description": "The quantity of free sku for this gift selection that has already been targeted and made free by the calculator in the order.",
+                "type": "number"
+              },
+              "key": {
+                "description": "atg.gwp",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "profileId": {
+      "description": "The profileId of the Scheduled order.",
+      "type": "string"
+    },
+    "name": {
+      "description": "The name of the Scheduled order.",
+      "type": "string"
+    },
+    "nextScheduledRun": {
+      "description": "The next scheduled run of the Scheduled order.",
+      "type": "string"
+    },
+    "id": {
+      "description": "The id of the Scheduled order.",
+      "type": "string"
+    },
+    "state": {
+      "description": "The status of the Scheduled order.",
+      "type": "string"
+    },
+    "type": {
+      "description": "The type of the Scheduled order.",
+      "type": "string"
+    },
+    "startDate": {
+      "description": "The start date of the Scheduled order.",
+      "type": "string"
+    },
+    "createDate": {
+      "description": "The create date of the Scheduled order.",
+      "type": "string"
+    }
+  }
+}

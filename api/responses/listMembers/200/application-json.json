@@ -1,0 +1,109 @@
+{
+  "total": 3,
+  "totalResults": 3,
+  "offset": 0,
+  "limit": 3,
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:8080/ccstore/v1/organizationMembers?limit=20&offset=0&sort=email:asc&q=lastName%20co%20%22test%22%20or%20email%20co%20%22test%22%20and%20profileType%20eq%20%22b2b_user%22%20and%20parentOrganization%20eq%20%22null%22%20and%20roles.function%20eq%20%22buyer%22"
+    }
+  ],
+  "sort": [
+    {
+      "property": "email",
+      "order": "asc"
+    },
+    {
+      "property": "firstName",
+      "order": "asc"
+    },
+    {
+      "property": "lastName",
+      "order": "asc"
+    }
+  ],
+  "items": [
+    {
+      "lastName": "jetu#$%^&test",
+      "firstName": "jetu&",
+      "profileType": "b2b_user",
+      "roles": [
+        {
+          "function": "buyer",
+          "repositoryId": "100006"
+        }
+      ],
+      "repositoryId": "120015",
+      "receiveEmail": "yes",
+      "active": true,
+      "id": "120015",
+      "locale": "en",
+      "parentOrganization": {
+        "repositoryId": "100003",
+        "name": "sample12",
+        "active": true,
+        "description": null,
+        "shippingAddress": null,
+        "secondaryAddresses": {},
+        "billingAddress": null,
+        "id": "100003"
+      },
+      "email": "test&@test.com"
+    },
+    {
+      "lastName": "!@#$%^&*",
+      "firstName": "test1",
+      "profileType": "b2b_user",
+      "roles": [
+        {
+          "function": "buyer",
+          "repositoryId": "100006"
+        }
+      ],
+      "repositoryId": "130000",
+      "receiveEmail": "yes",
+      "active": true,
+      "id": "130000",
+      "locale": "en",
+      "parentOrganization": {
+        "repositoryId": "100001",
+        "name": "sample1",
+        "active": true,
+        "description": null,
+        "shippingAddress": null,
+        "secondaryAddresses": {},
+        "billingAddress": null,
+        "id": "100001"
+      },
+      "email": "test1@abc.com"
+    },
+    {
+      "lastName": "Test",
+      "firstName": "test",
+      "profileType": "b2b_user",
+      "roles": [
+        {
+          "function": "buyer",
+          "repositoryId": "100006"
+        }
+      ],
+      "repositoryId": "120008",
+      "receiveEmail": "yes",
+      "active": true,
+      "id": "120008",
+      "locale": "en",
+      "parentOrganization": {
+        "repositoryId": "100002",
+        "name": "sample2",
+        "active": true,
+        "description": null,
+        "shippingAddress": null,
+        "secondaryAddresses": {},
+        "billingAddress": null,
+        "id": "100002"
+      },
+      "email": "test@test.com"
+    }
+  ]
+}

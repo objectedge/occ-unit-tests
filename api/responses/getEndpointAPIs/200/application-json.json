@@ -1,0 +1,297 @@
+{
+  "Orders": {
+    "endpoints": [
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getOrder",
+        "url": "/ccadmin/v1/orders/{id}",
+        "httpsRequired": false
+      }
+    ],
+    "description": "Order endpoints"
+  },
+  "Health Check": {
+    "endpoints": [
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "DELETE",
+        "hasDoc": true,
+        "id": "deletePaymentGatewayAuthorizationResponses",
+        "url": "/ccstore/v1/healthCheck/payments",
+        "httpsRequired": false
+      }
+    ],
+    "description": "Admin health check endpoints"
+  },
+  "Profiles": {
+    "endpoints": [
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": false,
+        "id": "getProfile",
+        "url": "/ccadmin/v1/profiles/{id}",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getCurrentProfile",
+        "url": "/ccadmin/v1/profiles/current",
+        "httpsRequired": false
+      }
+    ],
+    "description": "Profile endpoints"
+  },
+  "Asset Import/Export": {
+    "endpoints": [
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": "application/json",
+        "method": "POST",
+        "hasDoc": true,
+        "id": "uploadAssets",
+        "url": "/ccadmin/v1/asset/upload",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "POST",
+        "hasDoc": true,
+        "id": "importAssets",
+        "url": "/ccadmin/v1/asset/import",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "*/*",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "exportAssets",
+        "url": "/ccadmin/v1/asset/export",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "text/html",
+        "authRequired": true,
+        "requestType": "multipart/form-data",
+        "method": "POST",
+        "hasDoc": false,
+        "id": "uploadAssetsMultipart",
+        "url": "/ccadmin/v1/asset/upload",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "POST",
+        "hasDoc": true,
+        "id": "validateAssets",
+        "url": "/ccadmin/v1/asset/validate",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "*/*",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getValidationReport",
+        "url": "/ccadmin/v1/asset/validationReport/{token}",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getImportProgress",
+        "url": "/ccadmin/v1/asset/import/{token}",
+        "httpsRequired": false
+      }
+    ],
+    "description": "Asset import/export endpoints"
+  },
+  "WebHooks": {
+    "endpoints": [
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getWebHook",
+        "url": "/ccadmin/v1/webhooks/{id}",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getWebHooks",
+        "url": "/ccadmin/v1/webhooks",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getWebHookSecretKey",
+        "url": "/ccadmin/v1/webhooks/{id}/secretKey",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "PUT",
+        "hasDoc": true,
+        "id": "resetWebHookSecretKey",
+        "url": "/ccadmin/v1/webhooks/{id}/secretKey",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": "application/json",
+        "method": "PUT",
+        "hasDoc": true,
+        "id": "updateWebHooks",
+        "url": "/ccadmin/v1/webhooks",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": "application/json",
+        "method": "PUT",
+        "hasDoc": true,
+        "id": "updateWebHook",
+        "url": "/ccadmin/v1/webhooks/{id}",
+        "httpsRequired": false
+      }
+    ],
+    "description": "WebHook endpoints"
+  },
+  "Error Log Entries": {
+    "endpoints": [
+      {
+        "responseType": null,
+        "authRequired": true,
+        "requestType": "application/json",
+        "method": "POST",
+        "hasDoc": true,
+        "id": "createErrorlog",
+        "url": "/ccadmin/v1/errorLogs",
+        "httpsRequired": false
+      }
+    ],
+    "description": "Error Log Entry endpoints"
+  },
+  "OAuth": {
+    "endpoints": [
+      {
+        "responseType": "application/json",
+        "authRequired": false,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getRegistry",
+        "url": "/ccadmin/v1/registry",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": false,
+        "id": "getTimestampDiff",
+        "url": "/ccadmin/v1/timediff",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": false,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getEndpointAPIs",
+        "url": "/ccadmin/v1/api",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": false,
+        "requestType": null,
+        "method": "GET",
+        "hasDoc": true,
+        "id": "getEndpointAPI",
+        "url": "/ccadmin/v1/api/{id}",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/x-www-form-urlencoded",
+        "authRequired": false,
+        "requestType": null,
+        "method": "POST",
+        "hasDoc": true,
+        "id": "login",
+        "url": "/ccadmin/v1/login",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "POST",
+        "hasDoc": true,
+        "id": "verify",
+        "url": "/ccadmin/v1/verify",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "POST",
+        "hasDoc": true,
+        "id": "logout",
+        "url": "/ccadmin/v1/logout",
+        "httpsRequired": false
+      },
+      {
+        "responseType": "application/json",
+        "authRequired": true,
+        "requestType": null,
+        "method": "POST",
+        "hasDoc": true,
+        "id": "refresh",
+        "url": "/ccadmin/v1/refresh",
+        "httpsRequired": false
+      }
+    ],
+    "description": "OAuth endpoints"
+  }
+}

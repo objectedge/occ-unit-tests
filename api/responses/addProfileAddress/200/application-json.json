@@ -1,0 +1,14 @@
+{
+  "address": {
+    "country": "US",
+    "phoneNumber": "907-385-4412",
+    "address2": "",
+    "city": "Anchorage",
+    "address1": "639 Main St",
+    "postalCode": "99501",
+    "companyName": "National Discount Auto Parts",
+    "repositoryId": "210026",
+    "state": "AZ"
+  },
+  "addressType": "Addr3ess313333312-Profile"
+}

@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "productId": {
+      "description": "Id of the product",
+      "type": "string"
+    },
+    "preOrderableQuantity": {
+      "description": "Quantity that can be preordered",
+      "type": "integer"
+    },
+    "orderableQuantity": {
+      "description": "Maximum quantity that can be ordered",
+      "type": "integer"
+    },
+    "stockStatus": {
+      "description": "Stock status of the product",
+      "type": "string"
+    },
+    "availabilityDate": {
+      "description": "Availability date of the product",
+      "type": "string"
+    },
+    "backOrderableQuantity": {
+      "description": "Quantity that can be backordered",
+      "type": "integer"
+    },
+    "catRefId": {
+      "description": "Sku reference id",
+      "type": "string"
+    },
+    "inStockQuantity": {
+      "description": "Quantity that is in stock",
+      "type": "integer"
+    }
+  }
+}

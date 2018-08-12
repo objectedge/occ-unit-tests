@@ -1,0 +1,36 @@
+{
+  "properties": {
+    "currencyType": {
+      "description": "Type of Currency",
+      "type": "string"
+    },
+    "symbol": {
+      "description": "The currency symbol",
+      "type": "string"
+    },
+    "deleted": {
+      "description": "deleted flag of currency. Applicable to loylatyPoints currencyType.",
+      "type": "string"
+    },
+    "displayName": {
+      "description": "Readable name of the currency",
+      "type": "string"
+    },
+    "repositoryId": {
+      "description": "The ID of the currency item, which is a locale string.",
+      "type": "string"
+    },
+    "fractionalDigits": {
+      "description": "Number of digits to the right of the decimal point",
+      "type": "integer"
+    },
+    "currencyCode": {
+      "description": "currency code of Currency",
+      "type": "string"
+    },
+    "numericCode": {
+      "description": "numeric currency code",
+      "type": "string"
+    }
+  }
+}

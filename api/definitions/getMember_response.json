@@ -1,0 +1,123 @@
+{
+  "properties": {
+    "lastName": {
+      "description": "The last name of the profile.",
+      "type": "string"
+    },
+    "firstName": {
+      "description": "The first name of the profile.",
+      "type": "string"
+    },
+    "profileType": {
+      "description": "This attribute is added for account-based commerce, It's value is 'b2b_user'.",
+      "type": "string"
+    },
+    "derivedOrderPriceLimit": {
+      "description": "Its order limit value for the profile, if order limit is more than this value the approval is needed for the order",
+      "type": "number"
+    },
+    "roles": {
+      "description": "List of user roles",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "function": {
+            "description": "The function of the role which can be admin or buyer.",
+            "type": "string"
+          },
+          "repositoryId": {
+            "description": "The repository id of the role.",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "repositoryId": {
+      "description": "The repository id of the profile.",
+      "type": "string"
+    },
+    "receiveEmail": {
+      "description": "This is an email marketing flag which indicates to notify user by mail or not, can be yes or no.",
+      "type": "string"
+    },
+    "active": {
+      "description": "This is active status of the profile should be true or false.",
+      "type": "boolean"
+    },
+    "id": {
+      "description": "The ID of the shopper profile.",
+      "type": "string"
+    },
+    "locale": {
+      "description": "The locale of the request/response.",
+      "type": "string"
+    },
+    "parentOrganization": {
+      "description": "This attribute is added for 'Account-Based Commerce', this is required only in case of 'Account-Based Commerce', this is the id of organization to which user is associated",
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "the name of the parent organization",
+          "type": "string"
+        },
+        "repositoryId": {
+          "description": "the id of the parent organization",
+          "type": "string"
+        },
+        "description": {
+          "description": "Description of the Organization",
+          "type": "string"
+        },
+        "active": {
+          "description": "This is active status of the profile should be true or false.",
+          "type": "boolean"
+        },
+        "shippingAddress": {
+          "description": "Default shipping address of the organization",
+          "type": "object",
+          "properties": {
+            "repositoryId": {
+              "description": "the id of the shipping address",
+              "type": "string"
+            }
+          }
+        },
+        "secondaryAddresses": {
+          "description": "List of shipping addresses associated with the profile.",
+          "type": "object",
+          "properties": {
+            "AddressType": {
+              "description": "Address type represents nick-name of address.",
+              "type": "object",
+              "properties": {
+                "repositoryId": {
+                  "description": "Repository ID of the shipping address",
+                  "type": "string"
+                }
+              }
+            }
+          }
+        },
+        "id": {
+          "description": "the id of the parent organization",
+          "type": "string"
+        },
+        "billingAddress": {
+          "description": "Default billing address of the organization",
+          "type": "object",
+          "properties": {
+            "repositoryId": {
+              "description": "the id of the billing address",
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "email": {
+      "description": "The email address of the profile.",
+      "type": "string"
+    }
+  }
+}

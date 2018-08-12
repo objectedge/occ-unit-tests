@@ -1,0 +1,24 @@
+{
+  "displayName": "UsDollar",
+  "listPriceList": {
+    "repositoryId": "listPrices"
+  },
+  "repositoryId": "UsDollar",
+  "active": false,
+  "salePriceList": {
+    "repositoryId": "salePrices"
+  },
+  "currency": {
+    "symbol": "$",
+    "displayName": "US Dollar",
+    "repositoryId": "en_US",
+    "fractionalDigits": 2,
+    "currencyCode": "USD",
+    "numericCode": "840"
+  },
+  "id": "UsDollar",
+  "locale": "en_US",
+  "shippingSurchargePriceList": {
+    "repositoryId": "shippingSurchargePrices"
+  }
+}

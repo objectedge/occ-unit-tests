@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "lastName": {
+      "description": "the last name of the profile",
+      "type": "string"
+    },
+    "firstName": {
+      "description": "the first name of the profile",
+      "type": "string"
+    },
+    "roles": {
+      "description": "List of role's function that need to associate with the user",
+      "type": "object"
+    },
+    "receiveEmail": {
+      "description": "this is email marketing flag. can be yes or no",
+      "type": "string"
+    },
+    "active": {
+      "description": "the status of the profile. Should be true or false",
+      "type": "boolean"
+    },
+    "email": {
+      "description": "the email address of the profile",
+      "type": "string"
+    }
+  },
+  "required": [
+    "firstName"
+  ],
+  "example": {
+    "dynamicProperty": "dynamicProperty value",
+    "firstName": "kim",
+    "lastName": "Anderson",
+    "roles": [
+      {
+        "function": "buyer"
+      }
+    ],
+    "receiveEmail": "yes",
+    "active": true,
+    "email": "kim@example.com",
+    "daytimeTelephoneNumber": "212-555-1977"
+  }
+}

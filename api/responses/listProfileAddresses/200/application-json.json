@@ -1,0 +1,48 @@
+{
+  "total": 2,
+  "totalResults": 2,
+  "offset": 0,
+  "limit": 8,
+  "links": [
+    {
+      "rel": "self",
+      "href": "http://localhost:9080/ccagentui/v1/profiles/bb-110023/addresses?limit=8&offset=0"
+    }
+  ],
+  "items": [
+    {
+      "address": {
+        "firstName": null,
+        "lastName": null,
+        "country": "US",
+        "phoneNumber": null,
+        "address2": null,
+        "city": "sdf",
+        "address1": "sdfs",
+        "postalCode": "35005",
+        "companyName": null,
+        "repositoryId": "140065",
+        "county": null,
+        "state": "AL"
+      },
+      "addressType": "test2##0"
+    },
+    {
+      "address": {
+        "firstName": null,
+        "lastName": null,
+        "country": "US",
+        "phoneNumber": null,
+        "address2": "dsfsd",
+        "city": "sdf",
+        "address1": "dsss",
+        "postalCode": "35005",
+        "companyName": null,
+        "repositoryId": "140059",
+        "county": null,
+        "state": "AL"
+      },
+      "addressType": "This ##0"
+    }
+  ]
+}

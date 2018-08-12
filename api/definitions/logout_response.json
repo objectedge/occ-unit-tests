@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "result": {
+      "description": "true - logout was successful, false - it failed.",
+      "type": "boolean"
+    }
+  }
+}
