@@ -6,8 +6,7 @@
     "start": "npm-run-all --parallel api test",
     "start-chrome": "npm-run-all --parallel api test-chrome",
     "update-schema": "node tasks/update-schema",
-    "update-libs": "node tasks/update-libs",
-    "update-shared-libs": "node tasks/update-shared-libs"
+    "update-libs": "node tasks/update-libs"
   },
   "devDependencies": {
     "chai": "^4.1.2",

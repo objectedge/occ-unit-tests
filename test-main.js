@@ -12,7 +12,7 @@ Object.keys(window.__karma__.files).forEach(function (file) {
   }
 })
 
-var requireJSConfigs = getOracleRequireJSConfigs();
+var requireJSConfigs = require.s.contexts._.config;
 
 // Setting the right path
 var stringifiedConfigs = JSON.stringify(requireJSConfigs);
@@ -23,10 +23,10 @@ requireJSConfigs.baseUrl = '/base';
 requireJSConfigs.deps = allTestFiles;
 requireJSConfigs.callback = window.__karma__.start;
 
-/**
- * @fileoverview The require.js main file for the storefront
- */
-/*jslint plusplus: true */
+// /**
+//  * @fileoverview The require.js main file for the storefront
+//  */
+// /*jslint plusplus: true */
 require.config(requireJSConfigs);
 
-require(['/base/libs/loaders/main.js']);
+// require(['/base/libs/loaders/main.js']);

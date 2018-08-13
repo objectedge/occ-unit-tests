@@ -3,11 +3,11 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['mocha', 'requirejs', 'chai'],
     files: [
-      { pattern: 'oracle-requirejs-configs.js', included: true },
+      { pattern: 'libs/main.js', included: true },
       { pattern: 'test-main.js', included: true },
-      { pattern: 'libs/loaders/main.@(js|js.map)', included: false },
-      { pattern: 'libs/js/**/*.@(js|map)', included: false },
-      { pattern: 'libs/shared/**/*.@(js|map)', included: false },
+      { pattern: 'libs/js/**/*.js', included: false },
+      { pattern: 'libs/shared/**/*.js', included: false },
+      { pattern: 'libs/store-libs.js', included: true },
       { pattern: 'src/**/*.@(js|map)', included: false },
       { pattern: 'test/**/*.js', included: false }
     ],

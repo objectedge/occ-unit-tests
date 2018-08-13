@@ -15,7 +15,7 @@ for(requestPath in schemaPaths) {
     const responsePath = requestData.responses;
 
     try {
-      const responsesStatuses = fs.readdirSync(path.join(__dirname, responsePath));
+      const responsesStatuses = fs.readdirSync(path.join(__dirname, responsePath)).filter(item => !(/(^|\/)\.[^\/\.]/g).test(item));
       responsesStatuses.forEach(statusCode => {
         if(statusCode === 'default') {
           return;
@@ -35,6 +35,7 @@ for(requestPath in schemaPaths) {
 
               app[method](requestEndpoint, (req, res) => {
                 res.header("Content-Type", responseType.replace('-', '/').replace('.json', ''));
+                res.header("OperationId", requestData.operationId);
                 res.status(statusCode);
                 res.send(fs.readFileSync(responseFilePath, 'utf8'));
               });
