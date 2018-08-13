@@ -5,9 +5,10 @@ module.exports = function(config) {
     files: [
       { pattern: 'oracle-requirejs-configs.js', included: true },
       { pattern: 'test-main.js', included: true },
+      { pattern: 'libs/loaders/main.@(js|js.map)', included: false },
       { pattern: 'libs/js/**/*.@(js|map)', included: false },
       { pattern: 'libs/shared/**/*.@(js|map)', included: false },
-      { pattern: 'src/**/*.js', included: false },
+      { pattern: 'src/**/*.@(js|map)', included: false },
       { pattern: 'test/**/*.js', included: false }
     ],
     exclude: [

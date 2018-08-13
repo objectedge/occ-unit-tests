@@ -53,8 +53,18 @@ const saveFile = (requestFile, destDir) => {
 	});
 };
 
-fs.removeSync(libsPath);
-fs.ensureDirSync(libsPath);
+try {
+  fs.readdirSync(libsPath)
+    .filter(itemPath => itemPath !== 'loaders')
+    .forEach(itemPath => {
+      const libPath = path.join(libsPath, itemPath);
+      fs.removeSync(libPath);
+      fs.ensureDirSync(libPath);
+    })
+  
+} catch(error) {
+  console.log(error);
+}
 
 Object.keys(oracleRequireJSConfigsPaths).forEach(function (libPath) {
 	const iterateThroughPaths = (libPath, isPath) => {

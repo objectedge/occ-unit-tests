@@ -1,5 +1,5 @@
 var allTestFiles = []
-var TEST_REGEXP = /(spec|test)\.(js|map)$/i
+var TEST_REGEXP = /(spec|test)\.js$/i
 
 // Get a list of all the test files to include
 Object.keys(window.__karma__.files).forEach(function (file) {
@@ -28,3 +28,5 @@ requireJSConfigs.callback = window.__karma__.start;
  */
 /*jslint plusplus: true */
 require.config(requireJSConfigs);
+
+require(['/base/libs/loaders/main.js']);

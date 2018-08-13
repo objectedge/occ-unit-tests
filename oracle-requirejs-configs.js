@@ -186,7 +186,11 @@ var getOracleRequireJSConfigs = function () {
       // Dynamic paths to make naming/referencing modules easier
       pageLayout: '/shared/js/pageLayout',
       viewModels: '/shared/js/viewModels',
-      shared: '/shared/js'
+      shared: '/shared/js',
+
+      // Additional paths
+      'pageLayout/site': '/shared/js/pageLayout/site',
+      'pageLayout/currency': '/shared/js/pageLayout/currency'
     }
   };
 }
