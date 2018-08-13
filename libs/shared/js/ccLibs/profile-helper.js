@@ -1,2 +1,177 @@
-define("profileHelper",["knockout","ccConstants"],function(e,t){"use strict";function r(){return this.profileData=e.observable(null),this.allowedActions=e.observableArray(null),this.pageAccesskeys={home:[t.DASHBOARD_TAB,t.DASHBOARD_MINI_TAB],catalog:[t.CATALOG_TAB],"price-groups":[t.CATALOG_TAB],"price-group":[t.CATALOG_TAB],marketing:[t.MARKETING_TAB],reporting:[t.REPORTS_TAB],media:[t.MEDIA_TAB],search:[t.SEARCH_TAB],accounts:[t.ACCOUNTS_TAB],contacts:[t.ACCOUNTS_TAB],design:[t.DESIGN_TAB],code:[t.DESIGN_TAB],publish:[t.PUBLISHING_TAB],settings:[t.SETTINGS_TAB,t.SETTINGS_LIMITED_TAB],inventory:[t.CATALOG_TAB],css:[t.DESIGN_TAB],theme:[t.DESIGN_TAB],layout:[t.DESIGN_TAB]},this.restrictedSubTabAccess={emailSettings:[t.SETTINGS_TAB],webAPI:[t.SETTINGS_TAB],accessControl:[t.SETTINGS_TAB],extensions:[t.SETTINGS_TAB],abandonedCartSettings:[t.SETTINGS_TAB],storeEndpointSettings:[t.SETTINGS_TAB]},this.tourNavigationData={home:{url:t.HOME_PAGE},catalog:{url:t.AGENT_CATALOG_PAGE_CONTEXT},marketing:{url:t.MARKETING_PAGE},reporting:{url:t.REPORTING_PAGE},media:{url:t.MEDIA_PAGE},search:{url:t.SEARCH_PAGE},accounts:{url:t.ACCOUNTS_PAGE,lastStop:!1},design:{url:t.DESIGN_PAGE},code:{url:t.CODE_PAGE},publish:{url:t.PUBLISH_PAGE},settings:{url:t.SETTINGS_SHIPPINGMETHODS_PAGE,lastStop:!1}},this}return r.prototype.isAuthorized=function(e){var t=this;if(e){var r=[];if($.isArray(e)?r=e:r.push(e),t.allowedActions&&t.allowedActions().length>0&&$(t.allowedActions()).filter(r).length>0)return!0}return!1},r.prototype.isAuthorizedForPage=function(e){var t=this,r=t.pageAccesskeys[e];if("undefined"!=typeof r&&null!==r)return t.isAuthorized(r)},r.prototype.isAuthorizedForSubTab=function(e){if(!e)return!0;var t=this,r=t.restrictedSubTabAccess[e];return"undefined"==typeof r||null===r||t.isAuthorized(r)},r.prototype.nextAuthorizedPage=function(e){if(e){var t=this,r=e.split("/");if(r&&(e=r[0]&&r[0].length>0?r[0]:r[1]),"undefined"==typeof e||null===e)return;var A=!1;for(var i in t.pageAccesskeys)if(t.pageAccesskeys.hasOwnProperty(i)&&(i===e&&(A=!0),A)){var s=t.pageAccesskeys[i];if(t.isAuthorized(s))return t.tourNavigationData[i]}return null}},new r});
-//# sourceMappingURL=profile-helper.js.map
+/*global $ */
+/**
+ * 
+ */
+
+define('profileHelper',
+['knockout', 'ccConstants'],
+
+function(ko, ccConstants) {
+  "use strict";
+
+  /**
+   * Creates a ProfileHelper
+   */
+  function ProfileHelper() {
+    var self = this;
+    this.profileData = ko.observable(null);
+    this.allowedActions = ko.observableArray(null);
+    /**
+     * We are having more than one page user one tab. So we are maintaining this
+     * map in JS. We can find more optimal way in future
+     */
+    this.pageAccesskeys = {
+            home : [ccConstants.DASHBOARD_TAB , ccConstants.DASHBOARD_MINI_TAB],
+            catalog: [ccConstants.CATALOG_TAB],
+            'price-groups': [ccConstants.CATALOG_TAB],
+            'price-group': [ccConstants.CATALOG_TAB],
+            marketing: [ccConstants.MARKETING_TAB],
+            reporting: [ccConstants.REPORTS_TAB],
+            media: [ccConstants.MEDIA_TAB],
+            search: [ccConstants.SEARCH_TAB],
+            accounts: [ccConstants.ACCOUNTS_TAB],
+            contacts: [ccConstants.ACCOUNTS_TAB],
+            design: [ccConstants.DESIGN_TAB],
+            code: [ccConstants.DESIGN_TAB],
+            publish: [ccConstants.PUBLISHING_TAB],
+            settings: [ccConstants.SETTINGS_TAB, ccConstants.SETTINGS_LIMITED_TAB],
+            inventory: [ccConstants.CATALOG_TAB],
+            css: [ccConstants.DESIGN_TAB],
+            theme: [ccConstants.DESIGN_TAB],
+            layout: [ccConstants.DESIGN_TAB]
+          };
+    
+    this.restrictedSubTabAccess = {
+        emailSettings: [ccConstants.SETTINGS_TAB],
+        webAPI: [ccConstants.SETTINGS_TAB],
+        accessControl: [ccConstants.SETTINGS_TAB],
+        extensions: [ccConstants.SETTINGS_TAB],
+        'abandonedCartSettings': [ccConstants.SETTINGS_TAB],
+        'storeEndpointSettings': [ccConstants.SETTINGS_TAB]
+    };
+    
+    this.tourNavigationData = {
+          home : {
+            url : ccConstants.HOME_PAGE
+          },
+          catalog : {
+            url : ccConstants.AGENT_CATALOG_PAGE_CONTEXT
+          },
+          marketing : {
+            url : ccConstants.MARKETING_PAGE
+          },
+          reporting : {
+            url : ccConstants.REPORTING_PAGE
+          },
+          media : {
+			url : ccConstants.MEDIA_PAGE
+		  },
+          search : {
+            url : ccConstants.SEARCH_PAGE
+          },
+          accounts : {
+            url : ccConstants.ACCOUNTS_PAGE,
+            lastStop : false
+          },
+          design : {
+            url : ccConstants.DESIGN_PAGE
+          },
+          code : {
+            url : ccConstants.CODE_PAGE
+          },
+          publish : {
+            url : ccConstants.PUBLISH_PAGE
+          },
+          settings : {
+            url : ccConstants.SETTINGS_SHIPPINGMETHODS_PAGE,
+            lastStop : false
+          }
+    };
+    return (this);
+  }
+  
+  /**
+   * This will return true if user is allowed to do this particular action represented by <i>key</i>
+   * @param key action identifier
+   */
+  ProfileHelper.prototype.isAuthorized = function (keys) {
+    var self = this;
+    if(keys){
+      var currentActions = [];
+      if($.isArray(keys)){
+        currentActions = keys;
+      }else{
+        currentActions.push(keys);
+      }
+      if(self.allowedActions && self.allowedActions().length > 0 &&
+          ($(self.allowedActions()).filter(currentActions).length > 0)){
+        return true;
+      }
+    }
+    return false;
+  };
+  
+  /**
+   * This will return true if user is allowed to page represented by <i>pageId</i>
+   * @param pageId action identifier
+   */
+  ProfileHelper.prototype.isAuthorizedForPage = function (pageId) {
+    var self = this;
+    var keys = self.pageAccesskeys[pageId];
+    if(typeof keys === "undefined" || keys === null){
+      return undefined;
+    }
+    return self.isAuthorized(keys);
+  };
+  
+  /**
+   * This will return true if user is allowed to tab represented by <i>tabId</i>
+   * @param tabId tab identifier
+   */
+  ProfileHelper.prototype.isAuthorizedForSubTab = function (tabId) {
+    if(!tabId){
+      return true;
+    }
+    var self = this;
+    var keys = self.restrictedSubTabAccess[tabId];
+    if(typeof keys === "undefined" || keys === null){
+      return true;
+    }
+    return self.isAuthorized(keys);
+  };
+  
+  /**
+   * This will return true if user is allowed to page represented by <i>pageId</i>
+   * @param pageId action identifier
+   */
+  ProfileHelper.prototype.nextAuthorizedPage = function (pageId) {
+    if(pageId){
+      var self = this;
+      var urlParts = pageId.split("/");
+      if(urlParts){
+        pageId = (urlParts[0] && urlParts[0].length > 0) ? urlParts[0] : urlParts[1];
+      }
+      if(typeof pageId === "undefined" || pageId === null){
+        return undefined;
+      }
+      var keyFound = false;
+      for (var property in self.pageAccesskeys) {
+        if (self.pageAccesskeys.hasOwnProperty(property)) {
+          if(property === pageId){
+            keyFound = true;
+          }
+          if(keyFound){
+            var keys = self.pageAccesskeys[property];
+            if(self.isAuthorized(keys)){
+              return self.tourNavigationData[property];
+            }
+          }
+        }
+      }
+      return null;
+    }
+  };
+
+  return new ProfileHelper();
+});
+

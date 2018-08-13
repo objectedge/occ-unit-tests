@@ -1,2 +1,667 @@
-define("swmRestClientConstructor",["jquery","ccRestClient","ccLogger","storageApi","pageLayout/site"],function(e,t,s,r,i){"use strict";function c(e,s){var i=this;i.isInitialized=!1,i.usingCCAuthentication=!1,i.isSynced=!1,i.unauthorizedCount=0,i.cors="withCredentials"in new XMLHttpRequest,i.corsFrameReady=!1,i.ccsyncInProgress=!1,i.ccsyncBlockedCallQue={items:[]},i.refreshTimeoutID=null,i.siteid="",i.ccsiteid="",i.apiuserid="",i.apiuserauth="";try{r.getInstance().removeItem("social.ccsyncprofileid"),r.getInstance().removeItem("social.ccsyncapiuserid")}catch(e){}i.ccrestapi=t,i.tenantid="",i.swmhost="",i.isPreview=!1,i.currentRequestId=0,i.commonSuccessCallback=e,i.commonErrorCallback=s,i.doRefresh=function(){if(i.usingCCAuthentication){var e=function(){},s=function(e){};i.refresh(e,s),t.storeRequestWasMade=!0}},i.stackedPostMessages={items:[]},i.setCorsFrameReady=function(){if(i.corsFrameReady=!0,i.stackedPostMessages&&i.stackedPostMessages.items.length>0){for(var e=0;e<i.stackedPostMessages.items.length;e++)i.proxyFrame.postMessage(i.stackedPostMessages.items[e].msgObj,i.swmhost);i.stackedPostMessages={items:[]}}}}return c.GET="GET",c.POST="POST",c.JSON="json",c.REQUEST_JSON_CONTENT_TYPE="application/json",c.REQUEST_FORM_URL_ENCODED="application/x-www-form-urlencoded",c.SWM_CCSYNC_ENDPOINT="/swm/rs/v1/users/cc",c.SWM_REFRESH_ENDPOINT="/swm/rs/v1/users/refresh",c.AUTH_HEADER_NAME="Authorization",c.CC_TENANTID_HEADER_NAME="X-CCTenantId",c.CC_SITEID_HEADER_NAME="X-CCSiteId",c.CC_ISPREVIEW_HEADER_NAME="X-CCIsPreview",c.ACCEPT_LANGUAGE_HEADER_NAME="Accept-Language",c.SWM_ACCESS_TOKEN="access_token",c.AUTH_HEADER_PREFIX="Bearer ",c.JWT_BEARER_GRANT_TYPE="urn:ietf:params:oauth:grant-type:jwt-bearer",c.TOKEN_REFRESH_TIMEOUT=5e3,c.IFRAME_ELEMENT="iframe",c.ZERO="0",c.IFRAME_STYLE="width: 0; height: 0; border: none;",c.IFRAME_NAME="swm_iframe",c.ID_ATTRIBUTE="id",c.NAME_ATTRIBUTE="name",c.WIDTH_ATTRIBUTE="width",c.HEIGHT_ATTRIBUTE="height",c.BORDER_ATTRIBUTE="border",c.STYLE_ATTRIBUTE="style",c.SRC_ATTRIBUTE="src",c.MAX_INT=4294967295,c.prototype.setSWMHost=function(e){this.swmhost=e},c.prototype.init=function(e,t,s){var r=this;if(r.tenantid=e,r.isPreview=1==t?"true":"false",r.locale=s,r.ccsiteid=i.getInstance().siteInfo.id,!r.cors&&!r.isInitialized){r.crossDomainUrl=r.swmhost+"/swm/pm/?tenantId="+e+"&isPreview="+r.isPreview,r.eventHandlerMap={},r.eventHandlerMap.initializedSWMFrame={success:r.setCorsFrameReady,error:r.setCorsFrameReady},r.initXDomainMessageListener();var c=r.createCrossDomainIFrame();null!=c&&(r.proxyFrame=c.contentWindow)}r.isInitialized=!0},c.prototype.createCrossDomainIFrame=function(){var e=this,t=c.IFRAME_NAME,s=document.createElement(c.IFRAME_ELEMENT);s.setAttribute(c.ID_ATTRIBUTE,t),s.setAttribute(c.NAME_ATTRIBUTE,t),s.setAttribute(c.WIDTH_ATTRIBUTE,c.ZERO),s.setAttribute(c.HEIGHT_ATTRIBUTE,c.ZERO),s.setAttribute(c.BORDER_ATTRIBUTE,c.ZERO),s.setAttribute(c.STYLE_ATTRIBUTE,c.IFRAME_STYLE),s.setAttribute(c.SRC_ATTRIBUTE,e.crossDomainUrl);var r=null;try{document.body.appendChild(s),window.frames[t].name=t,r=document.getElementById(t)}catch(e){}return r},c.prototype.initXDomainMessageListener=function(){var e=this;window.addEventListener("message",function(t){var s=t.origin;if(s===e.swmhost){var r;r="string"==typeof t.data?JSON.parse(t.data):t.data;var i=r.id,c=r.success,n=r.payload,o=e.eventHandlerMap[i];o&&(c?o.success(n):o.error(JSON.stringify(n)))}},!1)},c.prototype.proxyRequest=function(e,t,s,r,i,n){var o=this;o.currentRequestId>=c.MAX_INT?o.currentRequestId=0:o.currentRequestId++;var a=o.currentRequestId;o.eventHandlerMap[a]={success:r,error:i};var u=t.replace("{siteid}",o.siteid);u=o.swmhost+o.insertParamsIntoUri(u,n),u.indexOf(c.SWM_REFRESH_ENDPOINT)==-1&&u.indexOf(c.SWM_CCSYNC_ENDPOINT)==-1&&(null==o.refreshTimeoutID?o.refreshTimeoutID=setTimeout(o.doRefresh,c.TOKEN_REFRESH_TIMEOUT):(clearTimeout(o.refreshTimeoutID),o.refreshTimeoutID=setTimeout(o.doRefresh,c.TOKEN_REFRESH_TIMEOUT)));var E=0===t.indexOf(c.SWM_CCSYNC_ENDPOINT),l=(E?c.REQUEST_FORM_URL_ENCODED:c.REQUEST_JSON_CONTENT_TYPE,s?E?s:JSON.stringify(s):""),d={};d.id=a,d.pMethod=e,d.pUrl=u,d.pData=l,d.pIsPreview=o.isPreview,d.pTenantId=o.tenantid,d.pCCSiteId=o.ccsiteid,d.pLocale=o.locale,d.pApiuserauth=o.apiuserauth,d.pAssertion=o.ccrestapi.tokenSecret,o.corsFrameReady?o.proxyFrame.postMessage(JSON.stringify(d),o.swmhost):o.stackedPostMessages.items.push({msgObj:JSON.stringify(d)})},c.prototype.syncCCUser=function(e,t){var s=this,i=function(t){s.isSynced=!0,s.siteid=t.siteId,s.apiuserid=t.userId,s.apiuserauth=t.access_token;try{r.getInstance().setItem("social.ccsyncprofileid",s.ccrestapi.profileId),r.getInstance().setItem("social.ccsyncapiuserid",t.userId)}catch(e){}e&&e(t)},n=function(e){s.isSynced=!1,null!=s.refreshTimeoutID&&clearTimeout(s.refreshTimeoutID),t&&t(e)};this.cors?this.corsRequest(c.POST,c.SWM_CCSYNC_ENDPOINT+"/{ccprofileid}","grant_type="+encodeURIComponent(c.JWT_BEARER_GRANT_TYPE)+"&assertion="+encodeURIComponent(s.ccrestapi.tokenSecret),i,n,{ccprofileid:s.ccrestapi.profileId}):this.proxyRequest(c.POST,c.SWM_CCSYNC_ENDPOINT+"/{ccprofileid}","grant_type="+encodeURIComponent(c.JWT_BEARER_GRANT_TYPE)+"&assertion="+encodeURIComponent(s.ccrestapi.tokenSecret),i,n,{ccprofileid:s.ccrestapi.profileId})},c.prototype.refresh=function(e,t){var s=this,r=function(t){s.isSynced=!0,s.apiuserauth=t.access_token,e&&e(t)},i=function(e){};s.apiuserauth?s.cors?s.corsRequest(c.POST,c.SWM_REFRESH_ENDPOINT,{},r,i):s.proxyRequest(c.POST,c.SWM_REFRESH_ENDPOINT,{},r,i):i()},c.prototype.clear=function(){var e=this;e.usingCCAuthentication=!1,e.isSynced=!1,e.siteid="",e.apiuserid="",e.apiuserauth="";try{r.getInstance().removeItem("social.ccsyncprofileid"),r.getInstance().removeItem("social.ccsyncapiuserid")}catch(e){}},c.prototype.request=function(e,t,i,c,n,o){var a=this,u=c,E=n;if(""==a.swmhost||!a.isInitialized)return void s.warn("rest client not initialized properly");null!=a.ccrestapi.profileId&&null!=a.ccrestapi.tokenSecret&&(a.usingCCAuthentication=!0);var l=r.getInstance().getItem("social.ccsyncprofileid"),d=r.getInstance().getItem("social.ccsyncapiuserid");if(l&&a.ccrestapi.profileId!==l||d&&a.apiuserid!==d){a.clear();var T='{"o:errorCode":"401.99"}';return void a.commonErrorCallback(T)}if(a.apiuserid===d&&a.ccrestapi.profileId===l||(a.isSynced=!1),a.usingCCAuthentication&&!a.isSynced){var p=function(s){a.ccsyncInProgress=!1,a.cors?a.corsRequest(e,t,i,u,E,o):a.proxyRequest(e,t,i,u,E,o),a.ccsyncBlockedCallQueExecution()},I=function(e){a.ccsyncInProgress=!1,null!=a.refreshTimeoutID&&clearTimeout(a.refreshTimeoutID),E&&E(e)};a.ccsyncInProgress?a.ccsyncBlockedCallQue.items.push({pMethod:e,pUrl:t,pData:i,pSuccessCallback:c,pErrorCallback:n,pJSONParams:o}):(a.ccsyncInProgress=!0,a.syncCCUser(p,I))}else a.cors?this.corsRequest(e,t,i,c,n,o):this.proxyRequest(e,t,i,c,n,o)},c.prototype.ccsyncBlockedCallQueExecution=function(){var e=this;if(e.ccsyncBlockedCallQue.items.length>0){for(var t=0;t<e.ccsyncBlockedCallQue.items.length;t++)e.cors?e.corsRequest(e.ccsyncBlockedCallQue.items[t].pMethod,e.ccsyncBlockedCallQue.items[t].pUrl,e.ccsyncBlockedCallQue.items[t].pData,e.ccsyncBlockedCallQue.items[t].pSuccessCallback,e.ccsyncBlockedCallQue.items[t].reqErrorCB,e.ccsyncBlockedCallQue.items[t].pJSONParams):e.proxyRequest(e.ccsyncBlockedCallQue.items[t].pMethod,e.ccsyncBlockedCallQue.items[t].pUrl,e.ccsyncBlockedCallQue.items[t].pData,e.ccsyncBlockedCallQue.items[t].pSuccessCallback,e.ccsyncBlockedCallQue.items[t].reqErrorCB,e.ccsyncBlockedCallQue.items[t].pJSONParams);e.ccsyncBlockedCallQue={items:[]}}},c.prototype.corsRequest=function(t,s,r,i,n,o){var a=this,u=t,E=s.replace("{siteid}",a.siteid);E=a.swmhost+a.insertParamsIntoUri(E,o),E.indexOf(c.SWM_REFRESH_ENDPOINT)==-1&&E.indexOf(c.SWM_CCSYNC_ENDPOINT)==-1&&(null==a.refreshTimeoutID?a.refreshTimeoutID=setTimeout(a.doRefresh,c.TOKEN_REFRESH_TIMEOUT):(clearTimeout(a.refreshTimeoutID),a.refreshTimeoutID=setTimeout(a.doRefresh,c.TOKEN_REFRESH_TIMEOUT)));var l=function(e){s.indexOf(c.SWM_CCSYNC_ENDPOINT)==-1&&(a.unauthorizedCount=0);var t=function(e,t){a.commonSuccessCallback(e,t),i(e,t)};t(e.data,e.textStatus)},d=function(e){var u=function(e,t,s){a.commonErrorCallback(e,t,s),n(e,t,s)};if(a.usingCCAuthentication)try{var E=JSON.parse(e.jqXHR.responseText);a.unauthorizedCount<=1&&401===E.status&&s.indexOf(c.SWM_CCSYNC_ENDPOINT)==-1?(a.isSynced=!1,a.unauthorizedCount++,a.request(t,s,r,i,n,o)):u(e.jqXHR.responseText,e.jqXHR.status,e.errorThrown)}catch(e){}else u(e.jqXHR.responseText,e.jqXHR.status,e.errorThrown)};u===c.GET&&(E=a.fixIECaching(E));var T=0===s.indexOf(c.SWM_CCSYNC_ENDPOINT),p=T?c.REQUEST_FORM_URL_ENCODED:c.REQUEST_JSON_CONTENT_TYPE,I=r?T?r:JSON.stringify(r):"",_={};_={dataType:c.JSON,contentType:p,type:u,url:E,data:I,processData:!1,success:function(e,t,s){l({data:e,textStatus:t,jqXHR:s})},error:function(e,t,s){d({jqXHR:e,textStatus:t,errorThrown:s})}};var R={};R[c.CC_ISPREVIEW_HEADER_NAME]=a.isPreview,R[c.ACCEPT_LANGUAGE_HEADER_NAME]=a.locale,T?(R[c.CC_TENANTID_HEADER_NAME]=a.tenantid,R[c.CC_SITEID_HEADER_NAME]=a.ccsiteid):a.apiuserauth&&a.apiuserauth.length>0&&(R[c.AUTH_HEADER_NAME]=c.AUTH_HEADER_PREFIX+a.apiuserauth),_.headers=R,e.ajax(_)},c.prototype.insertParamsIntoUri=function(e,t){var s=e;for(var r in t)t.hasOwnProperty(r)&&(s=s.replace("{"+r+"}",encodeURIComponent(t[r])));return s},c.prototype.fixIECaching=function(e){return e&&"Microsoft Internet Explorer"==navigator.appName&&(e+=(e.indexOf("?")!==-1?"&":"?")+"__ie__fix__="+(new Date).getTime()),e},c.getTimestamp=function(e){var t=new Date/1e3,s=parseInt(e,10),r=t+s;return parseInt(+r,10)},c});
-//# sourceMappingURL=swm-rest-client-1.0.js.map
+//----------------------------------------
+/**
+ * This library handles making rest calls to jersey style endpoints running on a
+ * SWM server.
+ * 
+ * After creating an instance of the SWMRestClient() class, the init method
+ * must be called.
+ * 
+ * To make a request, just call the request() method.
+ */
+/*global window: false,  XMLHttpRequest: false, navigator: false, logger */
+define(
+// -------------------------------------------------------------------
+// PACKAGE NAME
+// -------------------------------------------------------------------
+'swmRestClientConstructor',
+
+// -------------------------------------------------------------------
+// DEPENDENCIES
+// -------------------------------------------------------------------
+[ 'jquery', 'ccRestClient', 'ccLogger', 'storageApi', 'pageLayout/site'],
+
+// -------------------------------------------------------------------
+// MODULE DEFINITION
+// -------------------------------------------------------------------
+function($, ccRestClient, log, storageApi, SiteViewModel) {
+
+  "use strict";
+
+  // ----------------------------------------
+  /**
+   * Constructor
+   */
+  function SWMRestClient(pCommonSuccessCallback, pCommonErrorCallback) {
+    var self = this;
+
+    self.isInitialized = false;
+    self.usingCCAuthentication = false;
+    self.isSynced = false;
+    self.unauthorizedCount = 0;
+    self.cors = ("withCredentials" in new XMLHttpRequest());
+    self.corsFrameReady = false;
+    self.ccsyncInProgress = false;
+    self.ccsyncBlockedCallQue = {"items" : []};
+
+    self.refreshTimeoutID = null;
+    
+    self.siteid = "";
+    self.ccsiteid = "";
+    self.apiuserid = "";
+    self.apiuserauth = "";
+    try {
+      storageApi.getInstance().removeItem("social.ccsyncprofileid");
+      storageApi.getInstance().removeItem("social.ccsyncapiuserid");
+    }
+    catch(pError) {
+      // safari in private browsing mode does not allow
+      // setting stored values
+    }
+    
+    self.ccrestapi = ccRestClient;
+    self.tenantid = "";
+    self.swmhost = "";
+    self.isPreview = false;
+    self.currentRequestId = 0; //for xdomain
+    
+    self.commonSuccessCallback = pCommonSuccessCallback;
+    self.commonErrorCallback = pCommonErrorCallback;
+    
+    self.doRefresh = function() {
+      if (self.usingCCAuthentication) {
+        var successFunc = function() { };
+        var errorFunc =  function(pResult) {};
+        self.refresh(successFunc, errorFunc);
+        ccRestClient.storeRequestWasMade = true;
+      }
+    };
+    
+    self.stackedPostMessages = {"items" : []};
+    self.setCorsFrameReady = function() {
+      self.corsFrameReady = true;
+      if (self.stackedPostMessages && self.stackedPostMessages.items.length > 0 ){
+        for (var i = 0; i < self.stackedPostMessages.items.length; i++) {
+          self.proxyFrame.postMessage(self.stackedPostMessages.items[i].msgObj, self.swmhost);  
+        }
+        self.stackedPostMessages = {"items" : []};
+      }
+    };
+  }
+
+  SWMRestClient.GET = "GET";
+  SWMRestClient.POST = "POST";
+  SWMRestClient.JSON = "json";
+  SWMRestClient.REQUEST_JSON_CONTENT_TYPE = "application/json";
+  SWMRestClient.REQUEST_FORM_URL_ENCODED = "application/x-www-form-urlencoded";
+  SWMRestClient.SWM_CCSYNC_ENDPOINT = "/swm/rs/v1/users/cc";
+  SWMRestClient.SWM_REFRESH_ENDPOINT = "/swm/rs/v1/users/refresh";
+  SWMRestClient.AUTH_HEADER_NAME = "Authorization";
+  SWMRestClient.CC_TENANTID_HEADER_NAME = "X-CCTenantId";
+  SWMRestClient.CC_SITEID_HEADER_NAME = "X-CCSiteId";
+  SWMRestClient.CC_ISPREVIEW_HEADER_NAME = "X-CCIsPreview";
+  SWMRestClient.ACCEPT_LANGUAGE_HEADER_NAME = "Accept-Language";
+  SWMRestClient.SWM_ACCESS_TOKEN = "access_token";
+  SWMRestClient.AUTH_HEADER_PREFIX = "Bearer ";
+  SWMRestClient.JWT_BEARER_GRANT_TYPE = "urn:ietf:params:oauth:grant-type:jwt-bearer";
+  SWMRestClient.TOKEN_REFRESH_TIMEOUT = 5000;
+  
+  //Cross Domain iframe constants
+  SWMRestClient.IFRAME_ELEMENT = "iframe";
+  SWMRestClient.ZERO = "0";
+  SWMRestClient.IFRAME_STYLE = "width: 0; height: 0; border: none;";
+  SWMRestClient.IFRAME_NAME = "swm_iframe";
+  SWMRestClient.ID_ATTRIBUTE = "id";
+  SWMRestClient.NAME_ATTRIBUTE = "name";
+  SWMRestClient.WIDTH_ATTRIBUTE = "width";
+  SWMRestClient.HEIGHT_ATTRIBUTE = "height";
+  SWMRestClient.BORDER_ATTRIBUTE = "border";
+  SWMRestClient.STYLE_ATTRIBUTE = "style";
+  SWMRestClient.SRC_ATTRIBUTE = "src";
+  SWMRestClient.MAX_INT = 4294967295;
+
+  SWMRestClient.prototype.setSWMHost = function(pHost) {
+    this.swmhost = pHost;
+  };
+  
+  SWMRestClient.prototype.init = function(pTenantID, isPreview, pLocale) {
+    var self = this;
+    self.tenantid = pTenantID;
+    self.isPreview = (isPreview == true ? "true" : "false");
+    self.locale = pLocale;
+    self.ccsiteid = SiteViewModel.getInstance()['siteInfo'].id;
+
+    if (!self.cors && !self.isInitialized) {
+      self.crossDomainUrl = self.swmhost + "/swm/pm/?tenantId=" + pTenantID + "&isPreview=" + self.isPreview; 
+      self.eventHandlerMap = {};
+      
+      self.eventHandlerMap["initializedSWMFrame"] = {
+        success: self.setCorsFrameReady,
+        error: self.setCorsFrameReady
+      };
+      self.initXDomainMessageListener();
+      
+      // create proxy frame for cross domain requests
+      var proxyFramResponse = self.createCrossDomainIFrame();
+      if(proxyFramResponse != null) {
+        self.proxyFrame = proxyFramResponse.contentWindow;
+      }
+      
+    }
+    //swm rest client finished initialization
+    self.isInitialized = true;
+  };
+
+  /**
+   * create iframe for https cross domain requests
+   */
+  SWMRestClient.prototype.createCrossDomainIFrame = function() {
+    
+    var self = this;
+    var iframeName = SWMRestClient.IFRAME_NAME;
+    var iframe = document.createElement(SWMRestClient.IFRAME_ELEMENT);
+
+    iframe.setAttribute(SWMRestClient.ID_ATTRIBUTE, iframeName);
+    iframe.setAttribute(SWMRestClient.NAME_ATTRIBUTE, iframeName);
+    iframe.setAttribute(SWMRestClient.WIDTH_ATTRIBUTE, SWMRestClient.ZERO);
+    iframe.setAttribute(SWMRestClient.HEIGHT_ATTRIBUTE, SWMRestClient.ZERO);
+    iframe.setAttribute(SWMRestClient.BORDER_ATTRIBUTE, SWMRestClient.ZERO);
+    iframe.setAttribute(SWMRestClient.STYLE_ATTRIBUTE, SWMRestClient.IFRAME_STYLE);
+    iframe.setAttribute(SWMRestClient.SRC_ATTRIBUTE, self.crossDomainUrl);
+
+    var iframeId = null;
+    try {
+      document.body.appendChild(iframe);
+      window.frames[iframeName].name = iframeName;
+
+      iframeId = document.getElementById(iframeName);
+    }
+    catch(pError) {
+    }
+
+    return iframeId;
+  };
+  
+  SWMRestClient.prototype.initXDomainMessageListener = function() {
+    var self = this;
+
+    // listen for messages returing from the proxy
+    window.addEventListener("message", function(event) {
+      var origin = event.origin;
+      
+      /* only allow swm origin calls */
+      if(origin !== self.swmhost) {
+        return;
+      }
+            
+      var data;
+      if (typeof event.data == 'string') {
+        data = JSON.parse(event.data);
+      } else {
+        data = event.data;
+      }
+
+      var id = data.id;
+      var success = data.success;
+      var payload = data.payload;
+      var handler = self.eventHandlerMap[id];
+      if(handler) {
+        if(success) {
+          handler.success(payload);
+        } else {
+          handler.error(JSON.stringify(payload));
+        }
+      }
+    }, false);
+    
+  };
+
+  
+  /**
+   * send proxy request
+   */
+  SWMRestClient.prototype.proxyRequest = function(pMethod, pUrl, pData, pSuccessCallback, pErrorCallback, pJSONParams) {
+    
+    var self = this;
+     // increment the request id
+    if(self.currentRequestId >= SWMRestClient.MAX_INT) {
+      self.currentRequestId = 0;
+    } else {
+      self.currentRequestId++;
+    }
+  
+    var requestId = self.currentRequestId;
+    self.eventHandlerMap[requestId] = {
+      success: pSuccessCallback,
+      error: pErrorCallback
+    };
+  
+    // replace {siteid} token, if necessary since this was returned by ccsync
+    var uri = pUrl.replace("{siteid}", self.siteid);
+    uri = self.swmhost + self.insertParamsIntoUri(uri, pJSONParams);
+    
+    if (uri.indexOf(SWMRestClient.SWM_REFRESH_ENDPOINT) == -1 &&
+        uri.indexOf(SWMRestClient.SWM_CCSYNC_ENDPOINT) == -1) {
+      if (self.refreshTimeoutID == null) {
+        self.refreshTimeoutID = setTimeout(self.doRefresh, SWMRestClient.TOKEN_REFRESH_TIMEOUT);
+      }
+      else
+      {
+        clearTimeout(self.refreshTimeoutID);
+        self.refreshTimeoutID = setTimeout(self.doRefresh, SWMRestClient.TOKEN_REFRESH_TIMEOUT);
+      }
+    }
+    
+    
+    var isCCSync = (pUrl.indexOf(SWMRestClient.SWM_CCSYNC_ENDPOINT) === 0);
+
+    var reqContentType = (isCCSync ? SWMRestClient.REQUEST_FORM_URL_ENCODED : SWMRestClient.REQUEST_JSON_CONTENT_TYPE);
+    var reqData = (pData ? (isCCSync ? pData : JSON.stringify(pData)) : "");
+    
+    // send the message
+    var messageObj = {};
+    messageObj.id = requestId;
+    messageObj.pMethod = pMethod;
+    messageObj.pUrl = uri;
+    messageObj.pData = reqData;
+    messageObj.pIsPreview = self.isPreview;
+    messageObj.pTenantId = self.tenantid;
+    messageObj.pCCSiteId = self.ccsiteid;
+    messageObj.pLocale = self.locale;
+    messageObj.pApiuserauth = self.apiuserauth;
+    messageObj.pAssertion = self.ccrestapi.tokenSecret;
+    
+    if (self.corsFrameReady){
+      self.proxyFrame.postMessage(JSON.stringify(messageObj), self.swmhost);  
+    } 
+    else {
+      self.stackedPostMessages.items.push({"msgObj" : JSON.stringify(messageObj)});
+    }
+    
+  };
+  
+  
+  /**
+   * Make a ccsync request which authenticates the CC/SWM user.
+   */
+  SWMRestClient.prototype.syncCCUser = function(pSuccessCallback, pErrorCallback) {
+    var self = this;
+
+    var syncSuccessCB = function(result) {
+      self.isSynced = true;
+      self.siteid = result.siteId;
+      self.apiuserid = result.userId;
+      self.apiuserauth = result.access_token;
+      
+      try {
+        storageApi.getInstance().setItem("social.ccsyncprofileid", self.ccrestapi.profileId);
+        storageApi.getInstance().setItem("social.ccsyncapiuserid", result.userId);
+      }
+      catch(pError) {
+        // safari in private browsing mode does not allow setting stored values
+      }
+      
+      if (pSuccessCallback) {
+        pSuccessCallback(result);
+      }
+    };
+    
+    var syncErrorCB = function(err) {
+      self.isSynced = false;
+      if (self.refreshTimeoutID != null) {
+        clearTimeout(self.refreshTimeoutID);
+      }
+      if (pErrorCallback){
+        pErrorCallback(err);  
+      }
+    };
+
+    
+    if (!this.cors) {
+      this.proxyRequest(SWMRestClient.POST, 
+        SWMRestClient.SWM_CCSYNC_ENDPOINT + '/{ccprofileid}',
+        'grant_type=' + encodeURIComponent(SWMRestClient.JWT_BEARER_GRANT_TYPE) + 
+        '&assertion=' + encodeURIComponent(self.ccrestapi.tokenSecret),
+        syncSuccessCB, syncErrorCB, {'ccprofileid':self.ccrestapi.profileId});
+    } 
+    else {
+      this.corsRequest(SWMRestClient.POST, 
+        SWMRestClient.SWM_CCSYNC_ENDPOINT + '/{ccprofileid}',
+        'grant_type=' + encodeURIComponent(SWMRestClient.JWT_BEARER_GRANT_TYPE) + 
+        '&assertion=' + encodeURIComponent(self.ccrestapi.tokenSecret), 
+        syncSuccessCB, syncErrorCB, {'ccprofileid':self.ccrestapi.profileId});
+    }
+    
+  };
+  
+  //----------------------------------------
+  /**
+   * oauth refresh method
+   */
+  SWMRestClient.prototype.refresh = function(pSuccessCallback, pErrorCallback) {
+    var self = this;
+
+    var successFunc = function(result) {
+      self.isSynced = true;
+      self.apiuserauth = result.access_token;
+      if (pSuccessCallback) {
+        pSuccessCallback(result);
+      }
+    };
+    var errorFunc = function(pResult) {
+      // TODO handle expiry
+    };
+
+    if(self.apiuserauth) {
+      if (!self.cors){
+        self.proxyRequest(SWMRestClient.POST, SWMRestClient.SWM_REFRESH_ENDPOINT,
+            {}, successFunc, errorFunc);
+      }
+      else {
+        self.corsRequest(SWMRestClient.POST, SWMRestClient.SWM_REFRESH_ENDPOINT,
+            {}, successFunc, errorFunc);  
+      }
+    } else {
+      errorFunc();
+    }
+  };
+  
+  /**
+   * Clears authentication storage.
+   */
+  SWMRestClient.prototype.clear = function() {
+    var self = this;
+    self.usingCCAuthentication = false;
+    self.isSynced = false;
+    self.siteid = "";
+    self.apiuserid = "";
+    self.apiuserauth = "";
+    try {
+      storageApi.getInstance().removeItem('social.ccsyncprofileid');
+      storageApi.getInstance().removeItem('social.ccsyncapiuserid');
+    }
+    catch(pError) {
+      // safari in private browsing mode does not allow setting stored values
+    }
+  };
+  
+  /**
+   * Makes a SWM REST request.
+   */
+  SWMRestClient.prototype.request = function(pMethod, pUrl, pData,
+      pSuccessCallback, pErrorCallback, pJSONParams) {
+    
+    var self = this;
+    var reqSuccessCB = pSuccessCallback;
+    var reqErrorCB = pErrorCallback;
+    
+    if (self.swmhost == "" || !self.isInitialized) {
+      // caller will always have to make sure client is initialized!
+      log.warn("rest client not initialized properly");
+      return;
+    }
+
+    // detect whether user is logged into CC
+    if (self.ccrestapi.profileId != null && self.ccrestapi.tokenSecret != null) {
+      self.usingCCAuthentication = true;
+    }
+      
+    var ccsyncprofileid = storageApi.getInstance().getItem("social.ccsyncprofileid");
+    var ccsyncapiuserid = storageApi.getInstance().getItem("social.ccsyncapiuserid");
+      
+    if ((ccsyncprofileid && self.ccrestapi.profileId !== ccsyncprofileid) || (ccsyncapiuserid && self.apiuserid !== ccsyncapiuserid)) {
+      // if the ccrestapi.profileid no longer matches the profileid that we ccsynced on, 
+      // then another user may have logged into cc, so we invalidate the swm authorization
+      // so that the swm authorization belongs to the new user and refresh the user as well
+
+      // if the apiuserid no longer matches the apiuserid that we ccsynced on, this
+      // could indicate that a user may have logged into another tab and we need the
+      // original tab to reflect the currently logged in user, so we invalidate the 
+      // swm authorization and refresh the user
+      self.clear();
+      
+      // respond with code that indicates swm is unauthorized, and should be refreshed
+      var jsonStr = '{"o:errorCode":"401.99"}';
+      self.commonErrorCallback(jsonStr);
+      return;
+    }
+    if ((self.apiuserid !== ccsyncapiuserid) || (self.ccrestapi.profileId !== ccsyncprofileid)){
+      self.isSynced = false;
+    }
+    if (self.usingCCAuthentication && !self.isSynced) {
+      var successCB = function(result) {
+        // successful sync; now call the original request
+        self.ccsyncInProgress = false;
+        if (!self.cors){
+          self.proxyRequest(pMethod, pUrl, pData, reqSuccessCB, reqErrorCB, pJSONParams);
+        } 
+        else {
+          self.corsRequest(pMethod, pUrl, pData, reqSuccessCB, reqErrorCB, pJSONParams);  
+        }
+        
+        // now call the requests in Que, that were blocked by CCSYNC
+        self.ccsyncBlockedCallQueExecution();
+      };
+      var errorCB = function(err) {
+        self.ccsyncInProgress = false;
+        if (self.refreshTimeoutID != null) {
+          clearTimeout(self.refreshTimeoutID);
+        }
+        if (reqErrorCB) {
+          reqErrorCB(err); 
+        }    
+      };
+      
+      if (!self.ccsyncInProgress) {
+        self.ccsyncInProgress = true;
+        self.syncCCUser(successCB, errorCB);  
+      }
+      else {
+        self.ccsyncBlockedCallQue.items.push({
+          "pMethod" : pMethod, 
+          "pUrl" : pUrl, 
+          "pData" : pData, 
+          "pSuccessCallback" : pSuccessCallback, 
+          "pErrorCallback" : pErrorCallback, 
+          "pJSONParams" : pJSONParams
+        });
+      }
+      
+    }
+    else {
+      if (!self.cors) {
+        this.proxyRequest(pMethod, pUrl, pData, pSuccessCallback, pErrorCallback, pJSONParams);
+      } 
+      else {
+        this.corsRequest(pMethod, pUrl, pData, pSuccessCallback, pErrorCallback, pJSONParams);  
+      }      
+    }
+  };
+
+  
+  SWMRestClient.prototype.ccsyncBlockedCallQueExecution = function() {
+    var self = this;
+    if ( self.ccsyncBlockedCallQue.items.length > 0 ) {
+      for (var i=0; i<self.ccsyncBlockedCallQue.items.length; i++){
+        if (!self.cors){
+          self.proxyRequest(self.ccsyncBlockedCallQue.items[i].pMethod, 
+              self.ccsyncBlockedCallQue.items[i].pUrl, 
+              self.ccsyncBlockedCallQue.items[i].pData, 
+              self.ccsyncBlockedCallQue.items[i].pSuccessCallback, 
+              self.ccsyncBlockedCallQue.items[i].reqErrorCB, 
+              self.ccsyncBlockedCallQue.items[i].pJSONParams);
+        } 
+        else {
+          self.corsRequest(self.ccsyncBlockedCallQue.items[i].pMethod, 
+              self.ccsyncBlockedCallQue.items[i].pUrl, 
+              self.ccsyncBlockedCallQue.items[i].pData, 
+              self.ccsyncBlockedCallQue.items[i].pSuccessCallback, 
+              self.ccsyncBlockedCallQue.items[i].reqErrorCB, 
+              self.ccsyncBlockedCallQue.items[i].pJSONParams);  
+        }
+      }
+      // Done processing que, need to clear it. 
+      self.ccsyncBlockedCallQue = {"items" : []};
+    }
+  };
+    
+  /**
+   * make a rest request
+   */
+  SWMRestClient.prototype.corsRequest = function(pMethod, pUrl, pData,
+      pSuccessCallback, pErrorCallback, pJSONParams) {
+    var self = this;
+    var method = pMethod;
+
+    // replace {siteid} token, if necessary since this was returned by ccsync
+    var uri = pUrl.replace("{siteid}", self.siteid);
+    uri = self.swmhost + self.insertParamsIntoUri(uri, pJSONParams);
+
+    if (uri.indexOf(SWMRestClient.SWM_REFRESH_ENDPOINT) == -1 &&
+        uri.indexOf(SWMRestClient.SWM_CCSYNC_ENDPOINT) == -1) {
+      if (self.refreshTimeoutID == null) {
+        self.refreshTimeoutID = setTimeout(self.doRefresh, SWMRestClient.TOKEN_REFRESH_TIMEOUT);
+      }
+      else
+      {
+        clearTimeout(self.refreshTimeoutID);
+        self.refreshTimeoutID = setTimeout(self.doRefresh, SWMRestClient.TOKEN_REFRESH_TIMEOUT);
+      }
+    }
+      
+    // setup success callback which includes wrapper so that all success events
+    // can share a common handler in addition to their own success handler
+    var successFunc = function(pResult) {
+      
+      // if this isn't a ccsync, then reset unauthorized to prevent endless loops
+      if (pUrl.indexOf(SWMRestClient.SWM_CCSYNC_ENDPOINT) == -1) {
+        self.unauthorizedCount = 0;
+      }
+      
+      var wrappedSuccessCallback = function(response, status) {
+        self.commonSuccessCallback(response, status);
+        pSuccessCallback(response, status);
+      };
+      wrappedSuccessCallback(pResult.data, pResult.textStatus);
+    };
+
+    var errorFunc = function(pResult) {
+
+      var wrappedErrorCallback = function(response, status, errorThrown) {
+        self.commonErrorCallback(response, status, errorThrown);  
+        pErrorCallback(response, status, errorThrown);
+      };
+
+      // if the cc user is logged in but an unauthorized was returned,
+      // resync and retry the request (but only once)
+      if (self.usingCCAuthentication) {
+        try {
+          var errJSON = JSON.parse(pResult.jqXHR.responseText);
+          if (self.unauthorizedCount <= 1 && errJSON['status'] === 401 && 
+              pUrl.indexOf(SWMRestClient.SWM_CCSYNC_ENDPOINT) == -1) {
+            self.isSynced = false;
+            self.unauthorizedCount++;
+            self.request(pMethod, pUrl, pData, pSuccessCallback, pErrorCallback, pJSONParams);
+          }
+          else
+          {
+            wrappedErrorCallback(pResult.jqXHR.responseText, pResult.jqXHR.status, pResult.errorThrown);
+          }
+        }
+        catch(e) {}
+      }
+      else
+      {
+        wrappedErrorCallback(pResult.jqXHR.responseText, pResult.jqXHR.status, pResult.errorThrown);
+      }
+    };
+
+    // ie caching fix, adds a timestamp parameter to query string
+    if (method === SWMRestClient.GET) {
+      uri = self.fixIECaching(uri);
+    }
+
+    var isCCSync = (pUrl.indexOf(SWMRestClient.SWM_CCSYNC_ENDPOINT) === 0);
+
+    var reqContentType = (isCCSync ? SWMRestClient.REQUEST_FORM_URL_ENCODED : SWMRestClient.REQUEST_JSON_CONTENT_TYPE);
+    var reqData = (pData ? (isCCSync ? pData : JSON.stringify(pData)) : "");
+
+    var obj = {};
+    obj = {
+      dataType : SWMRestClient.JSON,
+      contentType : reqContentType,
+      type : method,
+      url : uri,
+      data : reqData,
+      processData : false,
+      success : function(data, textStatus, jqXHR) {
+        successFunc({
+          data : data,
+          textStatus : textStatus,
+          jqXHR : jqXHR
+        });
+      },
+      error : function(jqXHR, textStatus, errorThrown) {
+        errorFunc({
+          jqXHR : jqXHR,
+          textStatus : textStatus,
+          errorThrown : errorThrown
+        });
+      }
+    };
+      
+    var headers = {};
+    headers[SWMRestClient.CC_ISPREVIEW_HEADER_NAME] = self.isPreview;
+    headers[SWMRestClient.ACCEPT_LANGUAGE_HEADER_NAME] = self.locale;
+    if (isCCSync) {
+      headers[SWMRestClient.CC_TENANTID_HEADER_NAME] = self.tenantid;
+      headers[SWMRestClient.CC_SITEID_HEADER_NAME] = self.ccsiteid;
+    }
+    else if (self.apiuserauth && self.apiuserauth.length > 0) {
+      headers[SWMRestClient.AUTH_HEADER_NAME] = SWMRestClient.AUTH_HEADER_PREFIX + self.apiuserauth;
+    }
+
+    obj["headers"] = headers;
+    $.ajax(obj);
+  };
+
+  /**
+   * insert params into uri
+   */
+  SWMRestClient.prototype.insertParamsIntoUri = function(pUri, pJSONParams) {
+    
+    var uri = pUri;
+    for (var key in pJSONParams) {
+      if (pJSONParams.hasOwnProperty(key)) {
+        uri = uri.replace("{"+ key + "}", encodeURIComponent(pJSONParams[key]));
+      }
+    }
+    
+    return uri;
+  };
+
+  /**
+   * Fix for IE to prevent caching of GET requests.
+   */
+  SWMRestClient.prototype.fixIECaching = function(url) {
+    if (url && navigator.appName == "Microsoft Internet Explorer") {
+      url += (url.indexOf("?") !== -1 ? "&" : "?") + "__ie__fix__=" + new Date().getTime();
+    }
+    return url;
+  };
+
+
+  // ----------------------------------------
+  /**
+   * get a timestamp
+   */
+  SWMRestClient.getTimestamp = function(pOffset) {
+    var current = new Date() / 1000;
+    var offset = parseInt(pOffset, 10);
+    var withOffset = current + offset;
+    
+    return parseInt(+withOffset, 10);
+  };
+
+  return SWMRestClient;
+});
+

@@ -47,15 +47,12 @@ const saveFile = (requestFile, destDir) => {
 
 			console.log(`File ${requestFile} saved successfully!`);
 		});
-
-		// console.log(`Trying to download the sourcemap of ${requestFile}...`);
-		// saveFile(`${requestFile}.map`, `${destDir}.map`);
 	});
 };
 
 try {
   fs.readdirSync(libsPath)
-    .filter(itemPath => itemPath !== 'loaders')
+    .filter(itemPath => itemPath !== 'loaders' && itemPath !== 'shared')
     .forEach(itemPath => {
       const libPath = path.join(libsPath, itemPath);
       fs.removeSync(libPath);
@@ -69,11 +66,14 @@ try {
 Object.keys(oracleRequireJSConfigsPaths).forEach(function (libPath) {
 	const iterateThroughPaths = (libPath, isPath) => {
 		libPath = !isPath ? oracleRequireJSConfigsPaths[libPath] : libPath;
-
 		if(Array.isArray(libPath)) {
 			libPath.forEach(requestFile => {
 				iterateThroughPaths(requestFile, true);
 			});
+			return;
+		}
+
+		if(libPath.includes('/shared/')) {
 			return;
 		}
 

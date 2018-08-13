@@ -1,2 +1,194 @@
-define("pageLayout/site",["knockout","ccRestClient","ccConstants","jquery","storageApi","pageViewTracker","pageLayout/currency"],function(e,r,i,n,t,o,c){"use strict";function a(t,o,s){if(a.singleInstance)throw new Error("Cannot instantiate more than one SiteViewModel, use getInstance(pAdapter, data, pParams)");var u=this;u.currencyViewModel=c.getInstance(),u.selectedPriceListGroup=e.observable(o?o.priceListGroup.defaultPriceListGroup:null),u.activePriceListGroups=e.observableArray([]),u.siteSecondaryCurrency=e.observable(null),u.siteSecondaryCurrencyCode=null,u.priceListGroupDeferred=n.Deferred(),u.selectedPriceListGroup()&&u.priceListGroupDeferred.resolve(),u.exchangeRate=e.observable(null),u.payShippingInSecondaryCurrency=e.observable(!1),u.payTaxInSecondaryCurrency=e.observable(!1),u.siteLoadedDeferred=n.Deferred(),u.siteSecondaryInfoLoaded=n.Deferred();var d="/img/no-image.jpg";return o&&o.siteInfo&&o.siteInfo.noimage&&(d=o.siteInfo.noimage),u.getCurrency=function(e){return u.currencyViewModel.currencyMap[e]},u.setSiteSecondaryCurrency=function(){u.siteSecondaryCurrency(u.getCurrency(u.siteSecondaryCurrencyCode))},n.when(u.currencyViewModel.siteCurrenciesLoaded,u.siteSecondaryInfoLoaded).done(function(){u.setSiteSecondaryCurrency(),u.siteLoadedDeferred.resolve()}),u.noImageSrc=e.observable(d),null!=o&&r.request(i.ENDPOINT_SITES_GET_SITE,{},function(e){u.siteSecondaryCurrencyCode=e.secondaryCurrency,u.exchangeRate(e.exchangeRate?e.exchangeRate:null),u.payShippingInSecondaryCurrency(!!e.payShippingInSecondaryCurrency&&e.payShippingInSecondaryCurrency),u.payTaxInSecondaryCurrency(!!e.payTaxInSecondaryCurrency&&e.payTaxInSecondaryCurrency),u.siteSecondaryInfoLoaded.resolve()},function(e){console.log("site failed")},o.siteInfo.id),u.updateSiteSecondaryCurrencyCode=function(e){e&&e!=u.siteSecondaryCurrencyCode&&(u.siteSecondaryCurrencyCode=e,u.setSiteSecondaryCurrency())},u}return a.prototype.getCurrentLocale=function(){var e=r.getStoredValue(i.LOCAL_STORAGE_USER_CONTENT_LOCALE);return null!=e?JSON.parse(e)[0].name:n(":root").attr("lang")},a.prototype.setContextData=function(e){var n=this;for(var t in e)n[t]=e[t];if(n.selectedPriceListGroup()||e.priceListGroup){for(var o=!1,c=JSON.parse(r.getStoredValue(i.LOCAL_STORAGE_PRICELISTGROUP_ID)),a=0;a<n.priceListGroup.activePriceListGroups.length;a++)if(c&&c==n.priceListGroup.activePriceListGroups[a].id){n.selectedPriceListGroup(n.priceListGroup.activePriceListGroups[a]),o=!0;break}e.priceListGroup&&!o&&n.selectedPriceListGroup(e.priceListGroup.defaultPriceListGroup),"pending"===n.priceListGroupDeferred.state()&&n.priceListGroupDeferred.resolve()}e.priceListGroup&&n.activePriceListGroups(e.priceListGroup.activePriceListGroups),e&&e.hasOwnProperty("siteInfo")&&e.siteInfo.hasOwnProperty("noimage")&&n.noImageSrc(e.siteInfo.noimage?e.siteInfo.noimage:"/img/no-image.jpg")},a.initializeVisitorService=function(e){e&&e.visitorServiceHost&&e.tenantId&&e.oracleUnifiedVisitHost&&(window.OracleUnifiedVisit={accountId:e.tenantId+"_"+e.siteInfo.id,host:e.visitorServiceHost,handle:function(){window.ATGSvcs&&ATGSvcs.visitIDsLoaded&&ATGSvcs.visitIDsLoaded(),t.getInstance().setItem(i.VISITOR_ID,window.OracleUnifiedVisit.visitorId()),t.getInstance().setItem(i.VISIT_ID,window.OracleUnifiedVisit.visitId()),o.handleVisitDetails()}},require([e.oracleUnifiedVisitHost]))},a.getInstance=function(e,r,i){return a.singleInstance||(a.singleInstance=new a(e,r,i),a.initializeVisitorService(r)),r&&a.singleInstance.setContextData(r),a.singleInstance},a});
-//# sourceMappingURL=site.js.map
+/**
+ * @fileoverview Price List Group View Model.
+ *  * 
+ * 
+ * @typedef {Object} PaymentDetails
+ */
+/*global define */
+define(
+  //-------------------------------------------------------------------
+  // PACKAGE NAME
+  //-------------------------------------------------------------------
+  'pageLayout/site',
+
+  //-------------------------------------------------------------------
+  // DEPENDENCIES
+  //-------------------------------------------------------------------
+  ['knockout', 'ccRestClient', 'ccConstants', 'jquery', 'storageApi', 'pageViewTracker', 'pageLayout/currency'],
+
+  //-------------------------------------------------------------------
+  // MODULE DEFINITION
+  //-------------------------------------------------------------------
+  function(ko, ccRestClient, CCConstants, $, storageApi, pageViewTracker, currencyViewModel) {
+  
+    "use strict";
+
+    function SiteViewModel(pAdapter, data, pContextData) {
+
+      if (SiteViewModel.singleInstance) {
+        throw new Error("Cannot instantiate more than one SiteViewModel, use getInstance(pAdapter, data, pParams)");
+      }
+      
+      var self = this;
+      self.currencyViewModel = currencyViewModel.getInstance();
+      // Provide price list group object to all widgets.
+      self.selectedPriceListGroup = ko.observable(data ? data.priceListGroup.defaultPriceListGroup : null);
+      self.activePriceListGroups = ko.observableArray([]);
+      self.siteSecondaryCurrency = ko.observable(null);
+      self.siteSecondaryCurrencyCode = null;
+      self.priceListGroupDeferred = $.Deferred();
+      if (self.selectedPriceListGroup()) {
+        self.priceListGroupDeferred.resolve();
+      }
+
+      self.exchangeRate = ko.observable(null);
+      self.payShippingInSecondaryCurrency = ko.observable(false);
+      self.payTaxInSecondaryCurrency = ko.observable(false);
+
+      self.siteLoadedDeferred = $.Deferred();
+      self.siteSecondaryInfoLoaded = $.Deferred();
+
+      // No-Image Image Source
+      var noImageSrc = '/img/no-image.jpg';
+
+      if (data && data.siteInfo && data.siteInfo.noimage) {
+        noImageSrc = data.siteInfo.noimage
+      }
+
+      self.getCurrency = function(currencyCode) {
+        return self.currencyViewModel.currencyMap[currencyCode];
+      };
+
+      self.setSiteSecondaryCurrency = function() {
+        self.siteSecondaryCurrency(self.getCurrency(self.siteSecondaryCurrencyCode));
+      };
+      $.when(self.currencyViewModel.siteCurrenciesLoaded, self.siteSecondaryInfoLoaded).done(function() {
+        self.setSiteSecondaryCurrency();
+        self.siteLoadedDeferred.resolve();
+      });
+
+      self.noImageSrc = ko.observable(noImageSrc);
+      //var data = {};
+      if(data != null){
+      ccRestClient.request(CCConstants.ENDPOINT_SITES_GET_SITE, {},
+        function(data) {
+          self.siteSecondaryCurrencyCode = data.secondaryCurrency;
+          self.exchangeRate(data.exchangeRate?data.exchangeRate:null);
+          self.payShippingInSecondaryCurrency(data.payShippingInSecondaryCurrency?data.payShippingInSecondaryCurrency:false);
+          self.payTaxInSecondaryCurrency(data.payTaxInSecondaryCurrency?data.payTaxInSecondaryCurrency:false);          
+          self.siteSecondaryInfoLoaded.resolve();
+        },
+        function(errorData) {
+          console.log("site failed")
+        },
+      data.siteInfo.id);
+      }
+
+      self.updateSiteSecondaryCurrencyCode = function(newSecondaryCurrencyCode) {
+        if (newSecondaryCurrencyCode && newSecondaryCurrencyCode != self.siteSecondaryCurrencyCode) {
+          self.siteSecondaryCurrencyCode = newSecondaryCurrencyCode;
+          self.setSiteSecondaryCurrency();
+        }
+      }
+      return (self);
+    };
+
+    /**
+     * Returns the current site locale
+     * @function
+     * @name SiteViewModel.getCurrentLocale
+     */
+    SiteViewModel.prototype.getCurrentLocale = function() {
+      var storedLocale = ccRestClient.getStoredValue(CCConstants.LOCAL_STORAGE_USER_CONTENT_LOCALE);
+      if(storedLocale != null) {
+         return JSON.parse(storedLocale)[0].name
+      } else {
+         return $(':root').attr('lang');
+      }
+    }
+
+    SiteViewModel.prototype.setContextData = function(data) {
+      var self = this;
+      // Populating view model with server data.
+      for (var key in data) {
+        self[key] = data[key];
+      }
+      
+      if (self.selectedPriceListGroup() || data.priceListGroup) {
+        var isActive = false;
+        var storedPriceListGroupId = JSON.parse(ccRestClient.getStoredValue(CCConstants.LOCAL_STORAGE_PRICELISTGROUP_ID));
+        // Check whether the selected price list group is still active
+        for (var i =  0; i < self.priceListGroup.activePriceListGroups.length; i++) {
+          if (storedPriceListGroupId && storedPriceListGroupId == self.priceListGroup.activePriceListGroups[i].id) {
+            self.selectedPriceListGroup(self.priceListGroup.activePriceListGroups[i]);
+            isActive = true;
+            break;
+          }
+        }
+        if (data.priceListGroup && !isActive) { // If the selected price list group is not active then set default price list group
+          self.selectedPriceListGroup(data.priceListGroup.defaultPriceListGroup);
+        }
+        if (self.priceListGroupDeferred.state() === "pending") {
+          self.priceListGroupDeferred.resolve();
+        }
+      }
+      if(data.priceListGroup) {
+        self.activePriceListGroups(data.priceListGroup.activePriceListGroups);
+      }
+
+      if (data && data.hasOwnProperty('siteInfo') && data.siteInfo.hasOwnProperty('noimage')) {
+        self.noImageSrc(data.siteInfo.noimage ? data.siteInfo.noimage : '/img/no-image.jpg');
+      }
+      
+    };
+
+    /**
+     * This method initializes the visitor service by loading the configured java script asynchronously.
+     * @param {Object} [data] Additional data.
+     */
+    SiteViewModel.initializeVisitorService = function(data) {
+      if (data && data.visitorServiceHost && data.tenantId && data.oracleUnifiedVisitHost) {
+         window.OracleUnifiedVisit = {
+          accountId : data.tenantId + "_" + data.siteInfo.id,
+          host : data.visitorServiceHost,
+          handle : function() {
+            window.ATGSvcs && ATGSvcs.visitIDsLoaded && ATGSvcs.visitIDsLoaded();
+            storageApi.getInstance().setItem(CCConstants.VISITOR_ID,
+                window.OracleUnifiedVisit.visitorId());
+            storageApi.getInstance().setItem(CCConstants.VISIT_ID,
+                window.OracleUnifiedVisit.visitId());
+            pageViewTracker.handleVisitDetails();
+          }
+        };
+
+        require([data.oracleUnifiedVisitHost]);
+      }
+    };
+
+    /**
+     * Return the single instance of PriceListGroup. Create it if it doesn't exist.
+     * 
+     * @function
+     * @name PriceListGroup.getInstance
+     * @param {RestAdapter} pAdapter The REST adapter.
+     * @param {Object} [data] Additional data.
+     * @return {PaymentDetails} Singleton instance.
+     */
+    SiteViewModel.getInstance = function(pAdapter, data, pParams) {
+      if(!SiteViewModel.singleInstance) {
+        SiteViewModel.singleInstance = new SiteViewModel(pAdapter, data, pParams);
+        SiteViewModel.initializeVisitorService(data);
+      }
+      
+      if (data) {
+        SiteViewModel.singleInstance.setContextData(data);
+      }
+      
+      return SiteViewModel.singleInstance;
+    };
+
+    return SiteViewModel;
+
+  }
+);
+

@@ -1,2 +1,296 @@
-define("spinner",["knockout","imagesloaded"],function(e,t){"use strict";function n(){var e=this;e.spinnerId="cc-spinner",e.spinnerContainer="cc-spinner",e.spinnerCSS="cc-spinner-css",e.spinnerTimeOutId=null,e.create=function(t){return e.time=(new Date).getTime(),e.parent=t.parent,e.selector=t.selector?t.selector:t.parent,e.centerOn=t.centerOn,e.posTop=t.posTop?t.posTop:"50%",e.posLeft=t.posLeft?t.posLeft:"44%",e.loadingText=t.loadingText?t.loadingText:"Loading...",e.processingText=t.processingText,e.processingPosTop=t.processingPosTop?t.processingPosTop:"5%",e.textWidth=t.textWidth?t.textWidth:"100%",!!e.parent&&("body"===e.parent&&(e.centerOn&&0!==$(e.centerOn).length?(e.posTop=$(e.centerOn).height()/2-27+$(e.centerOn).position().top+"px",e.processingPosTop=$(e.centerOn).height()/2-54+$(e.centerOn).position().top+"px",e.posLeft=$(e.centerOn).width()/2-27+$(e.centerOn).position().left+"px"):(e.posTop=$(window).height()/2-27+"px",e.processingPosTop=$(window).height()/2-54+"px",e.posLeft=$(window).width()/2-27+"px")),void(0===$(e.selector).find("."+e.spinnerContainer).not(".cc-spinner-exclude").length&&(e.buildCSS(e.selector,e.posTop,e.posLeft),t.createWithTimeout&&e.setDestroyTimeout(t.waitTime,t.callBackFn,t.context))))},e.buildCSS=function(t,n,o){var i,r;i=$("<div />").attr({id:e.spinnerId,class:e.spinnerContainer}),r=$("<div />").attr({class:e.spinnerCSS,style:"top:"+n+";left:"+o});for(var s=1;s<13;s++)$(r).append($("<div />").attr({class:e.spinnerCSS+"-"+s}));e.processingText?$(i).prepend($("<div/>").css("padding-top",e.processingPosTop).append($('<span class="center-block"/>').css("width",e.textWidth).text(e.processingText))):$(r).prepend($('<span class="ie-show">').text(e.loadingText)),$(i).append(r),"body"===t?$(t).prepend(i):$(t).append(i)},e.loadCheck=function(t,n){var o=e.parent,i=e.selector;n&&(o=n.parent?n.parent:n.parent,i=n.selector?n.selector:o),(t||0==t)&&(0===$(i).find("."+e.spinnerContainer).length&&e.buildCSS(i,e.posTop,e.posLeft),$(o+" img")?$(o+" img").imagesLoaded(function(){0!==$(i).find("."+e.spinnerContainer).not(".cc-spinner-exclude").length&&e.destroy(t,o,i)}):e.destroy(t,o,i))},e.destroy=function(t,n,o){var i,r,o=o?o:e.parent,n=n?n:e.parent;e.spinnerContainer;i=e.time+250-(new Date).getTime(),$(n).children().length===t?i>0?r=setTimeout(e.destroyWithoutDelay,i):e.destroyWithoutDelay(o):t&&null!==t?setTimeout(e.destroy,1):i>0?r=setTimeout(e.destroyWithoutDelay(o),i):e.destroyWithoutDelay(o)},e.destroyWithoutDelay=function(t){var n=t?t:e.selector,o=e.spinnerContainer;$(n).find("."+o).remove()},e.createWithTimeout=function(t,n,o,i){t.waitTime=n,t.callBackFn=o,t.context=i,t.createWithTimeout=!0,e.create(t)},e.destroyAndClearTimeout=function(t,n){e.destroyWithoutDelay(),null!=e.spinnerTimeOutId&&clearTimeout(e.spinnerTimeOutId),null!=t&&t.call(n)},e.destroyAndClearCreateTimeout=function(t){e.destroyWithoutDelay(t),null!=e.spinnerTimeOutId&&clearTimeout(e.spinnerTimeOutId)},e.setDestroyTimeout=function(t,n,o){e.spinnerTimeOutId=setTimeout(function(){e.destroyWithoutDelay(),null!=n&&n.call(o)},t)},e.createAndReturnWithTimeout=function(t,n,o,i){return e.create(t),e.setDestroyTimeout(n,o,i),e.spinnerTimeOutId},e.destroyAndClearTimeoutWithId=function(t,n,o,i){e.destroyWithoutDelay(t),null!=n&&clearTimeout(n),null!=o&&o.call(i)}}return new n});
-//# sourceMappingURL=spinner-1.0.js.map
+/*global $, setTimeout: false, document */
+define('spinner', ['knockout', 'imagesloaded'],
+  function(ko, imagesLoaded) {
+
+  "use strict";
+  /**
+   * Creates a Loading Indicator (aka, Spinner)
+   * @private
+   * @static
+   * @class 
+   *
+   * OPTIONS:
+   * itemCount: the number of items that are expected to be rendered [required]
+   * parent: the element that is doing the rendering [required]
+   * selector: the element that should have the curtain & spinner [default: parent]
+   * centerOn: when parent is 'body', centerOn is the dom element to position the spinner within.
+   * posTop: the top position [default: 50%]
+   * posLeft: the left position [default: 44%]
+   */
+   
+   function Spinner() {
+    var self = this;
+    self.spinnerId = 'cc-spinner';
+    self.spinnerContainer = 'cc-spinner';
+    self.spinnerCSS = 'cc-spinner-css';
+    self.spinnerTimeOutId = null;
+
+    /**
+     * Function to call from viewModel to initiate the activity indicator
+     * @param {Object} data: json containing display options.
+     * @private
+     */
+    self.create = function(data) {
+      self.time = new Date().getTime();
+      self.parent = data.parent;
+      self.selector = data.selector? data.selector : data.parent;
+      self.centerOn = data.centerOn;
+      self.posTop = data.posTop ? data.posTop : '50%';
+      self.posLeft = data.posLeft ? data.posLeft : '44%';
+      self.loadingText = data.loadingText ? data.loadingText : 'Loading...';
+      self.processingText = data.processingText;
+      self.processingPosTop = data.processingPosTop? data.processingPosTop : '5%';
+      self.textWidth = data.textWidth ? data.textWidth : "100%";
+
+      // check for parent
+      if(!self.parent) {
+        return false;
+      } else if(self.parent === 'body') {
+        // if the parent is body, and there is an element to center on, do the math for positioning.
+        if(self.centerOn && $(self.centerOn).length !== 0) {
+          self.posTop = ($(self.centerOn).height() / 2 - 27) + $(self.centerOn).position().top + 'px';
+          self.processingPosTop = ($(self.centerOn).height() / 2 - 54) + $(self.centerOn).position().top + 'px';
+          self.posLeft = ($(self.centerOn).width() / 2 - 27) + $(self.centerOn).position().left + 'px';
+        } else {
+          // else center the spinner in the window.
+          self.posTop = $(window).height() / 2 - 27 + 'px';
+          self.processingPosTop = $(window).height() / 2 - 54 + 'px';
+          self.posLeft = $(window).width() / 2 - 27 + 'px';
+        }
+      }
+
+      // build out the spinner if there isn't one already in place.
+      // the cc-spinner-exclude check allows hard coded spinner to not interfere with
+      // other spinners.
+      if($(self.selector).find('.' + self.spinnerContainer).not('.cc-spinner-exclude').length === 0) {
+        self.buildCSS(self.selector, self.posTop, self.posLeft);
+        if (data.createWithTimeout) {
+          self.setDestroyTimeout(data.waitTime, data.callBackFn, data.context);
+        }  
+      }
+    };
+
+    /**
+     * Function to call from viewModel to initiate the activity indicator
+     * @param {String} selector: the target element for our curtain
+     * @param {String} postTop: top position of spinner element
+     * @param {String} postLeft: left position of spinner element
+     * @private
+     */
+    self.buildCSS = function(selector, posTop, posLeft) {
+      var container, spinnerDiv;
+      
+      // build outer container of indicator
+      container = $('<div />').attr({
+        id: self.spinnerId,
+        'class': self.spinnerContainer
+      });
+
+      // inner container of indicator
+      spinnerDiv = $('<div />').attr({
+        'class': self.spinnerCSS, 
+        style: 'top:' + posTop +';left:' + posLeft
+      });
+
+      // individual spokes for indicator
+      for(var i=1;i<13;i++) {
+        $(spinnerDiv).append($('<div />').attr({'class': self.spinnerCSS + '-' + i}));
+      }
+
+      // append and prepend as necessary;
+      // loading text is a fallback for IE/accessibility
+      if(self.processingText){
+        $(container).prepend($('<div/>').css("padding-top", self.processingPosTop).append($('<span class="center-block"/>').css("width", self.textWidth).text(self.processingText)));
+      }else{
+        $(spinnerDiv).prepend($('<span class="ie-show">').text(self.loadingText));
+      }
+      $(container).append(spinnerDiv);
+      if(selector === 'body') {
+        $(selector).prepend(container);  
+      } else {
+        $(selector).append(container);
+      }
+      
+    };
+
+    /**
+     * Function to call from viewModel to initiate the activity indicator
+     * @param {String} itemCount: the number of items we need to find
+     * @param {Object} data: json object container display options
+     * @private
+     */
+    self.loadCheck = function(itemCount, data) {
+      var parent = self.parent;
+      var selector = self.selector;
+      //If given spinner container options, use them instead of using global
+      // container values.
+      if (data) {
+        parent = data.parent ? data.parent : data.parent;
+        selector = data.selector ? data.selector : parent;
+      }
+      if(itemCount || itemCount == 0) {
+        // re-apply the spinner if it isn't there
+        if($(selector).find('.' + self.spinnerContainer).length === 0) {
+          self.buildCSS(selector, self.posTop, self.posLeft);
+        }
+
+        // if there are images as part of our parent, check for their load status,
+        // otherwise just pass to destroy function
+        if($(parent + ' img')) {
+          $(parent + ' img').imagesLoaded(function() {
+            if($(selector).find('.' + self.spinnerContainer).not('.cc-spinner-exclude').length !== 0) {
+              self.destroy(itemCount, parent, selector);
+            }
+          });
+        } else {
+          self.destroy(itemCount, parent, selector);
+        }
+
+      }
+    };
+
+    /**
+     * Function to call from viewModel to initiate the activity indicator
+     * @param {String} itemCount: the number of items we need to find
+     * @private
+     */
+    self.destroy = function(itemCount, parent, selector) {
+      var delay, removeDelay;
+      // resolve the 'this' problem in setTimeout with new var's
+      var selector = selector ? selector : self.parent;
+      var parent = parent ? parent : self.parent;
+      var spinnerContainer = self.spinnerContainer;
+      // when the # of children matches what we expect OR we hit our stack size limit, 
+      // remove the spinner & curtain, otherwise, loop back and check again.
+      delay = self.time + 250 - (new Date()).getTime();
+      
+      if($(parent).children().length === itemCount) {
+        // artificial delay on spinner removal for aesthetics.
+        if(delay > 0) {
+          removeDelay = setTimeout(self.destroyWithoutDelay, delay);
+        } else {
+          self.destroyWithoutDelay(selector);
+        }
+      } else if(!itemCount || itemCount === null) {
+        if(delay > 0) {
+          //Passing the selector as an argument to destroyWithoutDelay will ensure that 
+          //the spinner created by this specific selector will be destroyed.
+          removeDelay = setTimeout(self.destroyWithoutDelay(selector), delay);
+        } else {
+          self.destroyWithoutDelay(selector);
+        }
+      } else {
+        setTimeout(self.destroy, 1);
+      }
+    };
+    
+    /**
+     * Function to destroy spinner instantly.
+     * Useful if there is a spinner help text along with spinner to help with smooth transition 
+     * @private
+     */
+    self.destroyWithoutDelay = function(pSpinnerId) {
+      var selector = pSpinnerId ? pSpinnerId : self.selector;
+      var spinnerContainer = self.spinnerContainer;
+      $(selector).find('.' + spinnerContainer).remove();
+    };
+
+    /**
+     * Function to create spinner with time out.
+     * This creates a spinner and sets wait time, after which the spinner is destroyed. 
+     * @param {Object} data: json containing display options.
+     * @param {String} waitTime: number of milliseconds to wait before destroy
+     * @param {Object} callBackFn: call back function to be invoked
+     * @param {Object} context: context to bind self/this to call back function
+     * @private
+     */
+    self.createWithTimeout = function(data, waitTime, callBackFn, context) {
+      data.waitTime = waitTime;
+      data.callBackFn = callBackFn;
+      data.context = context;
+      data.createWithTimeout = true;
+      self.create(data);      
+    };
+
+    /**
+     * Function to destroy spinner and clears waiting time.
+     * @param {Object} callBackFn: call back function to be invoked
+     * @param {Object} context: context to bind self/this to call back function
+     * @private
+     */
+    self.destroyAndClearTimeout = function(callBackFn, context) {
+      self.destroyWithoutDelay();
+      if (self.spinnerTimeOutId != null) {
+        clearTimeout(self.spinnerTimeOutId);
+      }
+      if (callBackFn != null) {
+        callBackFn.call(context);
+      }
+      
+    };
+
+    /**
+     * Function to destroy spinner and clears waiting time if spinner was
+     * started with any timeout to begin with
+     * @param {Object} spinnerId - id of the spinner to destroy
+     * @private
+     */
+    self.destroyAndClearCreateTimeout = function(pSpinnerId) {
+      self.destroyWithoutDelay(pSpinnerId);
+      if (self.spinnerTimeOutId != null) {
+        clearTimeout(self.spinnerTimeOutId);
+      }
+    };
+
+    /**
+     * Function to set time out interval.
+     * This sets wait time, after which the spinner is destroyed. 
+     * @param {String} waitTime: number of milliseconds to wait before destroy
+     * @param {Object} callBackFn: call back function to be invoked
+     * @param {Object} context: context to bind self/this to call back function
+     * @private
+     */
+    self.setDestroyTimeout = function (waitTime, callBackFn, context) {
+      self.spinnerTimeOutId = setTimeout(function() {
+        self.destroyWithoutDelay();
+        if (callBackFn != null) {
+          callBackFn.call(context);
+        }
+      }, waitTime);
+    };
+    
+    /**
+     * Function to create spinner with time out and Return the timeout Id .
+     * This creates a spinner and sets wait time, after which the spinner is destroyed. 
+     * @param {Object} data: json containing display options.
+     * @param {String} waitTime: number of milliseconds to wait before destroy
+     * @param {Object} callBackFn: call back function to be invoked
+     * @param {Object} context: context to bind self/this to call back function
+     * @private
+     */
+    self.createAndReturnWithTimeout = function (data, waitTime, callBackFn, context) {
+      self.create(data);
+      self.setDestroyTimeout(waitTime, callBackFn, context);
+      return self.spinnerTimeOutId;
+    };
+    
+    /**
+     * Function to destroy spinner and clears waiting time with a particular spinnerId.
+     * @param {Object} callBackFn: call back function to be invoked
+     * @param {Object} context: context to bind self/this to call back function
+     * @private
+     */
+    self.destroyAndClearTimeoutWithId = function(pSpinnerId, timeoutId, callBackFn, context) {
+      self.destroyWithoutDelay(pSpinnerId);
+      if (timeoutId != null) {
+        clearTimeout(timeoutId);
+      }
+      if (callBackFn != null) {
+        callBackFn.call(context);
+      }
+    };   
+  }
+
+  return new Spinner();
+});
+

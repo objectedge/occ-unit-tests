@@ -1,2 +1,986 @@
-define("notifications",["jquery","knockout","ccConstants","CCi18n","pubsub"],function(t,e,n,o,i){"use strict";function a(){var a,c,s=this,r=0,l=65;s.enabled=!0,s.publishAccessibleMessages=!1,s.CLOSE_BUTTON_HTML='<a href="#cc-notification-close-button" class="close cc-notification-close pull-right" data-dismiss="alert"><i class="fa fa-times-circle"></i><span class="cc-reader-text">Close notification</span></a>',s.notify=function(e,n){if(s.enabled||n)if(Array.isArray(e))t.each(e,function(t,e){if(null===e.style)throw"Notification type unknown";s.notifyBuild(e)});else{if(null===e.style)throw"Notification type unknown";s.notifyBuild(e)}},s.growlSuccess=function(e,n){Array.isArray(e)?t.each(e,function(t,n){n.style="growl",n.status="success",n.close=!0,n.fade=!0,n.header=e.header||o.t("ns.common:resources.successText")}):(e.style="growl",e.status="success",e.close=!0,e.fade=!0,e.header=e.header||o.t("ns.common:resources.successText")),s.notify(e,n)},s.growlError=function(e,n){Array.isArray(e)?t.each(e,function(t,n){n.style="growl",n.status="error",n.close=!0,n.fade=!0,n.header=e.header||o.t("ns.common:resources.errorText")}):(e.style="growl",e.status="error",e.close=!0,e.fade=!0,e.header=e.header||o.t("ns.common:resources.errorText")),s.notify(e,n)},s.growlRestError=function(t,e,n){var o;t.errors&&t.errors.length>0&&(t.errors[0].message&&(e.message=t.errors[0].message),t.errors[0].errorCode&&(o=t.errors[0].errorCode)),e.code=t.errorCode||o||" ",s.growlError(e,n)},s.inlineError=function(e,n){Array.isArray(e)?t.each(e,function(t,e){e.style="inline",e.status="error",e.close=!1,e.fade=!1}):(e.style="inline",e.status="error",e.close=!1,e.fade=!1),s.notify(e,n)},s.inlineConfirm=function(e,n){Array.isArray(e)?t.each(e,function(t,e){e.style="inline",e.status="confirm",e.curtain=!0,e.close=!1,e.fade=!1}):(e.style="inline",e.status="confirm",e.curtain=!0,e.close=!1,e.fade=!1),s.notify(e,n)},s.growlInfo=function(e,n){Array.isArray(e)?t.each(e,function(t,e){e.style="growl",e.status="info",e.close=!0,e.fade=!0,e.header=this.header||o.t("ns.common:resources.warningText")}):(e.style="growl",e.status="info",e.close=!0,e.fade=!0,e.header=this.header||o.t("ns.common:resources.warningText")),s.notify(e,n)},s.okCancel=function(t,e){t.style="inline",t.status="confirm",t.curtain=!0,t.close?t.actionOptionsFocus=1:t.close=!1,t.fade=!1,t.actionOptions=[{actionOption1:[{text:t.okButtonText||o.t("ns.common:resources.okText"),classes:this.PRIMARY_BUTTON_CLASS,callback:t.okCallback}],actionOption2:[{text:t.cancelButtonText||o.t("ns.common:resources.cancelText"),classes:this.BUTTON_CLASS,callback:t.cancelCallback}]}],s.notify(t,e)},s.continueConfirm=function(t,e){t.style="inline",t.status="confirm",t.curtain=!0,t.close=!1,t.fade=!1,t.actionOptions=[{actionOption1:[{text:o.t("ns.common:resources.continueText"),action:"",classes:"btn cc-btn-primary"}]}],s.notify(t,e)},s.unsavedChangesConfirm=function(t,e){t.header=o.t("ns.common:resources.unsavedChangesHeaderText"),t.message=o.t("ns.common:resources.unsavedChangesMsgText"),t.okButtonText=t.okButtonText||o.t("ns.common:resources.saveChangesText"),t.cancelButtonText=o.t("ns.common:resources.discardChangesText"),t.okCallback=t.okCallback||t.saveCallback,t.cancelCallback=t.cancelCallback||t.discardCallback,s.okCancel(t,e)},s.clearNotifications=function(e){0!==t(e).find(".cc-notification").length&&t(e).find(".cc-notification").remove()},s.emptyNotifications=function(e){t(e).empty()},s.emptyGrowlMessages=function(){t(".cc-notification-growl").remove()},s.notifyID=function(t){var e="cc-notification-"+t+"-";return e+r},s.notifyBuild=function(a){var r,l,f,d="alert cc-notification ",u="",p="",m="",h="",y=0,v="",b=0,g="",T=!1;if(t("#cc-notification-aria-message").remove(),d+="cc-notification-"+a.style+" ",a.status&&""!==a.status&&(d+="alert-"+a.status),f=a.customNotificationID&&""!==a.customNotificationID?a.customNotificationID:s.notifyID(a.style),r=t("<div />").attr({id:f,class:d}),a.close&&t(r).append(s.CLOSE_BUTTON_HTML),a.header&&(t(r).append(t("<div />").attr({class:"cc-notification-header"}).html(t("<div />").text(a.header).html())),v+=a.header+" "),a.message&&(g="cc-notification-message"+(a.header?"":" cc-notification-message-only"),"string"!=typeof a.message?t.each(a.message,function(e,n){t(r).append(t("<div />").attr("class",g).html(t("<div />").text(n).html())),v+=n}):(t(r).append(t("<div />").attr("class",g).html(t("<div />").text(a.message).html())),v+=a.message)),a.template){var C=s.parseTemplateUrl(a.template),x=t("<div/>").attr("data-bind",'template: {name: "'+C.name+'", templateUrl: "'+C.url+'"}');t(r).append(x),e.applyBindings(a.templateData,x.get(0))}if(a.actionOptions&&(T=s.hasCallbacks(a.actionOptions[0]),l=t("<div />").attr("class","cc-notification-actions"),"inline"===a.style&&a.curtain===!0&&(t(r).addClass("cc-notification-with-curtain"),p="$('.cc-curtain').remove();",m="$(this).closest('.cc-notification-inline').remove();$('body').removeClass('no-scroll');",m+="if($('.cc-notification-outer').length > 0) {$('.cc-notification-outer').remove();}",a.modal===!0&&t(a.id).parent(".modal").on("hidden",function(){t(".cc-curtain").remove()})),t.each(a.actionOptions[0],function(e,n){h="",n[0].onCloseFocus&&(h="$('"+n[0].onCloseFocus+"').notificationsSetFocus();");var o="";n[0].readerText&&(o=n[0].readerText),T?t(l).append(t("<button />").attr({id:"cc-notification-actionbutton-"+e,class:"cc-notification-actionbutton-class "+n[0].classes}).attr("data-bind","makeAccess: {readerText: "+o+"}").text(n[0].text)):t(l).append(t("<button />").attr({class:n[0].classes,onClick:m+p+h+n[0].action}).attr("data-bind","makeAccess: {readerText: "+o+"}").text(n[0].text))}),t(r).append(l)),a.formErrors){var k,O,A=t("<div />").attr("class","cc-notification-errorFields").append(t("<ul />"));t.each(a.formErrors,function(e,n){u="$('#"+n.formId+"').notificationsSetFocus()",a.focusFunction?A.append(t("<li />").append(t("<a />").attr({href:"javascript:void(0);"}).text(n.label).on("click",function(){a.focusFunction(n.formId)}))):1===t("#"+n.formId).parents(".tab-pane").length?(O=t("#"+n.formId).parents(".tab-pane"),1===t("#"+O[0].id).closest(".modal").length?k=t("#"+O[0].id).closest(".modal").find(".cc-alta-nav-tabs a[href='#"+O[0].id+"']").parent():(k=t("#tab-"+O[0].id),0===k.length&&(k=t("#"+O[0].id).closest(".panel").find(".cc-alta-nav-tabs a[href='#"+O[0].id+"']").parent())),A.append(t("<li />").append(t("<a />").attr({href:"javascript:void(0);",onClick:"$('#"+k[0].id+" a').tab('show');$('#"+n.formId+"').notificationsSetFocus()"}).text(n.label)))):A.append(t("<li />").append(t("<a />").attr({href:"javascript:void(0);",onClick:"$('#"+n.formId+"').notificationsSetFocus()"}).text(n.label))),v+=" "+n.label}),t(r).append(A)}if(s.publishAccessibleMessages){var w="error"===a.status||"danger"===a.status||"confirm"===a.status;t.Topic(i.topicNames.ARIA_ANNOUNCEMENT_REQUESTED).publish(v,w)}else t("body").prepend(t("<div />").attr({id:"cc-notification-aria-message",class:"cc-reader-text",role:"alert","aria-relevant":"additions removals","aria-live":"assertive"}).text(v));if(a.code){var I=o.t("ns.common:resources.returnCodeLabel");t(r).append(t("<div />").attr({class:"cc-notification-errorCode"}).text(I+": "+a.code))}if("inline"==a.style?a.curtain===!0?(t(r).addClass("cc-inline-curtain"),c=t("<div />").attr({class:"cc-notification-outer"}),t(a.id).prepend(t(c).append(t(r)))):t(a.id).hasClass("oj-tabs")?t(a.id).children("div").each(function(){t(this).prepend(t(r).clone(!0))}):t(a.id).prepend(t(r)):"growl"==a.style&&(t("body").append(t(r)),s.notifyTop(),t(r).bind("closed",function(){setTimeout(function(){s.notifyTop()},100);s.notifyFocus()})),t(".cc-notification-close").on("click",function(){var e=t(".cc-notification-outer");if(t("body").hasClass("no-scroll")&&t("body").removeClass("no-scroll"),t(".cc-curtain")&&t(".cc-curtain").remove(),e){var n=e.parent();t(".cc-notification-outer").remove(),t(n).find(":tabbable").first().focus()}a.closeHandler&&a.closeHandler()}),T&&t.each(a.actionOptions[0],function(e,n){var o=t("#cc-notification-actionbutton-"+e);o&&o.on("click",function(){"inline"===a.style&&a.curtain===!0&&(t(this).closest(".cc-notification-inline").remove(),t(this).closest(".cc-notification-growl").remove(),t("body").removeClass("no-scroll"),t(".cc-notification-outer").length>0&&t(".cc-notification-outer").remove(),t(".cc-curtain").remove()),n[0].onCloseFocus&&t(n[0].onCloseFocus).notificationsSetFocus(),s.cleanUp(),n[0].callback&&n[0].callback()})}),a.fade!==!1){var F=n.NOTIFICATION_FADE_DEFAULT;a.fade!==!0&&(F=a.fade);var N=n.NOTIFICATION_DELAY_DEFAULT;a.delay&&(N=a.delay),t(r).delay(N).fadeOut(F,s.doFade),t(r).mouseenter(function(){t(this).stop(!0,!0)}),t(r).mouseleave(function(){t(this).fadeOut(F,s.doFade)})}a.curtain===!0&&("inline"===a.style?0!==t(a.id).parents(".modal-content").length?t(a.id).parents(".modal-content").append(t("<div />").attr("class","cc-curtain fade in")):(t(a.id).append(t("<div />").attr("class","cc-curtain fade in").attr("style","z-index:1042")),window.scrollTo(0,t(a.id).offset().top),window.setTimeout(function(){t("body").addClass("no-scroll")},0)):t("body").append(t("<div />").attr("class","modal-backdrop fade in")),b=t(".cc-notification-with-curtain :tabbable"),y=b.length,b.each(function(e){t(this).on("keydown",function(e){if(9===e.keyCode){var n;e.shiftKey?(n=parseInt(b.index(t(this)),10)-1,n<0&&(e.preventDefault(),b[y-1].focus())):(n=parseInt(b.index(t(this)),10)+1,n===y&&(e.preventDefault(),b[0].focus()))}})}),a.actionOptionsFocus?t(b[a.actionOptionsFocus]).focus():t(b[0]).focus())},s.doFade=function(){t(this).remove(),t("#notification-info").text("");setTimeout(function(){s.notifyTop()},100);s.notifyFocus()},s.notifyTop=function(){a=t("body").children(".cc-notification-growl"),a.length>=0&&t.each(a,function(e,n){e>0&&(l+=30),t(n).css("top",l),l+=t(n).height()}),l=65},s.notifyFocus=function(){t("#CC-Oracle-Nav UL.nav.nav-pills LI A:first").focus()},s.parseTemplateUrl=function(t){for(""!==infuser.defaults.templateSuffix&&t.indexOf(".")>=0&&(t=t.substring(0,t.lastIndexOf(".")));0===t.indexOf("/");)t=t.substring(1);return{url:t.substring(0,t.lastIndexOf("/")),name:t.substring(t.lastIndexOf("/")+1)}},s.cleanUp=function(){var e=t(".cc-notification-actionbutton-class");e&&e.off("click");var n=t(".cc-notification-close");n&&n.off("click")},s.hasCallbacks=function(e){var n=!1;return t.each(e,function(t,e){e[0].callback&&(n=!0)}),n},s.overlayId="#cc-overlay-clone",s.createNotificationOverlay=function(){var e=t('div[id$="_layer_overlay"]');if(e){var n=e.clone();n.attr("id","cc-overlay-clone"),n.css("opacity","1"),n.css("background","none"),t("#__oj_zorder_container").append(n),n.zIndex(n.zIndex()+1)}},s.destroyNotificationOverlay=function(){var e=t("#cc-overlay-clone");e&&e.length>0&&e.remove()}}return t.fn.notificationsSetFocus=function(){this.is(":visible")?this.focus():this.triggerHandler("focus"),this.data&&this.data().select2&&this.select2("open")},a.prototype.PRIMARY_BUTTON_CLASS="btn cc-btn-primary pull-right",a.prototype.DEFAULT_BUTTON_CLASS="btn btn-default",a.prototype.BUTTON_CLASS="btn",new a});
-//# sourceMappingURL=notifications-1.0.js.map
+/*global $, infuser, setTimeout: false */
+define('notifications',
+  ['jquery',
+   'knockout',
+   'ccConstants',
+   'CCi18n',
+   'pubsub'
+  ],
+
+  function(
+    $,
+    ko,
+    CCConstants,
+    CCi18n,
+    PubSub) {
+
+  "use strict";
+
+  /**
+   * Custom jQuery function to set the focus of an element.
+   * Uses the focus() method if the element is visible, otherwise it
+   * triggers the focus handler on the element.
+   */
+  $.fn.notificationsSetFocus = function() {
+    if(this.is(':visible')) {
+      this.focus();
+    }
+    else {
+      this.triggerHandler('focus');
+    }
+    if(this.data && this.data()['select2']) {
+      this.select2('open');
+    }
+  };
+
+  /**
+   * Creates a Notification.
+   * The notification provides a method for inserting notification
+   * into the page. Can be called from any function with
+   * notifications.notify() and passing in an array of options
+   *
+   * @private
+   * @static
+   * @class
+   * @name Notifications
+   */
+  function Notifications() {
+    var self = this;
+    var notifyCounter = 0;
+    var notifyTopPosition = 65;
+    var notifyGrowls;
+    var notifyContainerOuter;
+
+    self.enabled = true;
+
+    // If true, accessibility related messages get posted on $.Topic rather than being handled here.
+    self.publishAccessibleMessages = false;
+
+    // private constants
+    self.CLOSE_BUTTON_HTML = '<a href="#cc-notification-close-button" class="close cc-notification-close pull-right" data-dismiss="alert"><i class="fa fa-times-circle"></i><span class="cc-reader-text">Close notification</span></a>';
+
+    /**
+     * Function called from elsewhere to trigger the notification.
+     *
+     * @function
+     * @name Notifications#notify
+     * @param {Object[]} notifyData A list of objects containing settings for notification messages.
+     * @param {string} notifyData.style Either 'growl', or 'inline', Determines whether the message appears
+     *   as a floating popup, or inline on the page.
+     * @param {string} notifyData.id Use with inline notifications to specify which HTML Element will contain the
+     *   notification message.
+     * @param {string} notifyData.status One of {'info', 'success', 'error', 'danger'} Specifies the intent of the
+     *   notification message and adds appropriate style to the message.
+     * @param {boolean} notifyData.close Whether to add a manual close button to the notification popup.
+     * @param {(number|boolean)} notifyData.fade=500 Whether the notification popup will automatically fade out, and if a number,
+     *   how long the delay should be. A value of false means the popup will not fade. Default delay is 500ms.
+     * @param {string} notifyData.header Title of notification popup.
+     * @param {string} notifyData.message Message to display in the body of the notification popup.
+     * @param {Object[]} notifyData.formErrors Pass in the list of errors returned from {@link FormHelper|formHelper}, if available.
+     * @param {string} notifyData.code Error Code identifier, if available.
+     * @param {Object[]} notifyData.actionOptions Array of Objects which specify actions the user can take from
+     *   the notification popup in the form of buttons. The first specified action will automatically gain
+     *   focus when the popup is displayed.
+     * @param {string} notifyData.actionOptions.text Text display on button.
+     * @param {string} notifyData.actionOptions.readerText Optional text to be used for screen readers. By default
+     *   'text' will be used.
+     * @param {function()} notifyData.actionOptions.action Function/script to be executed on click.
+     * @param {string} notifyData.actionOptions.classes Classes to be attached to button.
+     * @param {string} notifyData.actionOptions.onCloseFocus JQuery selector for element to gain focus on click.
+     * @param {number} notifyData.actionsOptionsFocus Index of action element that should gain focus (overrides
+     *   default).
+     *
+     * @example
+     * notifications.notify([
+     * {
+     *   style: 'inline',
+     *   status: 'info',
+     *   id: '#myInput',
+     *   close: true,
+     *   fade: false,
+     *   message: self.message().text()
+     * }
+     * ]);
+     *
+     * @example
+     * notifications.notify([
+     * {
+     *   style: 'growl',
+     *   status: 'confirm',
+     *   close: false,
+     *   fade: false,
+     *   header: "Delete",
+     *   message: "Are you sure you want to delete this thing?"
+     *   actionOptionsFocus: 1,
+     *   actionOptions = [{
+     *     actionOption1: [{
+     *       text: "Delete",
+     *       action: '$(this).closest(\'.cc-notification-growl\').remove();$(\'#deleteButton\').trigger(\'click\');',
+     *       classes: 'btn primary',
+     *       onCloseFocus: '#myInput'
+     *     }],
+     *     actionOption2: [{
+     *       text: "Cancel",
+     *       action: '$(this).closest(\'.cc-notification-growl\').remove();',
+     *       classes: 'btn',
+     *       onCloseFocus: '#myInput'
+     *     }]
+     *   }]
+     * }]);
+     */
+    self.notify = function(notifyData, force) {
+      if(self.enabled || force) {
+        if (Array.isArray(notifyData)) {
+          $.each(notifyData, function(ii, item) {
+            if(item.style !== null) {
+              self.notifyBuild(item);
+            } else {
+              throw "Notification type unknown";
+            }
+          });
+        } else {
+          if(notifyData.style !== null) {
+              self.notifyBuild(notifyData);
+          } else {
+            throw "Notification type unknown";
+          }
+        }
+      }
+    };
+
+    /**
+     * Call notify with settings for a growl success message.
+     * {style: 'growl', status: 'success', close: true, fade: true}
+     * @function
+     * @name Notifications#growlSuccess
+     */
+    self.growlSuccess = function(notifyData, force) {
+      if (Array.isArray(notifyData)) {
+        $.each(notifyData, function(i, data) {
+          data.style = 'growl';
+          data.status = 'success';
+          data.close = true;
+          data.fade = true;
+          data.header = notifyData.header || CCi18n.t("ns.common:resources.successText");
+        });
+      } else {
+        notifyData.style = 'growl';
+        notifyData.status = 'success';
+        notifyData.close = true;
+        notifyData.fade = true;
+        notifyData.header = notifyData.header ||  CCi18n.t("ns.common:resources.successText");
+      }
+      self.notify(notifyData, force);
+    }
+
+    /**
+     * Call notify with settings for a growl error message.
+     * {style: 'growl', status: 'error', close: true, fade: true}
+     * @function
+     * @name Notifications#growlError
+     */
+    self.growlError = function(notifyData, force) {
+      if (Array.isArray(notifyData)) {
+        $.each(notifyData, function(i, data) {
+          data.style = 'growl';
+          data.status = 'error';
+          data.close = true;
+          data.fade = true;
+          data.header = notifyData.header || CCi18n.t("ns.common:resources.errorText");
+        });
+      } else {
+        notifyData.style = 'growl';
+        notifyData.status = 'error';
+        notifyData.close = true;
+        notifyData.fade = true;
+        notifyData.header = notifyData.header ||  CCi18n.t("ns.common:resources.errorText");
+      }
+      self.notify(notifyData, force);
+    }
+
+
+    /**
+     * Call notify with settings for a growl error message.
+     * Parse out the error message and code from the result if there is one
+     * {style: 'growl', status: 'error', close: true, fade: true}
+     * @function
+     * @name Notifications#growlRestError
+     */
+    self.growlRestError = function(result, notifyData, force) {
+      var errorMessage;
+      var errorCode;
+      var individualErrorCode;
+      if (result.errors && result.errors.length > 0) {
+        if (result.errors[0].message) {
+          notifyData.message = result.errors[0].message;
+        }
+        if(result.errors[0].errorCode){
+          individualErrorCode = result.errors[0].errorCode;
+        }
+      }
+      notifyData.code = result.errorCode || individualErrorCode || " ";
+      self.growlError(notifyData, force);
+    }
+
+    /**
+     * Call notify with settings for an inline error message.
+     * {style: 'inlinel', status: 'error', close: false, fade: false}
+     * @function
+     * @name Notifications#inlineError
+     */
+    self.inlineError = function(notifyData, force) {
+      if (Array.isArray(notifyData)) {
+        $.each(notifyData, function(i, data) {
+          data.style = 'inline';
+          data.status = 'error';
+          data.close = false;
+          data.fade = false;
+        });
+      } else {
+        notifyData.style = 'inline';
+        notifyData.status = 'error';
+        notifyData.close = false;
+        notifyData.fade = false;
+      }
+      self.notify(notifyData, force);
+    }
+
+    /**
+     * Call notify with settings an inline confirm message
+     * {style: 'inline', status: 'confirm', curtain: true, close: false, fade: false}
+     * @function
+     * @name Notifications#inlineConfirm
+     */
+    self.inlineConfirm = function(notifyData, force) {
+      if (Array.isArray(notifyData)) {
+        $.each(notifyData, function(i, data) {
+          data.style = 'inline';
+          data.status = 'confirm';
+          data.curtain = true;
+          data.close = false;
+          data.fade = false;
+        });
+      } else {
+        notifyData.style = 'inline';
+        notifyData.status = 'confirm';
+        notifyData.curtain = true;
+        notifyData.close = false;
+        notifyData.fade = false;
+      }
+      self.notify(notifyData, force);
+    }
+
+    /**
+     * Call notify with settings for a growl info message.
+     * {style: 'growl', status: 'info', close: true, fade: true}
+     * @function
+     * @name Notifications#growlInfo
+     */
+    self.growlInfo = function(notifyData, force) {
+      if (Array.isArray(notifyData)) {
+        $.each(notifyData, function(i, data) {
+          data.style = 'growl';
+          data.status = 'info';
+          data.close = true;
+          data.fade = true;
+          data.header = this.header || CCi18n.t("ns.common:resources.warningText");
+        });
+      } else {
+        notifyData.style = 'growl';
+        notifyData.status = 'info';
+        notifyData.close = true;
+        notifyData.fade = true;
+        notifyData.header = this.header ||  CCi18n.t("ns.common:resources.warningText");
+      }
+      self.notify(notifyData, force);
+    }
+
+    /**
+     * Call notify with settings for a inline confirm message with two buttons: ok and cancel
+     * {style: 'inline', status: 'confirm', curtain: true, close: false, fade: false}
+     * @function
+     * @name Notifications#okCancel
+     */
+    self.okCancel = function(notifyData, force) {
+      notifyData.style = 'inline';
+      notifyData.status = 'confirm';
+      notifyData.curtain = true;
+
+      // If notifyData.close is specified, use it, otherwise set it to false by default.
+      if (notifyData.close) {
+        // Set initial focus to the ok button
+        notifyData.actionOptionsFocus = 1;
+      }
+      else {
+        notifyData.close = false;
+      }
+
+      notifyData.fade = false;
+      notifyData.actionOptions = [{
+        actionOption1: [{
+          text: notifyData.okButtonText || CCi18n.t("ns.common:resources.okText"),
+          classes: this.PRIMARY_BUTTON_CLASS,
+          callback: notifyData.okCallback,
+        }],
+        actionOption2: [{
+          text: notifyData.cancelButtonText || CCi18n.t("ns.common:resources.cancelText"),
+          classes: this.BUTTON_CLASS,
+          callback: notifyData.cancelCallback
+        }]
+      }];
+      self.notify(notifyData, force);
+    }
+
+
+    /**
+     * Call notify with settings for a inline confirm message with one button, continue
+     * {style: 'inline', status: 'confirm', curtain: true, close: false, fade: false}
+     * @function
+     * @name Notifications#okCancel
+     */
+    self.continueConfirm = function(notifyData, force) {
+      notifyData.style = 'inline';
+      notifyData.status = 'confirm';
+      notifyData.curtain = true;
+      notifyData.close = false;
+      notifyData.fade = false;
+      notifyData.actionOptions = [{
+        actionOption1: [{
+          text: CCi18n.t('ns.common:resources.continueText'),
+          action: '',
+          classes: 'btn cc-btn-primary'
+        }]
+      }];
+      self.notify(notifyData, force);
+    }
+
+    /**
+     * Call okCancel with two buttons: save and discard (optionally you can specify the button
+     * text for 'save', e.g. have it say 'create' instead). The callback parameters can be 
+     * okCallback and cancelCallback or saveCallback and discardCallback (for readability)
+     * {style: 'inline', status: 'confirm', curtain: true, close: false, fade: false}
+     * @function
+     * @name Notifications#okCancel
+     */
+    self.unsavedChangesConfirm = function(notifyData, force) {
+      notifyData.header = CCi18n.t("ns.common:resources.unsavedChangesHeaderText");
+      notifyData.message = CCi18n.t("ns.common:resources.unsavedChangesMsgText"),
+      notifyData.okButtonText = notifyData.okButtonText || CCi18n.t("ns.common:resources.saveChangesText"),
+      notifyData.cancelButtonText = CCi18n.t("ns.common:resources.discardChangesText"),
+      notifyData.okCallback = notifyData.okCallback || notifyData.saveCallback;
+      notifyData.cancelCallback = notifyData.cancelCallback || notifyData.discardCallback;
+      self.okCancel(notifyData, force);
+    }
+
+    /**
+     * Clear any notifications that are displayed under the given element.
+     *
+     * @function
+     * @name Notifications#clearNotifications
+     * @param {HTMLElement} element HTML Element to clear notifications on.
+     */
+    self.clearNotifications = function(element) {
+      if($(element).find('.cc-notification').length !== 0) {
+        $(element).find('.cc-notification').remove();
+      }
+    };
+
+    /**
+     * Empty all child nodes of the given element selector.
+     *
+     * @function
+     * @name Notifications#emptyNotifications
+     */
+    self.emptyNotifications = function(elementSelector) {
+      $(elementSelector).empty();
+    };
+
+    /**
+     * Clears all visible growl messages.
+     *
+     * @function
+     * @name Notifications#emptyGrowlMessages
+     */
+    self.emptyGrowlMessages = function() {
+      $('.cc-notification-growl').remove();
+    };
+
+    /**
+     * Generate a unique ID for each notification.
+     *
+     * @function
+     * @name Notifications#notifyID
+     * @params {string} style Additional string inserted into ID.
+     */
+    self.notifyID = function(style) {
+      // (Temporarily just returns the same ID. Might not be necessary at all.)
+      var baseID = 'cc-notification-' + style + '-';
+      return baseID + notifyCounter;
+    };
+
+    /**
+     * Build out the notification html with options from the array.
+     *
+     * @private
+     * @function
+     * @name Notifications#notifyBuild
+     * @param {Object[]} notifyData See {@link Notifications#notify|notify()} for param details.
+     */
+    self.notifyBuild = function(notifyData) {
+      var notifyContainer, notifyActions;
+      var notificationID;
+      var notificationClasses = 'alert cc-notification ';
+      var formElementID = '';
+      var closeCurtain = '';
+      var removeNotification = '';
+      var onCloseFocus = '';
+      var totalTabbableCount = 0;
+      var ariaMessage = '';
+      var totalTabbableElements = 0;
+      var messageClass = '';
+      var hasCallbacks = false;
+
+      $('#cc-notification-aria-message').remove();
+
+      //Assign the notification style (inline/growl)
+      notificationClasses += 'cc-notification-' + notifyData.style + ' ';
+
+      //Assign the notification status (info/error/danger/success/confirm)
+      if(notifyData.status && notifyData.status !== '') {
+        notificationClasses += 'alert-' + notifyData.status;
+      }
+
+      // Assign custom id to notification
+      if(notifyData.customNotificationID && notifyData.customNotificationID !== '') {
+        notificationID = notifyData.customNotificationID;
+      }
+      else {
+        notificationID = self.notifyID(notifyData.style);
+      }
+
+      // Build the html to insert into the DOM
+      notifyContainer = $('<div />')
+        .attr({
+          id: notificationID,
+          'class': notificationClasses
+        });
+
+      // If there is a close button (close: true), add it
+      if(notifyData.close) {
+        // * data-dismiss can't be added via .attr(), so we build the close button old school
+        $(notifyContainer).append(self.CLOSE_BUTTON_HTML);
+      }
+
+      // append our header text
+      if(notifyData.header) {
+        $(notifyContainer)
+          .append($('<div />')
+            .attr({
+              'class': 'cc-notification-header'
+            })
+            .html($('<div />').text(notifyData.header).html())
+        );
+        ariaMessage += notifyData.header + ' ';
+      }
+
+      // append our message
+      if(notifyData.message) {
+        messageClass = 'cc-notification-message' + (notifyData.header ? '' : ' cc-notification-message-only');
+        if(typeof notifyData.message !== 'string') {
+          // handle a message array
+          $.each(notifyData.message, function(ii, msg) {
+            $(notifyContainer)
+              .append($('<div />')
+                .attr('class', messageClass)
+                .html($('<div />').text(msg).html())
+            );
+            ariaMessage += msg;
+          });
+        } else {
+          // handle a message string
+          $(notifyContainer)
+            .append($('<div />')
+              .attr('class', messageClass)
+              .html($('<div />').text(notifyData.message).html())
+          );
+          ariaMessage += notifyData.message;
+        }
+      }
+
+      // append the template, if any
+      if (notifyData.template) {
+        var templateParts = self.parseTemplateUrl(notifyData.template);
+        var templateElement = $('<div/>')
+            .attr('data-bind', 'template: {name: "' + templateParts.name + '", templateUrl: "' + templateParts.url + '"}');
+
+        $(notifyContainer).append(templateElement);
+        ko.applyBindings(notifyData.templateData, templateElement.get(0));
+      }
+
+      // Are there actions associated with this notifications. (actionOptions: [{}])
+      // If so, build them out.
+      if(notifyData.actionOptions) {
+
+        // notifyData uses callback functions rather than action strings
+        hasCallbacks = self.hasCallbacks(notifyData.actionOptions[0]);
+
+        notifyActions = $('<div />').attr('class', 'cc-notification-actions');
+
+        if(notifyData.style === 'inline' && notifyData.curtain === true) {
+          $(notifyContainer).addClass('cc-notification-with-curtain');
+          closeCurtain = '$(\'.cc-curtain\').remove();';
+          removeNotification = '$(this).closest(\'.cc-notification-inline\').remove();$(\'body\').removeClass(\'no-scroll\');';
+          removeNotification += 'if($(\'.cc-notification-outer\').length > 0) {$(\'.cc-notification-outer\').remove();}';
+          if(notifyData.modal === true) {
+            $(notifyData.id).parent('.modal').on('hidden', function() {
+              $('.cc-curtain').remove();
+            });
+          }
+        }
+
+        // Iterate over the button definitions setting the (A) classes,
+        // (B) onClick action, (C) readerText (optional), and
+        // (C) the button Text.
+        $.each(notifyData.actionOptions[0], function(ii, actionOption) {
+          onCloseFocus = '';
+
+          // if a post action focus target has been passed in, set the script up
+          if(actionOption[0].onCloseFocus) {
+            onCloseFocus = '$(\'' + actionOption[0].onCloseFocus + '\').notificationsSetFocus();';
+          }
+
+          // determine if custom readerText should be used
+          // appends blank reader text if none is passed in;
+          // not sure if this is a potential problem
+          var readerText = "";
+          if (actionOption[0].readerText) {
+            readerText = actionOption[0].readerText;
+          }
+
+          // build the button
+          if (hasCallbacks) {
+            // if using callbacks, don't attach action string
+            $(notifyActions).append($('<button />')
+                .attr({
+                  id: 'cc-notification-actionbutton-' + ii,
+                  'class': 'cc-notification-actionbutton-class ' + actionOption[0].classes,
+                })
+                .attr('data-bind', 'makeAccess: {readerText: ' + readerText + '}')
+                .text(actionOption[0].text)
+              );
+          }  else {
+              $(notifyActions).append($('<button />')
+              .attr({
+                'class': actionOption[0].classes,
+                 onClick: removeNotification + closeCurtain + onCloseFocus + actionOption[0].action
+              })
+              .attr('data-bind', 'makeAccess: {readerText: ' + readerText + '}')
+              .text(actionOption[0].text)
+            );
+           }
+        });
+
+        // Append our actions to the notification
+        $(notifyContainer).append(notifyActions);
+      }
+
+      // Handle the errors() returned from form-helper
+      if(notifyData.formErrors) {
+        var formElementIdTab, formElementIdTabHref;
+        var formErrorItems = $('<div />').attr('class', 'cc-notification-errorFields').append($('<ul />'));
+
+        // For each error generate an LI with a link that will focus on that particular item
+        $.each(notifyData.formErrors, function(ii, formError){
+          formElementID = '$(\'#' + formError.formId + '\').notificationsSetFocus()';
+
+          if (notifyData.focusFunction) {
+            formErrorItems.append(
+              $('<li />').append(
+                $('<a />').attr({href: 'javascript:void(0);'}).text(formError.label).on('click', function() {
+                  notifyData.focusFunction(formError.formId); } )));
+          }
+          else if($('#' + formError.formId).parents('.tab-pane').length === 1) {
+            formElementIdTabHref = $('#' + formError.formId).parents('.tab-pane');
+
+            // determine if we're in a modal or not, and find the proper tab id.
+            if($('#' + formElementIdTabHref[0].id).closest('.modal').length === 1) {
+              formElementIdTab = $('#' + formElementIdTabHref[0].id).closest('.modal').find('.cc-alta-nav-tabs a[href=\'#'+ formElementIdTabHref[0].id + '\']').parent();
+            } else {
+              formElementIdTab = $('#tab-' + formElementIdTabHref[0].id);
+              if (formElementIdTab.length === 0) {
+                formElementIdTab = $('#' + formElementIdTabHref[0].id).closest('.panel').find('.cc-alta-nav-tabs a[href=\'#'+ formElementIdTabHref[0].id + '\']').parent();
+              }
+            }
+
+            formErrorItems.append(
+              $('<li />').append(
+                $('<a />').attr({
+                  href: 'javascript:void(0);',
+                  onClick: '$(\'#' + formElementIdTab[0].id + ' a\').tab(\'show\');$(\'#' + formError.formId + '\').notificationsSetFocus()'
+                })
+                .text(formError.label)
+              )
+            );
+          } else {
+            formErrorItems.append(
+              $('<li />').append(
+                $('<a />').attr({href: 'javascript:void(0);', onClick: '$(\'#' + formError.formId + '\').notificationsSetFocus()'})
+                .text(formError.label)
+              )
+            );
+          }
+          ariaMessage += " " + formError.label;
+        });
+
+        $(notifyContainer).append(formErrorItems);
+      }
+
+      if (self.publishAccessibleMessages) {
+        // Users should hear errors or modal confirmation dialogs first
+        var critical = (notifyData.status === 'error' || notifyData.status === 'danger' || notifyData.status === 'confirm');
+        $.Topic(PubSub.topicNames.ARIA_ANNOUNCEMENT_REQUESTED).publish(ariaMessage, critical);
+      }
+      else {
+        $('body').prepend(
+          $('<div />').attr({
+            id: 'cc-notification-aria-message',
+            class: 'cc-reader-text',
+            role: 'alert',
+            'aria-relevant': 'additions removals',
+            'aria-live': 'assertive'
+          }).text(ariaMessage)
+        );
+      }
+
+      if(notifyData.code) {
+        var returnCodeLabel = CCi18n.t('ns.common:resources.returnCodeLabel');
+        $(notifyContainer).append($('<div />').attr({
+                  'class':'cc-notification-errorCode'
+                }).text(returnCodeLabel + ': ' + notifyData.code));
+      }
+
+      // Insert the alert into the DOM
+      if(notifyData.style == 'inline') {
+        if(notifyData.curtain === true) {
+          $(notifyContainer).addClass('cc-inline-curtain');
+          notifyContainerOuter = $('<div />').attr({
+            'class' : 'cc-notification-outer'
+          });
+
+          $(notifyData.id).prepend($(notifyContainerOuter).append($(notifyContainer)));
+        }
+        // if its an ojTab, put notification window on each tab pane
+        else if ($(notifyData.id).hasClass("oj-tabs")) {
+          $(notifyData.id).children("div").each(function() {
+            $(this).prepend($(notifyContainer).clone(true));
+          });
+        } else {
+          $(notifyData.id).prepend($(notifyContainer));
+        }
+
+      } else if(notifyData.style == 'growl') {
+
+        $('body').append($(notifyContainer));
+
+        // Assign the top position for notifications
+        self.notifyTop();
+
+        // Adjust height when a growl notification is removed, and focus on
+        // the first product link.
+        $(notifyContainer).bind('closed', function() {
+          var delayUpdate = setTimeout(function() {
+            self.notifyTop();
+          }, 100);
+          self.notifyFocus();
+        });
+      }
+
+      $('.cc-notification-close').on('click', function() {
+        var notificationOuter = $('.cc-notification-outer');
+
+        if($('body').hasClass('no-scroll')){
+          $('body').removeClass('no-scroll');
+        }
+
+        if($('.cc-curtain')) {
+          $('.cc-curtain').remove();
+        }
+
+        if(notificationOuter) {
+          var parent = notificationOuter.parent();
+          $('.cc-notification-outer').remove();
+          // Keep focus to first element of parent modal.
+          $(parent).find(':tabbable').first().focus();
+        }
+
+        if(notifyData.closeHandler) {
+          notifyData.closeHandler();
+        }
+
+        //self.cleanUp();  TODO: clean up after clicking close
+      });
+
+      // Attach callbacks here.
+      if (hasCallbacks) {
+        $.each(notifyData.actionOptions[0], function(index, actionOption) {
+          var $actionButton = $('#cc-notification-actionbutton-' + index);
+          if ($actionButton) {
+            $actionButton.on('click', function() {
+              if(notifyData.style === 'inline' && notifyData.curtain === true) {
+                $(this).closest('.cc-notification-inline').remove();
+                $(this).closest('.cc-notification-growl').remove();
+                $('body').removeClass('no-scroll');
+                if ($('.cc-notification-outer').length > 0) {
+                  $('.cc-notification-outer').remove();
+                }
+                $('.cc-curtain').remove();
+              }
+              if (actionOption[0].onCloseFocus) {
+                $(actionOption[0].onCloseFocus).notificationsSetFocus();
+              }
+              // Remove click listeners before (not after) calling the callback, else if the callback
+              // shows a notification, we'll remove the listeners from it instead.
+              self.cleanUp();
+
+              if (actionOption[0].callback) {
+                actionOption[0].callback();
+              }
+            });
+          }
+        });
+      }
+
+      // If fade isn't false, it's either true or a number, so figure that out
+      if(notifyData.fade !== false) {
+        var notificationFade = CCConstants.NOTIFICATION_FADE_DEFAULT;
+        if(notifyData.fade !== true) {
+          notificationFade = notifyData.fade;
+        }
+
+        var notificationDelay = CCConstants.NOTIFICATION_DELAY_DEFAULT;
+
+        // Check to see if delay is set
+        if (notifyData.delay) {
+          // Delay is set so update the notification delay accordingly
+          notificationDelay = notifyData.delay;
+        }
+
+        // Setup to fade notification after a specific delay
+        $(notifyContainer)
+          .delay(notificationDelay)
+          .fadeOut(notificationFade, self.doFade);
+
+        // Setup to stop fade notification on mouseover
+        $(notifyContainer)
+          .mouseenter(function() {
+            $(this).stop(true,true);
+          });
+
+        // Setup to restart fade on mouseleave
+        $(notifyContainer)
+          .mouseleave(function() {
+            $(this).fadeOut(notificationFade, self.doFade);
+          });
+      }
+
+      if(notifyData.curtain === true) {
+        if(notifyData.style === 'inline') {
+          if($(notifyData.id).parents('.modal-content').length !== 0) {
+            $(notifyData.id).parents('.modal-content').append($('<div />').attr('class', 'cc-curtain fade in'));
+          } else {
+            $(notifyData.id).append($('<div />').attr('class', 'cc-curtain fade in').attr('style', 'z-index:1042'));
+            // scroll to the notification and put the no-scroll class on a delay of
+            // 0 to allow the scroll event to complete.
+            window.scrollTo(0, $(notifyData.id).offset().top);
+            window.setTimeout(function(){
+              $('body').addClass('no-scroll');
+            }, 0);
+          }
+        } else {
+          $('body').append($('<div />').attr('class', 'modal-backdrop fade in'));
+        }
+
+        // accessibility tabbing logic
+        totalTabbableElements = $(".cc-notification-with-curtain :tabbable");
+        totalTabbableCount = totalTabbableElements.length;
+
+        totalTabbableElements.each(function (index) {
+          $(this).on('keydown', function(event) {
+            if(event.keyCode === 9) {
+              var currentIndex;
+              if(event.shiftKey) {
+                currentIndex = parseInt(totalTabbableElements.index($(this)), 10) - 1;
+                if(currentIndex < 0) {
+                  event.preventDefault();
+                  totalTabbableElements[totalTabbableCount - 1].focus();
+                }
+              } else {
+                currentIndex = parseInt(totalTabbableElements.index($(this)), 10) + 1;
+                if(currentIndex === totalTabbableCount) {
+                  event.preventDefault();
+                  totalTabbableElements[0].focus();
+                }
+              }
+            }
+          });
+        });
+
+        // handle button focus on display. defaults to first button passed in
+        if(notifyData.actionOptionsFocus) {
+          $(totalTabbableElements[notifyData.actionOptionsFocus]).focus();
+        } else {
+          $(totalTabbableElements[0]).focus();
+        }
+      }
+    };
+
+    /**
+     * Do the fade animation if notification has the fade option set.
+     *
+     * This is used when the notification fades 'naturally' or when the mouse
+     * leaves focus of the notification.
+     *
+     * @private
+     * @function
+     * @name Notifications#doFade
+     */
+    self.doFade = function() {
+      $(this).remove();
+      $('#notification-info').text('');
+      // delayed to make sure the notification is removed from the DOM
+      // before we try to shift any other notifications around.
+      var delayUpdate = setTimeout(function(){self.notifyTop();}, 100);
+      self.notifyFocus();
+    };
+
+    /**
+     * Assign the top value to each growl notification.
+     *
+     * @private
+     * @function
+     * @name Notifications#notifyTop
+     */
+    self.notifyTop = function() {
+      notifyGrowls = $('body').children('.cc-notification-growl');
+      if(notifyGrowls.length >= 0) {
+        $.each(notifyGrowls, function(ii, growl){
+          if(ii > 0) {
+            notifyTopPosition = notifyTopPosition + 30;
+          }
+          $(growl).css('top', notifyTopPosition); // set css top
+          notifyTopPosition = notifyTopPosition + $(growl).height();
+        });
+      }
+      notifyTopPosition = 65;
+    };
+
+    /**
+     * For accessibility, regain focus on something in the window.
+     *
+     * @private
+     * @function
+     * @name Notifications#notifyFocus
+     */
+    self.notifyFocus = function() {
+      // TODO Arbitrarily picked the first navigation item, should this be an array option?
+      $('#CC-Oracle-Nav UL.nav.nav-pills LI A:first').focus();
+    };
+
+    /**
+     * Strip extensions from URL, trim leading slashes and split into URI + name
+     *
+     * @private
+     * @function
+     * @name Notifications#parseTemplateUrl
+     * @param {string} url The URL to parse
+     * @returns {Object} Object containing 'url', and 'name' components with URL parts.
+     */
+    self.parseTemplateUrl = function(url) {
+      // strip any extension, unless there is no default template suffix
+      if (infuser.defaults.templateSuffix !== '') {
+        if (url.indexOf('.') >= 0) {
+          url = url.substring(0, url.lastIndexOf('.'));
+        }
+      }
+      // strip any leading slashes
+      while (url.indexOf('/') === 0) {
+        url = url.substring(1);
+      }
+
+      // split into uri / name
+      return {
+        url : url.substring(0, url.lastIndexOf("/")),
+        name : url.substring(url.lastIndexOf("/") + 1)
+      };
+    };
+
+    /**
+     * Clean up after finished with notification.  Removes callbacks.
+     *
+     * @function
+     * @name Notifications#cleanUp
+     */
+    self.cleanUp = function() {
+       var $actionButtons = $('.cc-notification-actionbutton-class');
+       if ($actionButtons) {
+          $actionButtons.off('click');
+       }
+       var $closeButton = $('.cc-notification-close');
+       if ($closeButton) {
+          $closeButton.off('click');
+       }
+    };
+
+   /**
+     * Does the notify data pass in a callback function (rather than an action string)
+     *
+     * @private
+     * @function
+     * @name Notifications#hasCallbacks
+     */
+    self.hasCallbacks = function(actionOptions) {
+       var hasCallback = false;
+       $.each(actionOptions, function(jj, actionOption) {
+           if (actionOption[0].callback) {
+             hasCallback = true;
+           }
+       });
+       return hasCallback;
+    }
+
+    //
+    // If popping up a notification window over an ojDialog, use these methods to create an overlay
+    //
+    self.overlayId = "#cc-overlay-clone";
+    self.createNotificationOverlay = function() {
+      var dialogOverlay = $('div[id$="_layer_overlay"]');
+      if (dialogOverlay) {
+        var $overlayClone = dialogOverlay.clone();
+        $overlayClone.attr("id", "cc-overlay-clone");
+        $overlayClone.css("opacity", "1");
+        $overlayClone.css("background", "none");
+        $("#__oj_zorder_container").append($overlayClone);
+      $overlayClone.zIndex($overlayClone.zIndex()+1);
+      }
+    };
+    self.destroyNotificationOverlay = function() {
+      var noteOverlay = $("#cc-overlay-clone");
+      if (noteOverlay && noteOverlay.length > 0) {
+        noteOverlay.remove();
+      }
+    }
+
+
+  }
+
+    /**
+     * Global variables for users of Notification to set the button classes
+     */
+    Notifications.prototype.PRIMARY_BUTTON_CLASS = "btn cc-btn-primary pull-right";
+    Notifications.prototype.DEFAULT_BUTTON_CLASS = "btn btn-default";
+    Notifications.prototype.BUTTON_CLASS = "btn";
+
+  return new Notifications();
+
+});
+

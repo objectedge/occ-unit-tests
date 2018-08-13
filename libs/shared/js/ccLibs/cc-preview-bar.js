@@ -1,2 +1,445 @@
-define(["storageApi","ccConstants","ccRestClient","pubsub","CCi18n","knockout","jquery"],function(e,t,i,n,s,o,r){"use strict";function a(){if(a.singleInstance)throw new Error("Cannot instantiate more than one CCPreviewBar, use getInstance()");var f=this;this.isMinifyJs=o.observable(),this.cssPath="/shared/css/oj-preview-bar.css",this.templateUrl="/shared/templates",this.templateName="preview-bar.template",this.selectedSite=o.observable(),this.debugMenuButtonText=o.observable("Debug Tools"),this.minifyJsText=o.observable("Minify JavaScript"),this.siteSelectionLabel=o.observable("Site Selection"),this.ojLoaded=r.Deferred(),this.sites=null,this.currentSiteId=null;var h,d=!1;if(this.isDisableMinifyJs=o.computed(function(){return i.previewMode&&!f.isMinifyJs()}),this.storeMinifyJs=function(t,i){"rawValue"!==i.option&&"value"!==i.option||void 0===i.previousValue||e.getInstance().setSessionItem(u,f.isMinifyJs())},this.initDebugMenu=function(){if(i.previewMode){var t=e.getInstance().getSessionItem(u);"true"===t||t===!0||null===t?this.isMinifyJs(!0):this.isMinifyJs(!1),h=this.isMinifyJs()}},this.initSiteSelection=function(e){if(i.previewMode){var o=e.data.global.multisite;f.sites=o,f.validateSiteSelection={Init:function(){},getHint:function(){},validate:function(e){var t=o.filter(function(t){return e[0]===t.id});if(t.length>0)return!0;throw new Error(s.t("ns.common:resources.siteSelectionNoMatchesError"))}};var a=i.getStoredValue(t.LOCAL_STORAGE_SITE_ID);if(a){var c=f.getURLParameter(window.location.search,t.URL_SITE_PARAM),u=o.filter(function(e){return c===e.id});c&&""!=c?a!==c&&u.length>0?(i.setStoredValue(t.LOCAL_STORAGE_SITE_ID,c),f.selectedSite(c),f.currentSiteId=c):(f.selectedSite(a),f.currentSiteId=a):(f.selectedSite(a),f.currentSiteId=a,f.refreshPageWithNewSite(a))}else{var l=o.filter(function(e){return e.defaultSite});l.length>0&&(f.selectedSite(l[0].id),f.currentSiteId=l[0].id)}r.Topic(n.topicNames.PAGE_LAYOUT_LOADED).unsubscribe(f.initSiteSelection)}},this.clearMinJsFlag=function(){e.getInstance().removeSessionItem(u)},this.maybeRefreshPage=function(e){"/payment"!=e&&"/confirmation/"!=e.substring(0,14)&&null!==h&&h!=f.isMinifyJs()&&this.refreshPage(e)},this.refreshPage=function(e){if(i.previewMode){var t=window.location.origin+("/"===e.charAt(0)?e:"/"+e);window.location.assign(t)}},this.focusSwitch=function(e){e.originalEvent&&("click"===e.originalEvent.type&&e.originalEvent.pageX<=0&&e.originalEvent.pageY<=0||"keydown"===e.originalEvent.type)&&(r(l+" + div.oj-switch-container").find("div.oj-switch-thumb").focus(),d=!0)},this.attachEventHandlers=function(){r(l+" + div.oj-switch-container").find("div.oj-switch-thumb").on("keyup"+c,function(e){return e.keyCode===t.KEY_CODE_ENTER&&d?(d=!1,!1):(d=!1,!0)}).on("keydown"+c,function(e){return d=!1,e.keyCode!==t.KEY_CODE_ENTER&&e.keyCode!==t.KEY_CODE_SPACE||(e.stopPropagation(),e.preventDefault()),!0});var e;r("#oj-combobox-input-previewBarSiteSelection").on("focus",function(t){e!==this&&(e=this,setTimeout(function(){e.select()},50))})},this.getURLParameter=function(e,t){if(e&&""!==e){var i,n=(e.split("?")[0],[]),s=e.split("?")[1];if(""!==s){n=s.split("&");for(var o=n.length-1;o>=0;o-=1)if(i=n[o].split("=")[0],i===t)return n[o].split("=")[1]}}return null},this.removeParamFromURL=function(e,t){if(t.indexOf("?")===-1)return t;var i,n=t.split("?")[0],s=[],o=t.split("?")[1];if(""!==o){s=o.split("&");for(var r=s.length-1;r>=0;r-=1)i=s[r].split("=")[0],i===e&&s.splice(r,1);s.length>0&&(n=n+"?"+s.join("&"))}return n},this.changeSiteCallBack=function(e,n){if("value"===n.option){var s=i.getStoredValue(t.LOCAL_STORAGE_SITE_ID),o=n.value[0];o!==s&&(i.setStoredValue(t.LOCAL_STORAGE_SITE_ID,o),f.refreshPageWithNewSite(o))}},this.refreshPageWithNewSite=function(e){var i=f.removeParamFromURL(t.URL_SITE_PARAM,window.location.search);i+=i.indexOf("?")===-1?"?":"&",i+=t.URL_SITE_PARAM+"="+encodeURIComponent(e);for(var n=null,s=null,o=0;o<f.sites.length;o++)f.sites[o].id===e&&(n=f.sites[o]),f.sites[o].id===f.currentSiteId&&(s=f.sites[o]);var r=n.productionURL.substring(n.productionURL.indexOf("/")),a=s.productionURL.substring(s.productionURL.indexOf("/"));f.refreshPage.call(f,window.location.pathname.replace(a,r)+i)},i.previewMode){r.Topic(n.topicNames.HISTORY_PUSH_STATE).subscribe(this.maybeRefreshPage.bind(this)),window.history&&window.history.pushState&&window.addEventListener("popstate",function(e){f.maybeRefreshPage.call(f,window.location.pathname+window.location.search)}),r.Topic(n.topicNames.LOCALE_READY).subscribe(function(e){f.debugMenuButtonText(s.t("ns.common:resources.debugMenuButtonText")),f.minifyJsText(s.t("ns.common:resources.minifyJsText")),f.siteSelectionLabel(s.t("ns.common:resources.siteSelectionLabel"))}),i.registerLogoutAdminUpdateCallback(this.clearMinJsFlag),this.initDebugMenu(),r.Topic(n.topicNames.PAGE_LAYOUT_LOADED).subscribe(this.initSiteSelection);var p=["ojs/ojcore","ojs/ojknockout","ojs/ojswitch","ojs/ojbutton","ojs/ojmenu","ojs/ojselectcombobox"];require(p,function(){f.ojLoaded.resolve()})}}var c=".previewBar",u="min_js_preview",l="#previewMinifySwitch";return a.getInstance=function(){return a.singleInstance||(a.singleInstance=new a),a.singleInstance},a});
-//# sourceMappingURL=cc-preview-bar.js.map
+//----------------------------------------
+/**
+ * @fileoverview This library handles the preview bar along with the debug menu
+ *
+ * If we're in preview mode, the preview bar is loaded from custom knockout
+ * binding.
+ *
+ * The debug menu currently contains one option - Minify JS.
+ *
+ * This uses oracle jet components.
+ *
+ * If the minify js switch (default to true) is set to 'false' then subsequent
+ * page context changes will bring back non-minified javascript.
+ *
+ *
+ */
+define(
+  'ccPreviewBar',['storageApi', 'ccConstants', 'ccRestClient', 'pubsub', 'CCi18n',
+   'knockout', 'jquery'],
+
+ function(storageApi, CCConstants, CCRestClient, PubSub, CCi18n, ko, $) {
+
+  'use strict';
+
+  /**
+   * @var {string} MIN_JS local storage key for minify javascript flag
+   * @var {string} MINIFY_SWITCH DOM element id of Minification switch
+   * @var {string} MENU_CLOSE_TIMEOUT Close menu x ms after mouse out
+   */
+  var EVENT_NS = ".previewBar";
+  var MIN_JS = "min_js_preview";
+  var MINIFY_SWITCH_ID = "#previewMinifySwitch";
+  var DEBUG_MENU_ID = "#previewDebugToolsMenu";
+  var MINIFY_MENU_OPTION_ID = "#previewMinifyOption";
+  var DEBUG_MENU_BUTTON_ID = "#previewMenuButton";
+
+  /**
+   * Constructor for CCPreviewBar object
+   *
+   * object is a singleton
+   */
+  function CCPreviewBar() {
+    if (CCPreviewBar.singleInstance) {
+      throw new Error(
+          "Cannot instantiate more than one CCPreviewBar, use getInstance()");
+    }
+
+    var self = this;
+
+
+    /**
+     * @property {observable<boolean>} isMinifyJs status of the minify JS switch
+     * @property {string} cssPath Jet CSS for preview bar debug menu
+     * @property {string} templateUrl path to preview bar template for knockout
+     * @property {string} templateName name of preview bar template for knockout
+     * @property {observable<string>} Currently selected site (bound to site election drop down.)
+     * @property {Deferred} ojLoaded resolved when the jet modules are loaded,
+     *                               then we render the preview bar template
+     * @var {boolean} savedMinifyJs copy of isMinifyJs flag - used to trigger page
+     *                reload if switch has been flipped
+     * @var {boolean} justFocused true if we are in the process of opening the menu
+     */
+    this.isMinifyJs = ko.observable();
+    this.cssPath = '/shared/css/oj-preview-bar.css';
+    this.templateUrl = '/shared/templates';
+    this.templateName = 'preview-bar.template';
+    this.selectedSite = ko.observable();
+
+    // Init these with placeholders, i18n will take over shortly.
+    this.debugMenuButtonText = ko.observable("Debug Tools");
+    this.minifyJsText = ko.observable("Minify JavaScript");
+    this.siteSelectionLabel = ko.observable("Site Selection");
+
+    this.ojLoaded = $.Deferred();
+
+    this.sites = null;
+    this.currentSiteId = null;
+
+    var savedMinifyJs;
+    var justFocused = false;
+
+    /**
+     * @property {observable<boolean>} isDisableMMinifyJs disable minification flag
+     *                                 - always false if not in preview mode.
+     */
+    this.isDisableMinifyJs = ko.computed(function() {
+      // Always return false if we aren't in preview mode
+      return (CCRestClient.previewMode && !self.isMinifyJs());
+    });
+
+    /**
+     * Write the minification switch to local storage.
+     *
+     * @function
+     * @name      CCPreviewBar#storeMinifyJs
+     */
+    this.storeMinifyJs = function (event, data) {
+      if (data.option !== "rawValue" && data.option !== "value" || data.previousValue === undefined) {
+        return;
+      }
+      storageApi.getInstance().setSessionItem(MIN_JS, self.isMinifyJs());
+    };
+
+    /**
+     * Read the minification value from local storage and set the observable.
+     *
+     * @function
+     * @name      CCPreviewBar#initDebugMenu
+     */
+    this.initDebugMenu = function() {
+      if (CCRestClient.previewMode) {
+        var minifyJsFlag = storageApi.getInstance().getSessionItem(MIN_JS);
+        if (minifyJsFlag === "true" || minifyJsFlag === true || minifyJsFlag === null) {
+          this.isMinifyJs(true);
+        } else {
+          this.isMinifyJs(false);
+        }
+        savedMinifyJs = this.isMinifyJs();
+      }
+    };
+
+    /**
+     * Read current site value from local storage or default to default site.
+     *
+     * @function
+     * @name      CCPreviewBar#initSiteSelection
+     */
+    this.initSiteSelection = function (pLayoutData) {
+      if (CCRestClient.previewMode) {
+        var sites = pLayoutData.data.global.multisite;
+
+        // Keep note of the sites
+        self.sites = sites;
+
+        // ojCombobox doesn't implicitly validate that the new value is in
+        // the options list so create a Validator to do it for them.
+        // See: http://www.oracle.com/webfolder/technetwork/jet/jsdocs/oj.Validator.html
+        self.validateSiteSelection = {
+          Init: function () {},
+          getHint: function () {},
+          validate: function (newVal) {
+            var checkSites = sites.filter(function (site) {
+              return newVal[0] === site.id;
+            });
+
+            // Return false? No, throw an error! Incidentally, returning false == returning true.
+            if (checkSites.length > 0) {
+              return true;
+            } else {
+              throw new Error(CCi18n.t('ns.common:resources.siteSelectionNoMatchesError'));
+            }
+          }
+        }
+
+        var siteId = CCRestClient.getStoredValue(CCConstants.LOCAL_STORAGE_SITE_ID);
+        if (siteId) {
+          // If the site id from local storage doesn't match that from the URL, change the URL to match,
+          // and refresh the page
+          var urlSiteId = self.getURLParameter(window.location.search, CCConstants.URL_SITE_PARAM);
+          var checkUrlSite = sites.filter(function (site) {
+            return urlSiteId === site.id;
+          });
+
+          if (!urlSiteId || urlSiteId == '') {
+            // If no site specified in URL, use the one in local storage
+            self.selectedSite(siteId);
+            self.currentSiteId = siteId;
+            self.refreshPageWithNewSite(siteId);
+          }
+          else if (siteId !== urlSiteId && checkUrlSite.length > 0) {
+            // Sites are different - change local storage to match URL
+            CCRestClient.setStoredValue(CCConstants.LOCAL_STORAGE_SITE_ID, urlSiteId);
+            self.selectedSite(urlSiteId);
+            self.currentSiteId = urlSiteId;
+          }
+          else {
+            self.selectedSite(siteId);
+            self.currentSiteId = siteId;
+          }
+
+        } else {
+          var defaultSite = sites.filter(function (site) {
+            return site.defaultSite;
+          });
+
+          if (defaultSite.length > 0) {
+            self.selectedSite(defaultSite[0].id);
+            self.currentSiteId = defaultSite[0].id;
+          }
+        }
+
+        // Unsubscribe from layout loaded events
+        $.Topic(PubSub.topicNames.PAGE_LAYOUT_LOADED).unsubscribe(self.initSiteSelection);
+      }
+    };
+
+    /**
+     * Clear the local storage value on admin logout.
+     *
+     * @function
+     * @name      CCPreviewBar#clearMinJsFlag
+     */
+    this.clearMinJsFlag = function() {
+      storageApi.getInstance().removeSessionItem(MIN_JS);
+    };
+
+    /**
+     * If we've flipped the minification switch, we navigate to the given url
+     * by reloading the page. Don't do this if we're checking out.
+     *
+     * @function
+     * @name      CCPreviewBar#maybeRefreshPage
+     */
+    this.maybeRefreshPage = function(path) {
+      if (path == "/payment" || path.substring(0,14) == "/confirmation/") { return; }
+
+      if (savedMinifyJs !== null && savedMinifyJs != self.isMinifyJs()) {
+        this.refreshPage(path);
+      }
+    };
+
+    this.refreshPage = function (path) {
+      if (!CCRestClient.previewMode) { return; }
+
+      var url =  window.location.origin + (path.charAt(0) === '/' ? path : '/' + path);
+      window.location.assign(url);
+    };
+
+    /**
+     * Focus the switch when we open the menu.
+     *
+     * @function
+     * @name      CCPreviewBar#focusSwitch
+     */
+    this.focusSwitch = function(event) {
+      // Keyboard only
+      // Negative or zero pageX and pageY means artificially generated click event - i.e. keydown
+      if (event.originalEvent && ((event.originalEvent.type === "click" &&
+                                   event.originalEvent.pageX <= 0 &&
+                                   event.originalEvent.pageY <= 0) ||
+                                   event.originalEvent.type === "keydown")) {
+        $(MINIFY_SWITCH_ID + " + div.oj-switch-container").find("div.oj-switch-thumb").focus();
+        justFocused = true;
+      }
+    };
+
+    /**
+     * Attach event handlers to switch, to allow correct focus path:
+     * - Capture a keyup as part of the menu open, as opposed to an actual
+     *   select on the switch  and prevent menu close in this case.
+     * - Capture keydown on switch, and prevent menu close for enter or space.
+     *
+     * Called by afterRender functionality for preview bar template.
+     *
+     * @function
+     * @name      CCPreviewBar#maybeClose
+     */
+    this.attachEventHandlers = function() {
+      $(MINIFY_SWITCH_ID + " + div.oj-switch-container").find("div.oj-switch-thumb").on('keyup' + EVENT_NS, function(event) {
+        if (event.keyCode === CCConstants.KEY_CODE_ENTER && justFocused) {
+          justFocused = false;
+          return false;
+        } else {
+          justFocused = false;
+          return true;
+        }
+      }).on('keydown' + EVENT_NS, function(event) {
+        justFocused = false;
+        if (event.keyCode === CCConstants.KEY_CODE_ENTER || event.keyCode === CCConstants.KEY_CODE_SPACE) {
+          event.stopPropagation();
+          event.preventDefault();
+        }
+        return true;
+      });
+
+      var focusedElement;
+      $('#oj-combobox-input-previewBarSiteSelection').on('focus', function (e) {
+        if (focusedElement === this) return;
+        focusedElement = this;
+        setTimeout(function () { focusedElement.select(); }, 50);
+      });
+    };
+
+    /**
+     * Get the value of a URL parameter.
+     * @param sourceURL The source url.
+     * @param key The parameter key.
+     * @returns The value of the parameter, or null if not found.
+     */
+    this.getURLParameter = function(sourceURL, key) {
+
+      if (sourceURL && sourceURL !== '') {
+        var returnURL = sourceURL.split("?")[0],
+          param,
+          paramsArr = [],
+          queryString = sourceURL.split("?")[1];
+
+        if (queryString !== "") {
+          paramsArr = queryString.split("&");
+          for (var i = paramsArr.length - 1; i >= 0; i -= 1) {
+            param = paramsArr[i].split("=")[0];
+            if (param === key) {
+              return paramsArr[i].split("=")[1];
+            }
+          }
+        }
+      }
+
+      return null;
+    }
+
+    /**
+     * Remove a query parameter key/value pair from a URL.
+     * @param key The query parameter key to be removed.
+     * @param sourceURL The source URL.
+     * @returns The
+     */
+    this.removeParamFromURL = function(key, sourceURL) {
+
+      // If no query params, just return the unmodified url
+      if (sourceURL.indexOf("?") === -1) {
+        return sourceURL;
+      }
+
+      var returnURL = sourceURL.split("?")[0],
+        param,
+        paramsArr = [],
+        queryString = sourceURL.split("?")[1];
+
+      if (queryString !== "") {
+        paramsArr = queryString.split("&");
+        for (var i = paramsArr.length - 1; i >= 0; i -= 1) {
+          param = paramsArr[i].split("=")[0];
+          if (param === key) {
+            paramsArr.splice(i, 1);
+          }
+        }
+
+        // Put the query parameters back into the URL
+        if (paramsArr.length > 0) {
+          returnURL = returnURL + "?" + paramsArr.join("&");
+        }
+      }
+      return returnURL;
+    }
+
+    this.changeSiteCallBack = function (event, data) {
+      if (data.option === 'value') {
+        var currentSiteId = CCRestClient.getStoredValue(CCConstants.LOCAL_STORAGE_SITE_ID);
+        var newSiteId = data.value[0];
+
+        if (newSiteId !== currentSiteId) {
+          CCRestClient.setStoredValue(CCConstants.LOCAL_STORAGE_SITE_ID, newSiteId);
+          self.refreshPageWithNewSite(newSiteId);
+        }
+      }
+    };
+
+    /**
+     * Refresh the page with a new site id.
+     * @param pNewSiteId The new site id.
+     */
+    this.refreshPageWithNewSite = function(pNewSiteId) {
+      // Refresh the page, making sure to replace the occsite query parameter from the URL with the new site ID
+      var newSearch = self.removeParamFromURL(CCConstants.URL_SITE_PARAM,window.location.search);
+
+      if (newSearch.indexOf('?') === -1) {
+        newSearch += '?';
+      }
+      else {
+        newSearch += '&';
+      }
+      newSearch += CCConstants.URL_SITE_PARAM + '=' + encodeURIComponent(pNewSiteId);
+
+      // Replace the context root part of the site
+      var newSite = null;
+      var currentSite = null;
+
+      for (var i=0; i<self.sites.length; i++) {
+        if (self.sites[i].id === pNewSiteId) {
+          newSite = self.sites[i];
+        }
+        if (self.sites[i].id === self.currentSiteId) {
+          currentSite = self.sites[i];
+        }
+      }
+
+      // Find context root of new site
+      var newSiteContextRoot = newSite.productionURL.substring(newSite.productionURL.indexOf('/'));
+      var currentSiteContextRoot = currentSite.productionURL.substring(currentSite.productionURL.indexOf('/'));
+
+      self.refreshPage.call(self, window.location.pathname.replace(currentSiteContextRoot, newSiteContextRoot) + newSearch);
+    };
+
+    // Set up some subscriptions in preview mode only
+    if (CCRestClient.previewMode) {
+      // Reload the page if we navigate after flicking the minify switch
+      $.Topic(PubSub.topicNames.HISTORY_PUSH_STATE).subscribe(this.maybeRefreshPage.bind(this));
+      if (window.history && window.history.pushState) {
+        window.addEventListener('popstate', function(event) {
+          self.maybeRefreshPage.call(self, window.location.pathname + window.location.search);
+        });
+      }
+
+      // Update translations once they load
+      $.Topic(PubSub.topicNames.LOCALE_READY).subscribe(function(publish_data) {
+        self.debugMenuButtonText(CCi18n.t('ns.common:resources.debugMenuButtonText'));
+        self.minifyJsText(CCi18n.t('ns.common:resources.minifyJsText'));
+        self.siteSelectionLabel(CCi18n.t('ns.common:resources.siteSelectionLabel'))
+      });
+
+      // Reset the minify flag to default if we log out
+      CCRestClient.registerLogoutAdminUpdateCallback(this.clearMinJsFlag);
+
+      // Load the minification from session storage
+      this.initDebugMenu();
+      $.Topic(PubSub.topicNames.PAGE_LAYOUT_LOADED).subscribe(this.initSiteSelection);
+
+      // Load the Jet modules we need. Separate var or minification includes them
+      // Once they've loaded, we can render the preview bar template
+      var jetModules = ['ojs/ojcore', 'ojs/ojknockout', 'ojs/ojswitch',
+                        'ojs/ojbutton' ,'ojs/ojmenu', 'ojs/ojselectcombobox'];
+      require(jetModules, function() {
+        self.ojLoaded.resolve();
+      });
+    }
+  }
+
+  /**
+   * returns a singleton instance of the CCPreviewBar.
+   *
+   * @function
+   * @name      CCPreviewBar#getInstance
+   */
+  CCPreviewBar.getInstance = function() {
+    if (!CCPreviewBar.singleInstance) {
+      CCPreviewBar.singleInstance = new CCPreviewBar();
+    }
+
+    return CCPreviewBar.singleInstance;
+  };
+
+  return CCPreviewBar;
+});
+

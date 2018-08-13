@@ -1,2 +1,733 @@
-define(["jquery"],function(t){"use strict";function e(t,r,n){var a=this;a.profileType=t,a.httpPort=r||"8080",a.httpsPort=n||"8443",a.parentURL=e.getCrossDomainURL(t,e.HTTP_PROTOCOL,a.httpPort,!1),document.referrer&&e.urlProtocolOnly(document.referrer)!=e.HTTPS_PROTOCOL&&null!=window&&null!=window.parent&&window.parent.postMessage(JSON.stringify({id:e.IFRAME_INIT_COMPLETE_EVENT,success:!0,payload:null}),a.parentURL)}return e.POST="POST",e.GET="GET",e.DELETE="DELETE",e.METHOD="method",e.URL="url",e.DATA="data",e.SUCCESS="success",e.FAILURE="failure",e.HEADERS="headers",e.CONTENT_TYPE="Content-Type",e.ACCEPT="Accept",e.TEXT_PLAIN="text/plain",e.APPLICATION_JSON="application/json",e.JSON="json",e.ETAG="ETag",e.ETAG_PROPERTY="___etag___",e.LAST_PUBLISHED_TIME="LastPublishedTime",e.LAST_PUBLISHED_TIME_PROPERTY="lastPublishedTime",e.XSTATEDATA="X-OCStateData",e.STATEDATA_PROPERTY="__stateData__",e.AMPERSAND="&",e.EQUALS="=",e.DOUBLE_SLASH="//",e.SLASH="/",e.EMPTY_STRING="",e.PROTOCOL_SEP="://",e.COLON=":",e.QUESTION_MARK="?",e.SPACE=" ",e.SEMICOLON=";",e.DASH="-",e.CURLY_BRACES="{}",e.PERIOD=".",e.OAUTH_ACCESS_TOKEN_PARAM="access_token",e.LOGIN_SERVICE_PATH="/ccstoreui/v1/login/",e.ADMIN_LOGIN_SERVICE_PATH="/ccadminui/v1/mfalogin/",e.AGENT_LOGIN_SERVICE_PATH="/ccagentui/v1/login/",e.HTTP_PROTOCOL="http",e.HTTPS_PROTOCOL="https",e.HTTPS_FRAME_PATH="/https/https.html",e.HTTPS_ADMIN_FRAME_PATH="/https/httpsAdmin.html",e.GRANT_TYPE_PARAM="grant_type",e.PASSWORD_GRANT_TYPE_VALUE="password",e.USERNAME_PARAM="username",e.PASSWORD_PARAM="password",e.TOTP_CODE_PARAM="totp_code",e.SAML_GRANT_TYPE_VALUE="saml_credentials",e.SAML_RESPONSE_PARAM="saml_response",e.AUTH_HEADER_NAME="Authorization",e.AUTH_HEADER_PREFIX="Bearer ",e.PROFILE_TYPE_HEADER_NAME="X-CCProfileType",e.IFRAME_INIT_COMPLETE_EVENT="iframeInitComplete",e.ASSET_LANGUAGE_HEADER_NAME="X-CCAsset-Language",e.PRICE_LIST_GROUP_ID="X-CCPriceListGroup",e.ORGANIZATION_ID="X-CCOrganization",e.AGENT_CONTEXT="X-CCAgentContext",e.VIEWPORT_HEADER_NAME="X-CCViewport",e.SITE_ID="x-ccsite",e.VISIT_ID="X-CCVisitId",e.VISITOR_ID="X-CCVisitorId",e.prototype.init=function(){var t=this;t.targetMap={login:function(e,r,n){t.loginRequest(e.user,e.password,r,n)},auth:function(e,r,n){t.request(e.url,e.data,r,n,e.method,e.clientProps)},noauth:function(e,r,n){t.request(e.url,e.data,r,n,e.method)}};var e=function(e){var r=e.origin;if(r==t.parentURL){var n;n="string"==typeof e.data?JSON.parse(e.data):e.data;var a=n.id,A=n.target,o=n.payload,T=function(t,n){var A={};A.id=a,A.success=t,A.payload=n,e.source.postMessage(JSON.stringify(A),r)},E=function(t){T(!0,t)},s=function(t){T(!1,t)},i=t.targetMap[A];i&&i(o,E,s)}};window.addEventListener("message",e,!1)},e.prototype.loginRequest=function(t,e,r,n,a){this.mfaLoginRequest(t,e,null,r,n,a)},e.prototype.mfaLoginRequest=function(t,r,n,a,A,o){var T=this,E={};E[e.USERNAME_PARAM]=t,E[e.PASSWORD_PARAM]=r,n&&(E[e.TOTP_CODE_PARAM]=n),E[e.GRANT_TYPE_PARAM]=e.PASSWORD_GRANT_TYPE_VALUE,T.loginRequestInternal(E,a,A,o)},e.prototype.samlLoginRequest=function(t,r,n,a){var A=this,o={};o[e.SAML_RESPONSE_PARAM]=t,o[e.GRANT_TYPE_PARAM]=e.SAML_GRANT_TYPE_VALUE,A.loginRequestInternal(o,r,n,a)},e.prototype.loginRequestInternal=function(r,n,a,A){var o=this,T=e.LOGIN_SERVICE_PATH;"admin"==o.profileType||"adminUI"==o.profileType?T=e.ADMIN_LOGIN_SERVICE_PATH:"agent"!=o.profileType&&"agentUI"!=o.profileType||(T=e.AGENT_LOGIN_SERVICE_PATH);var E={};E[e.GRANT_TYPE_PARAM]=r[e.GRANT_TYPE_PARAM],r[e.GRANT_TYPE_PARAM]==e.PASSWORD_GRANT_TYPE_VALUE?(E[e.USERNAME_PARAM]=r[e.USERNAME_PARAM],E[e.PASSWORD_PARAM]=r[e.PASSWORD_PARAM],r[e.TOTP_CODE_PARAM]&&null!==r[e.TOTP_CODE_PARAM]&&(E[e.TOTP_CODE_PARAM]=r[e.TOTP_CODE_PARAM])):r[e.GRANT_TYPE_PARAM]==e.SAML_GRANT_TYPE_VALUE&&(E[e.SAML_RESPONSE_PARAM]=r[e.SAML_RESPONSE_PARAM]);var s=function(t){var e=t.data;n(e)},i=function(t){var e=t.jqXHR.responseText;e&&(e=JSON.parse(e)),a(e)},_=null,P=!1;if(A&&(P=A.suppressProfileType),o.profileType&&!P&&(_={},_[e.PROFILE_TYPE_HEADER_NAME]=o.profileType),A&&A.tokenSecret){_||(_={});var R=e.AUTH_HEADER_PREFIX+A.tokenSecret;_[e.AUTH_HEADER_NAME]=R}var u={type:e.POST,dataType:e.JSON,url:T,data:E,processData:!0,success:function(t,e,r){s({data:t,textStatus:e,jqXHR:r})},error:function(t,e,r){i({jqXHR:t,textStatus:e,errorThrown:r})}};_&&(u.headers=_),t.ajax(u)},e.prototype.request=function(r,n,a,A,o,T,E,s,i){var _=this,P=r;P=encodeURI(P);var R=o;R||(R=e.GET);var u=null;n&&(R===e.GET||R===e.DELETE?P=e.addQueryParams(P,n,!0):u=JSON.stringify(n)),i&&(P=e.addQueryParams(P,i,!0)),R===e.GET&&(P=e.fixIECaching(P));var S=function(t){var r=t.data,n=t.jqXHR.getResponseHeader(e.ETAG),A=t.jqXHR.getResponseHeader(e.XSTATEDATA);n&&r&&(n=n.replace(/["]+/g,""),r[e.ETAG_PROPERTY]=n),A&&r&&(r[e.STATEDATA_PROPERTY]=A);var o=t.jqXHR.getResponseHeader(e.LAST_PUBLISHED_TIME);r&&o&&(r[e.LAST_PUBLISHED_TIME_PROPERTY]=Number(o)),a(r)},l=function(t){var r=t.jqXHR.status,n=t.jqXHR.responseText,a=t.jqXHR.getResponseHeader(e.XSTATEDATA);if(n)try{n=JSON.parse(n)}catch(t){n={}}a&&n&&(n[e.STATEDATA_PROPERTY]=a),A(n,r)},O={dataType:e.JSON,contentType:e.APPLICATION_JSON,type:R,url:P,processData:!1,success:function(t,e,r){S({data:t,textStatus:e,jqXHR:r})},error:function(t,e,r){l({jqXHR:t,textStatus:e,errorThrown:r})},beforeSend:s},p=null,c=!1;if(T&&(c=T.suppressProfileType),_.profileType&&!c&&(p={},p[e.PROFILE_TYPE_HEADER_NAME]=_.profileType),E){p||(p={});for(var f in E)E.hasOwnProperty(f)&&(E[f]instanceof Object?p[f]=JSON.stringify(E[f]):p[f]=E[f])}if(T&&T.tokenSecret){p||(p={});var N=e.AUTH_HEADER_PREFIX+T.tokenSecret;p[e.AUTH_HEADER_NAME]=N}u&&(O.data=u),p&&(O.headers=p),t.ajax(O)},e.parseQueryParams=function(t){if(null===t)return null;for(var r=t.split(e.AMPERSAND),n={},a=0;a<r.length;a++){var A=r[a].split(e.EQUALS);n[A[0]]=A[1]}return n},e.addQueryParams=function(t,e,r){if(!t)return null;if(!e)return t;var n=Object.keys(e);if(n&&0===n.length)return t;var a=t,A=!0;a.indexOf("?")!==-1&&(A=!1);for(var o=0;o<n.length;o++){var T=n[o],E=e[n[o]];r&&(T=encodeURIComponent(T),E=encodeURIComponent(E));var s=T+"="+E,i="&";A&&(i="?",A=!1),a+=i+s}return a},e.getTimestamp=function(t){var e=new Date/1e3,r=parseInt(t,10),n=e+r;return parseInt(+n,10)},e.getCrossDomainURL=function(t,r,n,a){var A=r+e.PROTOCOL_SEP+e.urlHostnameOnly(window.location.href)+e.COLON+n;return a===!0&&("storefront"===t||"storefrontUI"==t?A+=e.HTTPS_FRAME_PATH:"admin"!==t&&"adminUI"!=t||(A+=e.HTTPS_ADMIN_FRAME_PATH)),A},e.convertUrl=function(t){if(null!=t&&t.charAt(0)!=e.SLASH)return[t];var r=e.urlPathPortionOnly(t),n=r.split(e.SLASH);if(1==n.length)return[e.SLASH];n[0]||(n=n.slice(1));var a=new Array(n.length+1);a[0]=e.SLASH,a[1]=n[0];for(var A=1;A<n.length;A++)a[A+1]=e.SLASH+n[A];return a},e.urlNoProtocolOrQueryParams=function(t){if(null==t)return null;var r=t.split(e.QUESTION_MARK),n=null;return n=r.length>1?r[0]:t,r=n.split(e.PROTOCOL_SEP),r.length>1&&(n=r[1]),n},e.urlPathPortionOnly=function(t){var r=e.urlNoProtocolOrQueryParams(t);return r.substring(0,1)!==e.SLASH&&(r=e.removeBeforeFirstSlash(r)),r},e.urlHostnamePortPortionOnly=function(t){var r=e.urlNoProtocolOrQueryParams(t);if(r.substring(0,1)==e.SLASH)return null;var n=r.split(e.SLASH);return n[0]},e.urlHostnameOnly=function(t){var r=e.urlHostnamePortPortionOnly(t),n=r.split(e.COLON);return n[0]},e.urlProtocolOnly=function(t){var r=t.split(e.PROTOCOL_SEP);return r[0]},e.removeBeforeFirstSlash=function(t){var r=t.split(e.SLASH),n=t.substring(r[0].length);return n},e.fixIECaching=function(t){return t},e.insertAuthHeadersAsQueryParams=function(t,e,r){return uri},e.parseClaimsFromAccessToken=function(t){if(!t)return null;var r=t.split(e.PERIOD),n=r[1],a=e.decodeBase64(n),A=JSON.parse(a);return A},e.decodeBase64=function(t){var e,r,n,a,A={},o=0,T=0,E="",s=String.fromCharCode,i=t.length,_="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";for(e=0;e<64;e++)A[_.charAt(e)]=e;for(n=0;n<i;n++)for(r=A[t.charAt(n)],o=(o<<6)+r,T+=6;T>=8;)((a=o>>>(T-=8)&255)||n<i-2)&&(E+=s(a));return E},e});
-//# sourceMappingURL=xdomain-proxy.js.map
+//----------------------------------------
+/**
+ * this library depends on jquery
+ */
+
+define('xDomainProxy',['jquery'], function($) {
+
+  "use strict";
+
+  //----------------------------------------
+  /**
+   * constructor
+   */
+  function XDomainProxy(pProfileType, pHttpPort, pHttpsPort) {
+    var self = this;
+    self.profileType = pProfileType;
+    self.httpPort = pHttpPort || "8080";
+    self.httpsPort = pHttpsPort || "8443";
+
+
+    self.parentURL = XDomainProxy.getCrossDomainURL(pProfileType,
+                                                    XDomainProxy.HTTP_PROTOCOL,
+                                                    self.httpPort,
+                                                    false);
+
+    // if the parent doc is https, then we don't need to post a message
+    if(document.referrer &&
+       XDomainProxy.urlProtocolOnly(document.referrer) != XDomainProxy.HTTPS_PROTOCOL) {
+      // post a message informing that we've loaded
+      if(window != null && window.parent !=null) {
+        window.parent.postMessage(JSON.stringify({
+          id: XDomainProxy.IFRAME_INIT_COMPLETE_EVENT,
+          success: true,
+          payload: null
+        }), self.parentURL);
+      }
+    }
+  }
+
+  // constants
+  XDomainProxy.POST = "POST";
+  XDomainProxy.GET = "GET";
+  XDomainProxy.DELETE = "DELETE";
+  XDomainProxy.METHOD = "method";
+  XDomainProxy.URL = "url";
+  XDomainProxy.DATA = "data";
+  XDomainProxy.SUCCESS = "success";
+  XDomainProxy.FAILURE = "failure";
+  XDomainProxy.HEADERS = "headers";
+  XDomainProxy.CONTENT_TYPE = "Content-Type";
+  XDomainProxy.ACCEPT = "Accept";
+  XDomainProxy.TEXT_PLAIN = "text/plain";
+  XDomainProxy.APPLICATION_JSON = "application/json";
+  XDomainProxy.JSON = "json";
+  XDomainProxy.ETAG = "ETag";
+  XDomainProxy.ETAG_PROPERTY = "___etag___";
+  XDomainProxy.LAST_PUBLISHED_TIME = "LastPublishedTime";
+  XDomainProxy.LAST_PUBLISHED_TIME_PROPERTY = "lastPublishedTime";
+  XDomainProxy.XSTATEDATA = "X-OCStateData";
+  XDomainProxy.STATEDATA_PROPERTY = "__stateData__";
+
+  XDomainProxy.AMPERSAND = "&";
+  XDomainProxy.EQUALS = "=";
+  XDomainProxy.DOUBLE_SLASH = "//";
+  XDomainProxy.SLASH = "/";
+  XDomainProxy.EMPTY_STRING = "";
+  XDomainProxy.PROTOCOL_SEP = "://";
+  XDomainProxy.COLON = ":";
+  XDomainProxy.QUESTION_MARK = "?";
+  XDomainProxy.SPACE = " ";
+  XDomainProxy.SEMICOLON = ";";
+  XDomainProxy.DASH = "-";
+  XDomainProxy.CURLY_BRACES = "{}";
+  XDomainProxy.PERIOD = ".";
+
+  XDomainProxy.OAUTH_ACCESS_TOKEN_PARAM = "access_token";
+
+  XDomainProxy.LOGIN_SERVICE_PATH = "/ccstoreui/v1/login/";
+  XDomainProxy.ADMIN_LOGIN_SERVICE_PATH = "/ccadminui/v1/mfalogin/";
+  XDomainProxy.AGENT_LOGIN_SERVICE_PATH = "/ccagentui/v1/login/";
+  XDomainProxy.HTTP_PROTOCOL = "http";
+  XDomainProxy.HTTPS_PROTOCOL = "https";
+  XDomainProxy.HTTPS_FRAME_PATH = "/https/https.html";
+  XDomainProxy.HTTPS_ADMIN_FRAME_PATH = "/https/httpsAdmin.html";
+
+  XDomainProxy.GRANT_TYPE_PARAM = "grant_type";
+  XDomainProxy.PASSWORD_GRANT_TYPE_VALUE = "password";
+  XDomainProxy.USERNAME_PARAM = "username";
+  XDomainProxy.PASSWORD_PARAM = "password";
+  XDomainProxy.TOTP_CODE_PARAM = "totp_code";
+  XDomainProxy.SAML_GRANT_TYPE_VALUE = "saml_credentials";
+  XDomainProxy.SAML_RESPONSE_PARAM = "saml_response";
+  
+
+  XDomainProxy.AUTH_HEADER_NAME = "Authorization";
+  XDomainProxy.AUTH_HEADER_PREFIX = "Bearer ";
+  XDomainProxy.PROFILE_TYPE_HEADER_NAME = "X-CCProfileType";
+
+  XDomainProxy.IFRAME_INIT_COMPLETE_EVENT = "iframeInitComplete";
+
+  XDomainProxy.ASSET_LANGUAGE_HEADER_NAME = "X-CCAsset-Language";
+  XDomainProxy.PRICE_LIST_GROUP_ID = "X-CCPriceListGroup";
+  XDomainProxy.ORGANIZATION_ID = "X-CCOrganization";
+  XDomainProxy.AGENT_CONTEXT = "X-CCAgentContext";
+
+  XDomainProxy.VIEWPORT_HEADER_NAME = "X-CCViewport";
+  XDomainProxy.SITE_ID = "x-ccsite";
+
+  XDomainProxy.VISIT_ID = "X-CCVisitId";
+  XDomainProxy.VISITOR_ID = "X-CCVisitorId";
+  
+  //----------------------------------------
+  /**
+   * init function
+   */
+  XDomainProxy.prototype.init = function() {
+    var self = this;
+
+    // a map of method names to functions
+    self.targetMap = {
+      "login": function(pPayload, pSuccessFunc, pErrorFunc) {
+        self.loginRequest(pPayload.user, pPayload.password, pSuccessFunc, pErrorFunc);
+      },
+      "auth": function(pPayload, pSuccessFunc, pErrorFunc) {
+        self.request(pPayload.url, pPayload.data, pSuccessFunc, pErrorFunc,
+                     pPayload.method, pPayload.clientProps);
+      },
+      "noauth": function(pPayload, pSuccessFunc, pErrorFunc) {
+        self.request(pPayload.url, pPayload.data, pSuccessFunc, pErrorFunc,
+                     pPayload.method);
+      }
+    };
+
+    // create the event listener function
+    var eventListener = function(pEvent) {
+      var origin = pEvent.origin;
+
+      // origin check
+      if(origin != self.parentURL) {
+        return;
+      }
+
+      var data;
+      if (typeof pEvent.data == 'string') {
+        data = JSON.parse(pEvent.data);
+      } else {
+        data = pEvent.data;
+      }
+
+      var id = data.id;
+      var target = data.target;
+      var payload = data.payload;
+
+      var commonFunc = function(pSuccess, pResult) {
+        var result = {};
+        result.id = id;
+        result.success = pSuccess;
+        result.payload = pResult;
+
+        // send the result back to the main window
+        pEvent.source.postMessage(JSON.stringify(result), origin);
+      };
+      var successFunc = function(pResult) {
+        commonFunc(true, pResult);
+      };
+      var errorFunc = function(pResult) {
+        commonFunc(false, pResult);
+      };
+
+      var exe = self.targetMap[target];
+      if(exe) {
+        exe(payload, successFunc, errorFunc);
+      }
+    };
+
+    // setup the event listener
+    window.addEventListener("message", eventListener, false);
+  };
+
+  //----------------------------------------
+  /**
+   * login. This wraps the multi-factor authentication function. Null is passed
+   * to indicate that this does not use MFA.
+   * THIS SHOULD NOT BE CALLED BY ANY CCADMIN CODE.
+   */
+  XDomainProxy.prototype.loginRequest = function(pUser, pPassword,
+                                                 pSuccessFunction, 
+                                                 pErrorFunction, pData) {
+    this.mfaLoginRequest(pUser, pPassword, null,
+                         pSuccessFunction, pErrorFunction, pData);
+  }
+
+  /**
+   * login. Multi-factor login request which receives a TOTP code. If the TOTP
+   * is null then this will attempt to login without MFA. This will fail
+   * if the login endpoint being invoked requires MFA. 
+   */
+  XDomainProxy.prototype.mfaLoginRequest = function(pUser, pPassword, pTotpCode,
+                                                    pSuccessFunction, 
+                                                    pErrorFunction, pData) {
+    var self = this;
+    var credentials = {};
+    credentials[XDomainProxy.USERNAME_PARAM] = pUser;
+    credentials[XDomainProxy.PASSWORD_PARAM] = pPassword;
+    if (pTotpCode) {
+      credentials[XDomainProxy.TOTP_CODE_PARAM] = pTotpCode;
+    }
+    credentials[XDomainProxy.GRANT_TYPE_PARAM] = XDomainProxy.PASSWORD_GRANT_TYPE_VALUE;
+    self.loginRequestInternal(credentials, pSuccessFunction, pErrorFunction, pData);
+  }
+  
+  //----------------------------------------
+  /**
+   * SamlLogin
+   */
+  XDomainProxy.prototype.samlLoginRequest = function(pSamlResponse, pSuccessFunction,
+                                                  pErrorFunction, pData) {
+    var self = this;    
+    var credentials = {};
+    credentials[XDomainProxy.SAML_RESPONSE_PARAM] = pSamlResponse;
+    credentials[XDomainProxy.GRANT_TYPE_PARAM] = XDomainProxy.SAML_GRANT_TYPE_VALUE;
+    self.loginRequestInternal(credentials, pSuccessFunction, pErrorFunction, pData);
+  }
+  
+  //----------------------------------------
+  /**
+   * login
+   */
+  XDomainProxy.prototype.loginRequestInternal = function(pCredentials, pSuccessFunction,
+                                                 pErrorFunction, pData) {
+    var self = this;
+    var loginServicePath = XDomainProxy.LOGIN_SERVICE_PATH;
+    if(self.profileType == "admin" ||
+       self.profileType == "adminUI") {
+      loginServicePath = XDomainProxy.ADMIN_LOGIN_SERVICE_PATH;
+    } else if(self.profileType == "agent" ||
+              self.profileType == "agentUI") {
+      loginServicePath = XDomainProxy.AGENT_LOGIN_SERVICE_PATH;
+    }
+
+    var data = {};
+    data[XDomainProxy.GRANT_TYPE_PARAM] = pCredentials[XDomainProxy.GRANT_TYPE_PARAM];
+    
+    if (pCredentials[XDomainProxy.GRANT_TYPE_PARAM] == XDomainProxy.PASSWORD_GRANT_TYPE_VALUE) {
+      data[XDomainProxy.USERNAME_PARAM] = pCredentials[XDomainProxy.USERNAME_PARAM];    
+      data[XDomainProxy.PASSWORD_PARAM] = pCredentials[XDomainProxy.PASSWORD_PARAM];
+      if (pCredentials[XDomainProxy.TOTP_CODE_PARAM] &&
+          pCredentials[XDomainProxy.TOTP_CODE_PARAM] !== null) {
+        data[XDomainProxy.TOTP_CODE_PARAM] = pCredentials[XDomainProxy.TOTP_CODE_PARAM];
+      }
+    }
+    else if (pCredentials[XDomainProxy.GRANT_TYPE_PARAM] == XDomainProxy.SAML_GRANT_TYPE_VALUE) {
+      data[XDomainProxy.SAML_RESPONSE_PARAM] = pCredentials[XDomainProxy.SAML_RESPONSE_PARAM];
+    }
+    
+    // success function
+    var successFunc = function(pResult) {
+      var resultData = pResult.data;
+      pSuccessFunction(resultData);
+    };
+    // error function
+    var errorFunc = function(pResult) {
+      var resultData = pResult.jqXHR.responseText;
+      if (resultData) {
+        resultData = JSON.parse(resultData);
+      }
+      pErrorFunction(resultData);
+    };
+
+    var headers = null;
+
+    var suppressProfileType = false;
+    if(pData)
+      suppressProfileType = pData.suppressProfileType;
+
+    // add profile type only if profile type is set
+    // unless we are in preview mode
+    if(self.profileType && !suppressProfileType) {
+      headers = {};
+      headers[XDomainProxy.PROFILE_TYPE_HEADER_NAME] = self.profileType;
+    }
+
+    if(pData && pData.tokenSecret) {
+      if(!headers) {
+        headers = {};
+      }
+      var authHeaderString = XDomainProxy.AUTH_HEADER_PREFIX + pData.tokenSecret;
+      headers[XDomainProxy.AUTH_HEADER_NAME] = authHeaderString;
+    }
+
+    var obj = {
+      type: XDomainProxy.POST,
+      dataType: XDomainProxy.JSON,
+      url: loginServicePath,
+      data: data,
+      processData: true,
+      success: function(data, textStatus, jqXHR) {
+        successFunc({data: data, textStatus: textStatus, jqXHR: jqXHR});
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        errorFunc({jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown});
+      }
+    };
+
+    if(headers) {
+      obj["headers"] = headers;
+    }
+
+    // perform the login request
+    $.ajax(obj);
+  };
+
+  //----------------------------------------
+  /**
+   * request
+   * @param {function} pBeforeSendCallback (Optional) If set, this function is invoked immediately
+   * before the actual ajax call to the server. If the function returns false, the ajax call is not made.
+   * (See jQuery.ajax beforeSend setting.)
+   */
+  XDomainProxy.prototype.request = function(pUrl, pData,
+                                            pSuccessCallback, pErrorCallback,
+                                            pMethod, pClientProps,
+                                            pAdditionalHeadersMap,
+                                            pBeforeSendCallback,
+                                            extraQueryParams) {
+    var assetLanguage,
+        self = this,
+        url = pUrl;
+
+    // make sure the url is encoded
+    url = encodeURI(url);
+
+    var method = pMethod;
+    if(!method) {
+      method = XDomainProxy.GET;
+    }
+    var stringData = null;
+
+    if(pData) {
+      // if it's a get, turn data into query params
+      if(method === XDomainProxy.GET || method === XDomainProxy.DELETE) {
+        url = XDomainProxy.addQueryParams(url, pData, true);
+      }
+      // for anything else, convert data into json string
+      else {
+        stringData = JSON.stringify(pData);
+      }
+    }
+    
+    if(extraQueryParams) {
+      url = XDomainProxy.addQueryParams(url, extraQueryParams, true);
+    }
+
+    if(method === XDomainProxy.GET) {
+      url = XDomainProxy.fixIECaching(url);
+    }
+
+    var successFunc = function(pResult) {
+      var resultData = pResult.data;
+        var etag = pResult.jqXHR.getResponseHeader(XDomainProxy.ETAG);
+        var xStateData = pResult.jqXHR.getResponseHeader(XDomainProxy.XSTATEDATA);
+
+        if(etag && resultData) {
+          // etag is appended with extra quotes in Safari browser.
+          // So removing extra quotes from etag.
+          etag = etag.replace(/["]+/g, "");
+         
+          resultData[XDomainProxy.ETAG_PROPERTY] = etag;
+        }
+        if(xStateData && resultData) {
+          resultData[XDomainProxy.STATEDATA_PROPERTY] = xStateData;
+        }
+
+        var lastPublishedTime = pResult.jqXHR.getResponseHeader(XDomainProxy.LAST_PUBLISHED_TIME);
+        if (resultData && lastPublishedTime) {
+          resultData[XDomainProxy.LAST_PUBLISHED_TIME_PROPERTY] = Number(lastPublishedTime);
+        }
+      pSuccessCallback(resultData);
+    };
+    var errorFunc = function(pResult) {
+      var resultStatus = pResult.jqXHR.status;
+      var resultData = pResult.jqXHR.responseText;
+      var xStateData = pResult.jqXHR.getResponseHeader(XDomainProxy.XSTATEDATA);
+      if (resultData) {
+        try {
+          resultData = JSON.parse(resultData);
+        }
+        catch(e) {
+          resultData = {};
+        }
+      }
+      if(xStateData && resultData) {
+        resultData[XDomainProxy.STATEDATA_PROPERTY] = xStateData;
+      }
+      pErrorCallback(resultData, resultStatus);
+    };
+
+    var obj = {
+      dataType: XDomainProxy.JSON,
+      contentType: XDomainProxy.APPLICATION_JSON,
+      type: method,
+      url: url,
+      processData: false,
+      success: function(data, textStatus, jqXHR) {
+        successFunc({data: data, textStatus: textStatus, jqXHR: jqXHR});
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        errorFunc({jqXHR: jqXHR, textStatus: textStatus, errorThrown: errorThrown});
+      },
+      beforeSend: pBeforeSendCallback
+    };
+
+    var headers = null;
+
+    var suppressProfileType = false;
+    if(pClientProps)
+      suppressProfileType = pClientProps.suppressProfileType;
+
+    // add profile type only if profile type is set
+    // unless we are in preview mode
+    if(self.profileType && !suppressProfileType) {
+      headers = {};
+      headers[XDomainProxy.PROFILE_TYPE_HEADER_NAME] = self.profileType;
+    }
+
+    // Setup the additional headers
+    if (pAdditionalHeadersMap) {
+      if (!headers) {
+        headers = {};
+      }
+
+      for(var headerName in pAdditionalHeadersMap) {
+        if(pAdditionalHeadersMap.hasOwnProperty(headerName)) {
+          if (pAdditionalHeadersMap[headerName] instanceof Object) {
+            // If the header contains an object, it should be passed as a plain string to Jersey
+            headers[headerName] = JSON.stringify(pAdditionalHeadersMap[headerName]);
+          } else {
+            headers[headerName] = pAdditionalHeadersMap[headerName];
+          }
+        }
+      }
+    }
+
+    // Add auth header string
+    if(pClientProps && pClientProps.tokenSecret) {
+      if(!headers) {
+        headers = {};
+      }
+      var authHeaderString = XDomainProxy.AUTH_HEADER_PREFIX + pClientProps.tokenSecret;
+      headers[XDomainProxy.AUTH_HEADER_NAME] = authHeaderString;
+    }
+
+    if(stringData) {
+      obj["data"] = stringData;
+    }
+    if(headers) {
+      obj["headers"] = headers;
+    }
+    $.ajax(obj);
+  };
+
+  //----------------------------------------
+  // static methods
+  //----------------------------------------
+
+  //----------------------------------------
+  /**
+   * parse query params into a map
+   */
+  XDomainProxy.parseQueryParams = function(pParams) {
+    if(pParams === null) {
+      return null;
+    }
+    var pairs = pParams.split(XDomainProxy.AMPERSAND);
+    var paramMap = {};
+    for(var i=0; i < pairs.length; i++) {
+      var pair = pairs[i].split(XDomainProxy.EQUALS);
+      paramMap[pair[0]] = pair[1];
+    }
+    return paramMap;
+  };
+
+  //----------------------------------------
+  /**
+   * add query params to a url
+   */
+  XDomainProxy.addQueryParams = function(pUrl, pData, pEncode) {
+    if(!pUrl) {
+      return null;
+    }
+    if(!pData) {
+      return pUrl;
+    }
+    var keys = Object.keys(pData);
+    if(keys && keys.length === 0) {
+      return pUrl;
+    }
+
+    var url = pUrl;
+    var needsQuestionMark = true;
+    if(url.indexOf("?") !== -1) {
+      needsQuestionMark = false;
+    }
+
+    for(var i=0; i < keys.length; i++) {
+      var key = keys[i];
+      var value = pData[keys[i]];
+      if(pEncode) {
+        key = encodeURIComponent(key);
+        value = encodeURIComponent(value);
+      }
+      var pair = key + "=" + value;
+      var sep = "&";
+      if(needsQuestionMark) {
+        sep = "?";
+        needsQuestionMark = false;
+      }
+      url += sep + pair;
+    }
+
+    return url;
+  };
+
+  //----------------------------------------
+  /**
+   * get a timestamp
+   */
+  XDomainProxy.getTimestamp = function(pOffset) {
+    var current = new Date() / 1000;
+    var offset = parseInt(pOffset, 10);
+    var withOffset = current + offset;
+    return parseInt(+ withOffset, 10);
+  };
+
+  //----------------------------------------
+  /**
+   * get the cross domain url
+   */
+  XDomainProxy.getCrossDomainURL = function(pProfileType,
+                                            pProtocol,
+                                            pPort,
+                                            pWithFramePath) {
+    var crossDomainURL =
+      pProtocol +
+      XDomainProxy.PROTOCOL_SEP +
+      XDomainProxy.urlHostnameOnly(window.location.href) +
+      XDomainProxy.COLON +
+      pPort;
+
+    if(pWithFramePath === true) {
+      if(pProfileType === "storefront" ||
+          pProfileType == "storefrontUI") {
+        crossDomainURL += XDomainProxy.HTTPS_FRAME_PATH;
+      }
+      else if(pProfileType === "admin" ||
+          pProfileType == "adminUI") {
+        crossDomainURL += XDomainProxy.HTTPS_ADMIN_FRAME_PATH;
+      }
+    }
+    return crossDomainURL;
+  };
+
+  //----------------------------------------
+  /**
+   * split a url string into its component parts
+   */
+  XDomainProxy.convertUrl = function(pUrl) {
+    // if it's not a url, just return it
+    if(pUrl != null && pUrl.charAt(0) != XDomainProxy.SLASH) {
+      return [pUrl];
+    }
+
+    var url = XDomainProxy.urlPathPortionOnly(pUrl);
+
+    var rawParts = url.split(XDomainProxy.SLASH);
+    // if the array only has one element, just return slash
+    if(rawParts.length == 1) {
+      return [XDomainProxy.SLASH];
+    }
+    // if the first element is empty, get rid of it
+    if(!rawParts[0]) {
+      rawParts = rawParts.slice(1);
+    }
+
+    var parts = new Array( rawParts.length + 1);
+    parts[0] = XDomainProxy.SLASH;
+    parts[1] = rawParts[0];
+
+    for(var i=1; i < rawParts.length; i++) {
+      parts[i+1] = XDomainProxy.SLASH + rawParts[i];
+    }
+
+    return parts;
+  };
+
+  //----------------------------------------
+  /**
+   * get a url with no query params or protocol
+   */
+  XDomainProxy.urlNoProtocolOrQueryParams = function(pUrl) {
+    if(pUrl == null) {
+      return null;
+    }
+    // first chop off any query params
+    var rawParts = pUrl.split(XDomainProxy.QUESTION_MARK);
+    var url = null;
+    if(rawParts.length > 1) {
+      url = rawParts[0];
+    }
+    else {
+      url = pUrl;
+    }
+
+    // remove any protocol info
+    rawParts = url.split(XDomainProxy.PROTOCOL_SEP);
+    if(rawParts.length > 1) {
+      // chop off the protocol
+      url = rawParts[1];
+    }
+
+    return url;
+  };
+
+  //----------------------------------------
+  /**
+   * get only the path portion of a url
+   */
+  XDomainProxy.urlPathPortionOnly = function(pUrl) {
+    var url = XDomainProxy.urlNoProtocolOrQueryParams(pUrl);
+
+    // remove the host/port info
+    if(url.substring(0,1) !== XDomainProxy.SLASH) {
+      url = XDomainProxy.removeBeforeFirstSlash(url);
+    }
+
+    return url;
+  };
+
+  //----------------------------------------
+  /**
+   * get only the hostname + port portion of a url
+   */
+  XDomainProxy.urlHostnamePortPortionOnly = function(pUrl) {
+    var url = XDomainProxy.urlNoProtocolOrQueryParams(pUrl);
+
+    // if there's no hostname + port, then return null
+    if(url.substring(0,1) == XDomainProxy.SLASH) {
+      return null;
+    }
+
+    var rawParts = url.split(XDomainProxy.SLASH);
+    return rawParts[0];
+  };
+
+  //----------------------------------------
+  /**
+   * get only the hostname of a url
+   */
+  XDomainProxy.urlHostnameOnly = function(pUrl) {
+    var url = XDomainProxy.urlHostnamePortPortionOnly(pUrl);
+    var parts = url.split(XDomainProxy.COLON);
+    return parts[0];
+  };
+
+  //----------------------------------------
+  /**
+   * get only the protocol of a url
+   */
+  XDomainProxy.urlProtocolOnly = function(pUrl) {
+    var rawParts = pUrl.split(XDomainProxy.PROTOCOL_SEP);
+    return rawParts[0];
+  };
+
+  //----------------------------------------
+  /**
+   * remove everything before the first slash in a string
+   */
+  XDomainProxy.removeBeforeFirstSlash = function(pUrl) {
+    var rawParts = pUrl.split(XDomainProxy.SLASH);
+    var url = pUrl.substring(rawParts[0].length);
+    return url;
+  };
+
+  /**
+   * Fix for IE to prevent caching of GET requests.
+   */
+  XDomainProxy.fixIECaching = function(url) {
+    // removed cache-busting query param since it
+    // prevents all caching
+    return url;
+  };
+
+  //----------------------------------------
+  /**
+   * insert auth headers as query parameters in a URI
+   */
+  XDomainProxy.insertAuthHeadersAsQueryParams = function(pUri, pConfig, pEncode) {
+    return uri;
+  };
+
+  //----------------------------------------
+  /**
+   * parse out the profile id from an access token
+   */
+  XDomainProxy.parseClaimsFromAccessToken = function(pAccessToken) {
+    if(!pAccessToken) {
+      return null;
+    }
+    var parts = pAccessToken.split(XDomainProxy.PERIOD);
+    var tokenBody = parts[1];
+    var decodedBody = XDomainProxy.decodeBase64(tokenBody);
+    var json = JSON.parse(decodedBody);
+    return json;
+  };
+
+  //----------------------------------------
+  /**
+   * decode base64
+   */
+  XDomainProxy.decodeBase64 = function(s) {
+    var e={},i,b=0,c,x,l=0,a,r='',w=String.fromCharCode,L=s.length;
+    var A="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    for(i=0;i<64;i++){e[A.charAt(i)]=i;}
+    for(x=0;x<L;x++){
+      c=e[s.charAt(x)];b=(b<<6)+c;l+=6;
+      while(l>=8){((a=(b>>>(l-=8))&0xff)||(x<(L-2)))&&(r+=w(a));}
+    }
+    return r;
+  };
+
+  return XDomainProxy;
+});
+

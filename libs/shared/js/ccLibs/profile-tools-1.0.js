@@ -1,2 +1,95 @@
-define(["ccRestClient","knockout","pubsub"],function(s,t,i){"use strict";function e(){var t=this;return t.restApi=s,$.Topic(i.topicNames.REGISTER_SUBMIT).subscribe(this.register),this}return e.prototype.login=function(s,t,i,e){var o=this;o.restApi.login(s,t,function(){i()},function(s){e(s)})},e.prototype.logout=function(){},e.prototype.register=function(s){var e,o,r;e=t.utils.unwrapObservable(s.email),o=t.utils.unwrapObservable(s.password),r=t.utils.unwrapObservable(s.confirmPassword),e&&o?o!==r?$.Topic(i.topicNames.REGISTER_FAILURE).publishWith(this,[{message:"Passwords do not match."}]):$.Topic(i.topicNames.REGISTER_SUCCESS).publishWith(this,[{message:"success"}]):$.Topic(i.topicNames.REGISTER_FAILURE).publishWith(this,[{message:"You must include at least a username and password."}])},e});
-//# sourceMappingURL=profile-tools-1.0.js.map
+//----------------------------------------
+/**
+ * Public Javascript API for Oracle Cloud Commerce
+ */
+
+ define(
+  //-------------------------------------------------------------------
+  // PACKAGE NAME
+  //-------------------------------------------------------------------2
+  //-------------------------------------------------------------------
+  // DEPENDENCIES
+  //-------------------------------------------------------------------
+  'profiletools',['ccRestClient','knockout','pubsub'],
+
+  //-------------------------------------------------------------------
+  // MODULE DEFINTIION
+  //-------------------------------------------------------------------
+  function (ccRestClient,ko,pubsub) {
+
+    "use strict";
+  //----------------------------------------
+  /**
+   * constructor
+   */
+   function ProfileTools() {
+    var self = this;
+    var functionName;
+    self.restApi = ccRestClient;
+    // Subscribe to registrationAttempted, this is generally a form submit
+    $.Topic(pubsub.topicNames.REGISTER_SUBMIT).subscribe(this.register);    
+    return (this);
+  }
+
+  
+  /**
+   * Authenticates the user with the given username and password
+   * @public
+   * @name regionBuilder
+   * @memberOf APIBuilder
+   * @function
+   * @param {RegionViewModel} RegionViewModel The RegionViewModel to extend
+   * @param {LayoutContainer} LayoutContainer The layoutContainer.
+   */
+
+   ProfileTools.prototype.login = function(pUser, pPassword,pSuccess, pFailure) {
+    var self = this;
+    // Success callback
+    self.restApi.login(pUser, pPassword, function() {
+      pSuccess();
+    },
+    // Error callback
+    function (errorData) {
+      pFailure(errorData);
+    });
+  };
+
+  //----------------------------------------
+  // Logout the current user
+  //----------------------------------------
+
+  ProfileTools.prototype.logout = function () {
+
+  };
+
+  //----------------------------------------
+  // Register a new user.
+  //
+  // The view model must supply
+  // properties representing form data.
+  // Required:
+  // email
+  // password
+  //----------------------------------------
+
+  ProfileTools.prototype.register = function (viewModel) {
+    var email,password,confirmPassword;
+    //var viewModel = data.viewModel;
+    email = ko.utils.unwrapObservable(viewModel.email);
+    password = ko.utils.unwrapObservable(viewModel.password);
+    confirmPassword = ko.utils.unwrapObservable(viewModel.confirmPassword);
+
+    if (!email || ! password) {
+      $.Topic(pubsub.topicNames.REGISTER_FAILURE).publishWith(this,[{message:"You must include at least a username and password."}]);
+    } else if ( password !== confirmPassword ) {
+      $.Topic(pubsub.topicNames.REGISTER_FAILURE).publishWith(this,[{message:"Passwords do not match."}]);
+    } else {
+      $.Topic(pubsub.topicNames.REGISTER_SUCCESS).publishWith(this,[{message:"success"}]);
+   }
+ };
+
+return ProfileTools;
+});
+
+
+

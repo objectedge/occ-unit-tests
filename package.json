@@ -6,7 +6,8 @@
     "start": "npm-run-all --parallel api test",
     "start-chrome": "npm-run-all --parallel api test-chrome",
     "update-schema": "node tasks/update-schema",
-    "update-libs": "node tasks/update-libs"
+    "update-libs": "node tasks/update-libs",
+    "update-shared-libs": "node tasks/update-shared-libs"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -22,6 +23,7 @@
     "express": "^4.16.3",
     "fs-extra": "^7.0.0",
     "request": "^2.88.0",
-    "requirejs": "^2.3.5"
+    "requirejs": "^2.3.5",
+    "source-map": "^0.7.3"
   }
 }
