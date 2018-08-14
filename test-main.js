@@ -28,5 +28,3 @@ requireJSConfigs.callback = window.__karma__.start;
 //  */
 // /*jslint plusplus: true */
 require.config(requireJSConfigs);
-
-// require(['/base/libs/loaders/main.js']);
