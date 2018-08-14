@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "orderDetails",
+      "description": "Order Details of Scheduled Order.",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCOrganization",
+      "description": "Current organization context of the logged in user",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "path",
+      "name": "id",
+      "description": "The id of the Scheduled order.",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

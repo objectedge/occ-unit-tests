@@ -1,0 +1,45 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "Offset of the scheduled orders list.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "limit of the scheduled orders list.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCOrganization",
+      "description": "Current organization context of the logged in user",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "path",
+      "name": "id",
+      "description": "The id of the Scheduled order.",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "catalogId",
+      "description": "Catalog Id of the product",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "skuId",
+      "description": "Id of the SKU of the product",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "path",
+      "name": "id",
+      "description": "Id of the product to get the stock status",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

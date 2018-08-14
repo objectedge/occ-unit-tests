@@ -1,0 +1,24 @@
+{
+  "allowedParameters": [
+    {
+      "schema": {
+        "$ref": "#/definitions/updatePaymentGatewayAuthorizationHealth_request"
+      },
+      "in": "body",
+      "name": "updatePaymentGatewayAuthorizationHealth_request"
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "put",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

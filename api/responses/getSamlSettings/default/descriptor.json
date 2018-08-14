@@ -1,0 +1,24 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "encode",
+      "description": "Should the Entity Descriptor be Base64 encoded.",
+      "type": "boolean",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

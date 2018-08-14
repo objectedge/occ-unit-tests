@@ -1,0 +1,45 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "q",
+      "description": "Query string built as per the SCIM standards that helps to search entered string across account properties like 'name'.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "This field determines the offset/starting index from which data to be fetched.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "This is the field to determine number of records to be fetched per REST call.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "sort",
+      "description": "This field determines the sort order of the list to be fetched.",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

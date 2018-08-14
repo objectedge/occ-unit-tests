@@ -1,0 +1,31 @@
+{
+  "allowedParameters": [
+    {
+      "in": "path",
+      "name": "id",
+      "description": "The ID of the requested location.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "query",
+      "name": "type",
+      "description": "The type of location, for example: store.",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/createMember_response"
-  },
-  "description": "Following model is returned when operation succeeds."
-}

@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/errorModel"
-  },
-  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|80023|There was an error fetching the timezone list.|\n|80028|Null sort directive entry found in sort directives list. Null entries are not allowed.|\n|80027|xx is a restricted property to use for sorting timezones.|\n|80026|xx is an invalid sort property as it is not a property found for timezone|\n|80021|There was an error retrieving the selected timezone.|\n"
-}

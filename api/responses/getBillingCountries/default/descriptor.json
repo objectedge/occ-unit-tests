@@ -1,0 +1,24 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "pSortOrder",
+      "description": "Specify the sort order of how the billing countries should be returned. Valid values are asc and desc. The default value it asc",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

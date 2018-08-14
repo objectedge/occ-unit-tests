@@ -1,0 +1,64 @@
+{
+  "allowedParameters": [
+    {
+      "default": false,
+      "in": "query",
+      "name": "includeArchives",
+      "description": "Include entries from archived log files?",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "queryText",
+      "description": "Limit the returned error messages to those containing the query text. (Case sensitive)",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "until",
+      "description": "Either \n\r 0. An ISO-8601 formatted string. \n\r 0. A millisecond timestamp value. representing the 'to' date and time to be used when querying the logs",
+      "type": "string",
+      "required": false
+    },
+    {
+      "default": "clientErrors",
+      "in": "query",
+      "name": "type",
+      "description": "'clientErrors' is the only type currently supported",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "since",
+      "description": "Either \n\r 0. An ISO-8601 formatted string. \n\r 0. A millisecond timestamp value. representing the 'from' date and time to be used when querying the logs.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "default": 7,
+      "in": "query",
+      "name": "numArchiveFiles",
+      "description": "The number of previous archived log files to be queried. (0 = unlimited). Defaults to 7 archive files.",
+      "type": "integer",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {
+      "abc": 10
+    },
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

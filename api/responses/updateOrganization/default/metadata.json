@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/errorModel"
-  },
-  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|100081|If order price limit is not passed or passed empty or null|\n|100082|The current account does not have the delegate approval management option enabled. Requiring order approvals or making changes to purchase limits cannot be done.|\n|100083|You must create at least one active approver for the account before you can enable the approval required option|\n|100084|You cannot remove this contact from the account. The account has no other active Approvers.  Approvals are still enabled and/or there are orders pending approval.|\n|100086|Merchant admin is not allowed to do approval management with delegate approval management set to true.|\n|100021|If approval required value is invalid|\n|100080|If order price limit is Invalid |\n"
-}

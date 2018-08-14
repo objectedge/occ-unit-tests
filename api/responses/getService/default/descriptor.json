@@ -1,0 +1,31 @@
+{
+  "allowedParameters": [
+    {
+      "in": "path",
+      "name": "id",
+      "description": "ID of an asset.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

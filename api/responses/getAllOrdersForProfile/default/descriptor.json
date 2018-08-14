@@ -1,0 +1,59 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "q",
+      "description": "This field specifies the query used to limit the orders returns. Defaults to RQL. To use SCIM use the queryFormat parameter",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "Starting index.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "countOnly",
+      "description": "Only return the count of orders for the current profile.",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "Specifies the number of orders to be retrieved starting from offset. In case this is not present, the complete list of orders for the profile is returned.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "sort",
+      "description": "This field specifies the sort order of the list to be fetched.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCOrganization",
+      "description": "Current organization context of the logged in user",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

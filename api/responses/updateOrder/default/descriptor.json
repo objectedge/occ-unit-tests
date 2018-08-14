@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "header",
+      "name": "X-CCOrganization",
+      "description": "Current organization context of the logged in user",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "path",
+      "name": "id",
+      "description": "The ID of order to update.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "schema": {
+        "$ref": "#/definitions/updateOrder_request"
+      },
+      "in": "body",
+      "name": "updateOrder_request"
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "put",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

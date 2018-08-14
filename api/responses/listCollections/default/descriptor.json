@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "categoryIds",
+      "description": "List of category IDs.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "query",
+      "name": "catalogId",
+      "description": "ID of the catalog.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

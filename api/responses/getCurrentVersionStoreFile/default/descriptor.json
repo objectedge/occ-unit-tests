@@ -1,0 +1,22 @@
+{
+  "allowedParameters": [
+    {
+      "in": "path",
+      "name": "fileName",
+      "description": "name of the file.",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {}
+  }
+}

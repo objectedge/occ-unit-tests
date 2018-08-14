@@ -1,0 +1,45 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "total",
+      "description": "The total number of location items.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "Index of the first location item to return. The default is 0.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "The number of location items to return. The default is 10.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "sort",
+      "description": "The location items sorting criteria. Following are the fields supported by this param: \n\n|Field|Type|Description|\n|------------------|------------------|------------------|\n|property|string|The property by which to sort the list of location items.  The default is locationId.|\n|order|string|The sort order, either 'asc' (ascending) or 'desc' (decending).  The default is 'asc'.|\n",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

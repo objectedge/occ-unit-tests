@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "This field specifies the offset/starting index from which data to be fetched.",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "This is the field to specify the number of records to be fetched per REST call.",
+      "type": "integer",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

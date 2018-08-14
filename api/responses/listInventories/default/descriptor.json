@@ -1,0 +1,59 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "catalogId",
+      "description": "ID of the catalog.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "locationIds",
+      "description": "A comma-separated list of location IDs for which inventory detail information is to be retrieved",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "type",
+      "description": "Type of data whose inventory information it to be retrieved. The options are \"product\" and \"variant\". Defaults to \"variant\".",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "includeDefaultLocationInventory",
+      "description": "If set to true then inventory detail not associated with any particular location will be included alongside the location specific inventory details",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "ids",
+      "description": "The comma seperated IDs of the product or sku whose inventory detail information is to be retrieved. The IDs given should correspond to the type given. So if the type is a product, product IDs has to be given here else sku IDs.",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

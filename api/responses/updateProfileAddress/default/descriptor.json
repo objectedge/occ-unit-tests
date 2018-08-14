@@ -1,0 +1,31 @@
+{
+  "allowedParameters": [
+    {
+      "in": "path",
+      "name": "addressId",
+      "description": "The address Id associated to profile.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "schema": {
+        "$ref": "#/definitions/updateProfileAddress_request"
+      },
+      "in": "body",
+      "name": "updateProfileAddress_request"
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "put",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

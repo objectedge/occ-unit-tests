@@ -1,0 +1,52 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "include",
+      "description": "Query string to get all/inherited secondaryAddresses. \"all\"/\"inheritedOnly\" are the only allowed values. If include is not specified, secondaryAddresses of that organization is returned. If value of include is \"all\" , then secondaryAddresses of that organization as well as secondaryAddresses of parent organizations is returned. Whereas in case of \"inheritedOnly\", secondaryAddresses of parentOrganization is returned.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "This field determines the offset/starting index from which data to be fetched.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "This is the field to determine number of records to be fetched per REST call.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "orgId",
+      "description": "Organization Id whose addresses has to be fetched",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "header",
+      "name": "X-CCOrganization",
+      "description": "Current organization context of the logged in user",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

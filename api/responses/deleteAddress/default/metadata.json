@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/errorModel"
-  },
-  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|100184|If address id entered is empty|\n|100187|No address is found with the id in logged in user's organization|\n|100000|If input passed is invalid|\n|100001|If there was no organization found with the given id|\n"
-}

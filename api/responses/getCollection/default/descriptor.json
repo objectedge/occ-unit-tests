@@ -1,0 +1,59 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "maxLevel",
+      "description": "Maximum level of depth for child categories.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "expand",
+      "description": "If set to childCategories, then child categories will be expanded to include details, if there are any active products under it. disableActiveProdCheck can be set to true in case the category details are needed irrespective of active products are available.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "catalogId",
+      "description": "ID of the catalog.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "disableActiveProdCheck",
+      "description": "False indicates category details are not returned if there are no active products under the category. True indicates category details are returned irrespective of the active products availability.",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "path",
+      "name": "id",
+      "description": "ID of collection.",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

@@ -37,42 +37,57 @@ request(schemaURL, (error, response, body) => {
       const requestData = schemaPaths[requestPath][method];
       const responses = requestData.responses;
       const requestId = requestData.operationId;
-      const responsePath = path.join(responsesPath, `${requestId}`);
+      const responseMethodPath = path.join(responsesPath, `${requestId}`);
       
-      fs.ensureDirSync(responsePath);
+      fs.ensureDirSync(responseMethodPath);
+      
+      for(statusCode in responses) {
+        // Don't create structure for the default
+        if(statusCode === 'default') {
+          continue;
+        }
 
-      for(responseCode in responses) {
-        const responseCodeData = responses[responseCode];
-        const responseCodePath = path.join(responsePath, `${responseCode}`);
-        const metadataPath = path.join(responseCodePath, 'metadata.json');
-        const metadataObject = {
-          schema: responseCodeData.schema,
-          description: responseCodeData.description
+        const responsePath = path.join(responseMethodPath, 'default');
+        const dataDescriptorPath = path.join(responsePath, 'descriptor.json');
+        const dataPath = path.join(responsePath, 'data.json');
+
+        const descriptor = {
+          allowedParameters: requestData.parameters,
+          request: {
+            queryParameters: {},
+            method,
+            headers: {},
+            body: {}
+          },
+          response: {
+            dataPath: path.relative(responsePath, dataPath),
+            statusCode,
+            headers: {}
+          }
         };
 
-        fs.ensureDirSync(responseCodePath);
-        fs.writeFileSync(metadataPath, JSON.stringify(metadataObject, null, 2), 'utf8');
+        fs.ensureDirSync(responsePath);
 
-        if(responses[responseCode].examples) {
-          const responseTypeList = Object.keys(responses[responseCode].examples);
-          const foundValidMIMEType = responseTypeList.some(mimeType => webMIMETypes.includes(mimeType));
-
-          // If didn't find any valid mime type, copy the current data and set it as application/json
+        if(responses[statusCode].examples) {
+          let contentTypeList = Object.keys(responses[statusCode].examples);
+          const foundValidMIMEType = contentTypeList.some(mimeType => webMIMETypes.includes(mimeType));
+          
+          // If didn't find any valid mime type, consider it as application/json
           if(!foundValidMIMEType) {
-            const tempResponseData = JSON.parse(JSON.stringify(responses[responseCode].examples));
-            responses[responseCode].examples = {
-              'application/json': tempResponseData
-            };
+            contentTypeList = ['application/json'];
           }
 
-          for(const responseType in responses[responseCode].examples) {
-            const responseTypePath = path.join(responseCodePath, `${responseType.replace('/', '-')}.json`);
-            fs.writeFileSync(responseTypePath, JSON.stringify(responses[responseCode].examples[responseType], null, 2), 'utf8');
-          }
+          let contentType = contentTypeList[0];
+          const responseData = responses[statusCode].examples[contentType];
+
+          descriptor.response.headers['content-type'] = contentType;
+          fs.writeFileSync(dataPath, JSON.stringify(responseData, null, 2), 'utf8');
         }
+
+        fs.writeFileSync(dataDescriptorPath, JSON.stringify(descriptor, null, 2), 'utf8');
       }
 
-      schemaPaths[requestPath][method].responses = path.relative(apiPath, responsePath);
+      schemaPaths[requestPath][method].responses = path.relative(apiPath, responseMethodPath);
     }
   }
 

@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "parent",
+      "description": "Parent Type of current requested item type. It takes product as default parent for custom types.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "includeBase",
+      "description": "Set to true to get base type details.",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "path",
+      "name": "id",
+      "description": "ID of the item type.",
+      "type": "string",
+      "required": true
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

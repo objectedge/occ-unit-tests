@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "country",
+      "description": "CountryCode of the country to retrieve regions.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "query",
+      "name": "sortByCode",
+      "description": "Code specifying regions to sort either by ISO code or displayName",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

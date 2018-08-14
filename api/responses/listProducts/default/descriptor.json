@@ -1,0 +1,108 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "q",
+      "description": "A SCIM filter string for selecting a subset of all products. See [https://tools.ietf.org/html/draft-ietf-scim-api-12#section-3.2.2](https://tools.ietf.org/html/draft-ietf-scim-api-12#section-3.2.2)section 3.2.2.2 of the SCIM specification for details on the SCIM filter format.\n\rExamples:\n\rGet all products whose displayName contains shirt: q=displayName co \"shirt\"\n\rGet all products with an orderLimit between 5 and 10: q=orderLimit gt 5 and orderLimit lt 10\n\rText, date and time values appearing in SCIM filters should be quoted, with date and time values using ISO-8601 format. Numeric and boolean values should not be quoted.\n\rThe following base product properties can be used in a q query:\n\r * CountryOfOrigin\n\r * active\n\r * avgCustRating\n\r * brand\n\r * childSKUs\n\r * defaultProductListingSku\n\r * description\n\r * displayName\n\r * height\n\r * id\n\r * length\n\r * longDescription\n\r * notForIndividualSale\n\r * orderLimit\n\r * parentCategories\n\r * relatedArticles\n\r * relatedMediaContent\n\r * type\n\r * unitOfMeasure\n\r * weight\n\r * width\n\rAdditionally, custom product properties may also be used in a q query.",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "totalResults",
+      "description": "flag to include count of total products without expansion",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "catalogId",
+      "description": "the catalog ID for the site",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "offset",
+      "description": "startingIndex the index of the first record to load",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "productIds",
+      "description": "the list of product IDs",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "includeChildren",
+      "description": "flag to include children of categories or not",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "totalExpandedResults",
+      "description": "flag to include count of total products with listing variant expansion",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "limit",
+      "description": "The number of items per block",
+      "type": "integer",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "sort",
+      "description": "Sort Option id: Sort order",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "categoryId",
+      "description": "the category ID",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "includeChildSKUsListingIds",
+      "description": "If this flag is true then listingVariant repository id will be included in each of the childSKU of style based product",
+      "type": "boolean",
+      "required": false
+    },
+    {
+      "in": "query",
+      "name": "storePriceListGroupId",
+      "description": "the price list group id for which product prices are to be returned",
+      "type": "string",
+      "required": false
+    },
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

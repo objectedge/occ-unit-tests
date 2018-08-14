@@ -1,0 +1,38 @@
+{
+  "allowedParameters": [
+    {
+      "in": "query",
+      "name": "giftWithPurchaseType",
+      "description": "the gift type of the free gift. For example product or sku",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "query",
+      "name": "giftWithPurchaseDetail",
+      "description": "the gift detail of the free gift. This is typically a product or a sku Id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "in": "header",
+      "name": "X-CCOrganization",
+      "description": "Current organization context of the logged in user",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

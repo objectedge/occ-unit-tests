@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/getSku_response"
-  },
-  "description": "Following model is returned when operation succeeds."
-}

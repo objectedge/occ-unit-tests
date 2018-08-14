@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/errorModel"
-  },
-  "description": "The error response.\n The following are the internal error codes thrown by this API when the request processing fails in Oracle Commerce Cloud:\n\n\n|Error Code|Description|\n|------------------|------------------|\n|20185|There was an error fetching the PriceListGroup list.|\n"
-}

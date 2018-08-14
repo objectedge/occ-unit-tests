@@ -1,6 +1,0 @@
-{
-  "schema": {
-    "$ref": "#/definitions/getProfileAddress_response"
-  },
-  "description": "Following model is returned when operation succeeds."
-}

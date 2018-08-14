@@ -1,0 +1,31 @@
+{
+  "allowedParameters": [
+    {
+      "in": "path",
+      "name": "id",
+      "description": "The ID of the Purchase List to be updated.",
+      "type": "string",
+      "required": true
+    },
+    {
+      "schema": {
+        "$ref": "#/definitions/updatePurchaseList_request"
+      },
+      "in": "body",
+      "name": "updatePurchaseList_request"
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "put",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}
