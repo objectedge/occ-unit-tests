@@ -2,6 +2,10 @@ const fs = require('fs-extra');
 const path = require('path');
 const request = require('request');
 const sourceMap = require('source-map');
+const updateOracleJet = require('./update-oracle-jet');
+
+let oracleJetVersionDefault = '2.0.2'; //Defaults to 2.0.2, we will double check this inside the extractMainFilesFromSourceMap function
+let oracleJetVersion = null;
 
 const libsPath = path.join(__dirname, '..', 'libs');
 const url = 'https://ccstore-z1ma.oracleoutsourcing.com';
@@ -23,7 +27,17 @@ const makeRequest = (url, callback) => {
     }
   };
   
-  request(requestConfigs, callback);
+  return new Promise((resolve, reject) => {
+    request(requestConfigs, (error, response, body) => {
+      if(error) {
+        callback(error, response, body);
+        return reject(reject);
+      }
+
+      resolve({ response: response, body: body });
+      callback(error, response, body);
+    });
+  });
 };
 
 console.log('Requesting the main page to get the main.js.map file...');
@@ -69,6 +83,8 @@ function saveFile(fileContent, destDir) {
 }
 
 function grabMissingDependencies() {
+  const missingDependenciesPromises = [];
+
   console.log('');
   console.log('Grabbing missing dependencies from the RequireJS configs...');
 
@@ -98,6 +114,8 @@ function grabMissingDependencies() {
     return allDependencies.every(item => path.basename(requirePath) !== path.basename(item, '.js'));
   });
 
+  const filesRequestsPromises = [];
+
   missingDependencies.forEach(function iterateOverPaths(missingDependencyPath) {
     if(Array.isArray(missingDependencyPath)) {
       return missingDependencyPath.forEach(iterateOverPaths);
@@ -109,26 +127,40 @@ function grabMissingDependencies() {
     }
 
     const missingFileURL = `${url}${missingDependencyPath}.js`;
-    makeRequest(missingFileURL, (error, response, body) => {
-      if(error) {
-        return console.log(error);
-      }
+    filesRequestsPromises.push(
+      makeRequest(missingFileURL, (error, response, body) => {
+        if(error) {
+          return console.log(error);
+        }
 
-      // File Doesn't exist
-      if(/\<\!DOCTYPE html\>/.test(body)) {
-        console.log(`The file ${missingFileURL} doesn't exist.`);
-        return;
-      }
+        // File Doesn't exist
+        if(/\<\!DOCTYPE html\>/.test(body)) {
+          console.log(`The file ${missingFileURL} doesn't exist.`);
+          return;
+        }
 
-      const destDir = path.join(libsPath, `${missingDependencyPath}.js`);
-      
-      try {
-        fs.ensureDirSync(path.dirname(destDir));
-      } catch(error) {
-        console.log(error);
-      }
+        const destDir = path.join(libsPath, `${missingDependencyPath}.js`);
+        
+        try {
+          fs.ensureDirSync(path.dirname(destDir));
+        } catch(error) {
+          console.log(error);
+        }
 
-      saveFile(body, destDir);
+        missingDependenciesPromises.push(saveFile(body, destDir));
+      })
+    );
+  });
+  
+  Promise.all(filesRequestsPromises).then(() => {
+    Promise.all(missingDependenciesPromises).then(() => {
+      updateOracleJet(oracleJetVersion || oracleJetVersionDefault, function (error) {
+        if(error) {
+          return console.log(error);
+        }
+
+        console.log('Update done!');
+      });
     });
   });
 }
@@ -197,6 +229,11 @@ function extractMainFilesFromSourceMap(sourceMapContent) {
       if(fileName !== 'main.js' && !sourcePath.includes('shared')) {
         if(sourcePath.includes('oraclejet')) {
           destDir = path.join(libsPath, 'js', normalizedSourcePath);
+
+          // Setting Oracle Jet Version
+          if(!oracleJetVersion && sourcePath.includes('libs/oj/')) {
+            oracleJetVersion = sourcePath.match(/v(.+?)\//)[1];
+          }
         }
       }
       
