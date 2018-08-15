@@ -12,14 +12,14 @@
   "items": [
     {
       "longDescription": "It's Samantha Baker's Sweet Sixteen and no one in her family remembers\n                the important occasion. John Hughes, the writer of National Lampoon's Vacation, shows how coming-of-age\n                can be full of surprises in this warm-hearted teenage comedy starring Molly Ringwald. She's your average\n                teen, enduring creepy freshmen, spoiled siblings, confused parents and the Big Blonde on Campus who\n                stands between her and the boy of her dreams. But wait...the day isn't over yet! This sparkling film\n                features a dynamic score, and outstanding performances by Paul Dooley, Emmy winner Blanche Baker and\n                Oscar nominee Justin Henry.\n            ",
-      "primaryThumbImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=100&width=100",
+      "primaryThumbImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=100&width=100",
       "largeImage": null,
       "smallImage": null,
       "nonreturnable": false,
       "displayName": "16 Candles",
       "orderLimit": null,
       "description": "A really great movie that you should not miss.",
-      "primaryFullImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg",
+      "primaryFullImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg",
       "listPrices": null,
       "salePrices": null,
       "productVariantOptions": [
@@ -35,9 +35,9 @@
         }
       ],
       "largeImageURLs": [
-        "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=940&width=940"
+        "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=940&width=940"
       ],
-      "primaryLargeImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=940&width=940",
+      "primaryLargeImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=940&width=940",
       "addOnProducts": [
         {
           "repositoryId": "cp10003",
@@ -72,7 +72,7 @@
         }
       ],
       "smallImageURLs": [
-        "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300"
+        "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300"
       ],
       "shippingSurcharges": null,
       "id": "Product_19Cxy",
@@ -146,13 +146,13 @@
         }
       ],
       "salePrice": 8.99,
-      "primaryMediumImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=475&width=475",
+      "primaryMediumImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=475&width=475",
       "fullImageURLs": [
-        "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg"
+        "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg"
       ],
       "active": true,
       "thumbImageURLs": [
-        "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=100&width=100"
+        "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=100&width=100"
       ],
       "creationDate": "2014-10-27T05:11:57.034Z",
       "variantValuesOrder": {
@@ -169,14 +169,14 @@
       },
       "route": "/16-candles/product/Product_19Cxy",
       "mediumImageURLs": [
-        "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=475&width=475"
+        "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=475&width=475"
       ],
       "repositoryId": "Product_19Cxy",
-      "primarySourceImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300",
+      "primarySourceImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300",
       "shippingSurcharge": 20,
-      "primarySmallImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300",
+      "primarySmallImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300",
       "sourceImageURLs": [
-        "/ccstore/v1/images/?source=http://localhost:8080/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300"
+        "/ccstore/v1/images/?source=http://localhost:9876/file/qaimg/products/sixteen_candles_LARGE.jpg&height=300&width=300"
       ],
       "avgCustRating": 4.5,
       "listPrice": 19.99

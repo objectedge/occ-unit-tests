@@ -16,7 +16,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstore/v1/inventories/xsku2125_1?catalogId=null"
+      "href": "http://localhost:9876/ccstore/v1/inventories/xsku2125_1?catalogId=null"
     }
   ],
   "availabilityStatus": 1000,

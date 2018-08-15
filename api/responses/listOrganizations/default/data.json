@@ -6,7 +6,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstoreui/v1/organizations?members=bb-110034"
+      "href": "http://localhost:9876/ccstoreui/v1/organizations?members=bb-110034"
     }
   ],
   "sort": [

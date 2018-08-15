@@ -4,7 +4,7 @@
       "path": "/ccimg/visa_straight.png",
       "name": "Visa",
       "repositoryId": "imgVisa",
-      "url": "http://localhost:8080/file/ccimg/visa_straight.png"
+      "url": "http://localhost:9876/file/ccimg/visa_straight.png"
     },
     "code": "001",
     "name": "Visa",

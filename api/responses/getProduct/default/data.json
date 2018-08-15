@@ -15,7 +15,7 @@
   "dynamicUpsellProducts": null,
   "type": null,
   "largeImageURLs": [
-    "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=940&width=940"
+    "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=940&width=940"
   ],
   "ancestorCategoryIds": [],
   "addOnProducts": [
@@ -57,14 +57,14 @@
   "salePriceEndDate": null,
   "height": null,
   "defaultProductListingSku": null,
-  "primaryMediumImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=475&width=475",
+  "primaryMediumImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=475&width=475",
   "skuOptionsInfo": null,
   "seoUrlSlugDerived": "vineyard-antique-arm-chair",
   "dynamicPropertyMapBigString": {},
   "active": true,
   "weight": null,
   "thumbImageURLs": [
-    "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=100&width=100"
+    "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=100&width=100"
   ],
   "taxCode": "PC030100",
   "creationDate": "2014-10-27T05:11:57.034Z",
@@ -73,23 +73,23 @@
   "route": "/vineyard-antique-arm-chair/product/xprod2119",
   "catalogs": [],
   "mediumImageURLs": [
-    "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=475&width=475"
+    "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=475&width=475"
   ],
-  "primarySourceImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300",
+  "primarySourceImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300",
   "parentCategory": null,
-  "primarySmallImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300",
+  "primarySmallImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300",
   "sourceImageURLs": [
-    "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300"
+    "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300"
   ],
   "avgCustRating": null,
   "startDate": null,
   "longDescription": "This 18th century antique reproduction arm chair features hand-carved walnut and spring cushion base. Upholstered in buttery soft print textile with a lovely vintage pattern.",
   "template": null,
-  "primaryThumbImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=100&width=100",
+  "primaryThumbImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=100&width=100",
   "nonreturnable": false,
   "displayName": "Vineyard Antique Arm Chair",
   "description": "Hand-carved walnut",
-  "primaryFullImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg",
+  "primaryFullImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg",
   "salePrices": null,
   "productVariantOptions": [
     {
@@ -103,9 +103,9 @@
       "optionName": "color"
     }
   ],
-  "primaryLargeImageURL": "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=940&width=940",
+  "primaryLargeImageURL": "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=940&width=940",
   "smallImageURLs": [
-    "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300"
+    "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg&height=300&width=300"
   ],
   "itemAcl": null,
   "shippingSurcharges": null,
@@ -155,7 +155,7 @@
   "fixedRelatedProducts": [],
   "salePrice": null,
   "fullImageURLs": [
-    "/ccstore/v1/images/?source=http://localhost:8080/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg"
+    "/ccstore/v1/images/?source=http://localhost:9876/file/cloudlakeimages/products/full/ST_VineyardAntiqueChair_full.jpg"
   ],
   "length": null,
   "upsellProducts": null,

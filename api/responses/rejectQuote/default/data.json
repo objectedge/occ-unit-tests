@@ -268,7 +268,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:9080/ccstoreui/v1/orders/rejectQuote"
+      "href": "http://localhost:9876/ccstoreui/v1/orders/rejectQuote"
     }
   ],
   "id": "o30411",

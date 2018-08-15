@@ -10,7 +10,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstoreui/v1/payment"
+      "href": "http://localhost:9876/ccstoreui/v1/payment"
     }
   ],
   "paymentResponses": [

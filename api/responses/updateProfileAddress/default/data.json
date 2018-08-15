@@ -15,7 +15,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:9080/ccagentui/v1/profiles/se-570031/addresses/130023"
+      "href": "http://localhost:9876/ccagentui/v1/profiles/se-570031/addresses/130023"
     }
   ]
 }

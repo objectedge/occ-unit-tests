@@ -14,7 +14,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstore/v1/organizationAddresses"
+      "href": "http://localhost:9876/ccstore/v1/organizationAddresses"
     }
   ]
 }

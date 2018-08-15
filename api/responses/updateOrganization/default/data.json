@@ -38,7 +38,7 @@
       "id": "shippingMethodId1"
     }
   ],
-  "organizationLogoURL": "http://localhost:9080/file/general/update-hero-image1.jpg",
+  "organizationLogoURL": "http://localhost:9876/file/general/update-hero-image1.jpg",
   "members": [
     {
       "repositoryId": "110000"
@@ -51,7 +51,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:9080/ccadmin/v1/organizations"
+      "href": "http://localhost:9876/ccadmin/v1/organizations"
     }
   ],
   "id": "200003",

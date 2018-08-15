@@ -136,7 +136,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstore/v1/prices/prod10007"
+      "href": "http://localhost:9876/ccstore/v1/prices/prod10007"
     }
   ],
   "list": 19.99,

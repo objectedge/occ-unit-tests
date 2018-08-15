@@ -6,7 +6,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:9080/ccstoreui/v1/scheduledOrders/status/sco20002"
+      "href": "http://localhost:9876/ccstoreui/v1/scheduledOrders/status/sco20002"
     }
   ],
   "items": [

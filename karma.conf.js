@@ -1,4 +1,6 @@
 module.exports = function(config) {
+  const serverConfigs = require('./server-configs');
+
   config.set({
     basePath: '',
     frameworks: ['mocha', 'requirejs', 'chai'],
@@ -14,12 +16,12 @@ module.exports = function(config) {
     exclude: [
     ],
     proxies: {
-      '/' : 'http://localhost:3000'
+      '/' : `${serverConfigs.api.domain}:${serverConfigs.api.port}`
     },
     reporters: ['progress'],
-    port: 9876,  // karma web server port
+    port: serverConfigs.karma.port,  // karma web server port
     colors: true,
-    logLevel: config.LOG_DEBUG,
+    logLevel: config.LOG_INFO,
     browsers: ['Chrome', 'CustomChromeHeadless'],
     customLaunchers: {
       CustomChromeHeadless: {

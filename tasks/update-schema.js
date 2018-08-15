@@ -1,6 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 const request = require('request');
+const serverConfigs = require('../server-configs');
+
 const apiPath = path.join(__dirname, '..', 'api');
 const responsesPath = path.join(apiPath, 'responses');
 const definitionsPath = path.join(apiPath, 'definitions');
@@ -81,7 +83,13 @@ request(schemaURL, (error, response, body) => {
           const responseData = responses[statusCode].examples[contentType];
 
           descriptor.response.headers['content-type'] = contentType;
-          fs.writeFileSync(dataPath, JSON.stringify(responseData, null, 2), 'utf8');
+          let stringifiedResponseData = JSON.stringify(responseData, null, 2);
+
+          if(stringifiedResponseData) {
+            stringifiedResponseData = stringifiedResponseData.replace(/localhost:[0-9]+?\//g, `localhost:${serverConfigs.karma.port}/`).replace(/"httpPort":\s[0-9]+?,/g, `"httpPort": ${serverConfigs.karma.port},`);
+          }
+
+          fs.writeFileSync(dataPath, stringifiedResponseData, 'utf8');
         }
 
         fs.writeFileSync(dataDescriptorPath, JSON.stringify(descriptor, null, 2), 'utf8');

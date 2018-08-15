@@ -31,7 +31,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstore/v1/organizationMembers/110006?offset=0&limit=2&sort=firstName%3Adesc"
+      "href": "http://localhost:9876/ccstore/v1/organizationMembers/110006?offset=0&limit=2&sort=firstName%3Adesc"
     }
   ],
   "id": "110006",

@@ -17,7 +17,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "http://localhost:8080/ccstore/v1/addresses"
+      "href": "http://localhost:9876/ccstore/v1/addresses"
     }
   ],
   "secondaryAddresses": [

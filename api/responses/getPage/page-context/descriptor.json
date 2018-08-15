@@ -57,7 +57,11 @@
     }
   ],
   "request": {
-    "queryParameters": {},
+    "queryParameters": {
+      "dataOnly": false,
+      "cacheableDataOnly": true,
+      "productTypesRequired": true
+    },
     "method": "get",
     "headers": {},
     "body": {}
@@ -66,7 +70,7 @@
     "dataPath": "data.json",
     "statusCode": "200",
     "headers": {
-      "Content-Type": "application/json"
+      "content-type": "application/json"
     }
   }
 }

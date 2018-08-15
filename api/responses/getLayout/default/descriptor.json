@@ -52,7 +52,7 @@
     "dataPath": "data.json",
     "statusCode": "200",
     "headers": {
-      "Content-Type": "application/json"
+      "content-type": "application/json"
     }
   }
 }

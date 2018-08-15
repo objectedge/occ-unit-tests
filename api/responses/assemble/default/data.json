@@ -55,7 +55,7 @@
                 "Elliot Classic Wall Clock"
               ],
               "product.primaryThumbImageURL": [
-                "/ccstore/v1/images/?source=http://localhost:8080/file/products/HOME_ElliotClassicClock_full.jpg&height=100&width=100"
+                "/ccstore/v1/images/?source=http://localhost:9876/file/products/HOME_ElliotClassicClock_full.jpg&height=100&width=100"
               ]
             }
           }
@@ -90,7 +90,7 @@
             "99.000000"
           ],
           "product.primaryThumbImageURL": [
-            "/ccstore/v1/images/?source=http://localhost:8080/file/products/HOME_ElliotClassicClock_full.jpg&height=100&width=100"
+            "/ccstore/v1/images/?source=http://localhost:9876/file/products/HOME_ElliotClassicClock_full.jpg&height=100&width=100"
           ]
         }
       },
@@ -138,7 +138,7 @@
                 "Paris Clock"
               ],
               "product.primaryThumbImageURL": [
-                "/ccstore/v1/images/?source=http://localhost:8080/file/products/HOME_ParisClock_full.jpg&height=100&width=100"
+                "/ccstore/v1/images/?source=http://localhost:9876/file/products/HOME_ParisClock_full.jpg&height=100&width=100"
               ]
             }
           }
@@ -173,7 +173,7 @@
             "49.000000"
           ],
           "product.primaryThumbImageURL": [
-            "/ccstore/v1/images/?source=http://localhost:8080/file/products/HOME_ParisClock_full.jpg&height=100&width=100"
+            "/ccstore/v1/images/?source=http://localhost:9876/file/products/HOME_ParisClock_full.jpg&height=100&width=100"
           ]
         }
       },
@@ -221,7 +221,7 @@
                 "Swiss Detail Clock"
               ],
               "product.primaryThumbImageURL": [
-                "/ccstore/v1/images/?source=http://localhost:8080/file/products/HOME_SwissDetailClock_full.jpg&height=100&width=100"
+                "/ccstore/v1/images/?source=http://localhost:9876/file/products/HOME_SwissDetailClock_full.jpg&height=100&width=100"
               ]
             }
           }
@@ -256,7 +256,7 @@
             "99.000000"
           ],
           "product.primaryThumbImageURL": [
-            "/ccstore/v1/images/?source=http://localhost:8080/file/products/HOME_SwissDetailClock_full.jpg&height=100&width=100"
+            "/ccstore/v1/images/?source=http://localhost:9876/file/products/HOME_SwissDetailClock_full.jpg&height=100&width=100"
           ]
         }
       }

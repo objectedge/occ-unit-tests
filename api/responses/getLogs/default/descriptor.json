@@ -47,9 +47,7 @@
     }
   ],
   "request": {
-    "queryParameters": {
-      "abc": 10
-    },
+    "queryParameters": {},
     "method": "get",
     "headers": {},
     "body": {}
@@ -58,7 +56,7 @@
     "dataPath": "data.json",
     "statusCode": "200",
     "headers": {
-      "Content-Type": "application/json"
+      "content-type": "application/json"
     }
   }
 }
