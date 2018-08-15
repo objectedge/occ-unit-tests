@@ -1,0 +1,19 @@
+{
+  "request": {
+    "queryParameters": {
+      "dataOnly": "false",
+      "currentDataOnly": "true",
+      ":path": "test-b2b"
+    },
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "content-type": "application/json"
+    }
+  }
+}

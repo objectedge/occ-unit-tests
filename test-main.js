@@ -19,7 +19,7 @@ var stringifiedConfigs = JSON.stringify(requireJSConfigs);
 stringifiedConfigs = stringifiedConfigs.replace(/"\/shared\//g, '"libs/shared/').replace(/"\/js\//g, '"libs/js/');
 requireJSConfigs = JSON.parse(stringifiedConfigs);
 
-requireJSConfigs.baseUrl = '/base';
+requireJSConfigs.baseUrl = '/app/base';
 requireJSConfigs.deps = allTestFiles;
 requireJSConfigs.callback = window.__karma__.start;
 
@@ -28,3 +28,9 @@ requireJSConfigs.callback = window.__karma__.start;
 //  */
 // /*jslint plusplus: true */
 require.config(requireJSConfigs);
+
+require(['jquery'], function ($) {
+  $( document ).ajaxStart(function() {
+    console.log(arguments);
+  });
+});

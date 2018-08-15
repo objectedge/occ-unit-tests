@@ -1,0 +1,20 @@
+{
+  "request": {
+    "queryParameters": {
+      "dataOnly": "false",
+      "cacheableDataOnly": "true",
+      "productTypesRequired": "true",
+      ":path": "wishlist_settings"
+    },
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "content-type": "application/json"
+    }
+  }
+}

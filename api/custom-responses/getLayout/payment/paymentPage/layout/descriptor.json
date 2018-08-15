@@ -1,0 +1,18 @@
+{
+  "request": {
+    "queryParameters": {
+      "ccvp": "lg",
+      ":path": "payment"
+    },
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "content-type": "application/json"
+    }
+  }
+}

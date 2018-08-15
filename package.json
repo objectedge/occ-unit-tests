@@ -1,12 +1,13 @@
 {
   "scripts": {
     "api": "node api",
-    "test": "karma start --browsers CustomChromeHeadless karma.conf.js",
-    "test-chrome": "karma start --browsers Chrome karma.conf.js",
+    "test-headless": "karma start --browsers CustomChromeHeadless karma.conf.js",
+    "test": "karma start --browsers Chrome karma.conf.js",
     "start": "npm-run-all --parallel api test",
-    "start-chrome": "npm-run-all --parallel api test-chrome",
+    "start-headless": "npm-run-all --parallel api test-headless",
     "update-schema": "node tasks/update-schema",
-    "update-libs": "node tasks/update-libs"
+    "update-libs": "node tasks/update-libs",
+    "update-pages-responses": "node tasks/update-pages-responses"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -23,6 +24,8 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "fs-extra": "^7.0.0",
+    "glob": "^7.1.2",
+    "puppeteer": "^1.7.0",
     "request": "^2.88.0",
     "requirejs": "^2.3.5",
     "source-map": "^0.7.3",

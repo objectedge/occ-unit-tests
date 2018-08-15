@@ -1,0 +1,6 @@
+{
+  "errorCode": "00000000",
+  "message": "An internal error occurred while processing input request.",
+  "devMessage": "Exception(CCException)",
+  "status": "404"
+}

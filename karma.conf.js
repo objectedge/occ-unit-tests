@@ -18,6 +18,7 @@ module.exports = function(config) {
     proxies: {
       '/' : `${serverConfigs.api.domain}:${serverConfigs.api.port}`
     },
+    urlRoot: serverConfigs.karma.urlRoot,
     reporters: ['progress'],
     port: serverConfigs.karma.port,  // karma web server port
     colors: true,

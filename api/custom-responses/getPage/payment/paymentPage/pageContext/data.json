@@ -1,0 +1,1142 @@
+{
+  "layout": "paymentPageLayout",
+  "regions": [
+    {
+      "displayName": null,
+      "width": 12,
+      "name": "cyberSourcePaymentAuthorization",
+      "id": "1colCyberSourcePaymentAuthorization",
+      "widgets": [
+        {
+          "customTranslations": {},
+          "localeResources": {
+            "en": {
+              "namespace": "ns.cybersourcepaymentauthorization",
+              "resources": {
+                "101": "(101) Your credit card has been declined, please use an alternative card.",
+                "102": "(102) Your credit card has been declined, please use an alternative card.",
+                "104": "(104) Your credit card has been declined, please use an alternative card.",
+                "110": "(110) Your credit card has been declined, please use an alternative card.",
+                "150": "(150) We experienced a technical problem contacting you credit card's issuing bank. Please try again or use an alternative card.",
+                "151": "(151) We experienced a technical problem. Please try again in a little while.",
+                "152": "(152) We experienced a technical problem. Please try again in a little while.",
+                "200": "(200) The billing address you provided does not match the address on file with your credit card. Please check the address and try again.",
+                "201": "(201) Your credit card has been declined, please use an alternative card.",
+                "202": "(202) Please check your card's expiration date and try again.",
+                "203": "(203) Your credit card has been declined, please use an alternative card.",
+                "204": "(204) Your credit card has been declined, please use an alternative card.",
+                "205": "(205) Your credit card has been declined, please use an alternative card.",
+                "207": "(207) We experienced a technical problem contacting you credit card's issuing bank. Please try again or use an alternative card.",
+                "208": "(208) Your credit card has been declined, please use an alternative card.",
+                "209": "(209) Your credit card has been declined, please use an alternative card.",
+                "210": "(210) Your credit card has been declined, please use an alternative card.",
+                "211": "(211) Your credit card has been declined, please use an alternative card.",
+                "221": "(221) Your credit card has been declined, please use an alternative card.",
+                "230": "(230) Your credit card has been declined, please use an alternative card.",
+                "231": "(231) Your credit card has been declined, please use an alternative card.",
+                "232": "(232) Your credit card has been declined, please use an alternative card.",
+                "233": "(233) Your credit card has been declined, please use an alternative card.",
+                "234": "(234) Your credit card has been declined, please use an alternative card.",
+                "476": "(476) Card not authenticated for use, please use an alternative card.",
+                "520": "(520) Your credit card has been declined, please use an alternative card.",
+                "1000": "(1000) Your credit card has been declined, please use an alternative card.",
+                "quickViewText": "Quick View",
+                "processingText": "Processing, please wait. Do not click the refresh or back button as your transaction may be interrupted or terminated.",
+                "paymentErrorText": "We experienced a technical problem. Please try again in a little while."
+              }
+            },
+            "en-GB": {
+              "namespace": "ns.cybersourcepaymentauthorization",
+              "resources": {
+                "101": "(101) Your credit card has been declined, please use an alternative card.",
+                "102": "(102) Your credit card has been declined, please use an alternative card.",
+                "104": "(104) Your credit card has been declined, please use an alternative card.",
+                "110": "(110) Your credit card has been declined, please use an alternative card.",
+                "150": "(150) We experienced a technical problem contacting you credit card's issuing bank. Please try again or use an alternative card.",
+                "151": "(151) We experienced a technical problem. Please try again in a little while.",
+                "152": "(152) We experienced a technical problem. Please try again in a little while.",
+                "200": "(200) The billing address you provided does not match the address on file with your credit card. Please check the address and try again.",
+                "201": "(201) Your credit card has been declined, please use an alternative card.",
+                "202": "(202) Please check your card's expiration date and try again.",
+                "203": "(203) Your credit card has been declined, please use an alternative card.",
+                "204": "(204) Your credit card has been declined, please use an alternative card.",
+                "205": "(205) Your credit card has been declined, please use an alternative card.",
+                "207": "(207) We experienced a technical problem contacting you credit card's issuing bank. Please try again or use an alternative card.",
+                "208": "(208) Your credit card has been declined, please use an alternative card.",
+                "209": "(209) Your credit card has been declined, please use an alternative card.",
+                "210": "(210) Your credit card has been declined, please use an alternative card.",
+                "211": "(211) Your credit card has been declined, please use an alternative card.",
+                "221": "(221) Your credit card has been declined, please use an alternative card.",
+                "230": "(230) Your credit card has been declined, please use an alternative card.",
+                "231": "(231) Your credit card has been declined, please use an alternative card.",
+                "232": "(232) Your credit card has been declined, please use an alternative card.",
+                "233": "(233) Your credit card has been declined, please use an alternative card.",
+                "234": "(234) Your credit card has been declined, please use an alternative card.",
+                "476": "(476) Card not authenticated for use, please use an alternative card.",
+                "520": "(520) Your credit card has been declined, please use an alternative card.",
+                "1000": "(1000) Your credit card has been declined, please use an alternative card.",
+                "quickViewText": "Quick View",
+                "processingText": "Processing, please wait. Do not click the refresh or back button as your transaction may be interrupted or terminated.",
+                "paymentErrorText": "We experienced a technical problem. Please try again in a little while."
+              }
+            }
+          },
+          "imports": [
+            "pageContext",
+            "site",
+            "paymentauthorization",
+            "passwordPolicies",
+            "links",
+            "payment",
+            "user",
+            "cart",
+            "order"
+          ],
+          "hidden": null,
+          "isPreview": false,
+          "instanceName": "CyberSource Payment Authorization",
+          "numberOnPage": 1,
+          "javascriptExtension": null,
+          "displayName": "CyberSource Payment Authorization",
+          "i18nresources": "cybersourcepaymentauthorization",
+          "assetMappings": {
+            "/cs-auth.html": "https://ccstore-z1ma.oracleoutsourcing.com/file/v6951252368701484207/widget/v2/cyberSourcePaymentAuthorization/cs-auth.html",
+            "/js/cybersource-payment-authorization.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v8957555744708077529/widget/v2/cyberSourcePaymentAuthorization/js/cybersource-payment-authorization.min.js",
+            "/js/cybersource-payment-authorization.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v2057574525584619990/widget/v2/cyberSourcePaymentAuthorization/js/cybersource-payment-authorization.js"
+          },
+          "global": false,
+          "locale": "en",
+          "javascript": "cybersource-payment-authorization.min",
+          "templateUrl": "https://ccstore-z1ma.oracleoutsourcing.com/file/v6186858976900545370/widget/v2/cyberSourcePaymentAuthorization/templates/display.template",
+          "templateSrc": "<div id='cc-cybersourcePaymentAuthorization' data-bind=\"onRender: destroySpinnerOnResponse\">\n  <br> <span data-bind=\"widgetLocaleText: 'processingText'\"></span>\n  <iframe id='cc-cybersourcePaymentAuthorization-frame' class=\"hidden-widget\" data-bind=\"attr : { src : absoluteUrl('/cs-auth.html') }\"></iframe>\n  <iframe id='cc-cybersourcePaymentAuthorization-output-frame' frameBorder=\"0\" class=\"col-xs-12 col-md-6\" height=\"500\" scrolling=\"no\" name=\"output_frame\" src=\"\"></iframe>\n</div>\n",
+          "pages": [
+            "payment"
+          ],
+          "pageIds": [
+            "paymentPage"
+          ],
+          "typeId": "cyberSourcePaymentAuthorization_v2",
+          "id": "cyberSourcePaymentAuthorizationInst_v2",
+          "editableWidget": true
+        }
+      ],
+      "type": 101,
+      "structure": 100,
+      "height": 0
+    },
+    {
+      "width": 0,
+      "name": "recommendationsTracking",
+      "id": "globalWidgetsRegion0",
+      "widgets": [
+        {
+          "customTranslations": {},
+          "localeResources": {
+            "en": {
+              "namespace": "ns.null",
+              "resources": {
+                "quickViewText": "Quick View"
+              }
+            },
+            "en-GB": {
+              "namespace": "ns.null",
+              "resources": {
+                "quickViewText": "Quick View"
+              }
+            }
+          },
+          "imports": [
+            "pageContext",
+            "site",
+            "product",
+            "passwordPolicies",
+            "links",
+            "user",
+            "cart"
+          ],
+          "hidden": true,
+          "isPreview": false,
+          "instanceName": "Recommendations Tracking",
+          "javascriptExtension": null,
+          "displayName": "Recommendations Tracking",
+          "i18nresources": null,
+          "assetMappings": {
+            "/js/recsRequest.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v6518586860205385409/widget/recommendationsTracking/js/recsRequest.min.js",
+            "/js/recsRequest.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v2812158594401507558/widget/recommendationsTracking/js/recsRequest.js",
+            "/js/gdprConsent.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v5448408895304044727/widget/recommendationsTracking/js/gdprConsent.js",
+            "/js/recsTracking.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v8744657670387380366/widget/recommendationsTracking/js/recsTracking.min.js",
+            "/js/recsTracking.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v4694752296035473187/widget/recommendationsTracking/js/recsTracking.js",
+            "/js/gdprConsent.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v5180561547228714664/widget/recommendationsTracking/js/gdprConsent.min.js"
+          },
+          "global": true,
+          "locale": "en",
+          "javascript": "recsTracking.min",
+          "templateUrl": null,
+          "templateSrc": null,
+          "pages": [],
+          "pageIds": [],
+          "typeId": "recommendationsTracking_v1",
+          "id": "wi100001",
+          "editableWidget": false
+        }
+      ],
+      "height": 0
+    },
+    {
+      "width": 0,
+      "name": "oeViewedProductsManagerAP",
+      "id": "globalWidgetsRegion1",
+      "widgets": [
+        {
+          "customTranslations": {},
+          "localeResources": {
+            "en": {
+              "namespace": "ns.oeViewedProductsManagerAP",
+              "resources": {
+                "quickViewText": "Quick View"
+              }
+            },
+            "en-GB": {
+              "namespace": "ns.oeViewedProductsManagerAP",
+              "resources": {
+                "quickViewText": "Quick View"
+              }
+            }
+          },
+          "imports": [
+            "pageContext",
+            "site",
+            "product",
+            "passwordPolicies",
+            "links",
+            "user",
+            "cart"
+          ],
+          "hidden": true,
+          "isPreview": false,
+          "instanceName": "oeViewedProductsManagerAP",
+          "javascriptExtension": null,
+          "displayName": "oeViewedProductsManagerAP",
+          "i18nresources": "oeViewedProductsManagerAP",
+          "assetMappings": {
+            "/js/oeViewedProductsManagerAP.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v4373652290000976259/widget/oeViewedProductsManagerAP/js/oeViewedProductsManagerAP.js",
+            "/js/oeViewedProductsManagerAP.min.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v4303116353357875021/widget/oeViewedProductsManagerAP/js/oeViewedProductsManagerAP.min.min.js",
+            "/js/oeViewedProductsManagerAP.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v787549338771993251/widget/oeViewedProductsManagerAP/js/oeViewedProductsManagerAP.min.js",
+            "/js/oeViewedProductsManagerAP.js.map": "https://ccstore-z1ma.oracleoutsourcing.com/file/v6622331359295007313/widget/oeViewedProductsManagerAP/js/oeViewedProductsManagerAP.js.map",
+            "/js/oeViewedProductsManagerAP.min.js.map": "https://ccstore-z1ma.oracleoutsourcing.com/file/v4601920408353285970/widget/oeViewedProductsManagerAP/js/oeViewedProductsManagerAP.min.js.map"
+          },
+          "global": true,
+          "locale": "en",
+          "javascript": "oeViewedProductsManagerAP.min",
+          "templateUrl": "https://ccstore-z1ma.oracleoutsourcing.com/file/v3270990935337092692/widget/oeViewedProductsManagerAP/templates/display.template",
+          "templateSrc": "<!-- oeES6Widget -->\n<div id=\"oeES6Widget\">\n\n\n</div>\n",
+          "pages": [],
+          "pageIds": [],
+          "typeId": "oeViewedProductsManagerAP_v1",
+          "id": "wi300008",
+          "editableWidget": true
+        }
+      ],
+      "height": 0
+    },
+    {
+      "width": 0,
+      "name": "googleTagManager",
+      "id": "globalWidgetsRegion2",
+      "widgets": [
+        {
+          "customTranslations": {},
+          "localeResources": {
+            "en": {
+              "namespace": "ns.googleTagManager",
+              "resources": {
+                "quickViewText": "Quick View"
+              }
+            },
+            "en-GB": {
+              "namespace": "ns.googleTagManager",
+              "resources": {
+                "quickViewText": "Quick View"
+              }
+            }
+          },
+          "imports": [
+            "pageContext",
+            "site",
+            "product",
+            "passwordPolicies",
+            "links",
+            "confirmation",
+            "category",
+            "user",
+            "cart"
+          ],
+          "hidden": true,
+          "isPreview": false,
+          "instanceName": "Google Tag Manager",
+          "javascriptExtension": null,
+          "displayName": "Google Tag Manager",
+          "i18nresources": "googleTagManager",
+          "assetMappings": {
+            "/js/googleTagManagerModel.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v1288523504150206183/widget/googleTagManager/js/googleTagManagerModel.min.js",
+            "/js/googleTagManagerModel.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v2639980036754757837/widget/googleTagManager/js/googleTagManagerModel.js",
+            "/js/widgetSpecific.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v6147352087279501793/widget/googleTagManager/js/widgetSpecific.min.js",
+            "/js/googleTagManager.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v5330073934216362135/widget/googleTagManager/js/googleTagManager.min.js",
+            "/js/widgetGeneric.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v9027778613897414345/widget/googleTagManager/js/widgetGeneric.js",
+            "/js/widgetGeneric.min.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v4411781855948735527/widget/googleTagManager/js/widgetGeneric.min.js",
+            "/js/googleTagManager.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v190953340629336242/widget/googleTagManager/js/googleTagManager.js",
+            "/js/widgetSpecific.js": "https://ccstore-z1ma.oracleoutsourcing.com/file/v1227451156111902869/widget/googleTagManager/js/widgetSpecific.js"
+          },
+          "global": true,
+          "locale": "en",
+          "javascript": "googleTagManager.min",
+          "templateUrl": "https://ccstore-z1ma.oracleoutsourcing.com/file/v377120732786334646/widget/googleTagManager/templates/display.template",
+          "templateSrc": "",
+          "pages": [],
+          "pageIds": [],
+          "typeId": "googleTagManager_v1",
+          "id": "wi300034",
+          "editableWidget": true
+        }
+      ],
+      "height": 0
+    }
+  ],
+  "noindex": false,
+  "route": "/payment",
+  "isPreview": false,
+  "data": {
+    "global": {
+      "guestCheckoutEnabled": true,
+      "agentId": null,
+      "supportedLocales": [
+        {
+          "displayName": "French",
+          "repositoryId": "4",
+          "name": "fr",
+          "localeId": "4"
+        },
+        {
+          "displayName": "Chinese (Simplified)",
+          "repositoryId": "24",
+          "name": "zh_CN",
+          "localeId": "24"
+        },
+        {
+          "displayName": "English (Australia)",
+          "repositoryId": "25",
+          "name": "en_AU",
+          "localeId": "25"
+        },
+        {
+          "displayName": "English",
+          "repositoryId": "1",
+          "name": "en",
+          "localeId": "1"
+        }
+      ],
+      "locale": "en",
+      "cart": {},
+      "loaded": false,
+      "pageContext": {
+        "layout": {
+          "name": "paymentPageLayout",
+          "displayName": "Payer Authentication Layout",
+          "id": "paymentPageLayout"
+        },
+        "pageType": {
+          "name": "payment",
+          "displayName": "Payer Authentication",
+          "id": "paymentPageType"
+        },
+        "page": {
+          "name": "payment",
+          "displayName": "payment page type",
+          "id": "paymentPage"
+        }
+      },
+      "site": {
+        "visitorServiceHost": "https://cloud-commerce-visit.oracleoutsourcing.com",
+        "isTaxIncluded": false,
+        "additionalFonts": {},
+        "priceListGroup": {
+          "activePriceListGroups": [
+            {
+              "isTaxIncluded": false,
+              "endDate": null,
+              "displayName": "australianDollarPriceGroup",
+              "listPriceList": {
+                "repositoryId": "australianDollarPriceGroup_listPrices"
+              },
+              "active": true,
+              "isPointsBased": false,
+              "locale": "en_AU",
+              "shippingSurchargePriceList": {
+                "repositoryId": "australianDollarPriceGroup_shippingSurchargePrices"
+              },
+              "deleted": false,
+              "taxCalculationType": "calculateTax",
+              "repositoryId": "australianDollarPriceGroup",
+              "salePriceList": {
+                "repositoryId": "australianDollarPriceGroup_salePrices"
+              },
+              "currency": {
+                "currencyType": null,
+                "symbol": "$",
+                "deleted": false,
+                "displayName": "Australian Dollar",
+                "repositoryId": "en_AU",
+                "fractionalDigits": 2,
+                "currencyCode": "AUD",
+                "numericCode": "036"
+              },
+              "id": "australianDollarPriceGroup",
+              "includeAllProducts": false,
+              "startDate": null
+            },
+            {
+              "isTaxIncluded": false,
+              "endDate": null,
+              "displayName": "Default Price Group",
+              "listPriceList": {
+                "repositoryId": "listPrices"
+              },
+              "active": true,
+              "isPointsBased": false,
+              "locale": "en_US",
+              "shippingSurchargePriceList": {
+                "repositoryId": "shippingSurchargePrices"
+              },
+              "deleted": false,
+              "taxCalculationType": null,
+              "repositoryId": "defaultPriceGroup",
+              "salePriceList": {
+                "repositoryId": "salePrices"
+              },
+              "currency": {
+                "currencyType": null,
+                "symbol": "$",
+                "deleted": false,
+                "displayName": "US Dollar",
+                "repositoryId": "en_US",
+                "fractionalDigits": 2,
+                "currencyCode": "USD",
+                "numericCode": "840"
+              },
+              "id": "defaultPriceGroup",
+              "includeAllProducts": true,
+              "startDate": null
+            }
+          ],
+          "defaultPriceListGroup": {
+            "isTaxIncluded": false,
+            "endDate": null,
+            "displayName": "Default Price Group",
+            "listPriceList": {
+              "repositoryId": "listPrices"
+            },
+            "active": true,
+            "isPointsBased": false,
+            "locale": "en_US",
+            "shippingSurchargePriceList": {
+              "repositoryId": "shippingSurchargePrices"
+            },
+            "deleted": false,
+            "taxCalculationType": null,
+            "repositoryId": "defaultPriceGroup",
+            "salePriceList": {
+              "repositoryId": "salePrices"
+            },
+            "currency": {
+              "currencyType": null,
+              "symbol": "$",
+              "deleted": false,
+              "displayName": "US Dollar",
+              "repositoryId": "en_US",
+              "fractionalDigits": 2,
+              "currencyCode": "USD",
+              "numericCode": "840"
+            },
+            "id": "defaultPriceGroup",
+            "includeAllProducts": true,
+            "startDate": null
+          }
+        },
+        "requireGDPRP13nConsent": false,
+        "siteInfo": {
+          "favicon": null,
+          "repositoryId": "siteUS",
+          "name": "Commerce Cloud Site",
+          "noimage": null,
+          "id": "siteUS"
+        },
+        "additionalLanguages": [
+          {
+            "displayName": "English",
+            "repositoryId": "1",
+            "name": "en",
+            "localeId": "1"
+          }
+        ],
+        "requireGDPRCookieConsent": false,
+        "extensionSiteSettings": {
+          "demoGenericGateway": {
+            "paymentMethodTypes": "generic"
+          },
+          "site-settings-examples": {
+            "optionItem": "m",
+            "stringItem": "Hello W",
+            "collectionItem": null,
+            "booleanItem": true,
+            "mediaItem": null,
+            "collectionItem2": null
+          },
+          "recentlyViewedManagerSettingsAP": {
+            "maxItems": "8"
+          },
+          "CPQConfigurationSettings": {
+            "ReConfigurationURL": null,
+            "ConfigurationURL": null,
+            "enabled": true
+          }
+        },
+        "tenantId": "tz1ma0c0",
+        "currency": {
+          "currencyType": null,
+          "symbol": "$",
+          "deleted": false,
+          "displayName": "US Dollar",
+          "repositoryId": "en_US",
+          "fractionalDigits": 2,
+          "currencyCode": "USD",
+          "numericCode": "840"
+        },
+        "showTaxSummary": true,
+        "oracleUnifiedVisitHost": "https://cloud-commerce-visit.oracleoutsourcing.com/Visit/js/oracleunifiedvisit.js"
+      },
+      "search": {},
+      "preorderBackorderEnabled": false,
+      "passwordPolicies": {
+        "useNumber": "true",
+        "allowedSymbols": "~!@#$%^&*()_-+={}[]|:;<>,./?",
+        "numberOfPreviousPasswords": "3",
+        "cannotUseUsername": "true",
+        "useMinPasswordLength": "true",
+        "selfRegistrationEnabled": "false",
+        "minPasswordLength": "8",
+        "useMixedCase": "false",
+        "blockCommonPasswords": "false",
+        "cannotUsePreviousPasswords": "false",
+        "useSymbol": "false"
+      },
+      "links": {
+        "404": {
+          "defaultPage": true,
+          "route": "/404",
+          "pageType": "error",
+          "displayName": "Page Not Found",
+          "repositoryId": "404page",
+          "name": "404",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "errorPageType"
+          },
+          "target": 100
+        },
+        "aboutUs": {
+          "defaultPage": false,
+          "route": "/aboutUs",
+          "pageType": "article",
+          "displayName": "About Us",
+          "repositoryId": "aboutUsPage",
+          "name": "aboutUs",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "aboutUsPageViewportPageRule"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "returnItems": {
+          "defaultPage": true,
+          "route": "/returnItems",
+          "pageType": "returnItems",
+          "displayName": "Return Items",
+          "repositoryId": "returnItemsPage",
+          "name": "returnItems",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "returnItemsPageType"
+          },
+          "target": 100
+        },
+        "test-b2b": {
+          "defaultPage": false,
+          "route": "/test-b2b",
+          "pageType": "article",
+          "displayName": "Test B2B Layout",
+          "repositoryId": "pa100005",
+          "name": "test-b2b",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "100008"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "scheduledOrders": {
+          "defaultPage": true,
+          "route": "/scheduledOrders",
+          "pageType": "scheduledOrder",
+          "displayName": "Scheduled Order",
+          "repositoryId": "scheduledOrderPage",
+          "name": "scheduledOrders",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "scheduledOrderPageType"
+          },
+          "target": 100
+        },
+        "wishlist": {
+          "defaultPage": true,
+          "route": "/wishlist",
+          "pageType": "swm",
+          "displayName": "Wish List",
+          "repositoryId": "userSpacesPage",
+          "name": "wishlist",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "swmPageType"
+          },
+          "target": 100
+        },
+        "privacy": {
+          "defaultPage": false,
+          "route": "/privacy",
+          "pageType": "article",
+          "displayName": "Privacy",
+          "repositoryId": "privacyPage",
+          "name": "privacy",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "privacyPageViewportPageRule"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "cart": {
+          "defaultPage": true,
+          "route": "/cart",
+          "pageType": "cart",
+          "displayName": "Cart",
+          "repositoryId": "shoppingCartSummaryWithShippingPage",
+          "name": "cart",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "shoppingCartSummaryPageType"
+          },
+          "target": 100
+        },
+        "assetDetails": {
+          "defaultPage": true,
+          "route": "/assetDetails",
+          "pageType": "assetDetails",
+          "displayName": "Asset Details",
+          "repositoryId": "assetDetailsPage",
+          "name": "assetDetails",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "assetDetailsPageType"
+          },
+          "target": 100
+        },
+        "assets": {
+          "defaultPage": true,
+          "route": "/assets",
+          "pageType": "assets",
+          "displayName": "Assets",
+          "repositoryId": "assetsPage",
+          "name": "assets",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "assetsPageType"
+          },
+          "target": 100
+        },
+        "shipping": {
+          "defaultPage": false,
+          "route": "/shipping",
+          "pageType": "article",
+          "displayName": "Shipping",
+          "repositoryId": "shippingPage",
+          "name": "shipping",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "shippingPageViewportPageRule"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "plass": {
+          "defaultPage": false,
+          "route": "/plass",
+          "pageType": "article",
+          "displayName": "Plass",
+          "repositoryId": "pa100002",
+          "name": "plass",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "100002"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "noSearchResults": {
+          "defaultPage": true,
+          "route": "/noSearchResults",
+          "pageType": "noSearchResults",
+          "displayName": "No Search Results",
+          "repositoryId": "noSearchResultsPage",
+          "name": "noSearchResults",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "noSearchResultsPageType"
+          },
+          "target": 100
+        },
+        "payment": {
+          "defaultPage": true,
+          "route": "/payment",
+          "pageType": "payment",
+          "displayName": "payment page type",
+          "repositoryId": "paymentPage",
+          "name": "payment",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "paymentPageType"
+          },
+          "target": 100
+        },
+        "checkout": {
+          "defaultPage": true,
+          "route": "/checkout",
+          "pageType": "checkout",
+          "displayName": "Checkout",
+          "repositoryId": "checkoutPageWithGiftCard",
+          "name": "checkout",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "checkoutPageType"
+          },
+          "target": 100
+        },
+        "wishlist_settings": {
+          "defaultPage": true,
+          "route": "/wishlist_settings",
+          "pageType": "swmSettings",
+          "displayName": "Shopper Wish List Profile",
+          "repositoryId": "userSpacesSettingsPage",
+          "name": "wishlist_settings",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "swmSettingsPageType"
+          },
+          "target": 100
+        },
+        "contactUs": {
+          "defaultPage": false,
+          "route": "/contactUs",
+          "pageType": "article",
+          "displayName": "Contact Us",
+          "repositoryId": "contactUsPage",
+          "name": "contactUs",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "contactUsPageViewportPageRule"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "product": {
+          "defaultPage": true,
+          "route": "/product",
+          "pageType": "product",
+          "displayName": "Product",
+          "repositoryId": "productPage",
+          "name": "product",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "productPageType"
+          },
+          "target": 100
+        },
+        "searchresults": {
+          "defaultPage": true,
+          "route": "/searchresults",
+          "pageType": "searchResults",
+          "displayName": "Search Results",
+          "repositoryId": "searchResultsPage",
+          "name": "searchresults",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "searchResultsPageType"
+          },
+          "target": 100
+        },
+        "profile": {
+          "defaultPage": true,
+          "route": "/profile",
+          "pageType": "profile",
+          "displayName": "My Profile",
+          "repositoryId": "profilePage",
+          "name": "profile",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "profilePageType"
+          },
+          "target": 100
+        },
+        "orderHistory": {
+          "defaultPage": true,
+          "route": "/orderHistory",
+          "pageType": "orderHistory",
+          "displayName": "Order History",
+          "repositoryId": "orderHistoryPage",
+          "name": "orderHistory",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "orderHistoryPageType"
+          },
+          "target": 100
+        },
+        "confirmation": {
+          "defaultPage": true,
+          "route": "/confirmation",
+          "pageType": "confirmation",
+          "displayName": "Confirmation",
+          "repositoryId": "checkoutConfirmationPage",
+          "name": "confirmation",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "checkoutConfirmationPageType"
+          },
+          "target": 100
+        },
+        "signup": {
+          "defaultPage": true,
+          "route": "/signup",
+          "pageType": "signup",
+          "displayName": "Sign up",
+          "repositoryId": "signupPage",
+          "name": "signup",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "signupPageType"
+          },
+          "target": 100
+        },
+        "purchaseList": {
+          "defaultPage": true,
+          "route": "/purchaseList",
+          "pageType": "purchaseList",
+          "displayName": "Purchase List",
+          "repositoryId": "purchaseListPage",
+          "name": "purchaseList",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "purchaseListPageType"
+          },
+          "target": 100
+        },
+        "home": {
+          "defaultPage": true,
+          "route": "/home",
+          "pageType": "home",
+          "displayName": "Home",
+          "repositoryId": "homePage",
+          "name": "home",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "homePageType"
+          },
+          "target": 100
+        },
+        "orderDetails": {
+          "defaultPage": true,
+          "route": "/orderDetails",
+          "pageType": "orderDetails",
+          "displayName": "Order Details",
+          "repositoryId": "orderDetailsPage",
+          "name": "orderDetails",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "orderDetailsPageType"
+          },
+          "target": 100
+        },
+        "douglas-tests": {
+          "defaultPage": false,
+          "route": "/douglas-tests",
+          "pageType": "article",
+          "displayName": "Douglas Tests",
+          "repositoryId": "pa100006",
+          "name": "douglas-tests",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "100009"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "occs": {
+          "defaultPage": true,
+          "route": "/occs",
+          "pageType": "role",
+          "displayName": "Role",
+          "repositoryId": "rolePage",
+          "name": "occs",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "rolePageRule"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "rolePageType"
+          },
+          "target": 100
+        },
+        "returns": {
+          "defaultPage": false,
+          "route": "/returns",
+          "pageType": "article",
+          "displayName": "Returns",
+          "repositoryId": "returnsPage",
+          "name": "returns",
+          "sites": [],
+          "rules": [
+            {
+              "repositoryId": "returnsPageViewportPageRule"
+            }
+          ],
+          "pageTypeItem": {
+            "repositoryId": "articlePageType"
+          },
+          "target": 100
+        },
+        "category": {
+          "defaultPage": true,
+          "route": "/category",
+          "pageType": "category",
+          "displayName": "Collection",
+          "repositoryId": "categoryPage",
+          "name": "category",
+          "sites": [],
+          "rules": [],
+          "pageTypeItem": {
+            "repositoryId": "categoryPageType"
+          },
+          "target": 100
+        }
+      },
+      "user": {
+        "lastPurchaseDate": null,
+        "lastName": null,
+        "GDPRProfileP13nConsentDate": null,
+        "GDPRProfileP13nConsentGranted": false,
+        "gender": "female",
+        "catalog": {
+          "displayName": "Master Catalog",
+          "repositoryId": "cloudCatalog"
+        },
+        "dynamicProperties": [
+          {
+            "uiEditorType": "shortText",
+            "default": null,
+            "length": null,
+            "id": "m_CPF",
+            "label": "m_CPF",
+            "type": "string",
+            "value": null,
+            "required": false
+          },
+          {
+            "uiEditorType": "shortText",
+            "default": null,
+            "length": null,
+            "id": "m_IE",
+            "label": "m_IE",
+            "type": "string",
+            "value": null,
+            "required": false
+          },
+          {
+            "uiEditorType": "shortText",
+            "default": null,
+            "length": null,
+            "id": "m_email",
+            "label": "m_email",
+            "type": "string",
+            "value": null,
+            "required": false
+          },
+          {
+            "uiEditorType": "checkbox",
+            "default": null,
+            "length": null,
+            "id": "_trueB2B",
+            "label": "True B2B",
+            "type": "boolean",
+            "value": null,
+            "required": false
+          },
+          {
+            "uiEditorType": "number",
+            "default": null,
+            "length": null,
+            "id": "quarterly_spending",
+            "label": "Quarterly Spending",
+            "type": "float",
+            "value": null,
+            "required": false
+          }
+        ],
+        "roles": [],
+        "secondaryAddresses": {},
+        "numberOfOrders": null,
+        "login": null,
+        "locale": null,
+        "parentOrganization": null,
+        "receiveEmailDate": null,
+        "firstPurchaseDate": null,
+        "lifetimeSpend": null,
+        "loyaltyPrograms": [],
+        "lastPurchaseAmount": null,
+        "registrationDate": "2018-08-15T19:22:27.752Z",
+        "id": "233400",
+        "lifetimeAOV": null,
+        "email": null,
+        "daytimeTelephoneNumber": null,
+        "derivedOrderPriceLimit": null,
+        "contactBillingAddress": null,
+        "receiveEmail": "no",
+        "priceListGroup": {
+          "isTaxIncluded": false,
+          "endDate": null,
+          "displayName": "Default Price Group",
+          "listPriceList": {
+            "repositoryId": "listPrices"
+          },
+          "active": true,
+          "isPointsBased": false,
+          "locale": "en_US",
+          "shippingSurchargePriceList": {
+            "repositoryId": "shippingSurchargePrices"
+          },
+          "deleted": false,
+          "taxCalculationType": null,
+          "repositoryId": "defaultPriceGroup",
+          "salePriceList": {
+            "repositoryId": "salePrices"
+          },
+          "currency": {
+            "currencyType": null,
+            "symbol": "$",
+            "deleted": false,
+            "displayName": "US Dollar",
+            "repositoryId": "en_US",
+            "fractionalDigits": 2,
+            "currencyCode": "USD",
+            "numericCode": "840"
+          },
+          "id": "defaultPriceGroup",
+          "includeAllProducts": true,
+          "startDate": null
+        },
+        "dateOfBirth": null,
+        "contactShippingAddress": null,
+        "lastVisitDate": null,
+        "previousVisitDate": null,
+        "firstName": null,
+        "derivedApprovalRequired": false,
+        "lifetimeCurrencyCode": null,
+        "repositoryId": "233400",
+        "shippingAddress": null,
+        "firstVisitDate": null,
+        "currentOrganization": null,
+        "secondaryOrganizations": [],
+        "shippingAddresses": []
+      }
+    },
+    "page": {
+      "repositoryId": "paymentPage"
+    }
+  },
+  "viewports": "",
+  "metaTags": [],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com:443/ccstoreui/v1/pages/payment?dataOnly=false&currentDataOnly=true%20https%3A%2F%2Fadmin%3Aadmin%40ccstore-z1ma.oracleoutsourcing.com%2Fccstoreui%2Fv1%2Fpages%2Fpayment%3FdataOnly=false&currentDataOnly=true"
+    }
+  ],
+  "title": "Commerce Cloud Site",
+  "alternates": [
+    {
+      "hrefLang": "en",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com/payment"
+    },
+    {
+      "hrefLang": "x-default",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com/payment"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "repositoryId": "200909",
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com:443/ccstoreui/v1/analytics/visitorsMetric"
+    }
+  ]
+}

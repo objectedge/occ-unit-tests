@@ -1,12 +1,22 @@
 const fs = require('fs-extra');
 const path = require('path');
 const express = require('express');
+const glob = require('glob');
 const bodyParser = require('body-parser')
 const serverConfigs = require('../server-configs');
 
 const app = express();
 const port = serverConfigs.api.port;
+
+const customResponsesPath = path.join(__dirname, 'custom-responses');
 const schema = fs.readJsonSync(path.join('api','schema.json'), 'utf8');
+
+try {
+  customResponses = fs.readdirSync(customResponsesPath);
+} catch(error) {
+  console.log(`It was able to find any custom-response... using the default one`);
+}
+
 const schemaPaths = schema.paths;
 
 app.use(bodyParser.json());
@@ -18,28 +28,37 @@ app.set('etag', false);
 for(requestPath in schemaPaths) {
   for(method in schemaPaths[requestPath]) {
     const requestData = schemaPaths[requestPath][method];
-    const responsePath = requestData.responses;
+    let responsePath = requestData.responses;
+
+    if(customResponses.includes(requestData.operationId)) {
+      responsePath = path.relative(__dirname, path.join(customResponsesPath, requestData.operationId));
+      console.log(`Using custom response for ${requestData.operationId}...`);
+    }
 
     try {
       const requestsDefinitionPath = path.join(__dirname, responsePath);
-      const requestsDefinition = fs.readdirSync(requestsDefinitionPath);
-      
+      const requestsDefinition = glob.sync(path.join(requestsDefinitionPath, '**', 'descriptor.json'));
+
       requestsDefinition.forEach(definitionPath => {
-        const requestDescriptorPath = path.join(requestsDefinitionPath, definitionPath, 'descriptor.json');
         let descriptor;
 
         try {
-          descriptor = fs.readJsonSync(requestDescriptorPath);
+          descriptor = fs.readJsonSync(definitionPath);
         } catch(error) {
           console.log(`Warning: There is no valid descriptor for the request "${requestData.operationId}"`);
         }
 
         try {          
-          const responseDataPath = path.join(requestsDefinitionPath, definitionPath, descriptor.response.dataPath);
+          const responseDataPath = path.join(definitionPath, '..', descriptor.response.dataPath);
           const requestDefinition = descriptor.request;
           const responseDefinition = descriptor.response;
           let requestEndpoint = `${schema.basePath}${requestPath.replace('{id}', ':id').replace('{path: .*}', ':path')}`;
           
+          if(requestDefinition.queryParameters && requestDefinition.queryParameters.hasOwnProperty(':path')) {
+            requestEndpoint = requestEndpoint.replace(':path', requestDefinition.queryParameters[':path']);
+            delete requestDefinition.queryParameters[':path'];
+          }
+
           const checkEquality = (object1, object2) => {
             const optionsPropertyKey = '__options';
             const options = object1[optionsPropertyKey] || {};
@@ -107,6 +126,8 @@ for(requestPath in schemaPaths) {
             next();
           };
 
+          console.log(requestEndpoint);
+          
           app[requestDefinition.method](requestEndpoint, middleware, (req, res) => {
             res.header("OperationId", requestData.operationId);
 
