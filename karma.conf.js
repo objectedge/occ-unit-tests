@@ -22,7 +22,7 @@ module.exports = function(config) {
       { pattern: 'libs/occ/shared/**/*.js', included: false },
       { pattern: 'libs/occ/store-libs.js', included: true },
       { pattern: 'libs/custom/**/*.js', included: false },
-      { pattern: 'src/**/*.@(js|map)', included: false },
+      { pattern: 'dist/**/*.@(js|map)', included: false },
       { pattern: 'test/**/*.js', included: false }
     ],
     exclude: excludeFiles,

@@ -1,5 +1,5 @@
 define([
-  'src/app-level/oeFedexApi'
+  'dist/app-level/oeFedexApi'
 ], (oeFedexApi) => {
   describe("A suite", () => {
     it('has document', function () {

@@ -3,11 +3,13 @@
     "api": "node api",
     "test-headless": "karma start --browsers CustomChromeHeadless karma.conf.js",
     "test": "karma start --browsers Chrome karma.conf.js",
-    "start": "npm-run-all --parallel api test",
+    "start": "npm-run-all --parallel api bundle:watch test",
     "start-headless": "npm-run-all --parallel api test-headless",
     "update-schema": "node tasks/update-schema",
     "update-libs": "node tasks/update-libs",
-    "update-pages-responses": "node tasks/update-pages-responses"
+    "update-pages-responses": "node tasks/update-pages-responses",
+    "bundle": "node tasks/bundle-src",
+    "bundle:watch": "node tasks/bundle-src --watch"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -20,7 +22,12 @@
     "npm-run-all": "^4.1.3"
   },
   "dependencies": {
+    "@babel/core": "^7.0.0-rc.1",
+    "@babel/preset-env": "^7.0.0-rc.1",
     "@octokit/rest": "^15.9.5",
+    "babel-loader": "^8.0.0-beta.4",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "fs-extra": "^7.0.0",
@@ -29,6 +36,7 @@
     "request": "^2.88.0",
     "requirejs": "^2.3.5",
     "source-map": "^0.7.3",
-    "unzip": "^0.1.11"
+    "unzip": "^0.1.11",
+    "webpack": "^4.16.5"
   }
 }
