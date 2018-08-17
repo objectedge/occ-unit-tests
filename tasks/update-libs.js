@@ -7,7 +7,7 @@ const updateOracleJet = require('./update-oracle-jet');
 let oracleJetVersionDefault = '2.0.2'; //Defaults to 2.0.2, we will double check this inside the extractMainFilesFromSourceMap function
 let oracleJetVersion = null;
 
-const libsPath = path.join(__dirname, '..', 'libs');
+const libsPath = path.join(__dirname, '..', 'libs', 'occ');
 const url = 'https://ccstore-z1ma.oracleoutsourcing.com';
 const httpAuthCredentials = {
   username: 'admin',

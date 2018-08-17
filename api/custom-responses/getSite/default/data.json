@@ -1,0 +1,281 @@
+{
+  "priceListGroupList": [
+    {
+      "deleted": false,
+      "displayName": "Default Price Group",
+      "repositoryId": "defaultPriceGroup",
+      "active": true,
+      "currency": {
+        "currencyType": null,
+        "symbol": "$",
+        "deleted": false,
+        "displayName": "US Dollar",
+        "repositoryId": "en_US",
+        "fractionalDigits": 2,
+        "currencyCode": "USD",
+        "numericCode": "840"
+      },
+      "id": "defaultPriceGroup",
+      "locale": "en_US"
+    },
+    {
+      "deleted": false,
+      "displayName": "australianDollarPriceGroup",
+      "repositoryId": "australianDollarPriceGroup",
+      "active": true,
+      "currency": {
+        "currencyType": null,
+        "symbol": "$",
+        "deleted": false,
+        "displayName": "Australian Dollar",
+        "repositoryId": "en_AU",
+        "fractionalDigits": 2,
+        "currencyCode": "AUD",
+        "numericCode": "036"
+      },
+      "id": "australianDollarPriceGroup",
+      "locale": "en_AU"
+    }
+  ],
+  "productionURL": null,
+  "requireGDPRP13nConsent": null,
+  "defaultCatalog": {
+    "repositoryId": "cloudCatalog",
+    "rootCategories": [
+      {
+        "longDescription": "Cloud Commerce Non-Navigable",
+        "categoryImages": [],
+        "displayName": "Non-Navigable",
+        "categoryPaths": [
+          "/Non-Navigable"
+        ],
+        "active": false,
+        "description": null,
+        "categoryIdPaths": [
+          "nonNavigableCategory"
+        ],
+        "childCategories": null,
+        "fixedParentCategories": [],
+        "creationDate": "2018-06-01T05:04:05.000Z",
+        "route": "/non-navigable/category/nonNavigableCategory",
+        "repositoryId": "nonNavigableCategory",
+        "id": "nonNavigableCategory"
+      },
+      {
+        "longDescription": "Commerce Cloud Root Category",
+        "categoryImages": [],
+        "displayName": "Storefront Navigation",
+        "categoryPaths": [
+          "/Storefront Navigation"
+        ],
+        "active": false,
+        "description": null,
+        "categoryIdPaths": [
+          "rootCategory"
+        ],
+        "childCategories": [
+          {
+            "repositoryId": "z1ma"
+          },
+          {
+            "repositoryId": "z1ma001"
+          },
+          {
+            "repositoryId": "z1ma-1"
+          },
+          {
+            "repositoryId": "ducks"
+          },
+          {
+            "repositoryId": "cars-1"
+          },
+          {
+            "repositoryId": "catApparel"
+          },
+          {
+            "repositoryId": "catGifts"
+          }
+        ],
+        "fixedParentCategories": [],
+        "creationDate": "2018-06-01T04:59:24.000Z",
+        "route": "/storefront-navigation/category/rootCategory",
+        "repositoryId": "rootCategory",
+        "id": "rootCategory"
+      }
+    ],
+    "allRootCategories": []
+  },
+  "type": "siteConfiguration",
+  "defaultBillingCountryId": null,
+  "geoLocationEnabled": null,
+  "requireGDPRCookieConsent": null,
+  "timeToLive": null,
+  "defaultLocaleId": "1",
+  "emailAddress": "CloudCommerce@example.com",
+  "billingCountries": [
+    {
+      "countryCode": "AU",
+      "displayName": "Australia",
+      "repositoryId": "AU"
+    },
+    {
+      "countryCode": "US",
+      "displayName": "United States",
+      "repositoryId": "US"
+    }
+  ],
+  "exchangeRate": null,
+  "loyaltyPrograms": [],
+  "maxCouponsPerOrder": null,
+  "siteTemplate": "cloudSiteTemplate",
+  "paymentGateways": [
+    {
+      "repositoryId": "demoGenericGateway"
+    }
+  ],
+  "additionalProductionURLs": [],
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com:443/ccstoreui/v1/sites/siteUS"
+    }
+  ],
+  "id": "siteUS",
+  "defaultSalePriceList": {
+    "repositoryId": "salePrices"
+  },
+  "additionalLocaleIds": [],
+  "addThisEnabled": null,
+  "siteDownURL": null,
+  "sfVersion": {
+    "repositoryId": "siteUS"
+  },
+  "allowedOriginMethods": {
+    "http://devbox.objectedge.com:4200": "GET,PUT,POST,DELETE,OPTIONS",
+    "http://devbox.objectedge.com:8000": "GET,PUT,POST,DELETE,OPTIONS"
+  },
+  "defaultShippingSurchargePriceList": {
+    "repositoryId": "shippingSurchargePrices"
+  },
+  "defaultPriceListGroup": {
+    "deleted": false,
+    "displayName": "Default Price Group",
+    "repositoryId": "defaultPriceGroup",
+    "active": true,
+    "currency": {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "US Dollar",
+      "repositoryId": "en_US",
+      "fractionalDigits": 2,
+      "currencyCode": "USD",
+      "numericCode": "840"
+    },
+    "id": "defaultPriceGroup",
+    "locale": "en_US"
+  },
+  "payShippingInSecondaryCurrency": false,
+  "recommendationsPort": null,
+  "shipFromAddress": {
+    "country": "US",
+    "addressLine1": "2927A West Anderson Lane",
+    "city": "Austin",
+    "postalCode": "78757"
+  },
+  "siteSettings": {
+    "repositoryId": "100001"
+  },
+  "profileContextList": null,
+  "name": "Commerce Cloud Site",
+  "longDescription": null,
+  "timezone": "etc_utc",
+  "description": "Commerce Cloud Site",
+  "secondaryCurrency": null,
+  "defaultAccessLevel": "FULL",
+  "enabled": true,
+  "defaultShippingCountryId": "US",
+  "payTaxInSecondaryCurrency": false,
+  "endecaSiteId": null,
+  "activeTheme": null,
+  "paymentOption": "0",
+  "siteIcon": null,
+  "defaultListPriceList": {
+    "repositoryId": "listPrices"
+  },
+  "realmId": null,
+  "recommendationsHost": "recs.atgsvcs.com",
+  "favicon": null,
+  "noimage": null,
+  "contextRoot": null,
+  "masterCatalog": {
+    "repositoryId": "cloudCatalog",
+    "rootCategories": [
+      {
+        "longDescription": "Cloud Commerce Non-Navigable",
+        "categoryImages": [],
+        "displayName": "Non-Navigable",
+        "categoryPaths": [
+          "/Non-Navigable"
+        ],
+        "active": false,
+        "description": null,
+        "categoryIdPaths": [
+          "nonNavigableCategory"
+        ],
+        "childCategories": null,
+        "fixedParentCategories": [],
+        "creationDate": "2018-06-01T05:04:05.000Z",
+        "route": "/non-navigable/category/nonNavigableCategory",
+        "repositoryId": "nonNavigableCategory",
+        "id": "nonNavigableCategory"
+      },
+      {
+        "longDescription": "Commerce Cloud Root Category",
+        "categoryImages": [],
+        "displayName": "Storefront Navigation",
+        "categoryPaths": [
+          "/Storefront Navigation"
+        ],
+        "active": false,
+        "description": null,
+        "categoryIdPaths": [
+          "rootCategory"
+        ],
+        "childCategories": [
+          {
+            "repositoryId": "z1ma"
+          },
+          {
+            "repositoryId": "z1ma001"
+          },
+          {
+            "repositoryId": "z1ma-1"
+          },
+          {
+            "repositoryId": "ducks"
+          },
+          {
+            "repositoryId": "cars-1"
+          },
+          {
+            "repositoryId": "catApparel"
+          },
+          {
+            "repositoryId": "catGifts"
+          }
+        ],
+        "fixedParentCategories": [],
+        "creationDate": "2018-06-01T04:59:24.000Z",
+        "route": "/storefront-navigation/category/rootCategory",
+        "repositoryId": "rootCategory",
+        "id": "rootCategory"
+      }
+    ],
+    "allRootCategories": []
+  },
+  "siteTypes": [
+    "commerce"
+  ],
+  "repositoryId": "siteUS"
+}

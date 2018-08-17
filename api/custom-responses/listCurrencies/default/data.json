@@ -1,0 +1,640 @@
+{
+  "total": 61,
+  "totalResults": 61,
+  "offset": 0,
+  "selectedCurrency": {
+    "currencyType": null,
+    "symbol": "$",
+    "deleted": false,
+    "displayName": "US Dollar",
+    "repositoryId": "en_US",
+    "fractionalDigits": 2,
+    "currencyCode": "USD",
+    "numericCode": "840"
+  },
+  "limit": 250,
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com:443/ccstoreui/v1/currencies"
+    }
+  ],
+  "sort": [
+    {
+      "property": "displayName",
+      "order": "asc"
+    }
+  ],
+  "items": [
+    {
+      "currencyType": null,
+      "symbol": "دج",
+      "deleted": false,
+      "displayName": "Algerian Dinar",
+      "repositoryId": "ar_DZ",
+      "fractionalDigits": 2,
+      "currencyCode": "DZD",
+      "numericCode": "012"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Argentine Peso",
+      "repositoryId": "es_AR",
+      "fractionalDigits": 2,
+      "currencyCode": "ARS",
+      "numericCode": "032"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Australian Dollar",
+      "repositoryId": "en_AU",
+      "fractionalDigits": 2,
+      "currencyCode": "AUD",
+      "numericCode": "036"
+    },
+    {
+      "currencyType": null,
+      "symbol": "Bs.",
+      "deleted": false,
+      "displayName": "Boliviano",
+      "repositoryId": "es_BO",
+      "fractionalDigits": 2,
+      "currencyCode": "BOB",
+      "numericCode": "068"
+    },
+    {
+      "currencyType": null,
+      "symbol": "R$",
+      "deleted": false,
+      "displayName": "Brazilian Real",
+      "repositoryId": "pt_BR",
+      "fractionalDigits": 2,
+      "currencyCode": "BRL",
+      "numericCode": "986"
+    },
+    {
+      "currencyType": null,
+      "symbol": "£",
+      "deleted": false,
+      "displayName": "British Pound Sterling",
+      "repositoryId": "en_GB",
+      "fractionalDigits": 2,
+      "currencyCode": "GBP",
+      "numericCode": "826"
+    },
+    {
+      "currencyType": null,
+      "symbol": "лв",
+      "deleted": false,
+      "displayName": "Bulgarian Lev",
+      "repositoryId": "bg_BG",
+      "fractionalDigits": 2,
+      "currencyCode": "BGN",
+      "numericCode": "975"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Canadian Dollar",
+      "repositoryId": "en_CA",
+      "fractionalDigits": 2,
+      "currencyCode": "CAD",
+      "numericCode": "124"
+    },
+    {
+      "currencyType": null,
+      "symbol": "FCFA",
+      "deleted": false,
+      "displayName": "CFA Franc BEAC",
+      "repositoryId": "ksf_CM",
+      "fractionalDigits": 0,
+      "currencyCode": "XAF",
+      "numericCode": "950"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Chilean Peso",
+      "repositoryId": "es_CL",
+      "fractionalDigits": 0,
+      "currencyCode": "CLP",
+      "numericCode": "152"
+    },
+    {
+      "currencyType": null,
+      "symbol": "¥",
+      "deleted": false,
+      "displayName": "Chinese Yuan Renminbi",
+      "repositoryId": "zh_CN",
+      "fractionalDigits": 2,
+      "currencyCode": "CNY",
+      "numericCode": "156"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Colombian Peso",
+      "repositoryId": "es_CO",
+      "fractionalDigits": 2,
+      "currencyCode": "COP",
+      "numericCode": "170"
+    },
+    {
+      "currencyType": null,
+      "symbol": "C$",
+      "deleted": false,
+      "displayName": "Cordoba Oro",
+      "repositoryId": "es_NI",
+      "fractionalDigits": 2,
+      "currencyCode": "NIO",
+      "numericCode": "558"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₡",
+      "deleted": false,
+      "displayName": "Costa Rican Colon",
+      "repositoryId": "es_CR",
+      "fractionalDigits": 2,
+      "currencyCode": "CRC",
+      "numericCode": "188"
+    },
+    {
+      "currencyType": null,
+      "symbol": "kn",
+      "deleted": false,
+      "displayName": "Croatian Kuna",
+      "repositoryId": "hr_HR",
+      "fractionalDigits": 2,
+      "currencyCode": "HRK",
+      "numericCode": "191"
+    },
+    {
+      "currencyType": null,
+      "symbol": "Kč",
+      "deleted": false,
+      "displayName": "Czech Koruna",
+      "repositoryId": "cs_CZ",
+      "fractionalDigits": 2,
+      "currencyCode": "CZK",
+      "numericCode": "203"
+    },
+    {
+      "currencyType": null,
+      "symbol": "kr.",
+      "deleted": false,
+      "displayName": "Danish Krone",
+      "repositoryId": "da_DK",
+      "fractionalDigits": 2,
+      "currencyCode": "DKK",
+      "numericCode": "208"
+    },
+    {
+      "currencyType": null,
+      "symbol": "RD$",
+      "deleted": false,
+      "displayName": "Dominican Peso",
+      "repositoryId": "es_DO",
+      "fractionalDigits": 2,
+      "currencyCode": "DOP",
+      "numericCode": "214"
+    },
+    {
+      "currencyType": null,
+      "symbol": "E£",
+      "deleted": false,
+      "displayName": "Egyptian Pound",
+      "repositoryId": "ar_EG",
+      "fractionalDigits": 2,
+      "currencyCode": "EGP",
+      "numericCode": "818"
+    },
+    {
+      "currencyType": null,
+      "symbol": "€",
+      "deleted": false,
+      "displayName": "Euro",
+      "repositoryId": "de_DE_EURO",
+      "fractionalDigits": 2,
+      "currencyCode": "EUR",
+      "numericCode": "978"
+    },
+    {
+      "currencyType": null,
+      "symbol": "Q",
+      "deleted": false,
+      "displayName": "Guatemalan Quetzal",
+      "repositoryId": "es_GT",
+      "fractionalDigits": 2,
+      "currencyCode": "GTQ",
+      "numericCode": "320"
+    },
+    {
+      "currencyType": null,
+      "symbol": "HK$",
+      "deleted": false,
+      "displayName": "Hong Kong Dollar",
+      "repositoryId": "zh_HK",
+      "fractionalDigits": 2,
+      "currencyCode": "HKD",
+      "numericCode": "344"
+    },
+    {
+      "currencyType": null,
+      "symbol": "Ft",
+      "deleted": false,
+      "displayName": "Hungarian Forint",
+      "repositoryId": "hu_HU",
+      "fractionalDigits": 2,
+      "currencyCode": "HUF",
+      "numericCode": "348"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₹",
+      "deleted": false,
+      "displayName": "Indian Rupee",
+      "repositoryId": "hi_IN",
+      "fractionalDigits": 2,
+      "currencyCode": "INR",
+      "numericCode": "356"
+    },
+    {
+      "currencyType": null,
+      "symbol": "Rp",
+      "deleted": false,
+      "displayName": "Indonesian Rupiah",
+      "repositoryId": "in_ID",
+      "fractionalDigits": 2,
+      "currencyCode": "IDR",
+      "numericCode": "360"
+    },
+    {
+      "currencyType": null,
+      "symbol": "¥",
+      "deleted": false,
+      "displayName": "Japanese Yen",
+      "repositoryId": "ja_JP",
+      "fractionalDigits": 0,
+      "currencyCode": "JPY",
+      "numericCode": "392"
+    },
+    {
+      "currencyType": null,
+      "symbol": "KSh",
+      "deleted": false,
+      "displayName": "Kenyan Shilling",
+      "repositoryId": "sw_KE",
+      "fractionalDigits": 2,
+      "currencyCode": "KES",
+      "numericCode": "404"
+    },
+    {
+      "currencyType": null,
+      "symbol": "ل.ل.‎",
+      "deleted": false,
+      "displayName": "Lebanese Pound",
+      "repositoryId": "ar_LB",
+      "fractionalDigits": 2,
+      "currencyCode": "LBP",
+      "numericCode": "422"
+    },
+    {
+      "currencyType": null,
+      "symbol": "L",
+      "deleted": false,
+      "displayName": "Lempira",
+      "repositoryId": "es_HN",
+      "fractionalDigits": 2,
+      "currencyCode": "HNL",
+      "numericCode": "340"
+    },
+    {
+      "currencyType": null,
+      "symbol": "RM",
+      "deleted": false,
+      "displayName": "Malaysian Ringgit",
+      "repositoryId": "ms_MY",
+      "fractionalDigits": 2,
+      "currencyCode": "MYR",
+      "numericCode": "458"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Mexican Peso",
+      "repositoryId": "es_MX",
+      "fractionalDigits": 2,
+      "currencyCode": "MXN",
+      "numericCode": "484"
+    },
+    {
+      "currencyType": null,
+      "symbol": "MAD",
+      "deleted": false,
+      "displayName": "Moroccan Dirham",
+      "repositoryId": "ar_MA",
+      "fractionalDigits": 2,
+      "currencyCode": "MAD",
+      "numericCode": "504"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₦",
+      "deleted": false,
+      "displayName": "Naira",
+      "repositoryId": "ig_NG",
+      "fractionalDigits": 2,
+      "currencyCode": "NGN",
+      "numericCode": "566"
+    },
+    {
+      "currencyType": null,
+      "symbol": "NT$",
+      "deleted": false,
+      "displayName": "New Taiwan Dollar",
+      "repositoryId": "zh_TW",
+      "fractionalDigits": 2,
+      "currencyCode": "TWD",
+      "numericCode": "901"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "New Zealand Dollar",
+      "repositoryId": "en_NZ",
+      "fractionalDigits": 2,
+      "currencyCode": "NZD",
+      "numericCode": "554"
+    },
+    {
+      "currencyType": null,
+      "symbol": "kr",
+      "deleted": false,
+      "displayName": "Norwegian Krone",
+      "repositoryId": "no_NO",
+      "fractionalDigits": 2,
+      "currencyCode": "NOK",
+      "numericCode": "578"
+    },
+    {
+      "currencyType": null,
+      "symbol": "Rs.",
+      "deleted": false,
+      "displayName": "Pakistani Rupee",
+      "repositoryId": "ur_PK",
+      "fractionalDigits": 2,
+      "currencyCode": "PKR",
+      "numericCode": "586"
+    },
+    {
+      "currencyType": null,
+      "symbol": "B/.",
+      "deleted": false,
+      "displayName": "Panamanian Balboa",
+      "repositoryId": "es_PA",
+      "fractionalDigits": 2,
+      "currencyCode": "PAB",
+      "numericCode": "590"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₲",
+      "deleted": false,
+      "displayName": "Paraguayan Guarani",
+      "repositoryId": "es_PY",
+      "fractionalDigits": 0,
+      "currencyCode": "PYG",
+      "numericCode": "600"
+    },
+    {
+      "currencyType": null,
+      "symbol": "S/.",
+      "deleted": false,
+      "displayName": "Peruvian Nuevo Sol",
+      "repositoryId": "es_PE",
+      "fractionalDigits": 2,
+      "currencyCode": "PEN",
+      "numericCode": "604"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₱",
+      "deleted": false,
+      "displayName": "Philippine Peso",
+      "repositoryId": "en_PH",
+      "fractionalDigits": 2,
+      "currencyCode": "PHP",
+      "numericCode": "608"
+    },
+    {
+      "currencyType": null,
+      "symbol": "zł",
+      "deleted": false,
+      "displayName": "Polish Zloty",
+      "repositoryId": "pl_PL",
+      "fractionalDigits": 2,
+      "currencyCode": "PLN",
+      "numericCode": "985"
+    },
+    {
+      "currencyType": null,
+      "symbol": "QR",
+      "deleted": false,
+      "displayName": "Qatari Riyal",
+      "repositoryId": "ar_QA",
+      "fractionalDigits": 2,
+      "currencyCode": "QAR",
+      "numericCode": "634"
+    },
+    {
+      "currencyType": null,
+      "symbol": "R",
+      "deleted": false,
+      "displayName": "Rand",
+      "repositoryId": "en_ZA",
+      "fractionalDigits": 2,
+      "currencyCode": "ZAR",
+      "numericCode": "710"
+    },
+    {
+      "currencyType": null,
+      "symbol": "lei",
+      "deleted": false,
+      "displayName": "Romanian Leu",
+      "repositoryId": "ro_RO",
+      "fractionalDigits": 2,
+      "currencyCode": "RON",
+      "numericCode": "642"
+    },
+    {
+      "currencyType": null,
+      "symbol": "руб",
+      "deleted": false,
+      "displayName": "Russian Ruble",
+      "repositoryId": "ru_RU",
+      "fractionalDigits": 2,
+      "currencyCode": "RUB",
+      "numericCode": "643"
+    },
+    {
+      "currencyType": null,
+      "symbol": "SR",
+      "deleted": false,
+      "displayName": "Saudi Riyal",
+      "repositoryId": "ar_SA",
+      "fractionalDigits": 2,
+      "currencyCode": "SAR",
+      "numericCode": "682"
+    },
+    {
+      "currencyType": null,
+      "symbol": "РСД",
+      "deleted": false,
+      "displayName": "Serbian Dinar",
+      "repositoryId": "sh_RS",
+      "fractionalDigits": 2,
+      "currencyCode": "RSD",
+      "numericCode": "941"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "Singapore Dollar",
+      "repositoryId": "zh_SG",
+      "fractionalDigits": 2,
+      "currencyCode": "SGD",
+      "numericCode": "702"
+    },
+    {
+      "currencyType": null,
+      "symbol": "ЅМ",
+      "deleted": false,
+      "displayName": "Somoni",
+      "repositoryId": "tg_TJ",
+      "fractionalDigits": 2,
+      "currencyCode": "TJS",
+      "numericCode": "972"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₩",
+      "deleted": false,
+      "displayName": "South Korean Won",
+      "repositoryId": "ko_KR",
+      "fractionalDigits": 0,
+      "currencyCode": "KRW",
+      "numericCode": "410"
+    },
+    {
+      "currencyType": null,
+      "symbol": "kr",
+      "deleted": false,
+      "displayName": "Swedish Krona",
+      "repositoryId": "sv_SE",
+      "fractionalDigits": 2,
+      "currencyCode": "SEK",
+      "numericCode": "752"
+    },
+    {
+      "currencyType": null,
+      "symbol": "CHF",
+      "deleted": false,
+      "displayName": "Swiss Franc",
+      "repositoryId": "fr_CH",
+      "fractionalDigits": 2,
+      "currencyCode": "CHF",
+      "numericCode": "756"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₸",
+      "deleted": false,
+      "displayName": "Tenge",
+      "repositoryId": "kk_KZ",
+      "fractionalDigits": 2,
+      "currencyCode": "KZT",
+      "numericCode": "398"
+    },
+    {
+      "currencyType": null,
+      "symbol": "฿",
+      "deleted": false,
+      "displayName": "Thai Baht",
+      "repositoryId": "th_TH",
+      "fractionalDigits": 2,
+      "currencyCode": "THB",
+      "numericCode": "764"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₺",
+      "deleted": false,
+      "displayName": "Turkish Lira",
+      "repositoryId": "tr_TR",
+      "fractionalDigits": 2,
+      "currencyCode": "TRY",
+      "numericCode": "949"
+    },
+    {
+      "currencyType": null,
+      "symbol": "د.إ",
+      "deleted": false,
+      "displayName": "UAE Dirham",
+      "repositoryId": "ar_AE",
+      "fractionalDigits": 2,
+      "currencyCode": "AED",
+      "numericCode": "784"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₴",
+      "deleted": false,
+      "displayName": "Ukrainian Hryvnia",
+      "repositoryId": "uk_UA",
+      "fractionalDigits": 2,
+      "currencyCode": "UAH",
+      "numericCode": "980"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$U",
+      "deleted": false,
+      "displayName": "Uruguayan Peso",
+      "repositoryId": "es_UY",
+      "fractionalDigits": 2,
+      "currencyCode": "UYU",
+      "numericCode": "858"
+    },
+    {
+      "currencyType": null,
+      "symbol": "$",
+      "deleted": false,
+      "displayName": "US Dollar",
+      "repositoryId": "en_US",
+      "fractionalDigits": 2,
+      "currencyCode": "USD",
+      "numericCode": "840"
+    },
+    {
+      "currencyType": null,
+      "symbol": "₫",
+      "deleted": false,
+      "displayName": "Vietnamese Dong",
+      "repositoryId": "vi_VN",
+      "fractionalDigits": 0,
+      "currencyCode": "VND",
+      "numericCode": "704"
+    }
+  ]
+}

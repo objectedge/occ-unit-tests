@@ -24,6 +24,9 @@ const layoutsPath = path.join(customResponsesPath, 'getLayout');
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+
+  console.log(`Requesting main page ${baseUrl}...`);
+
   const waitXHRResponse = urlRegex => {
     return page.waitForResponse(request => {
       if('xhr' !== request.request().resourceType()){
@@ -76,12 +79,34 @@ const layoutsPath = path.join(customResponsesPath, 'getLayout');
       const dataTypePath = path.join(currentPath, pageDataType);
       const dataTypeQueryParameters = url.parse(dataTypeEndpoint, true).query;
       await fs.ensureDir(dataTypePath);
+
+      console.log(`Getting data from ${util.format(dataTypeEndpoint, dataTypeEndpoint)}...`);
       const routeResponse = await request(util.format(dataTypeEndpoint, dataTypeEndpoint));
+      const parseBody = JSON.parse(routeResponse.body);
+
+      // Don't keep any widgets, we are going to mock this
+      if(parseBody.hasOwnProperty('regions')) {
+        parseBody.regions.forEach(region => {
+          region.widgets = [];
+        });
+      }
+
+      // Don't keep information about resolution on layouts, it will force us to generate one layout for each resolution
+      // we should mock this when necessary
+      if(pageDataType === 'layout' && dataTypeQueryParameters['ccvp']) {
+        delete dataTypeQueryParameters['ccvp'];
+      }
 
       responseDescriptor.request.queryParameters = dataTypeQueryParameters;
       responseDescriptor.request.queryParameters[':path'] = normalizedRoute;
-      fs.writeJson(`${dataTypePath}/descriptor.json`, responseDescriptor, { spaces: 2 });
-      fs.writeJson(`${dataTypePath}/data.json`, JSON.parse(routeResponse.body), { spaces: 2 });
+      const descriptorPath = `${dataTypePath}/descriptor.json`;
+      const dataPath = `${dataTypePath}/data.json`;
+      fs.writeJson(descriptorPath, responseDescriptor, { spaces: 2 });
+      fs.writeJson(dataPath, parseBody, { spaces: 2 });
+      console.log(`Descriptor have been saved at ${descriptorPath}...`);
+      console.log(`Data have been saved at ${dataPath}...\n\n`);
     }
   }
+
+  console.log('Done!');
 })();

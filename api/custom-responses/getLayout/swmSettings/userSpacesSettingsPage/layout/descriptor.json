@@ -1,7 +1,6 @@
 {
   "request": {
     "queryParameters": {
-      "ccvp": "lg",
       ":path": "wishlist_settings"
     },
     "method": "get",

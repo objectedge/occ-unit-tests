@@ -8,8 +8,16 @@ const serverConfigs = require('../server-configs');
 const app = express();
 const port = serverConfigs.api.port;
 
+const schemaPath = path.join('api','schema.json');
+const customSchemaPath = path.join('api','custom-schema.json');
 const customResponsesPath = path.join(__dirname, 'custom-responses');
-const schema = fs.readJsonSync(path.join('api','schema.json'), 'utf8');
+
+const schema = fs.readJsonSync(schemaPath, 'utf8');
+let customSchema;
+
+if (fs.existsSync(customSchemaPath)) {
+  customSchema = fs.readJsonSync(customSchemaPath);
+}
 
 try {
   customResponses = fs.readdirSync(customResponsesPath);
@@ -17,7 +25,22 @@ try {
   console.log(`It was able to find any custom-response... using the default one`);
 }
 
-const schemaPaths = schema.paths;
+let schemaPaths = schema.paths;
+
+if(customSchema) {
+  const customSchemaPaths = customSchema.paths;
+  
+  Object.keys(customSchemaPaths).forEach(customSchemaPath => {
+    // just ignores the original schema path
+    if(Object.keys(schemaPaths).includes(customSchemaPath)) {
+      delete schemaPaths[customSchemaPath];
+    }
+
+    console.log(`Using custom schema path for ${customSchemaPath}...`);
+  });
+  
+  schemaPaths = Object.assign(schemaPaths, customSchemaPaths);
+}
 
 app.use(bodyParser.json());
 app.use(bodyParser.text());
@@ -54,11 +77,15 @@ for(requestPath in schemaPaths) {
           const responseDefinition = descriptor.response;
           let requestEndpoint = `${schema.basePath}${requestPath.replace('{id}', ':id').replace('{path: .*}', ':path')}`;
           
-          if(requestDefinition.queryParameters && requestDefinition.queryParameters.hasOwnProperty(':path')) {
-            requestEndpoint = requestEndpoint.replace(':path', requestDefinition.queryParameters[':path']);
-            delete requestDefinition.queryParameters[':path'];
+          if(requestDefinition.queryParameters) {
+            Object.keys(requestDefinition.queryParameters).forEach(queryParamKey => {
+              if(/^:/.test(queryParamKey)) {
+                requestEndpoint = requestEndpoint.replace(queryParamKey, requestDefinition.queryParameters[queryParamKey]);
+                delete requestDefinition.queryParameters[queryParamKey]
+              }
+            });
           }
-
+          
           const checkEquality = (object1, object2) => {
             const optionsPropertyKey = '__options';
             const options = object1[optionsPropertyKey] || {};
@@ -125,10 +152,8 @@ for(requestPath in schemaPaths) {
 
             next();
           };
-
-          console.log(requestEndpoint);
           
-          app[requestDefinition.method](requestEndpoint, middleware, (req, res) => {
+          app[requestDefinition.method](`*${requestEndpoint}`, middleware, (req, res) => {
             res.header("OperationId", requestData.operationId);
 
             Object.keys(responseDefinition).forEach(requestOption => {

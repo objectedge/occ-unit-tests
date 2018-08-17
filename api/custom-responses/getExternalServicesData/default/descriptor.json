@@ -1,0 +1,24 @@
+{
+  "allowedParameters": [
+    {
+      "in": "header",
+      "name": "X-CCAsset-Language",
+      "description": "The asset language of the request",
+      "type": "string",
+      "required": false
+    }
+  ],
+  "request": {
+    "queryParameters": {},
+    "method": "get",
+    "headers": {},
+    "body": {}
+  },
+  "response": {
+    "dataPath": "data.json",
+    "statusCode": "200",
+    "headers": {
+      "content-type": "application/json"
+    }
+  }
+}

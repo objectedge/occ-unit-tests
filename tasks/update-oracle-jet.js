@@ -7,7 +7,8 @@ const path = require('path');
 const os = require('os');
 const oracleZipPath = path.join(os.tmpdir(), 'oraclejet.zip');
 const unzippedPath = path.join(os.tmpdir(), 'oraclejet');
-const libsOracleJetPath = path.join(__dirname, '..', 'libs', 'js', 'oraclejet', 'js', 'libs', 'oj', '%s'); 
+const libsPath = path.join(__dirname, '..', 'libs', 'occ');
+const libsOracleJetPath = path.join(libsPath, 'js', 'oraclejet', 'js', 'libs', 'oj', '%s'); 
 
 function getReleaseIdByTagName(tagName) {
   console.log(`Fetching Oracle Jet Release ${tagName}...`);

@@ -1,0 +1,18 @@
+{
+  "serverType": "production",
+  "serviceData": {
+    "path": "pr",
+    "port": 443,
+    "displayName": "Oracle Recommendations",
+    "host": "recs.atgsvcs.com",
+    "name": "Recommendations",
+    "tenantId": null
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://ccstore-z1ma.oracleoutsourcing.com:443/ccstoreui/v1/merchant/production-Recommendations"
+    }
+  ],
+  "id": "production-Recommendations"
+}

@@ -1,7 +1,6 @@
 {
   "request": {
     "queryParameters": {
-      "ccvp": "lg",
       ":path": "contactUs"
     },
     "method": "get",
