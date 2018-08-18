@@ -10,7 +10,8 @@ const port = serverConfigs.api.port;
 
 const schemaPath = path.join('api','schema.json');
 const customSchemaPath = path.join('api','custom-schema.json');
-const customResponsesPath = path.join(__dirname, 'custom-responses');
+const customResponsesDir = 'custom-responses';
+const customResponsesPath = path.join(__dirname, customResponsesDir);
 
 const schema = fs.readJsonSync(schemaPath, 'utf8');
 let customSchema;
@@ -34,6 +35,7 @@ if(customSchema) {
     // just ignores the original schema path
     if(Object.keys(schemaPaths).includes(customSchemaPath)) {
       delete schemaPaths[customSchemaPath];
+      schemaPaths[customSchemaPath].customResponsesPath = customSchemaPath;
     }
 
     console.log(`Using custom schema path for ${customSchemaPath}...`);
@@ -45,23 +47,54 @@ if(customSchema) {
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 
-// Disabling ETag
+// Disabling ETag because OCC tries to parse it and we don't have a valid value for this
 app.set('etag', false);
 
 for(requestPath in schemaPaths) {
   for(method in schemaPaths[requestPath]) {
     const requestData = schemaPaths[requestPath][method];
     let responsePath = requestData.responses;
+    let customRequestsDefinitionPath;
 
-    if(customResponses.includes(requestData.operationId)) {
+    // Only replaces the response path if it contains a custom schema, otherwise just replace the response path
+    if(Object.keys(customSchema.paths).includes(requestPath) && customResponses.includes(requestData.operationId)) {
       responsePath = path.relative(__dirname, path.join(customResponsesPath, requestData.operationId));
-      console.log(`Using custom response for ${requestData.operationId}...`);
+      console.log(`Using custom schema response for ${requestData.operationId}...`);
+    } else if(!Object.keys(customSchema.paths).includes(requestPath) && customResponses.includes(requestData.operationId)) {
+      customRequestsDefinitionPath = path.relative(__dirname, path.join(customResponsesPath, requestData.operationId));
     }
 
     try {
       const requestsDefinitionPath = path.join(__dirname, responsePath);
-      const requestsDefinition = glob.sync(path.join(requestsDefinitionPath, '**', 'descriptor.json'));
+      let requestsDefinition = glob.sync(path.join(requestsDefinitionPath, '**', 'descriptor.json'));
+      
+      // replace the response path by the custom response path
+      if(customRequestsDefinitionPath) {    
+        const customRequestsDefinition = glob.sync(path.join(__dirname, customRequestsDefinitionPath, '**', 'descriptor.json'));
+        requestsDefinition = requestsDefinition.map(definitionPath => {
+          const customDefinitionPathIndex = customRequestsDefinition.indexOf(definitionPath.replace(path.dirname(responsePath), customResponsesDir));
+          if(customDefinitionPathIndex > -1) {
+            return customRequestsDefinition[customDefinitionPathIndex];
+          }
 
+          return definitionPath;
+        });
+
+        // adding new custom responses to request definitions
+        customRequestsDefinition.forEach(itemPath => {
+          if(!requestsDefinition.includes(itemPath)) {
+            const indexOfDefaultdescriptor = requestsDefinition.indexOf(path.join(__dirname, responsePath, 'default', 'descriptor.json'));
+            
+            // Don't keep the default response when we have custom response
+            if(indexOfDefaultdescriptor > -1) {
+              requestsDefinition.splice(requestsDefinition[indexOfDefaultdescriptor], 1);              
+            }
+
+            requestsDefinition.push(itemPath);
+          }
+        });
+      }
+            
       requestsDefinition.forEach(definitionPath => {
         let descriptor;
 

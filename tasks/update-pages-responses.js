@@ -1,4 +1,3 @@
-const puppeteer = require('puppeteer');
 const fs = require('fs-extra');
 const util = require('util');
 const path = require('path');
@@ -12,9 +11,9 @@ const pagesDataEndpoints = {
   layout: `${baseUrl}/ccstoreui/v1/pages/layout/%s?ccvp=lg`
 };
 
-const customResponsesPath = path.join(__dirname, '..', 'api', 'custom-responses');
-const pagesPath = path.join(customResponsesPath, 'getPage');
-const layoutsPath = path.join(customResponsesPath, 'getLayout');
+const responsesPath = path.join(__dirname, '..', 'api', 'responses');
+const pagesPath = path.join(responsesPath, 'getPage');
+const layoutsPath = path.join(responsesPath, 'getLayout');
 
 (async () => {
   await fs.remove(pagesPath);
@@ -22,29 +21,13 @@ const layoutsPath = path.join(customResponsesPath, 'getLayout');
   await fs.remove(layoutsPath);
   await fs.ensureDir(layoutsPath);
 
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
+  console.log(`Getting main page global data from ${baseUrl}...\n`);
+  let globalPageData = await request(util.format(pagesDataEndpoints.global, 'home'));
+  globalPageData = JSON.parse(globalPageData.body);
 
-  console.log(`Requesting main page ${baseUrl}...`);
+  const links = globalPageData.data.global.links;
 
-  const waitXHRResponse = urlRegex => {
-    return page.waitForResponse(request => {
-      if('xhr' !== request.request().resourceType()){
-        return false;
-      }
-      
-      return urlRegex.test(request.url());
-    });
-  };
-
-  waitXHRResponse(/dataOnly=false&cacheableDataOnly=true&productTypesRequired=true/);
-  await page.goto(baseUrl);
-  const pageResponse = await waitXHRResponse(/dataOnly=false&cacheableDataOnly=true&productTypesRequired=true/);
-  const jsonData = await pageResponse.json();
-  const links = jsonData.data.global.links;
-  await browser.close();
-
-  await fs.ensureDir(customResponsesPath);
+  await fs.ensureDir(responsesPath);
   await fs.ensureDir(pagesPath);
   await fs.ensureDir(layoutsPath);
 

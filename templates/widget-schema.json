@@ -1,0 +1,28 @@
+{
+  "customTranslations": {},
+  "localeResources": {
+    "en": {
+      "namespace": "ns.widgetName",
+      "resources": {}
+    }
+  },
+  "instanceName": "Instance Name",
+  "displayName": "Widget Display Name",
+  "global": false,
+  "locale": "en",
+  "pages": [],
+  "elementsSrc": "",
+  "id": "widgetId",
+  "imports": [],
+  "javascriptExtension": null,
+  "i18nresources": "i18n",
+  "assetMappings": {},
+  "javascript": "javascript",
+  "templateUrl": "templateurl",
+  "templateSrc": "",
+  "pageIds": [],
+  "elementsJs": {},
+  "typeId": "id_version",
+  "editableWidget": true,
+  "requiredLinks": []
+}

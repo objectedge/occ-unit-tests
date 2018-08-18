@@ -16,6 +16,7 @@ module.exports = function(config) {
     basePath: '',
     frameworks: ['mocha', 'requirejs', 'chai'],
     files: [
+      { pattern: 'src/widgets/**/*.template', included: false },
       { pattern: 'libs/occ/main.js', included: true },
       { pattern: 'test-main.js', included: true },
       { pattern: 'libs/occ/js/**/*.js', included: false },
@@ -29,16 +30,21 @@ module.exports = function(config) {
     proxies: {
       '/': `${serverConfigs.api.domain}:${serverConfigs.api.port}`
     },
+    customDebugFile: 'debug.html',
     urlRoot: serverConfigs.karma.urlRoot,
-    reporters: ['progress'],
+    reporters: ['mocha'],
     port: serverConfigs.karma.port,  // karma web server port
     colors: true,
     logLevel: config.LOG_INFO,
-    browsers: ['Chrome', 'CustomChromeHeadless'],
+    browsers: ['CustomChrome', 'CustomChromeHeadless'],
     customLaunchers: {
       CustomChromeHeadless: {
         base: 'ChromeHeadless',
         flags: ['--disable-translate', '--disable-extensions']
+      },
+      CustomChrome: {
+        base: 'Chrome',
+        flags: ['--disable-translate', '--auto-open-devtools-for-tabs', `http://localhost:${serverConfigs.karma.port}${serverConfigs.karma.urlRoot}/debug.html`]
       }
     },
     autoWatch: true,
