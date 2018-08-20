@@ -44,12 +44,8 @@
           "javascriptExtension": null,
           "displayName": "oeDouglasUnitTests",
           "i18nresources": "oeDouglasUnitTests",
-          "assetMappings": {
-            
-          },
           "global": false,
           "locale": "en",
-          "javascript": "oeDouglasUnitTests.min",
           "templateUrl": "http://localhost:9876/app/base/widgets/oeDouglasUnitTests/templates/display.template",
           "templateSrc": "",
           "pages": ["douglas-tests"],

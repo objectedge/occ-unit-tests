@@ -1,7 +1,15 @@
 define([
-    'dist/widgets/oeDouglasUnitTests/js/index'
-  ], (sampleViewModel) => {
-    window.routePath = 'home';
+    'loadMain',   
+    'dist/widgets/oeDouglasUnitTests/js/view-models/sample'
+  ], (loadMain, sampleViewModel) => {
+    before(() => {
+      return new Promise((resolve) => {
+        loadMain.load('douglas-tests', (ko, layoutContainer, masterViewModel) => {
+          console.log(layoutContainer);
+          resolve();
+        });
+      });
+    });
   
     describe("A suite", () => {
       it('has document', function () {
