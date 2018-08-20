@@ -16,8 +16,6 @@ just for immediate execution, without reporting to Karma server.
   <div id="oracle-cc" data-bind="setContextVariable:{name:'masterViewModel', value:$data}">
     <!-- ko previewBar: isPreview() --><!-- /ko -->
     <!-- ko agentBar: isObo() --><!-- /ko -->
-    <div id="alert-page-change" class="sr-only" role="alert" aria-atomic="true" aria-live="polite" data-bind="text: pageChangeMessage"></div>
-    <div id="alert-modal-change" class="sr-only" role="alert" aria-atomic="true" aria-live="polite" ></div>
     <div id="page" data-bind="css:{'preview': isPreview, 'container': containPage}">
       <header id="headerBar" class="page-row">
         

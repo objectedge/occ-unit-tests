@@ -2,6 +2,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 const devConfigs = require('./dev-configs');
 
 const entries = {};
@@ -21,10 +23,12 @@ plugins.push(new webpack.NormalModuleReplacementPlugin(/occ-components/, (module
   moduleObject.request = path.join(occComponentsTempDir, moduleName, entryPoint);
 }));
 
+plugins.push(new MiniCssExtractPlugin());
+
 let srcFilesList = [];
 
 for(contentRelativePath of devConfigs.contents) {
-  const files = glob.sync(path.join(srcDir, contentRelativePath, '**', '*.js'));
+  const files = glob.sync(path.join(srcDir, contentRelativePath, '**', '*.@(js|less)'));
   if(files.length) {
     files.forEach(filePath => {
       srcFilesList.push(filePath);
@@ -33,7 +37,13 @@ for(contentRelativePath of devConfigs.contents) {
 }
 
 srcFilesList.forEach(srcPath => {
-  entries[path.relative(srcDir, srcPath)] = srcPath;
+  let destFileName = srcPath;
+
+  if(/\.less/.test(destFileName)) {
+    destFileName = destFileName.replace('.less', '');
+  }
+
+  entries[path.relative(srcDir, destFileName)] = srcPath;
 });
 
 entries[path.join('widget-core', 'index.js')] = path.join('occ-components', 'widget-core');
@@ -50,6 +60,14 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.(less|css)$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader",
+          "less-loader"
+        ]
+      },
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,

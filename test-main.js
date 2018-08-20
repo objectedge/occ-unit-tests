@@ -86,7 +86,7 @@ define('main-loader', ['jquery', '/app/base/dist/widget-core/index'], function (
             resolve(__mainData);
             clearInterval(mainDataInterval);
           }
-        }, 300);
+        }, 500);
       });
     }
   };

@@ -15,6 +15,7 @@ module.exports = function(config) {
                       });
   
   const files = [
+    { pattern: 'static/**/*.css', included: true },
     { pattern: 'libs/occ/main.js', included: true },
     { pattern: 'test-main.js', included: true },
     { pattern: 'libs/occ/js/**/*.js', included: false },
@@ -31,11 +32,17 @@ module.exports = function(config) {
         pattern: path.join('src', contentRelativePath, '**', '*.@(template|txt)'),
         included: false
       });
+
+      // Including css
+      files.push({
+        pattern: path.join('dist', contentRelativePath, '**', '*.css'),
+        included: true
+      });
     }
 
     // Including Source and tests
     files.push({
-      pattern: path.join('@(dist|test)', contentRelativePath, '**', '*.@(js|map)'),
+      pattern: path.join('@(dist|test)', contentRelativePath, '**', '*.@(js|map|css)'),
       included: false
     });
   }
@@ -58,11 +65,11 @@ module.exports = function(config) {
     customLaunchers: {
       CustomChromeHeadless: {
         base: 'ChromeHeadless',
-        flags: ['--disable-translate', '--disable-extensions']
+        flags: ['--disable-translate']
       },
       CustomChrome: {
         base: 'Chrome',
-        flags: ['--disable-translate', '--auto-open-devtools-for-tabs', `http://localhost:${serverConfigs.karma.port}${serverConfigs.karma.urlRoot}/debug.html`]
+        flags: ['--disable-translate', '--auto-open-devtools-for-tabs']
       }
     },
     autoWatch: true,
