@@ -43,7 +43,7 @@ define(
     /**
      * constructor
      */
-    function Routing(defaultRoutePath) {
+    function Routing() {
       var self = this;
       
       // Override crossroads.parse().
@@ -98,7 +98,7 @@ define(
        * All route matches go through the function.
        */
       function defaultRouteHandler(pPath, pParameters, pPageNumber) {
-        pPath = defaultRoutePath || pPath;
+        pPath = window.defaultRoute || pPath;
 
         if (pPath == '/' || pPath === 'app/debug.html') {
           pPath = 'home';

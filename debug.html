@@ -7,12 +7,115 @@ just for immediate execution, without reporting to Karma server.
 <html>
 <head>
 %X_UA_COMPATIBLE%
-  <title>Karma DEBUG RUNNER ss</title>
+  <title>Karma DEBUG RUNNER</title>
   <link href="favicon.ico" rel="icon" type="image/x-icon" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 </head>
 <body>
+  <div id="oracle-cc" data-bind="setContextVariable:{name:'masterViewModel', value:$data}">
+    <!-- ko previewBar: isPreview() --><!-- /ko -->
+    <!-- ko agentBar: isObo() --><!-- /ko -->
+    <div id="alert-page-change" class="sr-only" role="alert" aria-atomic="true" aria-live="polite" data-bind="text: pageChangeMessage"></div>
+    <div id="alert-modal-change" class="sr-only" role="alert" aria-atomic="true" aria-live="polite" ></div>
+    <div id="page" data-bind="css:{'preview': isPreview, 'container': containPage}">
+      <header id="headerBar" class="page-row">
+        
+        <div data-bind="css:{'container': containHeader}">
+          <!-- ko foreach: headerRows -->
+          <div class="row">
+            <div data-bind="template: { name: 'region-template', foreach: regions }" class="redBox"></div>
+          </div>
+          <!-- /ko -->
+        </div>
+      </header>
+
+      <main class="page-row page-row-expanded">
+        <div id='main' data-bind="css:{'container': containMain}">
+          <!-- ko foreach: bodyRows -->
+          <div class="row">
+            <div data-bind="template: { name: 'region-template', foreach: regions }" class="redBox"></div>
+          </div>
+          <!-- /ko -->
+        </div>
+
+        <div id='loadingModal' class="hide loadingIndicator"></div>
+      </main>
+
+      <footer id="footerBar" class="page-row">
+        <div data-bind="css:{'container': containFooter}">
+          <!-- ko foreach: footerRows -->
+          <div class="row">
+            <div data-bind="template: { name: 'region-template', foreach: regions }" class="redBox"></div>
+          </div>
+          <!-- /ko -->
+        </div>
+      </footer>
+    </div>
+
+    <script type='text/html' id='region-template'>
+      <!-- ko if: $data.hasOwnProperty('structure') && $data.structure() == 101 -->
+      <div  data-bind="css: widthClass, attr: {id: 'region-'+name()}">
+        <div data-bind="template: { name: 'stack-template' }"></div>
+      </div>
+      <!-- /ko -->
+      <!-- ko ifnot: $data.hasOwnProperty('structure') && $data.structure() == 101 -->
+      <!-- ko if: $data.widgets() && $data.widgets().length && !$data.globalWidgetsOnly() -->
+      <div  data-bind="css: widthClass, attr: {id: 'region-'+name()}">
+        <!-- ko foreach: $data.widgets  -->
+        <!-- ko ifnot: global  -->
+        <!-- ko if: initialized  -->
+        <!-- ko if: $data.elementsSrc -->
+        <!-- ko addTemplate: elementsSrc() --><!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: isPreview -->
+        <div class="sf-display-error">
+          <span class="sf-error-title" data-bind="text: $root.displayErrorMessage"></span>:
+          <span class="sf-error-msg"></span>
+        </div>
+        <!-- /ko -->
+        <!-- ko ifnot: $data.templateSrc -->
+        <!-- ko if: templateUrl() -->
+        <div data-bind='template: {name: templateUrl(), templateUrl: ""}, attr: {id: typeId()+"-"+id()}' ></div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko if: $data.templateSrc -->
+        <div data-bind='template: {name: templateUrl(),templateSrc: templateSrc()}, attr: {id: typeId()+"-"+id()}' ></div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+      </div>
+      <!-- /ko -->
+      <!-- /ko -->
+    </script>
+
+    <script type='text/html' id='stack-template'>
+      <!-- ko if: $masterViewModel.isPreview -->
+      <div class="sf-display-error">
+        <span class="sf-error-title" data-bind="text: $root.displayErrorMessage"></span>:
+        <span class="sf-error-msg"></span>
+      </div>
+      <!-- /ko -->
+      <!-- ko ifnot: templateSrc -->
+      <!-- ko if: templatePath() -->
+      <div data-bind='template: {name: templatePath(), templateUrl: ""}, attr: {id: stackType()+"-"+id()}'
+          class="stack-template "></div>
+      <!-- /ko -->
+      <!-- /ko -->
+      <!-- ko if: templateSrc -->
+      <div data-bind='template: {name: name(), templateSrc: templateSrc()}, attr: {id: stackType()+"-"+id()}'
+          class="stack-template "></div>
+      <!-- /ko -->
+    </script>
+
+    <!-- this template is loaded on site load and is available then onwards even if internet connection has some issue -->
+    <script type='text/html' id='notificationsNetworkError'>
+      <span data-bind="text: networkErrorMessage"></span>
+      <u><a data-bind="text: networkErrorReloadText" href="javascript:location.reload(true);"></a></u>
+    </script>
+  </div>
+  
   <!-- The scripts need to be at the end of body, so that some test running frameworks
    (Angular Scenario, for example) need the body to be loaded so that it can insert its magic
    into it. If it is before body, then it fails to find the body and crashes and burns in an epic
@@ -28,6 +131,7 @@ just for immediate execution, without reporting to Karma server.
   </script>
   <!-- Dynamically replaced with <script> tags -->
   %SCRIPTS%
+  
   <script type="text/javascript">
     window.__karma__.loaded();
   </script>

@@ -1,12 +1,17 @@
+const fs = require('fs-extra');
 const path = require('path');
 const glob = require('glob');
 const webpack = require('webpack');
+const devConfigs = require('./dev-configs');
 
 const entries = {};
 const srcDir = path.join(__dirname, 'src');
 const distDir = path.join(__dirname, 'dist');
 const plugins = [];
 const occComponentsTempDir = path.join(__dirname, 'occ-components', 'widgets');
+
+fs.removeSync(distDir);
+fs.ensureDirSync(distDir);
 
 //Set occ-components path
 plugins.push(new webpack.NormalModuleReplacementPlugin(/occ-components/, (moduleObject) => {
@@ -16,10 +21,22 @@ plugins.push(new webpack.NormalModuleReplacementPlugin(/occ-components/, (module
   moduleObject.request = path.join(occComponentsTempDir, moduleName, entryPoint);
 }));
 
-const srcFilesList = glob.sync(path.join(srcDir, '**', '*.js'));
+let srcFilesList = [];
+
+for(contentRelativePath of devConfigs.contents) {
+  const files = glob.sync(path.join(srcDir, contentRelativePath, '**', '*.js'));
+  if(files.length) {
+    files.forEach(filePath => {
+      srcFilesList.push(filePath);
+    })
+  }
+}
+
 srcFilesList.forEach(srcPath => {
   entries[path.relative(srcDir, srcPath)] = srcPath;
 });
+
+entries[path.join('widget-core', 'index.js')] = path.join('occ-components', 'widget-core');
 
 module.exports = {
   entry: entries,

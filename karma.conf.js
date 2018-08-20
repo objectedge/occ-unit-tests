@@ -4,6 +4,8 @@ const glob = require('glob');
 
 module.exports = function(config) {
   const serverConfigs = require('./server-configs');
+  const devConfigs = require('./dev-configs');
+
   const customFilesPaths = path.join(__dirname, 'libs', 'custom');
   let excludeFiles = glob.sync(path.join(customFilesPaths, '**'))
                       .filter(filePath => fs.lstatSync(filePath).isFile())
@@ -12,20 +14,36 @@ module.exports = function(config) {
                         return filePath.replace('custom', 'occ');
                       });
   
+  const files = [
+    { pattern: 'libs/occ/main.js', included: true },
+    { pattern: 'test-main.js', included: true },
+    { pattern: 'libs/occ/js/**/*.js', included: false },
+    { pattern: 'libs/occ/shared/**/*.js', included: false },
+    { pattern: 'libs/occ/store-libs.js', included: true },
+    { pattern: 'libs/custom/**/*.js', included: false },
+    { pattern: 'dist/widget-core/**/*.js', included: false }
+  ];
+
+  for(contentRelativePath of devConfigs.contents) {
+    if(/widget/.test(contentRelativePath)) {
+      // Including the template files
+      files.push({
+        pattern: path.join('src', contentRelativePath, '**', '*.@(template|txt)'),
+        included: false
+      });
+    }
+
+    // Including Source and tests
+    files.push({
+      pattern: path.join('@(dist|test)', contentRelativePath, '**', '*.@(js|map)'),
+      included: false
+    });
+  }
+  
   config.set({
     basePath: '',
     frameworks: ['mocha', 'requirejs', 'chai'],
-    files: [
-      { pattern: 'src/widgets/**/*.template', included: false },
-      { pattern: 'libs/occ/main.js', included: true },
-      { pattern: 'test-main.js', included: true },
-      { pattern: 'libs/occ/js/**/*.js', included: false },
-      { pattern: 'libs/occ/shared/**/*.js', included: false },
-      { pattern: 'libs/occ/store-libs.js', included: true },
-      { pattern: 'libs/custom/**/*.js', included: false },
-      { pattern: 'dist/**/*.@(js|map)', included: false },
-      { pattern: 'test/**/*.js', included: false }
-    ],
+    files: files,
     exclude: excludeFiles,
     proxies: {
       '/': `${serverConfigs.api.domain}:${serverConfigs.api.port}`
@@ -49,6 +67,9 @@ module.exports = function(config) {
     },
     autoWatch: true,
     singleRun: false,
-    concurrency: Infinity
+    concurrency: Infinity,
+    client: {
+      args: [`page=${devConfigs.page}`]
+    }
   })
 }

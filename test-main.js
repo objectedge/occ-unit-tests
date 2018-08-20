@@ -61,6 +61,37 @@ requireJSConfigs.baseUrl = '/app/base';
 requireJSConfigs.deps = allTestFiles;
 requireJSConfigs.callback = window.__karma__.start;
 
+let defaultPage = __karma__.config.args.filter(item => item.includes('page'));
+if(defaultPage.length) {
+  defaultPage = defaultPage[0].replace('page=', '');
+  window.defaultRoute = defaultPage;
+}
+
+window.waitForRenderComplete = function (ko, layoutContainer, masterViewModel) {
+  window.__mainData = {
+    layoutContainer: layoutContainer,
+    masterViewModel: masterViewModel
+  };
+};
+
+define('main-loader', ['jquery', '/app/base/dist/widget-core/index'], function ($, widgetCore) {
+  return {
+    load: function (type, id, classes) {
+      return new Promise(function (resolve) {
+        var mainDataInterval = setInterval(function () {
+          if(__mainData) {
+            var loader = new widgetCore.loaders.Widget();
+            var widgetData = __mainData.layoutContainer.widgetCache.get(type, id).result;
+            loader.load(widgetData, widgetData, classes);
+            resolve(__mainData);
+            clearInterval(mainDataInterval);
+          }
+        }, 300);
+      });
+    }
+  };
+});
+
 // /**
 //  * @fileoverview The require.js main file for the storefront
 //  */

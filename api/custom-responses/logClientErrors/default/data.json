@@ -1,0 +1,14 @@
+{
+  "clientSideErrors": [
+    {
+      "clientErrorCode": "15006",
+      "osVersion": "Win32",
+      "line": "",
+      "browserVersion": "Chrome 33.0.1750.154",
+      "time": "2014-03-21T11:33:18.170Z",
+      "message": "Error: Script error\nhttp://requirejs.org/docs/errors.html#scripterror",
+      "locale": "en-US",
+      "url": "http://localhost:9080/random"
+    }
+  ]
+}

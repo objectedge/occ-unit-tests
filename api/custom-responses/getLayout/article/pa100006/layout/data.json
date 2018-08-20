@@ -46,7 +46,7 @@
           "i18nresources": "oeDouglasUnitTests",
           "global": false,
           "locale": "en",
-          "templateUrl": "http://localhost:9876/app/base/widgets/oeDouglasUnitTests/templates/display.template",
+          "templateUrl": "http://localhost:9876/app/base/src/widgets/oeDouglasUnitTests/templates/display.template",
           "templateSrc": "",
           "pages": ["douglas-tests"],
           "pageIds": ["pa100006"],

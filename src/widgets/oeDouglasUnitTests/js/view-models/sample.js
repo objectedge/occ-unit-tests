@@ -21,6 +21,7 @@ export class Sample extends BaseWidget {
    */
   constructor() {
     //Constructing the BaseWidget
+    console.log('Loaded this fucking shit!');
     super();
   }
 
