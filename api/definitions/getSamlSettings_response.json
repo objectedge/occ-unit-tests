@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "spEntityDescriptor": {
-      "description": "The Service Provider Entity Descriptor.",
-      "type": "string"
-    }
-  }
-}

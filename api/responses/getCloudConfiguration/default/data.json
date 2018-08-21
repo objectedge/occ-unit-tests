@@ -1,6 +1,0 @@
-{
-  "isB2BEnabled": false,
-  "clientConfiguration": {
-    "includeOrderDetailsInShippingMethodsPayload": false
-  }
-}

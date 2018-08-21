@@ -1,9 +1,0 @@
-{
-  "links": [
-    {
-      "rel": "self",
-      "href": "http://localhost:9876/ccstoreui/v1/organizationRequests"
-    }
-  ],
-  "id": "900001"
-}

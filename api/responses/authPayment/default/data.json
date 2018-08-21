@@ -1,9 +1,0 @@
-{
-  "ignore_avs": false,
-  "signature": "0O5+qVCnDZ+B9jBJwcYqbhg/8dgW/dDKP7LCH5LQq9o=",
-  "sopURL": "https://testsecureacceptance.cybersource.com/silent/pay",
-  "profile_id": "Test111",
-  "access_key": "a7b7592b38603ae99b2815712007dd8b",
-  "transaction_uuid": "deec2cf1467542f8a9b6b8928f31f8be",
-  "signed_date_time": "2014-10-27T06:27:11Z"
-}

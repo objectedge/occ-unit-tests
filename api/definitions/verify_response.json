@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "success": {
-      "description": "Provides the auth client status.",
-      "type": "boolean"
-    }
-  }
-}

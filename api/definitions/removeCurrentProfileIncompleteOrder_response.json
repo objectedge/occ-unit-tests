@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "orderId": {
-      "description": "Order ID of the order to remove.",
-      "type": "string"
-    }
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "isHealthy": {
-      "description": "Provides whether the Payment gateway authorized is in a healthy state or not.",
-      "type": "boolean"
-    }
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "transactionDate": {
-      "description": "The date and time on which the service request was made.",
-      "type": "string"
-    }
-  }
-}

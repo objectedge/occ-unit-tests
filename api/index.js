@@ -3,15 +3,16 @@ const path = require('path');
 const express = require('express');
 const glob = require('glob');
 const bodyParser = require('body-parser')
-const serverConfigs = require('../server-configs');
+const configs = require('../configs');
 
 const app = express();
-const port = serverConfigs.api.port;
+const port = configs.server.api.port;
 
-const schemaPath = path.join('api','schema.json');
-const customSchemaPath = path.join('api','custom-schema.json');
-const customResponsesDir = 'custom-responses';
-const customResponsesPath = path.join(__dirname, customResponsesDir);
+const customApiDir = configs.application.customApiDir;
+const oracleApiDir = configs.application.oracleApiDir;
+const schemaPath = path.join(oracleApiDir, 'schema.json');
+const customSchemaPath = path.join(customApiDir, 'schema.json');
+const customResponsesPath = path.join(customApiDir, 'responses');
 
 const schema = fs.readJsonSync(schemaPath, 'utf8');
 let customSchema;
@@ -53,26 +54,28 @@ app.set('etag', false);
 for(requestPath in schemaPaths) {
   for(method in schemaPaths[requestPath]) {
     const requestData = schemaPaths[requestPath][method];
-    let responsePath = requestData.responses;
+    let responsePath = path.join(oracleApiDir, requestData.responses);
     let customRequestsDefinitionPath;
-
+    
     // Only replaces the response path if it contains a custom schema, otherwise just replace the response path
     if(Object.keys(customSchema.paths).includes(requestPath) && customResponses.includes(requestData.operationId)) {
-      responsePath = path.relative(__dirname, path.join(customResponsesPath, requestData.operationId));
+      responsePath = path.join(customResponsesPath, requestData.operationId);
       console.log(`Using custom schema response for ${requestData.operationId}...`);
     } else if(!Object.keys(customSchema.paths).includes(requestPath) && customResponses.includes(requestData.operationId)) {
-      customRequestsDefinitionPath = path.relative(__dirname, path.join(customResponsesPath, requestData.operationId));
+      customRequestsDefinitionPath = path.join(customResponsesPath, requestData.operationId);
     }
 
     try {
-      const requestsDefinitionPath = path.join(__dirname, responsePath);
-      let requestsDefinition = glob.sync(path.join(requestsDefinitionPath, '**', 'descriptor.json'));
+      let requestsDefinition = glob.sync(path.join(responsePath, '**', 'descriptor.json'));
       
       // replace the response path by the custom response path
-      if(customRequestsDefinitionPath) {    
-        const customRequestsDefinition = glob.sync(path.join(__dirname, customRequestsDefinitionPath, '**', 'descriptor.json'));
+      if(customRequestsDefinitionPath) {
+        const customRequestsDefinition = glob.sync(path.join(customRequestsDefinitionPath, '**', 'descriptor.json'));
         requestsDefinition = requestsDefinition.map(definitionPath => {
-          const customDefinitionPathIndex = customRequestsDefinition.indexOf(definitionPath.replace(path.dirname(responsePath), customResponsesDir));
+          const oracleLibsDirName = configs.application.oracleLibsDirName;
+          const customLibsDirName = configs.application.customLibsDirName;
+          const customDefinitionPathIndex = customRequestsDefinition.indexOf(definitionPath.replace(oracleLibsDirName, customLibsDirName));
+
           if(customDefinitionPathIndex > -1) {
             return customRequestsDefinition[customDefinitionPathIndex];
           }
@@ -83,18 +86,18 @@ for(requestPath in schemaPaths) {
         // adding new custom responses to request definitions
         customRequestsDefinition.forEach(itemPath => {
           if(!requestsDefinition.includes(itemPath)) {
-            const indexOfDefaultdescriptor = requestsDefinition.indexOf(path.join(__dirname, responsePath, 'default', 'descriptor.json'));
+            const indexOfDefaultdescriptor = requestsDefinition.indexOf(path.join(responsePath, 'default', 'descriptor.json'));
             
             // Don't keep the default response when we have custom response
             if(indexOfDefaultdescriptor > -1) {
               requestsDefinition.splice(requestsDefinition[indexOfDefaultdescriptor], 1);              
             }
-
+            
             requestsDefinition.push(itemPath);
           }
         });
       }
-            
+      
       requestsDefinition.forEach(definitionPath => {
         let descriptor;
 

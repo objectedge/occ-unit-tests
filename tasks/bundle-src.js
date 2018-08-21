@@ -1,5 +1,5 @@
 const webpack = require('webpack');
-const webpackConfigs = require('../webpack.config');
+const webpackConfigs = require('../webpack/webpack.config');
 const webPackRunner = webpack(webpackConfigs);
 const args = process.argv;
 const watch = args[2] === '--watch';

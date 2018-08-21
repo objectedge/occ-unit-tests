@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "id": {
-      "description": "The ID of the profile to retrieve.",
-      "type": "string"
-    }
-  }
-}

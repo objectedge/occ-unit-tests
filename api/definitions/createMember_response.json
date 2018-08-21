@@ -1,8 +1,0 @@
-{
-  "properties": {
-    "id": {
-      "description": "Repository id of the profile",
-      "type": "string"
-    }
-  }
-}

@@ -11,7 +11,7 @@ export class Widget {
     let instance = this;
 
     /**
-     * This will fix the $data context, keeping synced the 
+     * This will fix the $data context, keeping synced the
      * properties from the viewModel and the $data from
      * the widget
      */
@@ -33,7 +33,7 @@ export class Widget {
     let applyDataMethods = (dataMethods, context) => {
       if(dataMethods) {
         Object.keys(dataMethods).forEach(function (methodKey) {
-          context.$data[methodKey] = function () { 
+          context.$data[methodKey] = function () {
             let args = Array.prototype.slice.call(arguments);
 
             //Original this
@@ -91,5 +91,7 @@ export class Widget {
       const viewModelInstance = new viewModel();
       viewModelsInstances[viewModelName] = viewModelInstance;
     });
+
+    return viewModelsInstances;
   }
 };

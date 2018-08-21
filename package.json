@@ -1,13 +1,14 @@
 {
   "scripts": {
     "api": "node api",
-    "test-headless": "karma start --browsers CustomChromeHeadless karma.conf.js",
-    "test": "karma start --browsers CustomChrome karma.conf.js",
+    "test-headless": "karma start --browsers CustomChromeHeadless karma/karma.conf.js",
+    "test": "karma start --browsers CustomChrome karma/karma.conf.js",
     "start": "npm-run-all --parallel api bundle:watch test",
     "start-headless": "npm-run-all --parallel api test-headless",
-    "update-schema": "node tasks/update-schema",
-    "update-libs": "node tasks/update-libs",
-    "update-pages-responses": "node tasks/update-pages-responses",
+    "grab-occ-schema": "node tasks/grab-occ-schema",
+    "grab-libs": "node tasks/grab-libs",
+    "grab-pages-responses": "node tasks/grab-pages-responses",
+    "grab-schema": "npm-run-all grab-occ-schema grab-pages-responses",
     "bundle": "node tasks/bundle-src",
     "bundle:watch": "node tasks/bundle-src --watch"
   },
