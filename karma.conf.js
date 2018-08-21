@@ -5,6 +5,9 @@ const glob = require('glob');
 module.exports = function(config) {
   const serverConfigs = require('./server-configs');
   const devConfigs = require('./dev-configs');
+  const chromeProfilePath = path.join(process.env.HOME || process.env.HOMEPATH, 'occ-dev-server', 'chrome');
+
+  fs.ensureDirSync(chromeProfilePath);
 
   const customFilesPaths = path.join(__dirname, 'libs', 'custom');
   let excludeFiles = glob.sync(path.join(customFilesPaths, '**'))
@@ -65,11 +68,25 @@ module.exports = function(config) {
     customLaunchers: {
       CustomChromeHeadless: {
         base: 'ChromeHeadless',
-        flags: ['--disable-translate']
+        flags: [
+          '--disable-translate', 
+          '--ignore-certificate-errors', 
+          '--allow-insecure-localhost', 
+          '--disable-blink-features=BlockCredentialedSubresources', 
+          '--test-type'
+        ]
       },
       CustomChrome: {
         base: 'Chrome',
-        flags: ['--disable-translate', '--auto-open-devtools-for-tabs']
+        flags: [
+          '--disable-translate', 
+          '--ignore-certificate-errors', 
+          '--allow-insecure-localhost', 
+          '--disable-blink-features=BlockCredentialedSubresources',
+          '--test-type', 
+          '--auto-open-devtools-for-tabs'
+        ],
+        chromeDataDir: chromeProfilePath
       }
     },
     autoWatch: true,
