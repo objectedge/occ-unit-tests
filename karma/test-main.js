@@ -77,10 +77,15 @@ requireJSConfigs.callback = window.__karma__.start;
 window.defaultRoute = mainConfigs.page;
 
 window.waitForRenderComplete = function (ko, layoutContainer, masterViewModel) {
-  window.__mainData = {
-    layoutContainer: layoutContainer,
-    masterViewModel: masterViewModel
-  };
+  const intervalId = setInterval(() => {
+    if(Object.keys(layoutContainer.widgetCache.cache).length) {
+      window.__mainData = {
+        layoutContainer: layoutContainer,
+        masterViewModel: masterViewModel
+      };
+      clearInterval(intervalId);
+    }
+  }, 300);
 };
 
 define('mainLoader', ['jquery', 'widgetCore'], function ($, widgetCore) {

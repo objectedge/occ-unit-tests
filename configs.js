@@ -14,7 +14,7 @@ module.exports = {
   application: {
     basePath: applicationPath,
     oracleResourcesDir: oracleResourcesDir,
-    
+
     apiDir: apiDir,
     oracleApiDirName: oracleDirName,
     customApiDirName: customDirName,
@@ -43,12 +43,12 @@ module.exports = {
     }
   },
 
-  page: 'douglas-tests',
+  page: 'oe-hero-banner',
   // Directories relative to the applicationPath
   src: [
-    'widgets/objectedge/oeDouglasUnitTests'
+    'widgets/objectedge/oeHeroBanner'
   ],
   tests: [
-    'tests/unit/widgets/oeDouglasUnitTests'
+    'tests/unit/widgets/oeHeroBanner'
   ],
 };
