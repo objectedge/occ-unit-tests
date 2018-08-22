@@ -25,7 +25,9 @@ module.exports = {
     oracleLibsDirName: oracleDirName,
     customLibsDirName: customDirName,
     oracleLibsDir: path.join(librariesDir, oracleDirName),
-    customLibsDir: path.join(librariesDir, customDirName)
+    customLibsDir: path.join(librariesDir, customDirName),
+
+    mocksPath: path.join(applicationPath, 'mocks')
   },
 
   // Server Definitions

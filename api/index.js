@@ -13,6 +13,7 @@ const oracleApiDir = configs.application.oracleApiDir;
 const schemaPath = path.join(oracleApiDir, 'schema.json');
 const customSchemaPath = path.join(customApiDir, 'schema.json');
 const customResponsesPath = path.join(customApiDir, 'responses');
+const mocksPath = configs.application.mocksPath;
 
 const schema = fs.readJsonSync(schemaPath, 'utf8');
 let customSchema;
@@ -31,7 +32,7 @@ let schemaPaths = schema.paths;
 
 if(customSchema) {
   const customSchemaPaths = customSchema.paths;
-  
+
   Object.keys(customSchemaPaths).forEach(customSchemaPath => {
     // just ignores the original schema path
     if(Object.keys(schemaPaths).includes(customSchemaPath)) {
@@ -41,7 +42,7 @@ if(customSchema) {
 
     console.log(`Using custom schema path for ${customSchemaPath}...`);
   });
-  
+
   schemaPaths = Object.assign(schemaPaths, customSchemaPaths);
 }
 
@@ -56,7 +57,7 @@ for(requestPath in schemaPaths) {
     const requestData = schemaPaths[requestPath][method];
     let responsePath = path.join(oracleApiDir, requestData.responses);
     let customRequestsDefinitionPath;
-    
+
     // Only replaces the response path if it contains a custom schema, otherwise just replace the response path
     if(Object.keys(customSchema.paths).includes(requestPath) && customResponses.includes(requestData.operationId)) {
       responsePath = path.join(customResponsesPath, requestData.operationId);
@@ -67,7 +68,7 @@ for(requestPath in schemaPaths) {
 
     try {
       let requestsDefinition = glob.sync(path.join(responsePath, '**', 'descriptor.json'));
-      
+
       // replace the response path by the custom response path
       if(customRequestsDefinitionPath) {
         const customRequestsDefinition = glob.sync(path.join(customRequestsDefinitionPath, '**', 'descriptor.json'));
@@ -87,17 +88,17 @@ for(requestPath in schemaPaths) {
         customRequestsDefinition.forEach(itemPath => {
           if(!requestsDefinition.includes(itemPath)) {
             const indexOfDefaultdescriptor = requestsDefinition.indexOf(path.join(responsePath, 'default', 'descriptor.json'));
-            
+
             // Don't keep the default response when we have custom response
             if(indexOfDefaultdescriptor > -1) {
-              requestsDefinition.splice(requestsDefinition[indexOfDefaultdescriptor], 1);              
+              requestsDefinition.splice(requestsDefinition[indexOfDefaultdescriptor], 1);
             }
-            
+
             requestsDefinition.push(itemPath);
           }
         });
       }
-      
+
       requestsDefinition.forEach(definitionPath => {
         let descriptor;
 
@@ -107,12 +108,12 @@ for(requestPath in schemaPaths) {
           console.log(`Warning: There is no valid descriptor for the request "${requestData.operationId}"`);
         }
 
-        try {          
+        try {
           const responseDataPath = path.join(definitionPath, '..', descriptor.response.dataPath);
           const requestDefinition = descriptor.request;
           const responseDefinition = descriptor.response;
           let requestEndpoint = `${schema.basePath}${requestPath.replace('{id}', ':id').replace('{path: .*}', ':path')}`;
-          
+
           if(requestDefinition.queryParameters) {
             Object.keys(requestDefinition.queryParameters).forEach(queryParamKey => {
               if(/^:/.test(queryParamKey)) {
@@ -121,7 +122,7 @@ for(requestPath in schemaPaths) {
               }
             });
           }
-          
+
           const checkEquality = (object1, object2) => {
             const optionsPropertyKey = '__options';
             const options = object1[optionsPropertyKey] || {};
@@ -139,7 +140,7 @@ for(requestPath in schemaPaths) {
             }
 
             const iterableObjectKeys = Object.keys(object2).filter(item => item !== optionsPropertyKey);
-            
+
             return iterableObjectKeys.every(objectKey => {
               const object1Value = object1[objectKey];
               const object2Value = object2[objectKey];
@@ -149,9 +150,9 @@ for(requestPath in schemaPaths) {
               }
 
               if(typeof object1Value === 'object' && typeof object2Value === 'object') {
-                return checkEquality(object1Value, object2Value);  
+                return checkEquality(object1Value, object2Value);
               }
-              
+
               return match(object1Value, object2Value);
             });
           };
@@ -188,7 +189,7 @@ for(requestPath in schemaPaths) {
 
             next();
           };
-          
+
           app[requestDefinition.method](`*${requestEndpoint}`, middleware, (req, res) => {
             res.header("OperationId", requestData.operationId);
 
@@ -213,6 +214,23 @@ for(requestPath in schemaPaths) {
     }
   }
 }
+
+const mocksFiles = glob.sync(path.join(mocksPath, '**', '*.json'));
+app.get('/mock', (req, res) => {
+  const mockQueryParamPath = req.query.path;
+
+  if(!mockQueryParamPath) {
+    return res.json({ error: true, message: 'Please provide the "path" query param' });
+  }
+
+  const fullPathToMock = path.join(mocksPath, mockQueryParamPath);
+  const mockFileIndex = mocksFiles.indexOf(fullPathToMock);
+  if(mockFileIndex >  -1) {
+    return res.json(fs.readJsonSync(mocksFiles[mockFileIndex]));
+  }
+
+  res.json({ error: true, message: `The mock "${fullPathToMock}" doesn't exist` });
+});
 
 console.log('Starting api server...');
 
