@@ -9,8 +9,11 @@ define('mainLoader', ['pageLayout/user', 'occ-for-tests-laoder', 'widgetCore'], 
       }
 
       occLoader.load().then(layoutContainerInstance => {
-        layoutContainer = layoutContainerInstance;
-        resolve(layoutContainer);
+        // Give it some time to load the settings
+        setTimeout(function () {
+          layoutContainer = layoutContainerInstance;
+          resolve(layoutContainer);
+        }, 300);
       });
     });
   }
@@ -46,7 +49,11 @@ define('mainLoader', ['pageLayout/user', 'occ-for-tests-laoder', 'widgetCore'], 
     return new Promise(resolve => {
       this.setData(options.data)
           .then(widgetData => {
-            this.loadViewModels(widgetData, { [options.viewModelName]: options.classes[options.viewModelName] }).then(viewModels => {
+            const viewModelToBeLoaded = {
+              [options.viewModelName]: options.classes[options.viewModelName]
+            };
+
+            this.loadViewModels(widgetData, viewModelToBeLoaded).then(viewModels => {
               this.viewModels = viewModels;
               options.context[options.viewModelName] = viewModels[options.viewModelName];
               resolve();
