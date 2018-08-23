@@ -40,7 +40,7 @@ define('mainLoader', ['pageLayout/user', 'occ-for-tests-laoder', 'widgetCore'], 
   MainLoader.prototype.loadViewModels = function (widgetData, classes) {
     return new Promise(resolve => {
       const loader = new widgetCore.loaders.Widget();
-      viewModels = loader.load(widgetData, widgetData, classes);
+      const viewModels = loader.load(widgetData, widgetData, classes);
       resolve(viewModels);
     });
   };
@@ -54,7 +54,6 @@ define('mainLoader', ['pageLayout/user', 'occ-for-tests-laoder', 'widgetCore'], 
             };
 
             this.loadViewModels(widgetData, viewModelToBeLoaded).then(viewModels => {
-              this.viewModels = viewModels;
               options.context[options.viewModelName] = viewModels[options.viewModelName];
               resolve();
             });

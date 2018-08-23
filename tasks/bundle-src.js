@@ -4,10 +4,15 @@ const webPackRunner = webpack(webpackConfigs);
 const args = process.argv;
 const watch = args[2] === '--watch';
 const onBuild = (err, stats) => {
-  console.log('[bundler:compile] %s', stats.toString({
-    chunks: true, // Makes the build much quieter
-    colors: true
-  }));
+  if(err) {
+    console.log(stats.toString({
+      chunks: true, // Makes the build much quieter
+      colors: true
+    }));
+    return;
+  }
+
+  console.log('running webpack...');
 };
 
 if(watch) {
