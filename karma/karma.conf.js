@@ -77,7 +77,6 @@ module.exports = function(config) {
     proxies: {
       '/': `${configs.server.api.domain}:${configs.server.api.port}`
     },
-    customDebugFile: path.join(__dirname, 'templates/debug.html'),
     urlRoot: configs.server.karma.urlRoot,
     reporters: ['mocha'],
     port: configs.server.karma.port,  // karma web server port

@@ -230,6 +230,16 @@ app.get('/mock', (req, res) => {
   res.json({ error: true, message: `The mock "${fullPathToMock}" doesn't exist` });
 });
 
+app.get('/occ-app', function(req, res) {
+  let htmlText = fs.readFileSync(path.join(__dirname + '/index.html'), 'utf8');
+  htmlText = htmlText.replace(/\{\{occ-dev-server-configs\}\}/, JSON.stringify(configs));
+  htmlText = htmlText.replace(/\{\{occ-dev-server-custom-files\}\}/, JSON.stringify(glob.sync(path.join(configs.application.customLibsDir, '**', '*.js'))));
+  const requireJsPath = path.join(require.resolve('requirejs'), '..', '..', 'require.js');
+  htmlText = htmlText.replace(/\{\{requireJsPath\}\}/, `${configs.server.karma.urlRoot}/absolute${requireJsPath}`);
+  htmlText = htmlText.replace(/\{\{mainJsPath\}\}/, `${configs.server.karma.urlRoot}/absolute${configs.application.customLibsDir}/main.js`);
+  res.send(htmlText);
+});
+
 console.log('Starting api server...');
 
 app.listen(port, () => console.log(`Running api server on port ${port}`));
