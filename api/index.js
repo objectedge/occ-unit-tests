@@ -215,7 +215,6 @@ for(requestPath in schemaPaths) {
   }
 }
 
-const mocksFiles = glob.sync(path.join(mocksPath, '**', '*.json'));
 app.get('/mock', (req, res) => {
   const mockQueryParamPath = req.query.path;
 
@@ -224,9 +223,8 @@ app.get('/mock', (req, res) => {
   }
 
   const fullPathToMock = path.join(mocksPath, mockQueryParamPath);
-  const mockFileIndex = mocksFiles.indexOf(fullPathToMock);
-  if(mockFileIndex >  -1) {
-    return res.json(fs.readJsonSync(mocksFiles[mockFileIndex]));
+  if (fs.existsSync(fullPathToMock)) {
+    return res.json(fs.readJsonSync(fullPathToMock));
   }
 
   res.json({ error: true, message: `The mock "${fullPathToMock}" doesn't exist` });
