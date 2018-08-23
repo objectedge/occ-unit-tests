@@ -24,6 +24,8 @@ module.exports = function(config) {
     { pattern: path.join(destDir, 'widget-core', '*.js'), included: false },
     { pattern: path.join(rootPath, 'static', '**', '*.css'), included: true },
     { pattern: path.join(occLibsPath, 'main.js'), included: true },
+    { pattern: path.join(rootPath, 'karma', 'occ-loader.js'), included: true },
+    { pattern: path.join(rootPath, 'karma', 'main-loader.js'), included: true },
     { pattern: path.join(rootPath, 'karma', 'test-main.js'), included: true },
     { pattern: path.join(occLibsPath, 'js', '**', '*.js'), included: false },
     { pattern: path.join(occLibsPath, 'shared', '**', '*.js'), included: false },
