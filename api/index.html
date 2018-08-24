@@ -271,6 +271,9 @@
         }
 
         if(customFiles.length) {
+          customFiles.forEach((filePath, index) => {
+            customFiles[index] = `${absoloutePathToFiles}${filePath}`;
+          });
           replaceSetCustomFilesPaths();
         }
 
@@ -278,6 +281,7 @@
         window.defaultRoute = mainConfigs.page;
 
         require.config(requireJSConfigs);
+        require(['mainOccLoader']);
       }());
 </script>
 </body>
