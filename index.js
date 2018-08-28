@@ -1,12 +1,19 @@
-const vorpal = require('vorpal')();
+#!/usr/bin/env node
+
+const program = require('caporal');
 const commands = require('./commands');
+const configs = require('./lib/configs');
 
-commands.forEach(commandClass => {
-  commandClass.prototype.vorpal = vorpal;
-  new commandClass();
-});
+(async () => {
+  const abc = await configs.create();
+  console.log(abc);
+})();
 
-vorpal
-    .delimiter('oe-dev-server$')
-    .show();
+// program.version(require('./package.json').version);
 
+// commands.forEach(Command => {
+//   Command.prototype.program = program;
+//   new Command();
+// });
+
+// program.parse(process.argv);

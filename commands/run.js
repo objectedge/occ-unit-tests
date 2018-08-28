@@ -4,15 +4,19 @@ const karma = require('../karma/runner');
 
 class Run {
   constructor() {
-    this.vorpal
-        .command('run', 'Will run the dev-server')
-        .action((args, callback) => {
-          Promise.all([
-            api(),
-            bundle(true),
-            karma(['CustomChromeHeadless'])
-          ]).then(callback);
-        });
+    this.program
+    .command('run', 'Will start the development server')
+    .action((args, options, logger) => {
+      return this.actions();
+    });
+  }
+
+  actions() {
+    return Promise.all([
+      api(),
+      bundle(true),
+      karma(['CustomChromeHeadless'])
+    ]);
   }
 };
 

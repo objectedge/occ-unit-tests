@@ -1,0 +1,9 @@
+{
+  "applicationPath": "",
+  "devServerTempDataPath": "${devServerPath}",
+  "oracleResourcesDir": "${applicationPath}/oracle-resources",
+  "librariesDir": "${oracleResourcesDir}/libraries",
+  "apiDir": "${oracleResourcesDir}/apiDir",
+  "oracleDirName": "default",
+  "customDirName": "custom"
+}
