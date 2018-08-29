@@ -1,0 +1,10 @@
+{
+  "applicationPath": "",
+  "devServerTempDataPath": "{{devServerTempDataPath}}",
+  "oracleResourcesDir": "{{applicationPath}}/oracle-resources",
+  "librariesDir": "{{oracleResourcesDir}}/libraries",
+  "apiDir": "{{oracleResourcesDir}}/api",
+  "oracleDirName": "default",
+  "customDirName": "custom",
+  "mocksPath": "{{applicationPath}}/mocks"
+}

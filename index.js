@@ -5,7 +5,7 @@ const commands = require('./commands');
 const configs = require('./lib/configs');
 
 (async () => {
-  const abc = await configs.create();
+  const abc = await configs.create({ applicationPath: '/Users/douglashipolito/Sites/occ/occ-trainning/storefront' });
   console.log(abc);
 })();
 
