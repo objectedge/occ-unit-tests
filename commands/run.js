@@ -1,7 +1,5 @@
-const bundle = require('../webpack/runner');
-const api = require('../api');
-const karma = require('../karma/runner');
-
+const prompt = require('prompt');
+const configsCore = require('../lib/configs');
 class Run {
   constructor() {
     this.program
@@ -12,6 +10,10 @@ class Run {
   }
 
   actions() {
+    const bundle = require('../webpack/runner');
+    const api = require('../api');
+    const karma = require('../karma/runner');
+
     return Promise.all([
       api(),
       bundle(true),

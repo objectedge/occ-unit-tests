@@ -45,6 +45,7 @@
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
     "mini-css-extract-plugin": "^0.4.1",
+    "prompt": "^1.0.0",
     "request": "^2.88.0",
     "requirejs": "^2.3.5",
     "source-map": "^0.7.3",

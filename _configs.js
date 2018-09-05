@@ -1,14 +1,13 @@
 const path = require('path');
-const fs = require('fs-extra');
 
+const applicationPath = '/Users/douglashipolito/Sites/occ/occ-trainning/storefront';
 const devServerTempDataPath = path.join(process.env.HOME || process.env.HOMEPATH, 'occ-dev-server');
-const applicationConfigs = fs.readJsonSync(path.join(devServerTempDataPath, 'application-configs.json'));
-const applicationPath = applicationConfigs.applicationPath;
-const oracleResourcesDir = applicationConfigs.oracleResourcesDir;
-const librariesDir = applicationConfigs.librariesDir;
-const apiDir = applicationConfigs.apiDir;
-const oracleDirName = applicationConfigs.oracleDirName;
-const customDirName = applicationConfigs.customDirName;
+const oracleResourcesDir = path.join(applicationPath, 'oracle-resources');
+const librariesDir = path.join(oracleResourcesDir, 'libraries');
+const apiDir = path.join(oracleResourcesDir, 'api');
+
+const oracleDirName = 'default';
+const customDirName = 'custom';
 
 module.exports = {
   // Application definitions
@@ -28,7 +27,7 @@ module.exports = {
     oracleLibsDir: path.join(librariesDir, oracleDirName),
     customLibsDir: path.join(librariesDir, customDirName),
 
-    mocksPath: applicationConfigs.mocksPath
+    mocksPath: path.join(applicationPath, 'mocks')
   },
 
   // Server Definitions

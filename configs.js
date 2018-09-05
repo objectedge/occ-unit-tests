@@ -1,13 +1,14 @@
 const path = require('path');
+const fs = require('fs-extra');
+const configsCore = require('./lib/configs');
 
-const applicationPath = '/Users/douglashipolito/Sites/occ/occ-trainning/storefront';
-const devServerTempDataPath = path.join(process.env.HOME || process.env.HOMEPATH, 'occ-dev-server');
-const oracleResourcesDir = path.join(applicationPath, 'oracle-resources');
-const librariesDir = path.join(oracleResourcesDir, 'libraries');
-const apiDir = path.join(oracleResourcesDir, 'api');
-
-const oracleDirName = 'default';
-const customDirName = 'custom';
+const applicationConfigs = fs.readJsonSync(configsCore.getConfigsPath());
+const applicationPath = applicationConfigs.applicationPath;
+const oracleResourcesDir = applicationConfigs.oracleResourcesDir;
+const librariesDir = applicationConfigs.librariesDir;
+const apiDir = applicationConfigs.apiDir;
+const oracleDirName = applicationConfigs.oracleDirName;
+const customDirName = applicationConfigs.customDirName;
 
 module.exports = {
   // Application definitions
@@ -27,13 +28,13 @@ module.exports = {
     oracleLibsDir: path.join(librariesDir, oracleDirName),
     customLibsDir: path.join(librariesDir, customDirName),
 
-    mocksPath: path.join(applicationPath, 'mocks')
+    mocksPath: applicationConfigs.mocksPath
   },
 
   // Server Definitions
-  devServerTempDataPath: devServerTempDataPath,
-  chromeDataDir: path.join(devServerTempDataPath, 'chrome'),
-  webpackDataDir: path.join(devServerTempDataPath, 'webpack'),
+  devServerTempDataPath: applicationConfigs.devServerTempDataPath,
+  chromeDataDir: path.join(applicationConfigs.devServerTempDataPath, 'chrome'),
+  webpackDataDir: path.join(applicationConfigs.devServerTempDataPath, 'webpack'),
   server: {
     api: {
       port: 3000,
@@ -52,5 +53,5 @@ module.exports = {
   ],
   tests: [
     'tests/unit/widgets/oeHeroBanner'
-  ],
+  ]
 };
