@@ -1,5 +1,5 @@
-const prompt = require('prompt');
 const configsCore = require('../lib/configs');
+const inquirer = require("inquirer");
 
 class Configs {
   constructor() {
@@ -20,11 +20,30 @@ class Configs {
     });
   }
 
+  interactiveCommand() {
+    const mainArguments = this.arguments.map(argument => {
+      return argument[0].replace(/[\[\]\{\}]/g, '');
+    });
+
+    inquirer
+    .prompt([
+      {
+        type: 'list',
+        name: 'command',
+        message: 'What do you want to do?',
+        choices: mainArguments
+      }
+    ])
+    .then(answers => {
+      console.log(answers)
+    });
+  }
+
   actions(args, options, logger) {
     const withOptions = Object.values(options).some(optionValue => optionValue !== undefined);
 
     if(!args.length && !withOptions) {
-      console.log(withOptions);
+      this.interactiveCommand();
     }
   }
 };

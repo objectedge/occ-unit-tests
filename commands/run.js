@@ -1,4 +1,3 @@
-const prompt = require('prompt');
 const configsCore = require('../lib/configs');
 class Run {
   constructor() {
