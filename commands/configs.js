@@ -20,22 +20,46 @@ class Configs {
     });
   }
 
-  interactiveCommand() {
-    const mainArguments = this.arguments.map(argument => {
-      return argument[0].replace(/[\[\]\{\}]/g, '');
-    });
+  run(action) {
+    const command = `${action}Command`;
 
-    inquirer
-    .prompt([
-      {
-        type: 'list',
-        name: 'command',
-        message: 'What do you want to do?',
-        choices: mainArguments
-      }
-    ])
-    .then(answers => {
-      console.log(answers)
+    if(this[command]) {
+      return this[command]();
+    }
+  }
+
+  createCommand() {
+    return Promise.resolve('test');
+  }
+
+  getCommand() {
+    console.log('get');
+  }
+
+  updateCommand() {
+    console.log('update');
+  }
+
+  interactiveCommand() {
+    return new Promise((resolve, reject) => {
+      const mainArguments = this.arguments.map(argument => {
+        return argument[0].replace(/[\[\]\{\}]/g, '');
+      });
+
+      inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'command',
+          message: 'What do you want to do?',
+          choices: mainArguments
+        }
+      ])
+      .then(answers => {
+        return this.run(answers.command);
+      })
+      .then(resolve)
+      .catch(reject);
     });
   }
 
@@ -43,7 +67,7 @@ class Configs {
     const withOptions = Object.values(options).some(optionValue => optionValue !== undefined);
 
     if(!args.length && !withOptions) {
-      this.interactiveCommand();
+      return this.interactiveCommand();
     }
   }
 };
