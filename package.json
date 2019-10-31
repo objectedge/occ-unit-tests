@@ -12,7 +12,7 @@
     "grab-libs": "node lib/grab-libs",
     "grab-pages-responses": "node lib/grab-pages-responses",
     "grab-schema": "npm-run-all grab-occ-schema grab-pages-responses",
-    "bundle": "node lib/bundle-src",
+    "bundle": "node webpack/runner",
     "bundle:watch": "node lib/bundle-src --watch"
   },
   "preferGlobal": true,

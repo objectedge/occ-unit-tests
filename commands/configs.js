@@ -4,61 +4,167 @@ const inquirer = require("inquirer");
 class Configs {
   constructor() {
     this.arguments = [
-      ['[create]', 'Creates a new config'],
-      ['[get]', 'Get a config value by its key'],
-      ['[update]', 'Update a config by key']
+      {
+        argument: "create",
+        message: "Create new configuration from scratch",
+        processor: this.create
+      },
+      {
+        argument: "get-all",
+        message: "Get all configs",
+        processor: this.getAllConfigs
+      },
+      {
+        argument: "get",
+        message: "Get a config value by its key",
+        processor: this.getConfig
+      },
+      {
+        argument: "get-path",
+        message: "Get the configs file path",
+        processor: this.getConfigsPath
+      },
+      {
+        argument: "update",
+        message: "Update Configs",
+        processor: this.updateConfigs
+      }
     ];
 
-    this.command = this.program.command('configs', 'Set Configs')
-
-    this.arguments.forEach(argument => {
-      this.command.argument(argument[0], argument[1], argument[2]);
-    });
-
-    this.command.action((args, options, logger) => {
-      return this.actions(args, options, logger);
-    });
+    this.command = this.program.command('configs', 'Set Configs');
+    this.arguments.forEach(argument => this.command.argument(`[${argument.argument}]`, argument.message));
+    this.command.action(this.actions.bind(this));
   }
 
-  run(action) {
-    const command = `${action}Command`;
-
-    if(this[command]) {
-      return this[command]();
-    }
-  }
-
-  createCommand() {
-    console.log(1);
-    return Promise.resolve('test');
-  }
-
-  getCommand() {
-    console.log('get');
-  }
-
-  updateCommand() {
-    console.log('update');
-  }
-
-  interactiveCommand() {
+  create() {
     return new Promise((resolve, reject) => {
-      const mainArguments = this.arguments.map(argument => {
-        return argument[0].replace(/[\[\]\{\}]/g, '');
-      });
+      const configurationSuccess = () => {
+        configsCore.getConfigsPath().then(configsPath => {
+          console.log(`Configuration created with success at: ${configsPath}`);
+          resolve();
+        });
+      };
 
       inquirer
       .prompt([
         {
-          type: 'list',
-          name: 'command',
-          message: 'What do you want to do?',
-          choices: mainArguments
+          type: 'input',
+          name: 'applicationBasePath',
+          message: "Application Base Path"
+        },
+        {
+          type: 'input',
+          name: 'occInstanceName',
+          message: "OCC Instance Name(eg: uat-zd8a)"
+        },
+        {
+          type: 'confirm',
+          name: 'HTTPAuth',
+          message: "The OCC Instance Store requires HTTP Auth",
+          default: false
         }
       ])
       .then(answers => {
-        return this.run(answers.command);
+        if(answers.HTTPAuth) {
+          return inquirer
+                .prompt([
+                  {
+                    type: 'input',
+                    name: 'user',
+                    message: "User"
+                  },
+                  {
+                    type: 'input',
+                    name: 'password',
+                    message: "password"
+                  }
+                ])
+                .then(HTTPAuthAnswers => {
+                  answers.HTTPAuthCredentials = HTTPAuthAnswers
+                  return configsCore.create(answers);
+                })
+        }
+
+        return configsCore.create(answers);
       })
+      .then(configurationSuccess)
+      .catch(reject);
+    });
+  }
+
+  getAllConfigs() {
+    return configsCore.getAllConfigs().then(configs => {
+      console.log(configs);
+    });
+  }
+
+  getConfig(options) {
+    return new Promise((resolve, reject) => {
+      inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'key',
+          message: "Config Key"
+        }
+      ])
+      .then(answers => {
+        return configsCore.getConfig(answers.key);
+      })
+      .then(configValue => {
+        console.log(configValue);
+        resolve();
+      })
+      .catch(reject);
+    });
+  }
+
+  getConfigsPath(options) {
+    return configsCore.getConfigsPath().then(configsPath => {
+      console.log(configsPath);
+    });
+  }
+
+  updateConfigs(options) {
+    return new Promise((resolve, reject) => {
+      inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'configName',
+          message: "Config Name"
+        },
+        {
+          type: 'input',
+          name: 'configValue',
+          message: "Config Value"
+        }
+      ])
+      .then(answers => {
+        return configsCore.updateConfig(answers.configName, answers.configValue);
+      })
+      .then(configValue => {
+        console.log(`The configuration has been updated with success!`)
+        console.log(configValue);
+        resolve();
+      })
+      .catch(reject);
+    });
+  }
+
+  interactiveCommand() {
+    return new Promise((resolve, reject) => {
+      inquirer
+      .prompt([
+        {
+          type: 'list',
+          name: 'option',
+          choices: this.arguments.map(argumentsOptions => { 
+            return { name: argumentsOptions.message, value: argumentsOptions.argument };
+          })
+        }
+      ])
+      .then(answers => this.arguments.find(argumentsOptions => argumentsOptions.argument === answers.option).processor())
       .then(resolve)
       .catch(reject);
     });
@@ -66,12 +172,12 @@ class Configs {
 
   actions(args, options, logger) {
     const withOptions = Object.values(options).some(optionValue => optionValue !== undefined);
-
     if(!Object.keys(args).length && !withOptions) {
       return this.interactiveCommand();
     }
 
-    console.log(args);
+    // TODO:
+    // Not Interactive
   }
 };
 

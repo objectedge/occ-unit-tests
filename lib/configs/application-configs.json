@@ -1,0 +1,19 @@
+{
+  "applicationBasePath": "",
+  "storefrontPath": "{{applicationBasePath}}/storefront",
+  "occInstanceName": "",
+  "occStoreUrl": "https://ccstore-{{occInstanceName}}.oracleoutsourcing.com",
+  "occAdminUrl": "https://ccadmin-{{occInstanceName}}.oracleoutsourcing.com",
+  "HTTPAuth": false,
+  "HTTPAuthCredentials": {
+    "user": "",
+    "password": ""
+  },
+  "devServerTempDataPath": "{{devServerTempDataPath}}",
+  "oracleResourcesDir": "{{storefrontPath}}/oracle-resources",
+  "librariesDir": "{{oracleResourcesDir}}/libraries",
+  "apiDir": "{{oracleResourcesDir}}/api",
+  "oracleDirName": "default",
+  "customDirName": "custom",
+  "mocksPath": "{{storefrontPath}}/mocks"
+}

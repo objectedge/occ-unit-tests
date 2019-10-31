@@ -2,8 +2,9 @@ const path = require('path');
 const fs = require('fs-extra');
 const configsCore = require('./lib/configs');
 
-const applicationConfigs = fs.readJsonSync(configsCore.getConfigsPath());
-const applicationPath = applicationConfigs.applicationPath;
+const applicationConfigs = fs.readJsonSync(configsCore.getConfigsPathSync());
+const applicationBasePath = applicationConfigs.applicationBasePath;
+const applicationPath = applicationConfigs.storefrontPath;
 const oracleResourcesDir = applicationConfigs.oracleResourcesDir;
 const librariesDir = applicationConfigs.librariesDir;
 const apiDir = applicationConfigs.apiDir;
@@ -13,8 +14,14 @@ const customDirName = applicationConfigs.customDirName;
 module.exports = {
   // Application definitions
   application: {
+    applicationBasePath,
     basePath: applicationPath,
     oracleResourcesDir: oracleResourcesDir,
+    occInstanceName: applicationConfigs.occInstanceName,
+    occStoreUrl: applicationConfigs.occStoreUrl,
+    occAdminUrl: applicationConfigs.occAdminUrl,
+    HTTPAuth: applicationConfigs.HTTPAuth,
+    HTTPAuthCredentials: applicationConfigs,
 
     apiDir: apiDir,
     oracleApiDirName: oracleDirName,

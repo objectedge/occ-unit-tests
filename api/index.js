@@ -30,15 +30,14 @@ function server(done) {
   }
 
   let schemaPaths = schema.paths;
-
+  
   if(customSchema) {
     const customSchemaPaths = customSchema.paths;
-
+    
     Object.keys(customSchemaPaths).forEach(customSchemaPath => {
       // just ignores the original schema path
       if(Object.keys(schemaPaths).includes(customSchemaPath)) {
         delete schemaPaths[customSchemaPath];
-        schemaPaths[customSchemaPath].customResponsesPath = customSchemaPath;
       }
 
       console.log(`Using custom schema path for ${customSchemaPath}...`);
